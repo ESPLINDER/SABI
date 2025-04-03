@@ -1,0 +1,296 @@
+@font-face {
+    font-family: 'Bonello-Regular';
+    src: url('Fonts/Bonello-Regular.otf') format('opentype');
+}
+.cuerpo {
+    background-color: #E2E2B6;
+}
+
+.navbar-custom {
+    background-color: #021526;
+    color: whitesmoke;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #6EACDA;
+    font-family: 'Bonello-Regular', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus,
+.navbar-brand:active {
+    color: #6EACDA;
+    text-decoration: none;
+}
+
+.logo {
+    margin-left: 10px;
+}
+
+.menu {
+    background-color: #6EACDA;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.menu a {
+    color: #021526;
+    font-weight: bold;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.encabezado {
+    background: #03346E;
+    color: #6EACDA;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.searchBox {
+    background: #6EACDA;
+    padding: 20px;
+    border-radius: 15px;
+    height: auto;
+    font-size: auto;
+    border: 2px solid #03346E;
+    font-weight: bold;
+}
+
+Select {
+    padding: 10px;
+    font-size: 11px;
+    border-radius: 10px;
+    color: #6EACDA;
+    width: 100%;
+}
+
+Input {
+    padding: 10px;
+    font-size: 11px;
+    border-radius: 10px;
+    border: 1px solid #6EACDA;
+    width: 100%;
+}
+
+.nueva {
+    font-size: 1.5rem;
+    width: 300px;
+    height: 70px;
+    background-color: #022599;
+    color: #6EACDA;
+    border: 3px solid #021526;
+}
+
+.bi-funnel-fill {
+    font-size: 1.5rem;
+    padding: 10px;
+    background: #03346E;
+    border-radius: 50px;
+    color: #6EACDA;
+}
+
+.rutina {
+    border: 2px solid #03346E;
+    background: #03346E;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+button {
+    height: 50PX;
+    width: 200px;
+    border-radius: 50px;
+}
+
+.editar {
+    background-color: #022599;
+    color: #6EACDA;
+    border: 3px solid #021526;
+}
+
+.asignar {
+    background-color: #6EACDA;
+    color: #022599;
+    border: 3px solid #022599;
+}
+.asignarNicolas {
+    background-color: #6EACDA;
+    color: #022599;
+    border: 3px solid #022599;
+}
+.asignarModal {
+    background-color: #6EACDA;
+    color: #022599;
+    border: 3px solid #022599;
+}
+
+
+
+
+
+.cliente {
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.datos:disabled {
+    color: #021526;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 3px;
+}
+
+button {
+    height: 50PX;
+    width: 200px;
+    border-radius: 50px;
+}
+
+.diagnostico {
+    margin-bottom: 3px;
+    background-color: #6EACDA;
+    color: #022599;
+    border: 3px solid #022599;
+    height: 60px;
+}
+
+.asignarCliente {
+    background-color: #022599;
+    color: #6EACDA;
+    border: 3px solid #021526;
+}
+
+.close {
+    border-radius: 50px;
+}
+
+.alert {
+    z-index: 1060 !important; /* la alerta por encima de otros elementos */
+    position: fixed;
+    top: 46%;      
+    right: 46%;  
+    bottom: 46%;   
+    left: 46%; 
+    background-color: #6EACDA;
+  }
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #021526;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #6EACDA;
+    display: block;
+    transition: 0.3s;
+}
+.sidebar a:hover {
+    color: #fff;
+}
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 12px;
+}
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #021526;
+    color: #6EACDA;
+    padding: 5px 7.5px;
+    border: none;
+}
+.openbtn:hover {
+    background-color: #03346E;
+}
+footer {
+    background-color: #021526;
+    color: #fff;
+    padding: 10px 0;
+    margin-top: auto;
+}
+footer a {
+    color: #6EACDA;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #fff;
+}
+.footer-column {
+    margin-bottom: 5px;
+}
+.btn-custom {
+    background-color: black;
+    color: azure;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+.btn-custom {
+    background-color: black;
+    color: azure;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+.btn-custom:hover {
+    color: black;
+}
+.btn-custom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #021526, #03346E, #6EACDA, #ffffff, #ffffff, #6EACDA, #03346E, #021526, #03346E, #6EACDA, #ffffff);
+    background-size: 400%;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    border-radius: 12px;
+    animation: glowing 50s linear infinite;
+}
+.btn-custom:hover::before {
+    opacity: 1;
+}
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 200% 0; }
+    100% { background-position: 0 0; }
+}

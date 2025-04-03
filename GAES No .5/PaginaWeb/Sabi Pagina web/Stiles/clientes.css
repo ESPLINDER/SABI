@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Bonello-Regular';
+    src: url('Fonts/Bonello-Regular.otf') format('opentype');
+}
+
+.cuerpo {
+    background-color: #E2E2B6;
+}
+
+.navbar-custom {
+    background-color: #021526;
+    color: whitesmoke;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #6EACDA;
+    font-family: 'Bonello-Regular', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus,
+.navbar-brand:active {
+    color: #6EACDA;
+    text-decoration: none;
+}
+
+.logo {
+    margin-left: 10px;
+}
+
+.menu {
+    background-color: #6EACDA;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.menu a {
+    color: #021526;
+    font-weight: bold;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.encabezado {
+    background: #03346E;
+    color: #6EACDA;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.cliente {
+    border: 2px solid #03346E;
+    background: #03346E;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.datos:disabled {
+    color: #021526;
+    height: 107px;
+    width: 450px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 1px;
+}
+
+button {
+    height: 50PX;
+    width: 200px;
+    border-radius: 50px;
+    margin-bottom: 5px;
+}
+
+button:disabled {
+    background-color: #d8d8d8;
+    color: #575757;
+    border: 3px solid #a5a5a5;
+}
+
+.diagnostico {
+    background-color: #022599;
+    color: #6EACDA;
+    border: 3px solid #021526;
+}
+.diagnosticoOk {
+    background-color: #6EACDA;
+    color: #022599;
+    border: 3px solid #022599;
+}
+
+.asignar {
+    background-color: #6EACDA;
+    color: #022599;
+    border: 3px solid #022599;
+}
+
+.close {
+    border-radius: 50px;
+}
