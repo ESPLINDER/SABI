@@ -126,10 +126,10 @@
         <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="Paginas principal AIS.html">Inicio</a>
-        <a href="NosotrosAIS.html">Sobre nosotros</a>
-        <a href="Servicios y contactos AIS.html">Servicios y Contactos</a>
-        <a href="Error404AIS.html">Blog</a>
-        <a href="InicioSesion.html">Iniciar sesion</a>
+        <a href="NosotrosAIS.php">Sobre nosotros</a>
+        <a href="Servicios y contactos AIS.php">Servicios y Contactos</a>
+        <a href="Error404AIS.php">Blog</a>
+        <a href="InicioSesion.php">Iniciar sesion</a>
         </div>
 
         </div>
@@ -138,9 +138,9 @@
     </nav>
 
     <div class="menu">
-        <a href="InicioSesion.html">Entrenamiento</a>
-        <a href="InicioSesion.html">Entrenadores</a>
-        <a href="NosotrosAIS.html">Nosotros</a>
+        <a href="InicioSesion.php">Entrenamiento</a>
+        <a href="InicioSesion.php">Entrenadores</a>
+        <a href="NosotrosAIS.php">Nosotros</a>
     </div>
 
     <div class="container">
