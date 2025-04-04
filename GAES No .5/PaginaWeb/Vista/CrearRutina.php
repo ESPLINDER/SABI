@@ -1,3 +1,7 @@
+<?
+include "modelo/conexion.php"
+//$sql = $conexion->query("SELECT * FROM usuario");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
