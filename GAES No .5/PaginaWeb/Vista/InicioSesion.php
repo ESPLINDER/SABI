@@ -12,10 +12,12 @@
             src: url('Fonts/Bonello-Regular.otf') format('opentype');
         }
         body {
-            background-color: #E2E2B6; 
+            background-image: url('Media/fondoSabi.png');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
-            min-height: 125vh;
+            min-height: 100vh;
         }
         .navbar-custom {
             background-color: #021526; 
@@ -147,7 +149,7 @@
             </div>
         </div>
     </nav>
-    <div class="content-container">
+    <div class="content-container my-4">
         <div class="login-container text-center">
             <h2 class="mb-4">Inicio de sesión</h2>
             <form id="loginForm">
@@ -163,10 +165,10 @@
             </form>
             <a href="CorreoRecuperacion.HTML" class="text-decoration">¿Olvidó su contraseña?</a>
             <p class="text-center mt-3">¿No tiene cuenta?</p>
-            <a href="RegistrarUsuario.html" class="text-decoration">Regístrese</a>
+            <a href="RegistrarUsuario.php" class="text-decoration">Regístrese</a>
         </div>
     </div>
-    <footer>
+
         <footer>
             <div class="container">
                 <div class="row text-center text-md-start">
@@ -205,7 +207,7 @@
             </div>
         </div>
         </footer>
-    </footer>
+
 
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>

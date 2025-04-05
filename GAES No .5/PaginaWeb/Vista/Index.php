@@ -12,7 +12,9 @@
             src: url('Fonts/Bonello-Regular.otf') format('opentype');
         }
         body {
-            background-color: #E2E2B6;
+            background-image: url('Media/fondoSabi.png');
+            background-size: 100% auto;
+            background-repeat: repeat-y;
             display: flex;
             flex-direction: column;
             min-height: 100vh;

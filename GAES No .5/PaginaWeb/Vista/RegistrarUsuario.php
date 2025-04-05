@@ -9,18 +9,37 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #E2E2B6;
+            background-image: url('Media/fondoSabi.png');
+            background-size: 100% auto;
+            background-repeat: repeat-y;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            flex-direction: column;
+            min-height: 100vh;
         }
-
+        .logo {
+            margin-left: 10px; 
+        }
+        .navbar-custom {
+            background-color: #021526; 
+            color: whitesmoke; 
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #6EACDA; 
+            font-family: 'Bonello-Regular', sans-serif;
+            text-align: center;
+            margin: 0 auto;
+            text-decoration: none;
+        }
+        .navbar-brand:hover, .navbar-brand:focus, .navbar-brand:active {
+            color: #6EACDA; 
+            text-decoration: none; 
+        }
         .form-container {
             width: 100%;
             max-width: 400px;
-            padding: 20px;
+            padding: 40px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -112,11 +131,36 @@
                 background-position: 0 0;
             }
         }
+        footer {
+            background-color: #021526;
+            color: #fff;
+            padding: 10px 0;
+            margin-top: auto;
+        }
+        footer a {
+            color: #6EACDA;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+        .footer-column {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="form-container">
+<nav class="navbar navbar-custom">
+        <div class="container-fluid d-flex flex-column align-items-center">
+            <div class="d-flex align-items-center w-100 justify-content-between row">
+                <div class="col-md-2"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
+                <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
+                <div class="col-lg-2 text-center"></div>
+            </div>
+        </div>
+    </nav>
+    <div class="form-container my-4 mx-auto">
         <h2 class="text-center">Regístrate</h2>
         <form action="codigoVerificacion.html" method="get">
             <div class="mb-3">
@@ -155,7 +199,7 @@
             <button type="submit" class="btn btn-custom w-100 mb-3">Enviar</button>
         </form>
         <p class="text-center mt-3">¿Ya tienes cuenta?</p>
-        <div class="text-center"><a href="InicioSesión.html" class="link-button">Iniciar Sesión</a></div>
+        <div class="text-center"><a href="InicioSesion.php" class="link-button">Iniciar Sesión</a></div>
     </div>
     <script>
         const fechaNacimientoInput = document.getElementById('fechaNacimiento');
@@ -171,6 +215,44 @@
     </script>
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <footer>
+            <div class="container">
+                <div class="row text-center text-md-start">
+                    <div class="col-md-4">
+                        <h5>Políticas de privacidad</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Política de datos</a></li>
+                            <li><a href="#">Aviso de privacidad</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Términos de servicio</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Términos y condiciones</a></li>
+                            <li><a href="#">Reglas de uso</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Información de contacto</h5>
+                        <ul class="list-unstyled">
+                            <li>1534053454</li>
+                            <li>2534647864</li>
+                            <li>SABI@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <p>&copy; 2024 SABI. Todos los derechos reservados.</p>
+                    <div>
+                        <a href="#" class="text-light mx-2"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-light mx-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light mx-2"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-light mx-2"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </footer>
 </body>
 
 </html>
