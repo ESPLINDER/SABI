@@ -1,5 +1,5 @@
 <?php
-include("C:/xampp/htdocs/SABI/GAES No .5/PaginaWeb/Modelo/conexion.php");
+include("../../Controlador/conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
