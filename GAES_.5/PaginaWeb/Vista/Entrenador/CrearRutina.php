@@ -1,6 +1,5 @@
-<?
-include "modelo/conexion.php"
-//$sql = $conexion->query("SELECT * FROM usuario");
+<?php
+include("C:/xampp/htdocs/SABI/GAES No .5/PaginaWeb/Modelo/conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
