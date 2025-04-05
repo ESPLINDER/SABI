@@ -143,7 +143,7 @@
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
             <div class="d-flex align-items-center w-100 justify-content-between row">
-                <div class="col-md-2"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
+                <div class="col-md-2"><img src="media/logoNuevo.png" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-2 text-center"></div>
             </div>
@@ -152,16 +152,20 @@
     <div class="content-container my-4">
         <div class="login-container text-center">
             <h2 class="mb-4">Inicio de sesión</h2>
-            <form id="loginForm">
+
+    <!-- Formulario de inicio de sesion -->
+            <form method="post" id="loginForm">
                 <div class="mb-3 text-start">
                     <label for="email" class="form-label">Correo</label>
                     <input type="email" class="form-control" id="email" placeholder="Correo" required>
                 </div>
+
                 <div class="mb-4 text-start">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
                 </div>
-                <button type="button" class="btn btn-custom w-100 mb-3" onclick="handleLogin()">Iniciar sesión</button>
+
+                <button type="summit" class="btn btn-custom w-100 mb-3" onclick="handleLogin()">Iniciar sesión</button>
             </form>
             <a href="CorreoRecuperacion.HTML" class="text-decoration">¿Olvidó su contraseña?</a>
             <p class="text-center mt-3">¿No tiene cuenta?</p>
@@ -211,17 +215,37 @@
 
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
-        function handleLogin() {
-            const password = document.getElementById('password').value;
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-            if (password === '555') {
-                window.location.href = 'Pagina principal.html'; // Redirige si la contraseña es 555
-            } else if (password === '777') {
-                window.location.href = 'PaginaPrincipalEntrenador.html'; // Redirige si la contraseña es 777
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        alert("Correo no Valido");
+        return;
+      }
+      if (password.length < 8) {
+        alert("La contraseña debe tener al menos 8 caracteres");
+        return;
+      }
+      if (password === 'cliente123') {
+                window.location.href = 'cliente/Pagina principal.php'; // Redirige si la contraseña es cliente123
+        
+            } else if (password === 'entrenador123') {
+                window.location.href = 'entrenador/PaginaPrincipalEntrenador.php'; // Redirige si la contraseña es entrenador123
             } else {
-                alert('Contraseña incorrecta. Intente nuevamente.');
+                alert('La Contraseña es incorrecta');
             }
-        }
+
+      alert("Inicio de Sesión Exitoso");
+    });
+  </script>
+    <script>
+        
     </script>
+
 </body>
 </html>

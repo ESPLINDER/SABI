@@ -1,4 +1,4 @@
 <?php
-$conexion = new mysqli("localhost", "root", "", "SABI");
+$conexion = new mysqli("localhost", "root", "", "sabi");
 $conexion->set_charset("utf8");
 ?>
