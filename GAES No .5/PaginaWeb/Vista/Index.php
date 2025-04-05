@@ -123,7 +123,7 @@
                 <div class="col-md-2"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-2 text-center">
-                    <a href="InicioSesion.html" class="text-light text-decoration-none">Inicia sesion</a>
+                    <a href="InicioSesion.php" class="text-light text-decoration-none">Inicia sesion</a>
         <button class="openbtn" onclick="openNav()">☰</button>
         <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
