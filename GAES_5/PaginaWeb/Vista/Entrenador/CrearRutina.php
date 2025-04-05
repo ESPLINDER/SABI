@@ -84,26 +84,9 @@ include("../../Controlador/conexion.php");
               <select id="exerciseSelect" name="Ejercicio" class="form-select">
                 <option value="Descanso">Descanso</option>
                 <option value="Press de Banca">Press de Banca</option>
-                <option value="Sentadilla">Sentadilla</option>
-                <option value="Remo con Mancuernas">Remo con Mancuernas</option>
-                <option value="Pull-Ups">Pull-Ups</option>
-                <option value="Extension de Piernas">Extension de Piernas</option>
-                <option value="Curl de Biceps">Curl de Biceps</option>
-                <option value="Press Militar">Press Militar</option>
-                <option value="Abdominales">Abdominales</option>
-                <option value="Remo en Maquina">Remo en Maquina</option>
-                <option value="Press de Pierna">Press de Pierna</option>
-                <option value="Plancha">Plancha</option>
-                <option value="Cinta de Correr">Cinta de Correr</option>
-                <option value="Bicicleta Estatica">Bicicleta Estatica</option>
-                <option value="Zancadas">Zancadas</option>
-                <option value="Fondos en Paralelas">Fondos en Paralelas</option>
-                <option value="Elevacion de Talones">Elevacion de Talones</option>
-                <option value="Press de Hombros en Maquina">Press de Hombros en Maquina</option>
-                <option value="Hip Thrust">Hip Thrust</option>
-                <option value="Cruce de Poleas">Cruce de Poleas</option>
-                <option value="Sprint en Cinta">Sprint en Cinta</option>
+            
               </select>
+              
             </div>
           </div>
           <div id="borderDetails" class="col-md-12 mb-3 mt-2" style="display: none; border-top: 2px solid #03346E;">
