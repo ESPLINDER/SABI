@@ -1,6 +1,4 @@
-<?php
-include("../../Controlador/conexion.php");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,14 +77,20 @@ include("../../Controlador/conexion.php");
         </div>
         <div class="modal-body row">
           <div class="mb-2 mx-auto">
-            <div class="col-md-5 mx-auto">
-              <h5>Seleccione un Ejercicio</h5>
-              <select id="exerciseSelect" name="Ejercicio" class="form-select">
-                <option value="Descanso">Descanso</option>
-                <option value="Press de Banca">Press de Banca</option>
-            
-              </select>
-              
+            <div class="col-md-6 mx-auto row">
+              <h5 class="text-center">Seleccione un Ejercicio</h5>
+              <div class="col-md-9">
+                <select id="exerciseSelect" name="Ejercicio" class="form-select">
+                <?php
+                  include("../../Controlador/conexion.php");
+                  $sql = $conexion->query("SELECT * FROM ejercicio");
+                  while ($datos=$sql->fetch_object()){?>
+                    <option value="<?= $datos->nomEjercicio ?>"><?= $datos->nomEjercicio ?></option>
+                  <?php }
+                  ?>
+                </select>
+              </div>
+              <div class="col-md-3"><button class="btn btn-success">Crear Nuevo</button></div>
             </div>
           </div>
           <div id="borderDetails" class="col-md-12 mb-3 mt-2" style="display: none; border-top: 2px solid #03346E;">
@@ -95,24 +99,28 @@ include("../../Controlador/conexion.php");
             <div class="col-md-4"><img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia"
                 class="img-fluid"></div>
             <div class="col-md-4">
-              <form id="seriesForm" class="row">
+              <form id="seriesForm" class="row" method="POST">
                 <!-- Serie inicial -->
                 <div class="serie-item row">
                   <label for="serie-1" class="form-label">Serie 1</label>
+                  <?php
+                  include "../../Controlador/conexion.php";
+                  include "../../Controlador/RegistrarSerie.php";
+                  ?>
                   <div class="col-md-7">
                     <label for="Peso">Peso *</label>
                     <div class="input-group">
-                      <input type="number" id="Peso" class="form-control" placeholder="Ejemplo: 10" required min="1">
+                      <input type="number" name="Peso" id="Peso" class="form-control" placeholder="Ejemplo: 10" required min="1">
                       <span class="input-group-text">Kg</span>
                     </div>
                   </div>
                   <div class="col-md-5">
                     <label for="Repeticiones">Repeticiones *</label>
-                    <input type="number" id="Repeticiones" class="form-control" placeholder="Ejemplo: 10" required min="1">
+                    <input type="number" name="Repeticiones" id="Repeticiones" class="form-control" placeholder="Ejemplo: 10" required min="1">
                   </div>
                 </div>
                 <!-- Botón para agregar más series -->
-                <button type="button" id="addSerie" class="btn btn-primary mt-3">+ Agregar serie</button>
+                <button type="submit" name="AgregarSerie" id="" class="btn btn-primary mt-3" value="ok">+ Agregar serie</button>
               </form>
             </div>
             <div class="col-md-4 my-auto">
@@ -191,7 +199,7 @@ include("../../Controlador/conexion.php");
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="Script/CrearRutina.js"></script>
+  <script src="../Script/CrearRutina.js"></script>
 </body>
 
 </html>
