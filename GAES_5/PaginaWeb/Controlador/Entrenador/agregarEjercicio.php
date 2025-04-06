@@ -2,12 +2,13 @@
 include("../../Controlador/conexion.php");
 
 $nomEjercicio = $_POST['nomEjercicio'];
-$desEjercicio = $_POST['descEjercicio'];
+$descEjercicio = $_POST['descEjercicio'];
 $tipEjercicio = $_POST['tipEjercicio'];
+$urlVideo = isset($_POST['urlVideo']) && $_POST['urlVideo'] !== '' ? $_POST['urlVideo'] : NULL;
 $autEjercicio = 1; // <-- cambia esto si ya tienes una sesión o lo recibes dinámicamente
 
-$sql = "INSERT INTO ejercicio (nomEjercicio, descEjercicio, tipEjercicio)
-        VALUES ('$nomEjercicio', '$descEjercicio', '$tipEjercicio')";
+$sql = "INSERT INTO ejercicio (nomEjercicio, descEjercicio, tipEjercicio, autEjercicio, urlVideo)
+        VALUES ('$nomEjercicio', '$descEjercicio', '$tipEjercicio', '$autEjercicio', '$urlVideo')";
 
 if ($conexion->query($sql)) {
     echo json_encode([
@@ -18,4 +19,3 @@ if ($conexion->query($sql)) {
 } else {
     echo json_encode(["success" => false, "error" => $conexion->error]);
 }
-?>
