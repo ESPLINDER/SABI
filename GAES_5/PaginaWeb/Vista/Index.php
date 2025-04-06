@@ -28,7 +28,8 @@
             font-weight: bold;
             color: #6EACDA;
             font-family: 'Bonello-Regular', sans-serif;
-            text-align: start;
+            text-align: center;
+            margin: 0 auto;
         }
         .menu {
             background-color: #6EACDA;
@@ -38,7 +39,8 @@
         .menu a {
             color: #021526;
             font-weight: bold;
-            margin: 0 15px;
+            margin: 15px;
+            text-align: center;
             text-decoration: none;
         }
         .menu a:hover {
@@ -117,10 +119,10 @@
 <body>
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
-            <div class="d-flex w-100 justify-content-between row">
+            <div class="d-flex align-items-center w-100 justify-content-between row">
                 <div class="col-md-2"><img src="media/logoNuevo.png" alt="Logo" width="60" height="60" class="logo"></div>
-                <div class="col-md-4"><a class="navbar-brand" href="Index.php">SABI</a></div>
-                <div class="col-lg-2 text-center">
+                <div class="col-md-8 text-center"><a class="navbar-brand" href="Index.php">SABI</a></div>
+                <div class="col-md-2 text-center">
                     <a href="InicioSesion.php" class="text-light text-decoration-none">Iniciar sesion</a>
                     <button class="openbtn" onclick="openNav()">☰</button>
 
@@ -139,7 +141,7 @@
     </nav>
 
     <div class="menu">
-        <a href="InicioSesion.php">Entrenamiento</a>
+        <a class="text-center" href="InicioSesion.php">Entrenamiento</a>
         <a href="InicioSesion.php">Entrenadores</a>
         <a href="NosotrosAIS.php">Nosotros</a>
     </div>

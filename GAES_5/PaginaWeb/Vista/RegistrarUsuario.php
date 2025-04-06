@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <style>
         body {
@@ -160,17 +159,22 @@
             </div>
         </div>
     </nav>
+
     <div class="form-container my-4 mx-auto">
         <h2 class="text-center">Regístrate</h2>
-        <form action="codigoVerificacion.html" method="get">
+
+        <form id="registroUsuario" action="codigoVerificacion.php" method="get">
+            
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
             </div>
+
             <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido</label>
                 <input type="text" class="form-control" id="apellido" placeholder="Apellido" required>
             </div>
+
             <div class="mb-3">
                 <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
                 <select class="form-select" id="tipoDocumento" aria-label="Seleccionar tipo de documento" required>
@@ -179,25 +183,35 @@
                     <option value="CE">CE</option>
                 </select>
             </div>
+
             <div class="mb-3">
                 <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="fechaNacimiento" name="age" placeholder="1924 >= 2012"
+                <input type="date" class="form-control" id="fechaNacimiento" placeholder="1924 >= 2012"
                     min="1924-01-01" max="2012-12-31" required>
             </div>
+
             <div class="mb-3">
                 <label for="idDocumento" class="form-label">Número de Documento</label>
                 <input type="number" class="form-control" id="idDocumento" placeholder="example: 12345678" required>
             </div>
+
             <div class="mb-3">
                 <label for="email" class="form-label">Correo</label>
                 <input type="email" class="form-control" id="email" placeholder="Correo" required>
             </div>
+
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                <small id="mensaje" style="color: red; display: none;">La contraseña debe tener al menos 8 caracteres.</small>
             </div>
-            <button type="submit" class="btn btn-custom w-100 mb-3">Enviar</button>
+
+            <button type="submit" class="btn btn-custom w-100 mb-3" id="registra">Enviar</button>
+
         </form>
+        <?php
+            include('../Controlador/registro.php')
+        ?>
         <p class="text-center mt-3">¿Ya tienes cuenta?</p>
         <div class="text-center"><a href="InicioSesion.php" class="link-button">Iniciar Sesión</a></div>
     </div>
@@ -213,7 +227,34 @@
             }
         });
     </script>
+    <script>
+    function validarPassword() {
+        const contras = document.getElementById("password").value;
+        const errorCont = document.getElementById("mensaje");
+        if (contras.length > 0 && contras.length < 8) {
+            mensaje.style.display = "block";
+            } else {
+                mensaje.style.display = "none";
+            }
+}
+</script>
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    document.getElementById("registroUsuario").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById("email").value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (!emailRegex.test(email)) {
+        alert("Correo no Valido");
+        return;
+      }
+
+      alert("Registro Exitoso");
+    });
+    </script>
 
     <footer>
             <div class="container">
