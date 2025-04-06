@@ -243,9 +243,5 @@
       alert("Inicio de Sesión Exitoso");
     });
   </script>
-    <script>
-        
-    </script>
-
 </body>
 </html>
