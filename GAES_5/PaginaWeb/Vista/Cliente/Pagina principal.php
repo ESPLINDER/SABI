@@ -118,31 +118,31 @@
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
             <div class="d-flex align-items-center w-100 justify-content-between row">
-                <div class="col-md-2"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
+                <div class="col-md-2"><img src="../Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-2 text-center">
-                    <a href="PerfilUsuario.html" class="text-light text-decoration-none">Camila</a>
-        <button class="openbtn" onclick="openNav()">☰</button>
-        <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="Pagina principal.html">Inicio</a>
-        <a href="Nosotros.html">Sobre nosotros</a>
-        <a href="Servicios y contactos.html">Servicios y contactos</a>
-        <a href="Error404.html">Blog</a>
-        <div class="mt-auto"><a href="Paginas principal AIS.html">Cerra sesion</a></div>
+                    <a href="PerfilUsuario.php" class="text-light text-decoration-none">Camila</a>
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="Pagina principal.php">Inicio</a>
+                    <a href="Nosotros.php">Sobre nosotros</a>
+                    <a href="Servicios y contactos.php">Servicios y contactos</a>
+                    <a href="Error404.php">Blog</a>
+                <div class="mt-auto"><a href="Paginas principal AIS.php">Cerra sesion</a></div>
         
 
         </div>
 
-        </div>
-        </div>
+                </div>
+            </div>
         </div>
     </nav>
 
     <div class="menu">
-        <a href="Rutina.html">Entrenamiento</a>
-        <a href="EscogerEntrenador.html">Entrenadores</a>
-        <a href="Nosotros.html">Nosotros</a>
+        <a href="Rutina.php">Entrenamiento</a>
+        <a href="EscogerEntrenador.php">Entrenadores</a>
+        <a href="Nosotros.php">Nosotros</a>
     </div>
 
     <div class="container">

@@ -28,9 +28,7 @@
             font-weight: bold;
             color: #6EACDA;
             font-family: 'Bonello-Regular', sans-serif;
-            text-align: center;
-            margin: 0 auto;
-            text-decoration: none;
+            text-align: start;
         }
         .menu {
             background-color: #6EACDA;
@@ -119,23 +117,24 @@
 <body>
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
-            <div class="d-flex align-items-center w-100 justify-content-between row">
-                <div class="col-md-2"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
-                <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
+            <div class="d-flex w-100 justify-content-between row">
+                <div class="col-md-2"><img src="media/logoNuevo.png" alt="Logo" width="60" height="60" class="logo"></div>
+                <div class="col-md-4"><a class="navbar-brand" href="Index.php">SABI</a></div>
                 <div class="col-lg-2 text-center">
-                    <a href="InicioSesion.php" class="text-light text-decoration-none">Inicia sesion</a>
-        <button class="openbtn" onclick="openNav()">☰</button>
-        <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="Paginas principal AIS.html">Inicio</a>
-        <a href="NosotrosAIS.php">Sobre nosotros</a>
-        <a href="Servicios y contactos AIS.php">Servicios y Contactos</a>
-        <a href="Error404AIS.php">Blog</a>
-        <a href="InicioSesion.php">Iniciar sesion</a>
-        </div>
+                    <a href="InicioSesion.php" class="text-light text-decoration-none">Iniciar sesion</a>
+                    <button class="openbtn" onclick="openNav()">☰</button>
 
-        </div>
-        </div>
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="Paginas principal AIS.html">Inicio</a>
+                        <a href="NosotrosAIS.php">Sobre nosotros</a>
+                        <a href="Servicios y contactos AIS.php">Servicios y Contactos</a>
+                        <a href="Error404AIS.php">Blog</a>
+                        <a href="InicioSesion.php">Iniciar sesion</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </nav>
 
