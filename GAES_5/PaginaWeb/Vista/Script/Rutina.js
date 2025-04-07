@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostrar historial
     const loadHistorial = document.querySelector("#loadHistorial"); // Botón cargar historial
     const historial = document.querySelector("#historial"); // Botón cargar historial
-    console.log(loadHistorial,"11111111111111111111", historial);
+    console.log(loadHistorial, "11111111111111111111", historial);
 
     loadHistorial.addEventListener("click", function () {
         historial.classList.remove("d-none"); // Muestra el historial
