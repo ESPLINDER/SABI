@@ -43,219 +43,92 @@
         <p>Crea una rutina personalizada o selecciona una de tus rutinas guardadas previamente. <br>Inicia agregando una
             semana.</p>
     </div>
-    <div class="row">
-        <div class="col-sm-3" style="display: block;">
-            <div class="mb-2 mx-auto">
-                <div class="col-md-6 mx-auto row">
-                    <h5 class="text-center">Seleccione un Ejercicio</h5>
-                    <div class="col-md-9" style="display: block;">
-                        <select id="exerciseSelect" name="Ejercicio" class="form-select">
-                            <?php
-                            include("../../Controlador/conexion.php");
-                            $sql = $conexion->query("SELECT * FROM ejercicio order by nomEjercicio ASC");
-                            while ($datos = $sql->fetch_object()) { ?>
-                                <option value="<?= $datos->nomEjercicio ?>"><?= $datos->nomEjercicio ?></option>
-                            <?php }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-md-3"><button class="btn btn-success">Crear Nuevo</button></div>
-                    <div style="display: block;" id="seccionCrearEjercicio">
-                        <form id="crearEjercicio">
-                            <h3>Crea tu ejercicio</h3>
-                            <div class="mb-2">
-                                <label for="nombre" class="form-label">Nombre del ejercicio</label>
-                                <input type="text" name="nomEjercicio" maxlength="20">
-                            </div>
-                            <div class="mb-2">
-                                <label for="descripcion" class="form-label">Descripcion del ejercicio</label>
-                                <input type="text" name="descEjercicio" maxlength="90">
-                            </div>
-                            <div class="mb-2">
-                                <label>¿El ejercicio requiere máquina?</label><br>
-                                <input type="radio" id="maquina-si" name="tipEjercicio" value="1">
-                                <label for="maquina-si">Si</label>
-                                <input type="radio" id="maquina-no" name="tipEjercicio" value="0">
-                                <label for="maquina-no">No</label>
-                            </div>
 
-                            <button type="submit" class="btn btn-success" name="btnAgregarEjercicio" value="ok">Guardar Ejercicio</button>
-                        </form>
-                    </div>
+    <div id="configuracionInicial" class="col-sm-3 mx-auto">
+        <h4 class="text-center">Configuración de la rutina</h4>
+        <div class="mb-2">
+            <label for="numSemanas">¿Cuántas semanas quieres que tenga la rutina?</label>
+            <input type="number" id="numSemanas" class="form-control" min="1" required value="1">
+        </div>
+        <div class="mb-2">
+            <label for="numDias">¿Cuántos días por semana?</label>
+            <input type="number" id="numDias" class="form-control" min="1" max="7" required value="1">
+        </div>
+        <div class="mb-2">
+            <label for="numEjercicios">¿Cuántos ejercicios por día? Los campos de ejercicios que dejes en blanco no se tomaran en cuenta</label>
+            <input type="number" id="numEjercicios" class="form-control" min="1" required value="1">
+        </div>
+        <button class="btn btn-success" id="btnGenerarRutina">Generar Rutina</button>
+    </div>
+
+    <div id="rutinaGenerada" class="col-sm-8 mx-auto mt-4" style="display: none;"></div>
+
+    <div class="row mt-3">
+        <div id="formularioLateral" class="col-sm-3" style="display: none;">
+            <div class="mb-2 mx-auto col-md-6 row">
+                <h5 class="text-center">Seleccione un Ejercicio</h5>
+                <div class="col-md-9">
+                    <select id="exerciseSelect" name="Ejercicio" class="form-select">
+                        <option value=""></option>
+                        <?php
+                        include("../../Controlador/conexion.php");
+                        $sql = $conexion->query("SELECT * FROM ejercicio order by nomEjercicio ASC");
+                        while ($datos = $sql->fetch_object()) { ?>
+                            <option value="<?= $datos->nomEjercicio ?>"><?= $datos->nomEjercicio ?></option>
+                        <?php }
+                        ?>
+                    </select>
+                    <input type="hidden" id="semanaSeleccionada">
+                    <input type="hidden" id="diaSeleccionado">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-success" id="btnCrearEjercicio">Crear Nuevo</button>
+                </div>
+
+                <!-- Sección para crear un nuevo ejercicio -->
+                <div style="display: none;" id="seccionCrearEjercicio">
+                    <form id="crearEjercicio">
+                        <h3>Crea tu ejercicio</h3>
+                        <div class="mb-2">
+                            <label for="nombre" class="form-label">Nombre del ejercicio</label>
+                            <input type="text" name="nomEjercicio" maxlength="20">
+                        </div>
+                        <div class="mb-2">
+                            <label for="descripcion" class="form-label">Descripcion del ejercicio</label>
+                            <input type="text" name="descEjercicio" maxlength="90">
+                        </div>
+                        <div class="mb-2">
+                            <label>¿El ejercicio requiere máquina?</label><br>
+                            <input type="radio" id="maquina-si" name="tipEjercicio" value="Requiere maquina">
+                            <label for="maquina-si">Si</label>
+                            <input type="radio" id="maquina-no" name="tipEjercicio" value="No requiere maquina">
+                            <label for="maquina-no">No</label>
+                        </div>
+                        <div class="mb-2">
+                            <label for="urlVideo" class="form-label">Enlace de video</label>
+                            <input type="url" name="urlVideo" id="urlVideo" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success" name="btnAgregarEjercicio" value="ok">Guardar Ejercicio</button>
+                    </form>
+                </div>
+
+                <!-- Sección de series -->
+                <div id="seccionSeries" style="display: none;">
+                    <h5>Estructura del ejercicio</h5>
+                    <div id="seriesContainer"></div> <!-- Aquí se irán agregando las series -->
+
+                    <button type="button" class="btn btn-sm btn-secondary" id="btnAgregarSerie">Agregar Serie</button>
+                    <button type="button" class="btn btn-success" id="btnGuardarEjercicio">Guardar ejercicio</button>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-9 mx-auto">
-            <form id="rutina" method="post">
-                <div id="dayFields" class="row mt-2 semana me-5">
-                    <h3 class="col-md-12 text-center">SEMANA 1</h2>
-                        <!-- Campo inicial para el primer día -->
-                        <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Dia 1</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>ejercicio 1</td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">
-                                            <a href="" class="btn btn-small btn-primary"><i class="bi bi-plus-square-fill"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar Ejercicio</button>
-                        </div>
-                </div>
-                <button type="button" id="addDay" class="btn btn-primary mt-3" style="display: none;">+ Agregar Día</button>
-                <div id="weekFields">
-                    <button type="button" id="addWeek" class="btn btn-primary mt-3">+ Agregar Semana</button>
-                    <button type="button" id="saveRutina" class="btn btn-success mt-3" style="display: none;" data-bs-toggle="modal"
-                        data-bs-target="#SaveRutina">Guardar</button>
-                </div>
-            </form>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" data-bs-backdrop="static"
-            aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen-custom modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Personaliza tu ejercicio</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body row">
-                        <div class="mb-2 mx-auto">
-                            <div class="col-md-6 mx-auto row">
-                                <h5 class="text-center">Seleccione un Ejercicio</h5>
-                                <div class="col-md-9">
-                                    <select id="exerciseSelect" name="Ejercicio" class="form-select">
-                                        <?php
-                                        include("../../Controlador/conexion.php");
-                                        $sql = $conexion->query("SELECT * FROM ejercicio");
-                                        while ($datos = $sql->fetch_object()) { ?>
-                                            <option value="<?= $datos->nomEjercicio ?>"><?= $datos->nomEjercicio ?></option>
-                                        <?php }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-md-3"><button class="btn btn-success">Crear Nuevo</button></div>
-                            </div>
-                        </div>
-                        <div id="borderDetails" class="col-md-12 mb-3 mt-2" style="display: none; border-top: 2px solid #03346E;">
-                        </div>
-                        <div class="row" id="exerciseDetails" style="display: none;"> <!-- Instrucciones del ejercicio -->
-                            <div class="col-md-4"><img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia"
-                                    class="img-fluid"></div>
-                            <div class="col-md-4">
-                                <form id="seriesForm" class="row" method="POST">
-                                    <!-- Serie inicial -->
-                                    <div class="serie-item row">
-                                        <label for="serie-1" class="form-label">Serie 1</label>
-                                        <?php
-                                        include "../../Controlador/conexion.php";
-                                        include "../../Controlador/RegistrarSerie.php";
-                                        ?>
-                                        <div class="col-md-7">
-                                            <label for="Peso">Peso *</label>
-                                            <div class="input-group">
-                                                <input type="number" name="Peso" id="Peso" class="form-control" placeholder="Ejemplo: 10" required min="1">
-                                                <span class="input-group-text">Kg</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label for="Repeticiones">Repeticiones *</label>
-                                            <input type="number" name="Repeticiones" id="Repeticiones" class="form-control" placeholder="Ejemplo: 10" required min="1">
-                                        </div>
-                                    </div>
-                                    <!-- Botón para agregar más series -->
-                                    <button type="submit" name="AgregarSerie" id="" class="btn btn-primary mt-3" value="ok">+ Agregar serie</button>
-                                </form>
-                            </div>
-                            <div class="col-md-4 my-auto">
-                                <h4>Video tutorial</h4>
-                                <div class="video-responsive" id="default-video-container">
-                                    <video controls>
-                                        <source src="Media/press-de-banca-en-maquina-smith.mp4" type="video/mp4">
-                                        Tu navegador no soporta la reproducción de video.
-                                    </video>
-                                </div>
-                                <div class="mt-4" id="upload-section">
-                                    <label for="upload-video" class="form-label">Sube un video tutorial personalizado</label>
-                                    <input type="file" id="upload-video" class="form-control" accept="video/*">
-                                </div>
-                                <!-- Contenedor para el video subido -->
-                                <div id="uploaded-video-container" class="mt-3" style="display: none;">
-                                    <h5>Video tutorial subido:</h5>
-                                    <video id="uploaded-video" controls class="w-100">
-                                        Tu navegador no soporta la reproducción de video.
-                                    </video>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" form="seriesForm" id="saveModal" class="btn btn-primary">Guardar Cambios</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="exerciseSaved" class="alert alert-success d-none rounded text-center align-items-center" role="alert">
             <div class=>Ejercicio guardado exitosamente</div>
         </div>
-
-        <!-- Nombrar rutina -->
-        <div class="modal fade" id="SaveRutina" tabindex="-1" aria-labelledby="myModalLabel" data-bs-backdrop="static"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Guarda tu rutina</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body row">
-                        <form>
-                            <div id="nombrar">
-                                <label for="nameRoutine">Nombra tu rutina:</label>
-                                <input type="text" id="nameRoutine" placeholder="Ej: Aumento de masa muscular" class="form-control">
-                            </div>
-                            <div style="display: none;" id="describir">
-                                <label for="Descripcion" class="mt-2">Describe el objetivo de esta rutina personalizada</label>
-                                <textarea name="description" id="description" class="form-control"
-                                    placeholder="Rutina diseñada para maximizar el crecimiento muscular en poco tiempo, utilizando ejercicios compuestos y de alta intensidad para trabajar todo el cuerpo en sesiones cortas y efectivas."></textarea>
-                            </div>
-                            <div style="display: none;" id="difficulty">
-                                <label for="nivel">Nivel de dificultad:</label>
-                                <select id="nivel" name="nivel" class="form-select">
-                                    <option value=""></option>
-                                    <option value="Principiante">Principiante</option>
-                                    <option value="Intermedio">Intermedio</option>
-                                    <option value="Avanzado">Avanzado</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" id="saveAll" class="btn btn-primary" disabled>Guardar Rutina</button>
-                    </div>
-                </div>
-            </div>
-            <div id="routineSaved" class="alert alert-success d-none rounded text-center align-items-center" role="alert">
-                <div class=>Rutina guardada exitosamente</div>
-            </div>
-        </div>
     </div>
-
+                            
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../Script/CrearRutina.js"></script>
     <script src="../../Vista/Script/Entrenador/CreacionRutina.js"></script>
 </body>
 
