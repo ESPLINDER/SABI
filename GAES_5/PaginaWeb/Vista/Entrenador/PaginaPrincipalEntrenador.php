@@ -1,10 +1,19 @@
+<?php
+session_start();
+
+if ($_SESSION['tipo'] != 'entrenador') {
+    header("Location: ../accesoDenegado.php");
+    exit();
+}
+$nombreEntrenador = $_SESSION['nombre'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
         @font-face {
@@ -118,18 +127,18 @@
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
             <div class="d-flex align-items-center w-100 justify-content-between row">
-                <div class="col-md-2"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
+                <div class="col-md-2"><img src="../media/logoNuevo.png" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-2 text-center">
-                    <a href="PaginaPrincipalEntrenador.html" class="text-light text-decoration-none">Adriana | Entrenador</a>
+                    <a href="PaginaPrincipalEntrenador.php" class="text-light text-decoration-none"><?php echo $nombreEntrenador ?> | Entrenador</a>
         <button class="openbtn" onclick="openNav()">☰</button>
         <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="PaginaPrincipalEntrenador.html">Inicio</a>
-        <a href="NosotrosEntrenador.html">Sobre nosotros</a>
-        <a href="Servicios y Contactos Entrenador.html">Servicios y contactos</a>
-        <a href="Error404Entrenador.html">Blog</a>
-        <div class="mt-auto"><a href="Paginas principal AIS.html">Cerra sesion</a></div>
+        <a href="PaginaPrincipalEntrenador.php">Inicio</a>
+        <a href="NosotrosEntrenador.php">Sobre nosotros</a>
+        <a href="Servicios y Contactos Entrenador.php">Servicios y contactos</a>
+        <a href="Error404Entrenador.php">Blog</a>
+        <div class="mt-auto"><a href="../../controlador/logOut.php">Cerra sesion</a></div>
         
 
         </div>
