@@ -79,26 +79,6 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                             <select name="Ejercicio" id="modal-2-1" class="col-sm-12 form-select" data-bs-toggle="modal" data-bs-target="#myModal">
                                 <option class="historial" value="">Press De Banca</option>
                             </select>
-                            <div class="exercise-container mt-2">
-                                <div class="exercise-item mb-2">
-                                    <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <option value="">Akjdnbgiurbvfdgb</option>
-                                    </select>
-                                </div>
-                                <div class="exercise-item mb-2">
-                                    <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <option value="">Akjdnbgiurbvfdgb</option>
-                                    </select>
-                                </div>
-                                <div class="exercise-item mb-2">
-                                    <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <option value="">Akjdnbgiurbvfdgb</option>
-                                    </select>
-                                </div>
-                                <div class="exercise-item mb-2">
-                                    <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <option value="">Akjdnbgiurbvfdgb</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -106,10 +86,9 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                 </div>
             </div>
             <button type="button" id="loadHistorial" class="boton-historial mt-2 btn btn-custom w-20 mb-3">Cargar historial</button>
+           <!-- Modal ejercicio -->
         </form>
     </div>
-
-    <!-- Modal ejercicio -->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" data-bs-backdrop="static" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-custom modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -152,21 +131,18 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                                     <input type="number" id="descanso" name="descanso" class="form-control" placeholder="Ejemplo: 0" required min="1">
                                 </div>
                             </form>
-                        </div>
+                            </div>
                         <div class="col-md-4 my-auto">
                             <h4>Video tutorial</h4>
-                            <div class="video-responsive" id="default-video-container">
-                                <video controls="">
-                                    <source src="Media/press-de-banca-en-maquina-smith.mp4" type="video/mp4">
-                                    Tu navegador no soporta la reproducción de video.
-                                </video>
-                            </div>
-                            <div class="mt-3">
-                                <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger" onclick="window.open('https://www.youtube.com/watch?v=R5nLUDoswx0', '_blank')">Ver canal de YouTube De SABI</button>
-                                </div>
-                            </div>
+                            <!-- Reemplazo por el iframe del nuevo video de YouTube -->
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/jlFl7WJ1TzI" 
+                                title="Video tutorial" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
+                    </div>
+                </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -330,3 +306,4 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     </script>
 </body>
 </html>
+
