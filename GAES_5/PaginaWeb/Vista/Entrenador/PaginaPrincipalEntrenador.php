@@ -21,7 +21,7 @@ $nombreEntrenador = $_SESSION['nombre'];
             src: url('Fonts/Bonello-Regular.otf') format('opentype');
         }
         body {
-            background-color: #E2E2B6;
+            background-image: url(../media/fondoSabi.png);
             display: flex;
             flex-direction: column;
             min-height: 100vh;

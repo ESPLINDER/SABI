@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['nombre'] = $cliente['nomCliente'];
             $_SESSION['idUsuario'] = $cliente['fkIdUsuario'];
 
-            header("Location: ../vista/Cliente/PaginaPrincipal.php");
+            header("Location: ../vista/Cliente/Pagina Principal.php");
             exit();
         }
 

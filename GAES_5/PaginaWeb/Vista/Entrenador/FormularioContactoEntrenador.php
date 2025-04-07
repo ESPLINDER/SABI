@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
-            background-color: #E2E2B6; 
+            background-image: url(../media/fondoSabi.png);
             display: flex;
             justify-content: center;
             align-items: center;
