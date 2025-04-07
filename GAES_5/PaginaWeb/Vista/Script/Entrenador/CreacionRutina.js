@@ -1,4 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
+    
+    // Filtro
+    document.getElementById("filtroEjercicios").addEventListener("input", function () {
+        const texto = this.value.toLowerCase();
+        const items = document.querySelectorAll("#listaEjercicios .list-group-item");
+    
+        items.forEach(item => {
+            const nombre = item.querySelector("span").textContent.toLowerCase();
+            item.style.display = nombre.includes(texto) ? "" : "none";
+        });
+    });
+
     const botonesAgregar = document.querySelectorAll(".btnAgregarEjercicio");
 
     botonesAgregar.forEach(boton => {
@@ -120,43 +132,92 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.getElementById("btnGenerarRutina").addEventListener("click", function () {
-        const semanas = parseInt(document.getElementById("numSemanas").value);
-        const dias = parseInt(document.getElementById("numDias").value);
-        const ejercicios = parseInt(document.getElementById("numEjercicios").value);
+        fetch("../../Controlador/Entrenador/obtenerEjercicios.php") // asegúrate que la ruta sea correcta
+            .then(response => response.json())
+            .then(ejerciciosBD => {
+                function renderListaEjercicios(ejercicios) {
+                    const contenedor = document.getElementById("listaEjercicios");
+                    contenedor.innerHTML = "";
+                
+                    ejercicios.forEach(ej => {
+                        const item = document.createElement("div");
+                        item.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                
+                        item.innerHTML = `
+                            <span>${ej.nomEjercicio}</span>
+                            <div>
+                                <button class="btn btn-sm btn-warning me-1">✏️</button>
+                                <button class="btn btn-sm btn-danger">🗑️</button>
+                            </div>
+                        `;
+                        contenedor.appendChild(item);
+                    });
+                }
+
+                const semanas = parseInt(document.getElementById("numSemanas").value);
+                const dias = parseInt(document.getElementById("numDias").value);
+                const ejercicios = parseInt(document.getElementById("numEjercicios").value);
     
-        const contenedor = document.getElementById("rutinaGenerada");
-        contenedor.innerHTML = "";
-        contenedor.style.display = "block";
+                const contenedor = document.getElementById("rutinaGenerada");
+                contenedor.innerHTML = "";
+                contenedor.style.display = "block";
     
-        for (let s = 1; s <= semanas; s++) {
-            const semanaDiv = document.createElement("div");
-            semanaDiv.classList.add("semana", "border", "p-3", "mb-4", "row");
-            semanaDiv.innerHTML = `<h4 class="text-center">Semana ${s}</h4>`;
+                for (let s = 1; s <= semanas; s++) {
+                    const semanaDiv = document.createElement("div");
+                    semanaDiv.classList.add("semana", "border", "p-3", "mb-4", "row");
+                    semanaDiv.innerHTML = `<h4 class="text-center">Semana ${s}</h4>`;
     
-            for (let d = 1; d <= dias; d++) {
-                const diaDiv = document.createElement("div");
-                diaDiv.classList.add("dia", "p-2", "mb-2", "col-sm-3", "mx-auto");
-                diaDiv.innerHTML = `<h5 class="text-center">Día ${d}</h5>`;
+                    for (let d = 1; d <= dias; d++) {
+                        const diaDiv = document.createElement("div");
+                        diaDiv.classList.add("dia", "p-2", "mb-2", "col-sm-3", "mx-auto");
+                        diaDiv.innerHTML = `<h5 class="text-center">Día ${d}</h5>`;
     
-                for (let e = 1; e <= ejercicios; e++) {
-                    const ejercicioDiv = document.createElement("div");
-                    ejercicioDiv.classList.add("ejercicio", "mb-2");
-                    ejercicioDiv.innerHTML = `
-                        <label>Ejercicio ${e}:</label>
-                        <select class="form-select mb-2">
-                            <option value="">Seleccionar ejercicio</option>
-                            <!-- Aquí puedes insertar dinámicamente tus ejercicios desde PHP -->
-                        </select>
-                    `;
-                    diaDiv.appendChild(ejercicioDiv);
+                        for (let e = 1; e <= ejercicios; e++) {
+                            const ejercicioDiv = document.createElement("div");
+                            ejercicioDiv.classList.add("ejercicio", "mb-2", "d-flex", "align-items-center", "gap-2");
+                        
+                            // Label
+                            const label = document.createElement("label");
+                            label.textContent = ``;
+                            label.classList.add("me-2", "mb-0");
+                        
+                            // Select
+                            const select = document.createElement("select");
+                            select.classList.add("form-select", "mb-2", "flex-grow-1");
+                            select.innerHTML = `<option value="">Seleccionar ejercicio</option>`;
+                            ejerciciosBD.forEach(ej => {
+                                select.innerHTML += `<option value="${ej.idEjercicio}">${ej.nomEjercicio}</option>`;
+                            });
+                        
+                            // Botón eliminar
+                            const btnEliminar = document.createElement("button");
+                            btnEliminar.classList.add("btn", "btn-danger", "btn-sm");
+                            btnEliminar.innerHTML = "🗑️";
+                            btnEliminar.title = "Eliminar este ejercicio";
+                            btnEliminar.addEventListener("click", () => {
+                                ejercicioDiv.remove();
+                            });
+                        
+                            // Armar el div de ejercicio
+                            ejercicioDiv.appendChild(label);
+                            ejercicioDiv.appendChild(select);
+                            ejercicioDiv.appendChild(btnEliminar);
+                        
+                            // Insertar en el día
+                            diaDiv.appendChild(ejercicioDiv);
+                        }
+    
+                        semanaDiv.appendChild(diaDiv);
+                    }
+    
+                    contenedor.appendChild(semanaDiv);
                 }
     
-                semanaDiv.appendChild(diaDiv);
-            }
-    
-            contenedor.appendChild(semanaDiv);
-        }
-    
-        document.getElementById("configuracionInicial").style.display = "none";
+                document.getElementById("configuracionInicial").style.display = "none";
+            })
+            .catch(error => {
+                console.error("Error al cargar ejercicios:", error);
+                alert("No se pudieron cargar los ejercicios.");
+            });
     });
 });

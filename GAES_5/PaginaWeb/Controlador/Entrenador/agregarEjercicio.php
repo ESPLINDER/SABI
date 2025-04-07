@@ -1,5 +1,5 @@
 <?php
-include("../../Controlador/conexion.php");
+include("../Controlador/conexion.php");
 
 $nomEjercicio = $_POST['nomEjercicio'];
 $descEjercicio = $_POST['descEjercicio'];
