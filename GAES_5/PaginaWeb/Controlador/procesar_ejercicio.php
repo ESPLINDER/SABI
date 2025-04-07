@@ -2,8 +2,8 @@
 // Incluir la conexión a la base de datos
 include '/Applications/XAMPP/xamppfiles/htdocs/GAES-5/PaginaWeb/Controlador/conexion.php';
 
-// Verificar si se recibieron datos mediante POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Verificar si $_SERVER['REQUEST_METHOD'] está definido y si la solicitud es POST
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los datos del formulario
     $fkIdEjercicio = isset($_POST['fkIdEjercicio']) ? intval($_POST['fkIdEjercicio']) : null;
     $fkIdRutina = isset($_POST['fkIdRutina']) ? intval($_POST['fkIdRutina']) : null;
