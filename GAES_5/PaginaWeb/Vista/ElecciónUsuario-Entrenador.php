@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($resultado) {
             $_SESSION['tipo'] = 'cliente';
             $_SESSION['nombre'] = $nomCliente;
-            header("Location: Cliente/Pagina Principal.php");
+            header("Location: Cliente/FormularioDiagnostico.php");
             exit();
         }
     } elseif ($rol === 'entrenador') {
@@ -61,7 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         body {
-            background-color: #E2E2B6;
+            background-image: url(Media/fondoSabi.png);
+            background-size: 100% auto;
+            background-repeat: repeat-y;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
