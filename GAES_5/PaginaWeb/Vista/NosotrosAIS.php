@@ -1,3 +1,11 @@
+<?php
+if (isset($_SESSION['idUsuario'])) {
+    session_unset();
+    session_destroy();
+    header("Location: inicioSesion.php?logout=true");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
