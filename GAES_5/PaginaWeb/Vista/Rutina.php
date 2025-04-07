@@ -1,7 +1,7 @@
 <?php
 include '../Controlador/conexion.php'; // Asegúrate de que la ruta a tu archivo de conexión sea correcta
-
-// Verificar si se ha enviado un parámetro de éxito
+      
+ // Verificar si se ha enviado un parámetro de éxito
 $successMessage = '';
 if (isset($_GET['success']) && $_GET['success'] == 1) {
     $successMessage = 'Rutina guardada exitosamente.';
