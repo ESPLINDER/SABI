@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("registroUsuario").addEventListener("submit", function () {
         
-
         const email = document.getElementById("email").value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

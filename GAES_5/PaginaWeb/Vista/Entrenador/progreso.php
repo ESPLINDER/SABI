@@ -7,7 +7,7 @@
     <title>Tu rutina</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="Stiles/Rutina.css">
+    <link rel="stylesheet" href="../Stiles/Rutina.css">
 </head>
 
 <body class="cuerpo">
@@ -22,7 +22,7 @@
     </nav>
 
     <div class="menu">
-        <a href="rutinasGuardadas.html" >Mis Rutinas</a>
+        <a href="rutinasGuardadas.html">Mis Rutinas</a>
         <a href="clientes.html">Clientes</a>
         <a href="NosotrosEntrenador.html">Nosotros</a>
     </div>
@@ -188,7 +188,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal historial -->
     <div class="modal fade" id="myModalH" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog sinVideo modal-dialog-centered modal-dialog-scrollable">
@@ -208,53 +208,54 @@
                     </div>
                     <div class="row" id="exerciseDetails"> <!-- Instrucciones del ejercicio -->
                         <div class="col-md-6">
-                            <img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia" class="img-fluid"></div>
+                            <img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia" class="img-fluid">
+                        </div>
                         <div class="col-md-6 row">
-                                <!-- Serie inicial -->
-                                <div class="serie-item row">
-                                    <div class="mt-auto">Serie 1</div>
-                                    <div class="col-md-7">
-                                        <label for="Peso">Peso: 10 Kg *</label>
-                                        <div class="box">10 Kg</div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="Repeticiones">Repeticiones: 12 *</label>
-                                        <div class="box">12</div>
-                                    </div>
+                            <!-- Serie inicial -->
+                            <div class="serie-item row">
+                                <div class="mt-auto">Serie 1</div>
+                                <div class="col-md-7">
+                                    <label for="Peso">Peso: 10 Kg *</label>
+                                    <div class="box">10 Kg</div>
                                 </div>
-                                <div class="serie-item mt-3 row">
-                                    <div class="mt-auto">Serie 2</div>
-                                    <div class="col-md-7">
-                                        <label for="Peso-2">Peso: 10 Kg *</label>
-                                        <div class="box">9 Kg</div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="Repeticiones-2">Repeticiones: 12 *</label>
-                                        <div class="box">12</div>
-                                    </div>
+                                <div class="col-md-5">
+                                    <label for="Repeticiones">Repeticiones: 12 *</label>
+                                    <div class="box">12</div>
                                 </div>
-                                <div class="serie-item mt-3 row">
-                                    <div class="mt-auto">Serie 3</div>
-                                    <div class="col-md-7">
-                                        <label for="Peso-3">Peso *</label>
-                                        <div class="box">9 Kg</div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="Repeticiones-3">Repeticiones: 12 *</label>
-                                        <div class="box">11</div>
-                                    </div>
+                            </div>
+                            <div class="serie-item mt-3 row">
+                                <div class="mt-auto">Serie 2</div>
+                                <div class="col-md-7">
+                                    <label for="Peso-2">Peso: 10 Kg *</label>
+                                    <div class="box">9 Kg</div>
                                 </div>
-                                <div class="serie-item mt-3 row">
-                                    <div class="mt-auto">Serie 4</div>
-                                    <div class="col-md-7">
-                                        <label for="Peso-4">Peso: 10 Kg *</label>
-                                        <div class="box">9 Kg</div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="Repeticiones-4">Repeticiones: 12 *</label>
-                                        <div class="box">10</div>
-                                    </div>
+                                <div class="col-md-5">
+                                    <label for="Repeticiones-2">Repeticiones: 12 *</label>
+                                    <div class="box">12</div>
                                 </div>
+                            </div>
+                            <div class="serie-item mt-3 row">
+                                <div class="mt-auto">Serie 3</div>
+                                <div class="col-md-7">
+                                    <label for="Peso-3">Peso *</label>
+                                    <div class="box">9 Kg</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="Repeticiones-3">Repeticiones: 12 *</label>
+                                    <div class="box">11</div>
+                                </div>
+                            </div>
+                            <div class="serie-item mt-3 row">
+                                <div class="mt-auto">Serie 4</div>
+                                <div class="col-md-7">
+                                    <label for="Peso-4">Peso: 10 Kg *</label>
+                                    <div class="box">9 Kg</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="Repeticiones-4">Repeticiones: 12 *</label>
+                                    <div class="box">10</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -283,61 +284,63 @@
                     </div>
                     <div class="row" id="exerciseDetails"> <!-- Instrucciones del ejercicio -->
                         <div class="col-md-4">
-                            <img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia" class="img-fluid"></div>
+                            <img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia" class="img-fluid">
+                        </div>
                         <div class="col-md-4 row">
-                                <!-- Serie inicial -->
-                                <div class="serie-item row">
-                                    <div class="mt-auto">Serie 1</div>
-                                    <div class="col-md-7">
-                                        <label for="Peso">Peso: 10 Kg *</label>
-                                        <div class="box">10 Kg</div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="Repeticiones">Repeticiones: 12 *</label>
-                                        <div class="box">12</div>
-                                    </div>
+                            <!-- Serie inicial -->
+                            <div class="serie-item row">
+                                <div class="mt-auto">Serie 1</div>
+                                <div class="col-md-7">
+                                    <label for="Peso">Peso: 10 Kg *</label>
+                                    <div class="box">10 Kg</div>
                                 </div>
-                                <div class="serie-item mt-3 row">
-                                    <div class="mt-auto">Serie 2</div>
-                                    <div class="col-md-7">
-                                        <label for="Peso-2">Peso: 10 Kg *</label>
-                                        <div class="box">9 Kg</div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="Repeticiones-2">Repeticiones: 12 *</label>
-                                        <div class="box">12</div>
-                                    </div>
+                                <div class="col-md-5">
+                                    <label for="Repeticiones">Repeticiones: 12 *</label>
+                                    <div class="box">12</div>
                                 </div>
-                                <div class="serie-item mt-3 row">
-                                    <div class="mt-auto">Serie 3</div>
-                                    <div class="col-md-7">
-                                        <label for="Peso-3">Peso *</label>
-                                        <div class="box">9 Kg</div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="Repeticiones-3">Repeticiones: 12 *</label>
-                                        <div class="box">11</div>
-                                    </div>
+                            </div>
+                            <div class="serie-item mt-3 row">
+                                <div class="mt-auto">Serie 2</div>
+                                <div class="col-md-7">
+                                    <label for="Peso-2">Peso: 10 Kg *</label>
+                                    <div class="box">9 Kg</div>
                                 </div>
-                                <div class="serie-item mt-3 row">
-                                    <div class="mt-auto">Serie 4</div>
-                                    <div class="col-md-7">
-                                        <label for="Peso-4">Peso: 10 Kg *</label>
-                                        <div class="box">9 Kg</div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="Repeticiones-4">Repeticiones: 12 *</label>
-                                        <div class="box">10</div>
-                                    </div>
+                                <div class="col-md-5">
+                                    <label for="Repeticiones-2">Repeticiones: 12 *</label>
+                                    <div class="box">12</div>
                                 </div>
+                            </div>
+                            <div class="serie-item mt-3 row">
+                                <div class="mt-auto">Serie 3</div>
+                                <div class="col-md-7">
+                                    <label for="Peso-3">Peso *</label>
+                                    <div class="box">9 Kg</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="Repeticiones-3">Repeticiones: 12 *</label>
+                                    <div class="box">11</div>
+                                </div>
+                            </div>
+                            <div class="serie-item mt-3 row">
+                                <div class="mt-auto">Serie 4</div>
+                                <div class="col-md-7">
+                                    <label for="Peso-4">Peso: 10 Kg *</label>
+                                    <div class="box">9 Kg</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="Repeticiones-4">Repeticiones: 12 *</label>
+                                    <div class="box">10</div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-4 my-auto">
                             <h4>Video de tu cliente:</h4>
                             <div class="video-responsive">
-                                <video controls="">
-                                    <source src="Media/press-de-banca-en-maquina-smith.mp4" type="video/mp4">
-                                    Tu navegador no soporta la reproducción de video.
-                                </video>
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/jlFl7WJ1TzI"
+                                    title="Video tutorial" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
                             </div>
                         </div>
                     </div>
@@ -351,7 +354,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Script/Rutina.js"></script>
+    <script src="../Script/Rutina.js"></script>
 </body>
 
 </html>

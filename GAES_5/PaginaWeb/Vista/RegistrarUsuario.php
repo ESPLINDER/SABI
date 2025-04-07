@@ -312,6 +312,6 @@
         </div>
     </footer>
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="Script/registroUsuario.js"></script>
+    <script src="../Script/registroUsuario.js"></script>
 </body>
 </html>
