@@ -159,7 +159,7 @@ $nombreCliente = $_SESSION['nombre'];
             <div class="row">
                 <div class="col-md-6">
                     <video controls>
-                        <source src="Videos/¡Bienvenidos a SABI!.mp4" type="video/mp4">
+                        <source src="../Videos/¡Bienvenidos a SABI!.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="col-md-6 text-content">
@@ -174,7 +174,7 @@ $nombreCliente = $_SESSION['nombre'];
             <div class="row">
                 <div class="col-md-6 order-md-2">
                     <video controls>
-                        <source src="Videos/¡Descubre los Entrenamientos de SABI!.mp4" type="video/mp4">
+                        <source src="../Videos/¡Descubre los Entrenamientos de SABI!.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="col-md-6 text-content order-md-1">
@@ -199,7 +199,7 @@ $nombreCliente = $_SESSION['nombre'];
             <div class="row">
                 <div class="col-md-6">
                     <video controls>
-                        <source src="Videos/Testimonios de Éxito con SABI.mp4" type="video/mp4">
+                        <source src="../Videos/Testimonios de Éxito con SABI.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="col-md-6 text-content">
