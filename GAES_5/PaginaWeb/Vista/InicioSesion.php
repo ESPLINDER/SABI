@@ -188,7 +188,7 @@ if (isset($_SESSION['idUsuario'])) {
         <div class="container-fluid d-flex flex-column align-items-center">
             <div class="d-flex align-items-center w-100 justify-content-between row">
                 <div class="col-md-2"><img src="media/logoNuevo.png" alt="Logo" width="60" height="60" class="logo"></div>
-                <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
+                <div class="col-md-8 text-center"><a class="navbar-brand" href="index.php">SABI</a></div>
                 <div class="col-lg-2 text-center"></div>
             </div>
         </div>

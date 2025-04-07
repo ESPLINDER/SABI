@@ -7,7 +7,7 @@
     <title>Clientes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="Stiles/clientes.css">
+    <link rel="stylesheet" href="../Stiles/clientes.css">
 </head>
 
 <body class="cuerpo">
@@ -23,6 +23,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Dashboard -->
     <div class="menu">
@@ -51,7 +52,7 @@
             <div class="col-md-3 d-flex">
                 <div class="my-auto mx-auto row">
                     <button class="diagnostico1 diagnostico" data-bs-toggle="modal" data-bs-target="#diagnostico">Consultar diagnostico</button>
-                    <button class="asignar1 asignar" disabled>Asignar rutina</button>
+                    <button class="asignar1 asignar" href='../Entrenador/rutinasGuardadas.php' disabled>Asignar rutina</button>
                 </div>
             </div>
         </div>
@@ -216,7 +217,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Script/clientes.js"></script>
+    <script src="../Script/clientes.js"></script>
 </body>
 
 </html>

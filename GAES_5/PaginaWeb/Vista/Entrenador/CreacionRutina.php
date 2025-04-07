@@ -48,7 +48,7 @@ if (isset($_GET['id'])) {
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
             <div class="d-flex align-items-center w-100 justify-content-between row">
-                <div class="col-md-2"><img src="Media/Logo.enc" alt="Logo" width="60" height="60" class="logo"></div>
+                <div class="col-md-2"><img src="Media/logoNuevo" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand " href="#">SABI</a></div>
                 <div class="col-lg-2 text-center"><?php echo $nomUsuario ?> | Entrenador</div>
             </div>
@@ -56,9 +56,9 @@ if (isset($_GET['id'])) {
     </nav>
 
     <div class="menu">
-        <a href="#">Inicio</a>
-        <a href="rutinasGuardadas.html" style="color: #E2E2B6;">Mis Rutinas</a>
-        <a href="clientes.html">Clientes</a>
+        <a href="PaginaPrincipalEntrenador.php">Inicio</a>
+        <a href="rutinasGuardadas.php" style="color: #E2E2B6;">Mis Rutinas</a>
+        <a href="clientes.php">Clientes</a>
         <a href="#">Nosotros</a>
     </div>
 

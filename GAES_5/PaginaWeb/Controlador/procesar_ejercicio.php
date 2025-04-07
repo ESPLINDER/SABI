@@ -31,7 +31,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
             // Ejecutar la declaración
             if ($stmt->execute()) {
                 // Redirigir de vuelta al index con un mensaje de éxito
-                header("Location: /Applications/XAMPP/xamppfiles/htdocs/GAES-5/PaginaWeb/Vista/Rutina.php?success=1");
+                header("Location: ../vista/Rutina.php");
                 exit();
             } else {
                 // Mostrar error en caso de fallo al ejecutar la consulta

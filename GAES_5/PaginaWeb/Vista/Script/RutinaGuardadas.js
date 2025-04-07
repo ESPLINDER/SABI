@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const goCreate = document.querySelectorAll(".nueva"); // Botón ir a editar
     goCreate.forEach(button => {
         button.addEventListener("click", function () {
-            window.location.href = 'CrearRutina.html';
+            window.location.href = '../Entrenador/CreacionRutina.php';
         });
     });
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const goclientes = document.querySelectorAll(".asignarNicolas"); // Botón ir a editar
     goclientes.forEach(button => {
         button.addEventListener("click", function () {
-            window.location.href = 'clientes.html';
+            window.location.href = '../Entrenador/clientes.php';
         });
     });
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 asignada.classList.add("d-none");
                 modalElement.hide(); // Cerrar el modal
                 setTimeout(() => {
-                    window.location.href = 'rutinasGuardadas.html';
+                    window.location.href = 'rutinasGuardadas.php';
                 }, 500); // Espera 2 segundos antes de esconder
             }, 2000); // Espera 2 segundos antes de esconder
         });
