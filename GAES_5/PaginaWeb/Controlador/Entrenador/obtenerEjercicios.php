@@ -1,13 +1,4 @@
 <?php
-session_start();
-
-if ($_SESSION['tipo'] != 'entrenador') {
-    header("Location: ../accesoDenegado.php");
-    exit();
-}
-$nombreEntrenador = $_SESSION['nombre'];
-
-
 include("../conexion.php");
 
 

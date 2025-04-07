@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if ($_SESSION['tipo'] != 'entrenador') {
+    header("Location: ../accesoDenegado.php");
+    exit();
+}
+$idUsuario = $_SESSION['idUsuario'];
+$nomUsuario = $_SESSION['nombre'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +18,7 @@
     <title>Rutinas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="Stiles/rutinasGuardadas.css">
+    <link rel="stylesheet" href="../Stiles/rutinasGuardadas.css">
 </head>
 
 <body class="cuerpo">
@@ -18,7 +29,7 @@
                 <div class="col-md-3"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-6 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-3 text-center">
-                    <a href="PerfilEntrenador.html" class="text-light text-decoration-none">Adriana | Entrenador</a>
+                    <a href="PerfilEntrenador.html" class="text-light text-decoration-none"><?php echo $nomUsuario ?> | Entrenador</a>
                     <button class="openbtn" onclick="openNav()">☰</button>
                     <div id="mySidebar" class="sidebar">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -28,8 +39,8 @@
                         <a href="Error404Entrenador.html">Blog</a>
                         <a href="Paginas principal AIS.html">Cerrar sesión</a>
                     </div>
+                </div>
             </div>
-        </div>
     </nav>
 
     <!-- Dashboard -->
@@ -44,7 +55,7 @@
     </header>
 
     <!-- Contenido -->
-    <div class="row col-md-12 mx-auto mt-1">
+    <div class="row col-sm-11 mx-auto mt-1">
         <!-- Busqueda -->
         <div class="row">
             <div class="col-md-2 searchBox ms-5 mb-3">
@@ -64,34 +75,24 @@
             <div class="col-md-6 text-center my-auto">
                 <button class="nueva btn btn-custom w-40 mb-4">Crear nueva rutina</BUtton>
             </div>
-            <div class="filtroBox col-lg-1 col-md-3 ms-auto my-auto text-end">
-                <i class="bi-funnel-fill me-4">Filtrar</i>
-            </div>
         </div>
 
 
         <!-- Contenido -->
-        <div class="rutina mt-4 row">
+        <div class="rutina mt-4 row" id="contenedorRutinaReciente">
             <div class="col-md-4"></div>
             <div class="col-md-4 d-flex">
                 <div class="my-auto mx-auto">
-                    <h3>Aumento de masa muscular</h3>
+                    <h3 id="nombreRutina"></h3>
                 </div>
             </div>
             <div class="col-md-4 text-end">
-                Fecha de creacion: 05/11/2024 </br>
-                Puntuacion promedio: 4.5 </br>
-                Dificultad: Principiante </br>
-                Duracion: 4 Semana/s </br>
-                Asignada: 5 Clientes </br>
+                Fecha de creación: <span id="fechaRutina"></span><br>
+                Intensidad: <span id="intensidadRutina"></span><br>
+                Duración: <span id="duracionRutina"></span> Semana/s<br>
+                Asignada a: 0 Clientes<br> <!-- esto puedes dejarlo manual como dijiste -->
             </div>
-            <div class="col-md-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis nihil ea, aliquam quam
-                harum quas nemo in nam dicta, esse incidunt cumque quis dolore! Alias non vero quia provident accusamus.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. A provident consequatur repellat earum, quo nam
-                sunt fugit delectus unde animi, tempore voluptatibus voluptatum quisquam officiis odio enim! Cumque,
-                expedita beatae? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati voluptatem
-                excepturi quaerat sequi perspiciatis blanditiis laudantium exercitationem culpa impedit quae vero
-                necessitatibus voluptatibus dolorum non eveniet ducimus, nulla nobis nostrum.</div>
+            <div class="col-md-8" id="descripcionRutina"></div>
             <div class="col-md-4 d-flex">
                 <div class="my-auto mx-auto">
                     <button class="editar">Editar rutina</button>
@@ -280,7 +281,7 @@
                         <label for="objetivoPrincipal" class="form-label">Objetivo principal: </label>
                         <input type="text" id="objetivoPrincipal" class="form-control" value="Ganancia muscular">
                     </div>
-        
+
                     <div class="mb-3">
                         <label for="nivelActividad" class="form-label">Nivel de actividad Fisica: </label>
                         <input type="text" id="nivelActividad" class="form-control" value="Sedentario">
@@ -289,7 +290,7 @@
                         <label for="frecuenciaEjercicio" class="form-label">Frecuencia de dias que entrena:</label>
                         <input type="text" id="frecuenciaEjercicio" class="form-control" value="1">
                     </div>
-        
+
                     <div class="mb-3">
                         <label for="preferenciaLugar" class="form-label">Sitio para entrenar:</label>
                         <input type="text" id="preferenciaLugar" class="form-control" value="Gimnasio">
@@ -298,7 +299,7 @@
                         <label for="tipoEjercicio" class="form-label">Tipo de ejercicios preferidos:</label>
                         <input type="text" id="tipoEjercicio" class="form-control" value="Fuerza">
                     </div>
-        
+
                     <div class="mb-3">
                         <label for="lesiones" class="form-label">Lesiones:</label>
                         <input type="text" id="lesiones" class="form-control" value="Ninguna">
@@ -311,43 +312,43 @@
                         <label class="form-label">Dias en los que puede entrenar:</label>
                         <input type="text" id="tipoEjercicio" class="form-control" value="Lunes, Miercoles, Jueves, Viernes, Sabado">
                     </div>
-        
-                   
+
+
                     <div class="mb-3">
                         <label for="horas" class="form-label">¿Cuántas horas al día dedicarás?</label>
                         <input type="text" id="tipoEjercicio" class="form-control" value="2 Horas">
                     </div>
-        
-              
+
+
                     <div class="mb-3">
                         <label for="parteDelDia" class="form-label">Jornada para entrenar: </label>
                         <input type="text" id="tipoEjercicio" class="form-control" value="Noche">
-                            <option value="" selected disabled>Selecciona una opción</option>
+                        <option value="" selected disabled>Selecciona una opción</option>
                     </div>
                     <div class="mb-3">
                         <label for="edad" class="form-label">Edad</label>
                         <input type="text" id="edadPesoAltura" class="form-control" value="24">
                     </div>
-                    <div class ="mb-3">
-                        <label for ="Peso" class="form-label">Peso:</label>
+                    <div class="mb-3">
+                        <label for="Peso" class="form-label">Peso:</label>
                         <input type="text" id="tipoEjercicio" class="form-control" value="66 Kg">
                     </div>
-        
+
                     <div class="mb-3">
                         <label for="nivelExperiencia" class="form-label">Nivel de actividad Física</label>
                         <input type="text" id="tipoEjercicio" class="form-control" value="Principiante">
                     </div>
-        
+
                     <div class="mb-3">
                         <label for="horasSueno" class="form-label">Horas de sueño:</label>
                         <input type="text" id="tipoEjercicio" class="form-control" value="Entre 5 y 6 horas">
                     </div>
-        
+
                     <div class="mb-3">
                         <label for="nivelEstres" class="form-label">Nivel de estres:</label>
                         <input type="text" id="tipoEjercicio" class="form-control" value="Medio">
                     </div>
-        
+
                     <div class="mb-3">
                         <label for="preferenciasDieteticas" class="form-label">Restriccion alimentaria</label>
                         <input type="text" id="preferenciasDieteticas" class="form-control" value="Ninguna">
@@ -400,19 +401,48 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Script/RutinaGuardadas.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
-        }
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-        }
-    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../Script/RutinaGuardadas.js"></script>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+            }
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const rutina = JSON.parse(localStorage.getItem("ultimaRutina"));
+
+                if (rutina) {
+                    document.getElementById("nombreRutina").textContent = rutina.nombre;
+                    document.getElementById("fechaRutina").textContent = rutina.fecha;
+                    document.getElementById("intensidadRutina").textContent = rutina.intensidad;
+                    document.getElementById("duracionRutina").textContent = rutina.semanas;
+                    document.getElementById("descripcionRutina").textContent = rutina.descripcion;
+
+                    document.querySelector(".editar").setAttribute("onclick", `editarRutina(${rutina.id})`);
+
+                    // Elimina del localStorage para que no aparezca de nuevo
+                    localStorage.removeItem("ultimaRutina");
+                } else {
+                    // Si no hay rutina reciente, puedes ocultar el contenedor
+                    document.getElementById("contenedorRutinaReciente").style.display = "none";
+                }
+            });
+
+            function editarRutina(idRutina) {
+                localStorage.setItem("idRutinaEditar", idRutina); // Guarda el ID en el navegador
+                window.location.href = "/SABI/GAES_5/PaginaWeb/Vista/Entrenador/EditarRutina.php?id=" + idRutina;
+            }
+            
+        </script>
+
 </body>
 
 </html>

@@ -1,3 +1,34 @@
+<?php
+session_start();
+include_once("../../Controlador/Conexion.php");
+$idRutina = isset($_GET['id']) ? intval($_GET['id']) : null;
+
+if (!$idRutina) {
+  echo "<div class='alert alert-danger'>ID de rutina no proporcionado.</div>";
+  exit;
+}
+
+// Obtener info de la rutina
+$stmt = $conexion->prepare("SELECT * FROM rutina WHERE idRutina = ?");
+$stmt->bind_param("i", $idRutina);
+$stmt->execute();
+$result = $stmt->get_result();
+$rutina = $result->fetch_assoc();
+
+// Obtener ejercicios
+$ejercicios = [];
+$query = "SELECT er.*, e.nomEjercicio FROM ejercicio_rutina er
+          JOIN ejercicio e ON er.fkIdEjercicio = e.idEjercicio
+          WHERE fkIdRutina = ?
+          ORDER BY semana, dia";
+$stmt = $conexion->prepare($query);
+$stmt->bind_param("i", $idRutina);
+$stmt->execute();
+$res = $stmt->get_result();
+while ($row = $res->fetch_assoc()) {
+  $ejercicios[] = $row;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +38,7 @@
   <title>Tu rutina</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="Stiles/CrearRutina.css">
+  <link rel="stylesheet" href="../Stiles/CrearRutina.css">
 </head>
 
 <body class="cuerpo">
@@ -28,703 +59,64 @@
     <a href="#">Nosotros</a>
   </div>
 
-  <header class="row align-items-center mt-2">
-    <div class="col-md-2"></div>
-    <div class="encabezado col-md-8 my-auto">
-      <h1 class="text-center">Aumento de masa muscular</h1>
-    </div>
-    <div class="col-md-1 mx-auto my-1">
-      <button id="goRoutineSaved" type="button" class="btn btn-outline-primary">Rutinas guardadas</button>
-    </div>
-  </header>
-
-
-  <div class="col-md-10 mx-auto mt-5 text-center">
-    <form id="routineForm">
-      <div id="dayFields" class="row mt-2 semana" style="display: none;">
-        <h2 class="col-md-12">SEMANA 1</h2>
-        <!-- Campo inicial para el primer día -->
-        <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-          <label for="day-1" class="form-label">Dia 1</label>
-          <!-- Desplegar modal -->
-          <select name="Ejercicio" id="modal" class="col-sm-12 form-select" data-bs-toggle="modal"
-            data-bs-target="#myModal"></select>
-
-          <button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar Ejercicio</button>
-        </div>
-      </div>
-      <button type="button" id="addDay" class="btn btn-primary mt-3" style="display: none;">+ Agregar Día</button>
-      <div id="weekFields">
-        <div class="week-group mt-2 semana">
-          <h2>SEMANA 1</h2>
-          <div id="dayFields-week-2" class="row">
-            <!-- Día inicial -->
-
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-2-1" class="form-label">Día 1</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-2-1" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-2-2" class="form-label">Día 2</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-2-2" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-2-3" class="form-label">Día 3</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-2-3" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-2-4" class="form-label">Día 4</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-2-4" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-2-5" class="form-label">Día 5</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-2-5" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-2-6" class="form-label">Día 6</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-2-6" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary mt-2 add-day" data-week="2">+ Agregar Día</button>
-        </div>
-        <div class="week-group mt-2 semana">
-          <h2>SEMANA 2</h2>
-          <div id="dayFields-week-3" class="row">
-            <!-- Día inicial -->
-
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-3-1" class="form-label">Día 1</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-3-1" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-3-2" class="form-label">Día 2</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-3-2" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-3-3" class="form-label">Día 3</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-3-3" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-3-4" class="form-label">Día 4</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-3-4" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-3-5" class="form-label">Día 5</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-3-5" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-3-6" class="form-label">Día 6</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-3-6" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary mt-2 add-day" data-week="3">+ Agregar Día</button>
-        </div>
-        <div class="week-group mt-2 semana">
-          <h2>SEMANA 3</h2>
-          <div id="dayFields-week-4" class="row">
-            <!-- Día inicial -->
-
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-4-1" class="form-label">Día 1</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-4-1" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-4-2" class="form-label">Día 2</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-4-2" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-4-3" class="form-label">Día 3</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-4-3" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-4-4" class="form-label">Día 4</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-4-4" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-4-5" class="form-label">Día 5</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-4-5" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary mt-2 add-day" data-week="4">+ Agregar Día</button>
-        </div>
-        <div class="week-group mt-2 semana">
-          <h2>SEMANA 4</h2>
-          <div id="dayFields-week-5" class="row">
-            <!-- Día inicial -->
-
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-5-1" class="form-label">Día 1</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-5-1" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-5-2" class="form-label">Día 2</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-5-2" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-5-3" class="form-label">Día 3</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-5-3" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-5-4" class="form-label">Día 4</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-5-4" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-            <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <label for="day-5-5" class="form-label">Día 5</label>
-              <!-- Select que abre el modal -->
-              <select name="Ejercicio" id="modal-5-5" class="col-sm-12 form-select" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-                <option value="">Akjdnbgiurbvfdgb</option>
-              </select>
-              <div class="exercise-container mt-2">
-                <div class="exercise-item mb-2">
-                  <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <option value="">Akjdnbgiurbvfdgb</option>
-                  </select>
-                </div>
-              </div><button type="button" class="btn btn-sm btn-secondary add-exercise mt-2">+ Agregar
-                Ejercicio</button>
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary mt-2 add-day" data-week="5">+ Agregar Día</button>
-        </div><button type="button" id="addWeek" class="btn btn-primary mt-3">+ Agregar Semana</button>
-        <button type="button" id="saveRutina" class="btn btn-success mt-3">Guardar cambios</button>
-      </div>
-    </form>
+  <div class="container mt-4">
+    <h2><?= htmlspecialchars($rutina['descRutina']) ?></h2>
+    <p><strong>Semanas:</strong> <?= htmlspecialchars($rutina['semRutina']) ?></p>
   </div>
 
-
-
-
-  <!-- Modal ejercicio -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" data-bs-backdrop="static"
-aria-hidden="true">
-<div class="modal-dialog modal-fullscreen-custom modal-dialog-centered modal-dialog-scrollable">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="myModalLabel">Personaliza tu ejercicio</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-    </div>
-    <div class="modal-body row">
-      <div class="mb-2 mx-auto">
-        <div class="col-md-5 mx-auto">
-          <h5>Seleccione un Ejercicio</h5>
-          <select id="exerciseSelect" name="Ejercicio" class="form-select">
-            <option value="Descanso">Descanso</option>
-            <option value="Press de Banca">Press de Banca</option>
-            <option value="Sentadilla">Sentadilla</option>
-            <option value="Remo con Mancuernas">Remo con Mancuernas</option>
-            <option value="Pull-Ups">Pull-Ups</option>
-            <option value="Extension de Piernas">Extension de Piernas</option>
-            <option value="Curl de Biceps">Curl de Biceps</option>
-            <option value="Press Militar">Press Militar</option>
-            <option value="Abdominales">Abdominales</option>
-            <option value="Remo en Maquina">Remo en Maquina</option>
-            <option value="Press de Pierna">Press de Pierna</option>
-            <option value="Plancha">Plancha</option>
-            <option value="Cinta de Correr">Cinta de Correr</option>
-            <option value="Bicicleta Estatica">Bicicleta Estatica</option>
-            <option value="Zancadas">Zancadas</option>
-            <option value="Fondos en Paralelas">Fondos en Paralelas</option>
-            <option value="Elevacion de Talones">Elevacion de Talones</option>
-            <option value="Press de Hombros en Maquina">Press de Hombros en Maquina</option>
-            <option value="Hip Thrust">Hip Thrust</option>
-            <option value="Cruce de Poleas">Cruce de Poleas</option>
-            <option value="Sprint en Cinta">Sprint en Cinta</option>
-          </select>
-        </div>
-      </div>
-      <div id="borderDetails" class="col-md-12 mb-3 mt-2" style="display: none; border-top: 2px solid #03346E;">
-      </div>
-      <div class="row" id="exerciseDetails" style="display: none;"> <!-- Instrucciones del ejercicio -->
-        <div class="col-md-4"><img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia"
-            class="img-fluid"></div>
-        <div class="col-md-4">
-          <form id="seriesForm" class="row">
-            <!-- Serie inicial -->
-            <div class="serie-item row">
-              <label for="serie-1" class="form-label">Serie 1</label>
-              <div class="col-md-7">
-                <label for="Peso">Peso *</label>
-                <div class="input-group">
-                  <input type="number" id="Peso" class="form-control" placeholder="Ejemplo: 10" required min="1">
-                  <span class="input-group-text">Kg</span>
-                </div>
+  <div class="container">
+    <?php
+    $semanaActual = 0;
+    foreach ($ejercicios as $ej) {
+      if ($ej['semana'] != $semanaActual) {
+        if ($semanaActual > 0) echo "</div>";
+        $semanaActual = $ej['semana'];
+        echo "<div class='mt-4'><h4>Semana $semanaActual</h4>";
+      }
+      echo "<div class='card mb-2'>
+              <div class='card-body d-flex justify-content-between'>
+                  <div>
+                      <strong>Día {$ej['dia']}:</strong> {$ej['nomEjercicio']}
+                  </div>
+                  <button class='btn btn-danger btn-sm eliminar-ejercicio' data-id='{$ej['idEje_Rut']}'>
+                      <i class='bi bi-trash'></i> Eliminar
+                  </button>
               </div>
-              <div class="col-md-5">
-                <label for="Repeticiones">Repeticiones *</label>
-                <input type="number" id="Repeticiones" class="form-control" placeholder="Ejemplo: 10" required min="1">
-              </div>
-            </div>
-            <!-- Botón para agregar más series -->
-            <button type="button" id="addSerie" class="btn btn-primary mt-3">+ Agregar serie</button>
-          </form>
-        </div>
-        <div class="col-md-4 my-auto">
-          <h4>Video tutorial</h4>
-          <div class="video-responsive" id="default-video-container">
-            <video controls>
-              <source src="Media/press-de-banca-en-maquina-smith.mp4" type="video/mp4">
-              Tu navegador no soporta la reproducción de video.
-            </video>
-          </div>
-          <div class="mt-4" id="upload-section">
-            <label for="upload-video" class="form-label">Sube un video tutorial personalizado</label>
-            <input type="file" id="upload-video" class="form-control" accept="video/*">
-          </div>
-          <!-- Contenedor para el video subido -->
-          <div id="uploaded-video-container" class="mt-3" style="display: none;">
-            <h5>Video tutorial subido:</h5>
-            <video id="uploaded-video" controls class="w-100">
-              Tu navegador no soporta la reproducción de video.
-            </video>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      <button type="submit" form="seriesForm" id="saveModal" class="btn btn-primary">Guardar Cambios</button>
-    </div>
-  </div>
-</div>
-</div>
-<div id="exerciseSaved" class="alert alert-success d-none rounded text-center align-items-center" role="alert">
-<div class=>Ejercicio guardado exitosamente</div>
-</div>
-
-
-  <!-- Nombrar rutina -->
-  <div class="modal fade" id="SaveRutina" tabindex="-1" aria-labelledby="myModalLabel" data-bs-backdrop="static"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="myModalLabel">Guarda tu rutina</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body row">
-          <form>
-            <div id="nombrar">
-              <label for="nameRoutine">Nombra tu rutina:</label>
-              <input type="text" id="nameRoutine" placeholder="Ej: Aumento de masa muscular" class="form-control">
-            </div>
-            <div style="display: none;" id="describir">
-              <label for="Descripcion" class="mt-2">Describe el objetivo de esta rutina personalizada</label>
-              <textarea name="description" id="description" class="form-control"
-                placeholder="Rutina diseñada para maximizar el crecimiento muscular en poco tiempo, utilizando ejercicios compuestos y de alta intensidad para trabajar todo el cuerpo en sesiones cortas y efectivas."></textarea>
-            </div>
-            <div style="display: none;" id="difficulty">
-              <label for="nivel">Nivel de dificultad:</label>
-              <select id="nivel" name="nivel" class="form-select">
-                <option value=""></option>
-                <option value="Principiante">Principiante</option>
-                <option value="Intermedio">Intermedio</option>
-                <option value="Avanzado">Avanzado</option>
-              </select>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" id="saveAll" class="btn btn-primary" disabled>Guardar Rutina</button>
-        </div>
-      </div>
-    </div>
+            </div>";
+    }
+    if ($semanaActual > 0) echo "</div>";
+    ?>
   </div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".eliminar-ejercicio").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.id;
+          if (confirm("¿Estás seguro de eliminar este ejercicio de la rutina?")) {
+            fetch("../../Controlador/Entrenador/eliminarEjercicioRutina.php", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "id=" + encodeURIComponent(id)
+              })
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  // Eliminar la fila visualmente
+                  btn.closest(".card").remove();
+                } else {
+                  alert("Error al eliminar: " + data.error);
+                }
+              });
+          }
+        });
+      });
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="Script/EditarRutina.js"></script>
+  <script src="../Script/EditarRutina.js"></script>
 </body>
 
 </html>

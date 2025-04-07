@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
-    // Filtro
-    document.getElementById("filtroEjercicios").addEventListener("input", function () {
-        const texto = this.value.toLowerCase();
-        const items = document.querySelectorAll("#listaEjercicios .list-group-item");
-    
-        items.forEach(item => {
-            const nombre = item.querySelector("span").textContent.toLowerCase();
-            item.style.display = nombre.includes(texto) ? "" : "none";
-        });
-    });
-
     const botonesAgregar = document.querySelectorAll(".btnAgregarEjercicio");
 
     botonesAgregar.forEach(boton => {
@@ -135,52 +123,36 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch("../../Controlador/Entrenador/obtenerEjercicios.php") // asegúrate que la ruta sea correcta
             .then(response => response.json())
             .then(ejerciciosBD => {
-                function renderListaEjercicios(ejercicios) {
-                    const contenedor = document.getElementById("listaEjercicios");
-                    contenedor.innerHTML = "";
-                
-                    ejercicios.forEach(ej => {
-                        const item = document.createElement("div");
-                        item.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
-                
-                        item.innerHTML = `
-                            <span>${ej.nomEjercicio}</span>
-                            <div>
-                                <button class="btn btn-sm btn-warning me-1">✏️</button>
-                                <button class="btn btn-sm btn-danger">🗑️</button>
-                            </div>
-                        `;
-                        contenedor.appendChild(item);
-                    });
-                }
-
+                console.log("Ejercicios recibidos:", ejerciciosBD);
                 const semanas = parseInt(document.getElementById("numSemanas").value);
                 const dias = parseInt(document.getElementById("numDias").value);
                 const ejercicios = parseInt(document.getElementById("numEjercicios").value);
-    
+
                 const contenedor = document.getElementById("rutinaGenerada");
                 contenedor.innerHTML = "";
                 contenedor.style.display = "block";
-    
+                document.getElementById("infoRutina").style.display = "block";
+                document.getElementById("guide").style.display = "none";
+
                 for (let s = 1; s <= semanas; s++) {
                     const semanaDiv = document.createElement("div");
                     semanaDiv.classList.add("semana", "border", "p-3", "mb-4", "row");
                     semanaDiv.innerHTML = `<h4 class="text-center">Semana ${s}</h4>`;
-    
+
                     for (let d = 1; d <= dias; d++) {
                         const diaDiv = document.createElement("div");
                         diaDiv.classList.add("dia", "p-2", "mb-2", "col-sm-3", "mx-auto");
                         diaDiv.innerHTML = `<h5 class="text-center">Día ${d}</h5>`;
-    
+
                         for (let e = 1; e <= ejercicios; e++) {
                             const ejercicioDiv = document.createElement("div");
                             ejercicioDiv.classList.add("ejercicio", "mb-2", "d-flex", "align-items-center", "gap-2");
-                        
+
                             // Label
                             const label = document.createElement("label");
                             label.textContent = ``;
                             label.classList.add("me-2", "mb-0");
-                        
+
                             // Select
                             const select = document.createElement("select");
                             select.classList.add("form-select", "mb-2", "flex-grow-1");
@@ -188,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             ejerciciosBD.forEach(ej => {
                                 select.innerHTML += `<option value="${ej.idEjercicio}">${ej.nomEjercicio}</option>`;
                             });
-                        
+
                             // Botón eliminar
                             const btnEliminar = document.createElement("button");
                             btnEliminar.classList.add("btn", "btn-danger", "btn-sm");
@@ -197,27 +169,94 @@ document.addEventListener("DOMContentLoaded", function () {
                             btnEliminar.addEventListener("click", () => {
                                 ejercicioDiv.remove();
                             });
-                        
+
                             // Armar el div de ejercicio
                             ejercicioDiv.appendChild(label);
                             ejercicioDiv.appendChild(select);
                             ejercicioDiv.appendChild(btnEliminar);
-                        
+
                             // Insertar en el día
                             diaDiv.appendChild(ejercicioDiv);
                         }
-    
+
                         semanaDiv.appendChild(diaDiv);
                     }
-    
+
                     contenedor.appendChild(semanaDiv);
                 }
-    
+
                 document.getElementById("configuracionInicial").style.display = "none";
             })
             .catch(error => {
                 console.error("Error al cargar ejercicios:", error);
                 alert("No se pudieron cargar los ejercicios.");
             });
+
+        document.getElementById("btnGuardarRutina").addEventListener("click", () => {
+            const nombre = document.getElementById("nombreRutina").value;
+            const descripcion = document.getElementById("descRutina").value;
+            const intensidad = document.getElementById("intensidad").value;
+
+            const semanas = document.querySelectorAll(".semana");
+            let datos = [];
+
+            semanas.forEach((semanaDiv, i) => {
+                const dias = semanaDiv.querySelectorAll(".dia");
+                dias.forEach((diaDiv, j) => {
+                    const ejercicios = diaDiv.querySelectorAll("select");
+                    ejercicios.forEach(select => {
+                        const idEjercicio = select.value;
+                        if (idEjercicio) {
+                            datos.push({
+                                semana: i + 1,
+                                dia: j + 1,
+                                idEjercicio
+                            });
+                        }
+                    });
+                });
+            });
+
+            const rutina = {
+                nombre,
+                descripcion,
+                intensidad,
+                datos
+            };
+
+            if (typeof rutinaEnEdicion !== "undefined" && rutinaEnEdicion !== null) {
+                rutina.idRutina = rutinaEnEdicion;
+            }
+
+            fetch("/SABI/GAES_5/PaginaWeb/Controlador/Entrenador/guardarRutina.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(rutina)
+            })
+                .then(res => res.json())
+                .then(response => {
+                    console.log("RESPUESTA GUARDAR:", response); // 👈 esto
+                    if (response.success) {
+                        // Guardar la rutina en localStorage
+                        const rutinaGuardada = {
+                            nombre,
+                            descripcion,
+                            intensidad,
+                            semanas: Math.max(...datos.map(d => d.semana)),
+                            fecha: response.fecha,
+                            id: response.idRutina
+                        };
+                
+                        localStorage.setItem("ultimaRutina", JSON.stringify(rutinaGuardada));
+                
+                        // Redirigir a página de rutinas
+                        window.location.href = "/SABI/GAES_5/PaginaWeb/Vista/Entrenador/rutinasGuardadas.php";
+                    } else {
+                        alert("Error al guardar rutina: " + response.error);
+                    }
+                })
+        });
     });
 });
+
+
