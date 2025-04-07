@@ -129,9 +129,8 @@
         </div>
         </nav>
    
-
     <div class="main-content">
-        <h1 class="mb-4">¿QUÉ DESEAS HACER?</h1>
+        <h1 class="mb-4">¿QUÉ TE GUSTARIA HACER?</h1>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-4">
@@ -140,7 +139,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Entrenar</h5>
                             <p class="card-text">Selecciona esta opción si deseas seguir un plan de entrenamiento personalizado y mejorar tu forma física.</p>
-                            <a href="FormularioDiagnostico.html" class="btn btn-custom w-10 mb-3">Seleccionar</a>
+                            <a href="Cliente/FormularioDiagnostico.php" class="btn btn-custom w-10 mb-3">Seleccionar</a>
                         </div>
                     </div>
                 </div>
@@ -150,7 +149,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ser Entrenador</h5>
                             <p class="card-text">Selecciona esta opción si quieres crear entrenamientos y guiar a otros en su camino hacia el bienestar.</p>
-                            <a href="RegistroEntrenador.html" class="btn btn-custom w-10 mb-3">Seleccionar</a>
+                            <a href="Entrenador/ResgistroEntrenador.php" class="btn btn-custom w-10 mb-3">Seleccionar</a>
                         </div>
                     </div>
                 </div>
