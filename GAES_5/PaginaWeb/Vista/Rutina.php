@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php'; // Asegúrate de que la ruta a tu archivo de conexión sea correcta
+include '../Controlador/conexion.php'; // Asegúrate de que la ruta a tu archivo de conexión sea correcta
 
 // Verificar si se ha enviado un parámetro de éxito
 $successMessage = '';
@@ -159,6 +159,17 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
             // Obtener el formulario
             var form = document.getElementById('seriesForm');
             var formData = new FormData(form);
+
+            document.addEventListener('DOMContentLoaded', () => {
+             const boton = document.getElementById('miBoton'); // Cambia "miBoton" por el ID real del botón
+            if (boton) {
+             boton.addEventListener('click', () => {
+            console.log('Botón clickeado');
+              });
+            } else {
+          console.error('El elemento con id "miBoton" no existe.');
+          }
+});
 
             // Enviar los datos usando Fetch API
             fetch('procesar_ejercicio.php', {
