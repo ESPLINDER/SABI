@@ -143,11 +143,12 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                         </div>
                     </div>
                 </div>
-                    </div>
+                <div class="modal-footer text-center">
+                <!-- Contenedor para centrar los botones -->
+                <div class="w-100">
+                 <button type="submit" form="seriesForm" class="btn btn-primary mx-2" name="btnguardar" value="GUARDADO">Enviar Ejercicio</button>
+                   <button type="button" class="btn btn-warning mx-2" data-bs-dismiss="modal">Editar Ejercicio</button>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="submitForm">Enviar Ejercicio</button>
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Editar Ejercicio</button>
                 </div>
             </div>
         </div>
@@ -306,4 +307,3 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     </script>
 </body>
 </html>
-
