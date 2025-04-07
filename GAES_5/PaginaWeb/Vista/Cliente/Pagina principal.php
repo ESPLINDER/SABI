@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if ($_SESSION['tipo'] != 'cliente') {
+    header("Location: ../accesoDenegado.php");
+    exit();
+}
+$nombreCliente = $_SESSION['nombre'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -121,7 +130,7 @@
                 <div class="col-md-2"><img src="../Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-2 text-center">
-                    <a href="PerfilUsuario.php" class="text-light text-decoration-none">Camila</a>
+                    <a href="PerfilUsuario.php" class="text-light text-decoration-none"><?php echo $nombreCliente ?></a>
                     <button class="openbtn" onclick="openNav()">☰</button>
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

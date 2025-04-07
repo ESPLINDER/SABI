@@ -1,3 +1,13 @@
+<?php
+include 'conexion.php'; // Asegúrate de que la ruta a tu archivo de conexión sea correcta
+
+// Verificar si se ha enviado un parámetro de éxito
+$successMessage = '';
+if (isset($_GET['success']) && $_GET['success'] == 1) {
+    $successMessage = 'Rutina guardada exitosamente.';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,7 +55,13 @@
     </header>
 
     <div class="col-md-10 mx-auto mt-5 text-center">
-        <form id="routineForm">
+        <?php if ($successMessage): ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo $successMessage; ?>
+            </div>
+        <?php endif; ?>
+        
+        <form id="routineForm" method="POST" action="procesar_ejercicio.php">
             <div id="dayFields" class="row mt-2 semana" style="display: none;">
                 <h2 class="col-md-12">SEMANA 1</h2>
                 <div class="mx-auto mb-3 day-group col-sm-6 col-md-4 col-lg-3 col-xl-2">
@@ -63,26 +79,6 @@
                             <select name="Ejercicio" id="modal-2-1" class="col-sm-12 form-select" data-bs-toggle="modal" data-bs-target="#myModal">
                                 <option class="historial" value="">Press De Banca</option>
                             </select>
-                            <div class="exercise-container mt-2">
-                                <div class="exercise-item mb-2">
-                                    <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <option value="">Akjdnbgiurbvfdgb</option>
-                                    </select>
-                                </div>
-                                <div class="exercise-item mb-2">
-                                    <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <option value="">Akjdnbgiurbvfdgb</option>
-                                    </select>
-                                </div>
-                                <div class="exercise-item mb-2">
-                                    <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <option value="">Akjdnbgiurbvfdgb</option>
-                                    </select>
-                                </div>
-                                <div class="exercise-item mb-2">
-                                    <select class="form-select" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <option value="">Akjdnbgiurbvfdgb</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -90,88 +86,99 @@
                 </div>
             </div>
             <button type="button" id="loadHistorial" class="boton-historial mt-2 btn btn-custom w-20 mb-3">Cargar historial</button>
+           <!-- Modal ejercicio -->
         </form>
     </div>
-
- <!-- Modal ejercicio -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" data-bs-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen-custom modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">A realizar:</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body row">
-                <div class="mb-2 mx-auto">
-                    <div class="col-md-5 mx-auto text-center">
-                        <h5>Ejercicio:</h5>
-                        Press de banca 
-                    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-custom modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">A realizar:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-                <div id="borderDetails" class="col-md-12 mb-3 mt-2" style="border-top: 2px solid rgb(3, 52, 110);"></div>
-                <div class="row" id="exerciseDetails">
-                    <!-- Imagen de referencia -->
-                    <div class="col-md-4">
-                        <img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia" class="img-fluid">
-                    </div>
-                    <!-- Formulario en el centro -->
-                    <div class="col-md-4">
-                    <form id="seriesForm" class="row" method="POST" action="procesar_ejercicio.php" enctype="multipart/form-data">
-                            <input type="hidden" name="fkIdEjercicio" value="1">
-                            <input type="hidden" name="fkIdRutina" value="1">
-                            <input type="hidden" name="dia" value="1">
-                            <input type="hidden" name="semana" value="1">
-                            <div class="mb-3">
-                                <label for="peso" class="form-label">Peso Levantado (Kg)</label>
-                                <input type="number" id="peso" name="peso" class="form-control" placeholder="Ejemplo: 50" required min="1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="repeticiones" class="form-label">Repeticiones</label>
-                                <input type="number" id="repeticiones" name="repeticiones" class="form-control" placeholder="Ejemplo: 12" required min="1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="series" class="form-label">Series Realizadas</label>
-                                <input type="number" id="series" name="series" class="form-control" placeholder="Ejemplo: 4" required min="1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="descanso" class="form-label">Descanso entre Series (segundos)</label>
-                                <input type="number" id="descanso" name="descanso" class="form-control" placeholder="Ejemplo: 0" required min="1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="intensidad" class="form-label">Intensidad</label>
-                                <select id="intensidad" name="intensidad" class="form-control" required>
-                                    <option value="baja">Baja</option>
-                                    <option value="moderada">Moderada</option>
-                                    <option value="alta">Alta</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Botón de redirección a YouTube -->
-                    <div class="col-md-4 my-auto">
-                        <h4>Video tutorial</h4>
-                        <div class="video-responsive" id="default-video-container">
-                            <video controls="">
-                                <source src="Media/press-de-banca-en-maquina-smith.mp4" type="video/mp4">
-                                Tu navegador no soporta la reproducción de video.
-                            </video>
+                <div class="modal-body row">
+                    <div class="mb-2 mx-auto">
+                        <div class="col-md-5 mx-auto text-center">
+                            <h5>Ejercicio:</h5>
+                            Press de banca 
                         </div>
-                        <div class="mt-3">
-                        <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-danger" onclick="window.open('https://www.youtube.com/watch?v=R5nLUDoswx0', '_blank')">Ver canal de YouTube De SABI</button>
-</div>
+                    </div>
+                    <div id="borderDetails" class="col-md-12 mb-3 mt-2" style="border-top: 2px solid rgb(3, 52, 110);"></div>
+                    <div class="row" id="exerciseDetails">
+                        <div class="col-md-4">
+                            <img src="Media/press-de-banca-en-maquina-smith.png" alt="Imagen guia" class="img-fluid">
+                        </div>
+                        <div class="col-md-4">
+                            <form id="seriesForm" class="row" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="fkIdEjercicio" value="1">
+                                <input type="hidden" name="fkIdRutina" value="1">
+                                <input type="hidden" name="dia" value="1">
+                                <input type="hidden" name="semana" value="1">
+                                <div class="mb-3">
+                                    <label for="peso" class="form-label">Peso Levantado (Kg)</label>
+                                    <input type="number" id="peso" name="peso" class="form-control" placeholder="Ejemplo: 50" required min="1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="repeticiones" class="form-label">Repeticiones</label>
+                                    <input type="number" id="repeticiones" name="repeticiones" class="form-control" placeholder="Ejemplo: 12" required min="1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="series" class="form-label">Series Realizadas</label>
+                                    <input type="number" id="series" name="series" class="form-control" placeholder="Ejemplo: 4" required min="1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descanso" class="form-label">Descanso entre Series (segundos)</label>
+                                    <input type="number" id="descanso" name="descanso" class="form-control" placeholder="Ejemplo: 0" required min="1">
+                                </div>
+                            </form>
+                            </div>
+                        <div class="col-md-4 my-auto">
+                            <h4>Video tutorial</h4>
+                            <!-- Reemplazo por el iframe del nuevo video de YouTube -->
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/jlFl7WJ1TzI" 
+                                title="Video tutorial" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" form="seriesForm" class="btn btn-primary" name="btnguardar" values="GUARDADO">Enviar Ejercicio</button>
-                <button type="submit" form="seriesForm" class="btn btn-warning" name="btneditar" values="">Editar Ejercicio</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar Ejercicio</button>
+                <div class="modal-footer text-center">
+                <!-- Contenedor para centrar los botones -->
+                <div class="w-100">
+                 <button type="submit" form="seriesForm" class="btn btn-primary mx-2" name="btnguardar" value="GUARDADO">Enviar Ejercicio</button>
+                   <button type="button" class="btn btn-warning mx-2" data-bs-dismiss="modal">Editar Ejercicio</button>
+                </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        document.getElementById('submitForm').addEventListener('click', function() {
+            // Obtener el formulario
+            var form = document.getElementById('seriesForm');
+            var formData = new FormData(form);
+
+            // Enviar los datos usando Fetch API
+            fetch('procesar_ejercicio.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Mostrar el mensaje de éxito
+                document.querySelector('.alert').innerHTML = "Rutina guardada exitosamente.";
+                document.querySelector('.alert').style.display = "block";
+                // Cerrar el modal
+                var modal = bootstrap.Modal.getInstance(document.getElementById('myModal'));
+                modal.hide();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
 
     <!-- Modal historial -->
     <div class="modal fade" id="myModalH" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
