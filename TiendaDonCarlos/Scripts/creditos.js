@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { nombre: "CRISTIAN IBAÑEZ PERALTA", id: "1015409548" }
   ];
 
-  const input = document.getElementById("cliente");
+  const input = document.getElementById("idCliente");
   const resultado = document.getElementById("resultado");
 
   input.addEventListener("input", () => {
