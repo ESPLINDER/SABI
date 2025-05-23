@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 .contenedor {
     border: solid 1px #000000;
-    
+
 }
+
 h1 {
     color: #0084D6;
 }
+
 :root {
     --background-color: #0084D6;
     --background-hover: #3898d4;
@@ -13,18 +16,21 @@ h1 {
     --text-color: #ffffff;
     --icon-color: white;
 }
+
 /*contenido*/
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Nunito Sans", sans-serif;
 }
-body{
+
+body {
     width: 100%;
     height: 100vh;
 }
-header{
+
+header {
     z-index: 200;
     width: 100%;
     display: flex;
@@ -36,80 +42,115 @@ header{
     top: 0;
     left: 0;
 }
-.left{
+
+.left {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1.4rem;
 
 }
+
 /*menu*/
-.menu-container{
+.menu-container {
     height: 100%;
     display: flex;
     align-items: center;
     cursor: pointer;
 }
-.menu{
+
+.menu {
     width: 1.5rem;
     height: 37%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.menu div{
+
+.menu div {
     width: 100%;
     height: 0.15rem;
     background-color: var(--text-color);
 }
 
 /*brand*/
-.brand{
+.brand {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.6rem;
 }
-.brand .logo{
+
+.brand .logo {
     text-align: center;
     font-size: 25px;
     color: var(--icon-color);
 }
-.brand .name{
+
+.brand .name {
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--text-color);
 }
 
-.right{
+.right {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.6rem;
 }
-.right a{
+
+.right a {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem;
     transition: background-color 0.2s ease;
 }
-.right a:hover{
+
+.right a:hover {
     background-color: var(--background-hover);
 }
-.right i{
+
+.right i {
     display: block;
     text-align: center;
     width: 2rem;
     font-size: 20px;
     color: var(--icon-color);
 }
-.names{
+
+.names {
     font-size: 15px;
     color: var(--text-color);
 }
-.right .user{
+
+.right .user {
     width: 2.1rem;
     border-radius: 50%;
     border: 2px solid white;
+}
+
+.dropdown {
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    background: white;
+    width: 300px;
+    z-index: 1000;
+}
+
+.dropdown div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown div:hover {
+    background-color: #f0f0f0;
+}
+
+#crear-nuevo {
+    background-color: #e0f7fa;
+    font-weight: bold;
 }
