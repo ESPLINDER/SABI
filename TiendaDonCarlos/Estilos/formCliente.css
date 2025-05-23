@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-                                                                                                                                    
+
 :root {
-  --background-color:         
-  --background-hover:         
-  --secondary-color:         
-  --text-color:         
+  --background-color: /* (valor faltante) */;
+  --background-hover: /* (valor faltante) */;
+  --secondary-color: /* (valor faltante) */;
+  --text-color: /* (valor faltante) */;
   --icon-color: white;
 }
 
-                       
 * {
   margin: 0;
   padding: 0;
@@ -17,29 +16,52 @@
 }
 
 body {
-  font-family: 'Nunito Sans', sans-serif;
   background-color: #f8f9fa;
   width: 100%;
   height: 100vh;
 }
 
-/* Estilos de tarjetas */
+/* ---------- ESTILOS DE TARJETA ---------- */
 .card {
-  border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
 }
 
 .card-header {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 00.5rem;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  background-color: #0084D6;
+  color: white;
+  padding: 1.5rem;
 }
 
-/* Estilos de formularios */
+/* ---------- FORMULARIOS ---------- */
+.form-control {
+  font-size: 1.25rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
 .form-group {
   margin-bottom: 1.5rem;
 }
 
-/* Estilos de botones */
+.invalid-feedback {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------- BOTONES ---------- */
+.btn {
+  font-size: 1.25rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
 .btn-primary {
   background-color: #0084D6;
   border-color: #0084D6;
@@ -60,7 +82,7 @@ body {
   border-color: #5a6268;
 }
 
-/* Estilos de encabezado */
+/* ---------- HEADER ---------- */
 header {
   z-index: 200;
   width: 100%;
@@ -74,20 +96,12 @@ header {
   left: 0;
 }
 
-/* Estilos de menú */
+/* ---------- MENÚ ---------- */
 .menu-container {
   height: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;
-}
-
-.menu {
-  width: 1.5rem;
-  height: 37%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .menu div {
@@ -96,57 +110,14 @@ header {
   background-color: var(--text-color);
 }
 
-/* Estilos de marca */
-.brand {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.6rem;
-}
-
+/* ---------- ELEMENTOS VISUALES ---------- */
 .brand .logo {
-  text-align: center;
   font-size: 25px;
   color: var(--icon-color);
 }
 
-.brand .name {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--text-color);
-}
-
-/* Estilos de enlaces */
-.right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.6rem;
-}
-
-.right a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-  transition: background-color 0.2s ease;
-}
-
 .right a:hover {
   background-color: var(--background-hover);
-}
-
-.right i {
-  display: block;
-  text-align: center;
-  width: 2rem;
-  font-size: 20px;
-  color: var(--icon-color);
-}
-
-.names {
-  font-size: 15px;
-  color: var(--text-color);
 }
 
 .right .user {
@@ -155,12 +126,9 @@ header {
   border: 2px solid white;
 }
 
-/* Otros estilos */
+/* ---------- TÍTULOS ---------- */
 h1 {
   color: #0084D6;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
-
-.contenedor {
-  border: solid 1px #000000;
-}
-
