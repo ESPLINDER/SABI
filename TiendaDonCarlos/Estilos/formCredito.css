@@ -142,6 +142,7 @@ header {
     width: 2.1rem;
     border-radius: 50%;
     border: 2px solid var(--border-color2);
+<<<<<<< Updated upstream
 }
 .sidebar{
     margin-top: 2.5rem;
@@ -204,4 +205,6 @@ header {
 #crear-nuevo {
     background-color: #70B8E9;
     font-weight: bold;
+=======
+>>>>>>> Stashed changes
 }
