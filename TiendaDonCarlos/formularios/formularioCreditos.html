@@ -19,49 +19,38 @@
             <form>
                 <div class="form-label row p-3">
                     <div class="col-sm-5 mb-3 clientes">
-                        <label for="txtIdCredito">Cliente</label>
+                        <label for="idCliente">Cliente</label>
                         <input type="text" class="form-control" id="idCliente" required placeholder="Buscar cliente...">
                         <div id="resultado" class="dropdown" style="display:none;"></div>
                     </div>
-                    <div class="col-md-1"></div>
+                    <div class="col-md-2"></div>
                     <div class="col-sm-5 mb-3">
                         <label for="numeroFactura">Número</label>
-                        <div class="form-control-plaintext" id="numeroFacturaVisible">FC000001 (Numeración Automática)
-                        </div>
-                        <input type="hidden" id="idCredito" name="numeroFactura" value="FC000001">
+                        <div class="form-control-plaintext" id="numeroFacturaVisible">FC000001 (Numeración Automática)</div>
+                        <input type="hidden" id="idcredito" name="numeroFactura" value="FC000001">
                     </div>
 
-                    <div class="col-sm-5 mb-3 me-auto">
-                        <label for="txtIdCredito">Cliente</label>
-                        <input type="text" class="form-control" id="idCliente" required>
+                    <div class="col-sm-5 mb-3">
+                        <label for="contactoCliente">Contacto</label>
+                        <input type="text" class="form-control" id="emaCliente" readonly placeholder="Se llenará automáticamente">
                     </div>
-                    <label for="txtIdCredito">Cliente</label>
-                    <input type="text" class="form-control" id="idCliente" required>
+                    <div class="col-md-2"></div>
+                    <div class="col-sm-5 mb-3">
+                        <label for="fechaElaboracion">Fecha</label>
+                        <div class="form-control-plaintext" id="fechaElaboracion"></div>
+                        <input type="hidden" id="emiCredito" name="fecha" value="">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="cmbCliente">Cliente</label>
-                    <select class="form-control" id="cmbCliente">
-                        <option value="">Seleccione un cliente</option>
-                        <!-- Opciones del cliente -->
-                    </select>
+                <div class="cuerpoFactura">
+                    
                 </div>
-                <div class="form-group">
-                    <label for="cmbUsuario">Usuario</label>
-                    <select class="form-control" id="cmbUsuario">
-                        <option value="">Seleccione un usuario</option>
-                        <!-- Opciones del usuario -->
-                    </select>
-                </div>
-                <!-- Agrega los demás campos del formulario -->
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary">Cancelar</button>
             </form>
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 <script src="../Scripts/creditos.js"></script>
 
 </html>

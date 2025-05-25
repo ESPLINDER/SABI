@@ -1,25 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Todo el código va aquí dentro
-
+  // Base de datos unificada con clientes y sus contactos
   const clientes = [
-    { nombre: "CRISTIAN DUVAN VASQUEZ MOYANO", id: "1030690985" },
-    { nombre: "CRISTIAN CAMILO GIL GONZALEZ", id: "1000469592" },
-    { nombre: "CRISTIAN ROA CONSTRUCCIONES SAS", id: "901651152" },
-    { nombre: "Cristobal Gil Buitrago Gil", id: "74356721" },
-    { nombre: "CRISTOBAL QUINTERO GIRALDO", id: "19409107" },
-    { nombre: "VICARIA EPISCOPAL TERRITORIAL DE CRISTO SACERDOTES", id: "800200820" },
-    { nombre: "CRISTIAN IBAÑEZ PERALTA", id: "1015409548" }
+    { nombre: "CRISTIAN DUVAN VASQUEZ MOYANO", id: "1030690985", correo: "duvan@correo.com" },
+    { nombre: "CRISTIAN CAMILO GIL GONZALEZ", id: "1000469592", correo: "camilo@correo.com" },
+    { nombre: "CRISTIAN ROA CONSTRUCCIONES SAS", id: "901651152", correo: "roa@correo.com" },
+    { nombre: "Cristobal Gil Buitrago Gil", id: "74356721", correo: "gil@correo.com" },
+    { nombre: "CRISTOBAL QUINTERO GIRALDO", id: "19409107", correo: "quintero@correo.com" },
+    { nombre: "VICARIA EPISCOPAL TERRITORIAL DE CRISTO SACERDOTES", id: "800200820", correo: "vicaria@correo.com" },  
+    { nombre: "CRISTIAN IBAÑEZ PERALTA", id: "1015409548", correo: "ibanez@correo.com" }
   ];
 
-  const input = document.getElementById("idCliente");
+  // Elementos del DOM
+  const inputCliente = document.getElementById("idCliente");
+  const inputContacto = document.getElementById("emaCliente");
   const resultado = document.getElementById("resultado");
+  const fechaDisplay = document.getElementById("fechaElaboracion");
+  const fechaInput = document.getElementById("emiCredito");
 
-  input.addEventListener("input", () => {
-    const valor = input.value.toLowerCase();
+  // Establecer fecha actual al cargar la página
+  function establecerFechaActual() {
+    const ahora = new Date();
+    const fechaFormateada = ahora.toLocaleDateString('es-CO');
+    fechaDisplay.textContent = fechaFormateada;
+    fechaInput.value = ahora.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+  }
+
+  // Ejecutar al cargar
+  establecerFechaActual();
+
+  inputCliente.addEventListener("input", () => {
+    const valor = inputCliente.value.toLowerCase();
     resultado.innerHTML = "";
 
     if (valor.trim() === "") {
       resultado.style.display = "none";
+      // Limpiar contacto si se borra el cliente
+      inputContacto.value = "";
       return;
     }
 
@@ -29,7 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const div = document.createElement("div");
       div.textContent = `${c.nombre} (${c.id})`;
       div.onclick = () => {
-        input.value = c.nombre;
+        inputCliente.value = c.nombre;
+        inputContacto.value = c.correo; // Llenar automáticamente el contacto
         resultado.style.display = "none";
       };
       resultado.appendChild(div);
@@ -48,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.addEventListener("click", (e) => {
-    if (!resultado.contains(e.target) && e.target !== input) {
+    if (!resultado.contains(e.target) && e.target !== inputCliente) {
       resultado.style.display = "none";
     }
   });
