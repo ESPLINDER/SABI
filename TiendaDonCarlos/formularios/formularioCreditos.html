@@ -14,7 +14,7 @@
 <body>
     <!-- Formulario de crear Créditos -->
     <div class="row my-5">
-        <div class="contenedor col-md-7 mx-auto px-3 py-5">
+        <div class="contenedor col-md-6 mx-auto px-3 py-5">
             <h1>Nueva Factura Credito</h1>
             <form>
                 <div class="form-label row p-3">
@@ -35,15 +35,76 @@
                         <input type="text" class="form-control" id="emaCliente" readonly placeholder="Se llenará automáticamente">
                     </div>
                     <div class="col-md-2"></div>
-                    <div class="col-sm-5 mb-3">
+                    <div class="col-sm-2 mb-3">
                         <label for="fechaElaboracion">Fecha</label>
-                        <div class="form-control-plaintext" id="fechaElaboracion"></div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="fechaElaboracion" readonly>
+                            <button type="button" class="btn btn-outline-secondary" id="btnCalendario" title="Cambiar fecha">
+                                📅
+                            </button>
+                        </div>
                         <input type="hidden" id="emiCredito" name="fecha" value="">
+                        <input type="date" id="fechaSelector" style="position: absolute; opacity: 0; z-index: -1;">
                     </div>
+
                 </div>
-                <div class="cuerpoFactura">
-                    
+
+                <div class="table-container">
+                    <table class="table table-borderless mb-0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Producto</th>
+                                <th>Descripción</th>
+                                <th>Cant</th>
+                                <th>Valor Unitario</th>
+                                <th>Valor Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-productos">
+                            <tr id="fila1">
+                                <td class="row-number">1</td>
+                                <td style="position: relative;">
+                                    <select name="producto" id="idProducto" class="form-control">
+                                        <option value="0">Seleccionar producto</option>
+                                        <option value="arroz">0001</option>
+                                        <option value="leche">0002</option>
+                                        <option value="queso">0003</option>
+                                        <option value="pan">0004</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="producto" id="nomProducto" class="form-control">
+                                        <option value="0">Seleccionar producto</option>
+                                        <option value="arroz">Arroz</option>
+                                        <option value="leche">Leche</option>
+                                        <option value="queso">Queso</option>
+                                        <option value="pan">Pan</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" value="1" min="1" readonly>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" id="valProducto" value="1000" readonly>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" id="totalProducto" value="1000" readonly>
+                                </td>
+                                <td>
+                                    <button class="btn-remove" onclick="eliminarFila(${contadorFilas})">
+                                        🗑️
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                
+                <button class="btn btn-success mt-3">
+                    Agregar Producto
+                </button>
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary">Cancelar</button>
             </form>
