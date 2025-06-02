@@ -223,9 +223,14 @@ header {
     border-color: #DDDDDD;
 }
 
+.ceparador {
+    border-top: solid 1px #DDDDDD;
+    border-bottom: solid 1px #DDDDDD;
+}
+
 .cancelar {
     background-color: #4DBAFF;
 }
 .guardar {
-    background-color: #ad6745;
+    background-color: #72C92A;
 }
