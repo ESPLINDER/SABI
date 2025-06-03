@@ -51,4 +51,5 @@
   <user username="role1" password="<must-be-changed>" roles="role1"/>
 -->
     <user password="1234" roles="manager-script,admin" username="usuario"/>
+    <user password="1234" roles="manager-script,admin" username="admin"/>
 </tomcat-users>
