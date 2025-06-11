@@ -15,62 +15,17 @@
             <div class="left">
                 <div class="brand">
                     <i class="bi bi-shop logo"></i>
-                    <span class="name">Tienda Don Carlos</span>
+                    <span class="name">El vecino Amigo</span>
                 </div>
             </div>
             <div class="right">
-                <a href="#">
+                <a href="login.jdp">
                     <i class="bi bi-plus"></i>
-                    <span class="names">Crear</span>
+                    <span class="names">Iniciar Sesion</span>
                 </a>
-                <div class="right">
-                    <a href="#" class="d-flex align-items-center">
-                        <i class="bi bi-people"></i>
-                        <span class="names">Clientes</span>
-                    </a>
-                    <a href="#">
-                        <i class="bi bi-exclamation-circle"></i>
-                        <span class="names">reportes</span>
-                    </a>
-                </div>
-                <img src="../recursos/empleado.jpg" alt="usuario" class="user">
+                <img src="recursos/user.png" alt="usuario" class="user">
             </div>
         </header>
-        <div class="sidebar">
-            <ul>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-cash-stack"></i>
-                        <span class="names">Pagos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-coin"></i>
-                        <span class="names">Creditos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-basket"></i>
-                        <span class="names">Productos</span>
-                    </a>
-                </li>
-                <li>
-                <body>
-                    <a href="#">
-                        <i class="bi bi-people"></i>
-                        <span class="names">clientes</span>
-                    </a>
-                    </li>
-                <li>
-                    <a href="#">
-                        <i class="bi bi-exclamation-circle"></i>
-                        <span class="names">reportes</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
         <script src="../Scripts/slideBar.js"></script>
     </body>
 </html>

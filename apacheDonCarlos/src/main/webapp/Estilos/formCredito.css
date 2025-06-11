@@ -11,14 +11,13 @@ h1, h2, h3, h4, h5, h6 {
 
 :root {
     --background-color: #0084D6;
-    --background-color2: #ffffff28;
-    --background: #F3F7F9;
-    --boder-color: #c2c2c2;
-    --border-color2: #222222;
+    --background-color2: #009DFF;
+    --border-color: #c2c2c2;
+    --border-color2: #0084D6;
+    --border-color3: #00609c;
     --background-hover: #def1fd;
     --background-hover2: #00609c;
     --secondary-color: #040675;
-    --border-color2: #222222;
     --text-color: #222222;
     --text-color2: #ffffff;
     --icon-color: #040675;
@@ -31,20 +30,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    background-color: #4DBAFF;
+    background-color: white;
 }
 
 header {
-    z-index: 1000;
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 0.45rem 2rem 0.45rem 1.27rem;
-    border-bottom: 1px solid var(--boder-color);
-    position: fixed;
+    border-bottom: 1px solid var(--border-color3);
     background-color: var(--background-color2);
-    top: 0;
-    left: 0;
 }
 
 .left {
@@ -118,14 +113,10 @@ header {
 }
 .sidebar{
     width: 13.75rem;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
     padding: 1rem 0;
-    border-right: var(--boder-color);
-    overflow-y: auto;
+    height: 100vh;
+    position: fixed;
+    border-top: 2px solid var(--border-color3);
     background-color: var(--background-color);
 }
 .sidebar li{
