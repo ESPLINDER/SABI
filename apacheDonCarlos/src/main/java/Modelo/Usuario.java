@@ -2,7 +2,7 @@ package Modelo;
 /**
  * @author william el pro
  */
-class Usuario {
+public class Usuario {
     private int idUsuario;
     private String emaUsuario;
     private String passUsuario;
