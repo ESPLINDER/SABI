@@ -49,21 +49,9 @@
                                     <div class="invalid-feedback">Por favor, ingrese una contraseña.</div>
                                 </div>
                                 <div class="card-title mt-3 mb-0 text-center">
-                                    <button type="button" class="btn btn-primary me-2" onclick="window.location.href = 'index.html'">
+                                    <button type="button" class="btn btn-primary me-2" action="">
                                         Iniciar Sesión
                                     </button>
-                                </div>
-                                <div class="text-center mt-3">
-                                    <h5>O si puedes inicia sesión con</h5>
-                                    <a href="#" class="btn btn-outline-primary me-2">
-                                        <i class="bi bi-facebook"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-danger me-2">
-                                        <i class="bi bi-google"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-info">
-                                        <i class="bi bi-instagram"></i>
-                                    </a>
                                 </div>
                             </form>
                         </div>
