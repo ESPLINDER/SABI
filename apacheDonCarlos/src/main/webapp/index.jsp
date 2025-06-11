@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="right">
-                <a href="login.jdp">
+                <a href="login.jsp">
                     <i class="bi bi-plus"></i>
                     <span class="names">Iniciar Sesion</span>
                 </a>

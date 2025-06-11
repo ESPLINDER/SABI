@@ -7,7 +7,7 @@
         <title>Pagina_Principal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="Estilos/formUsuarios.css"> 
+        <link rel="stylesheet" href="Estilos/formCredito.css"> 
     </head>
     <body>
         <header>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="right">
-                <img src="../recursos/empleado.jpg" alt="usuario" class="user">
+                <img src="recursos/user.png" alt="usuario" class="user">
             </div>
         </header>
         <br><br><br>
@@ -34,7 +34,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header bg-primary text-white">
-                            <h1 class="card-title mb-0 text-center">Inicio De Sesion Usuarios</h1>
+                            <h1 class="card-title mb-0 text-center">Iniciar Sesion</h1>
                         </div>
                         <div class="card-body">
                             <form id="userForm" novalidate>
@@ -54,7 +54,7 @@
                                     </button>
                                 </div>
                                 <div class="text-center mt-3">
-                                    <h5>O si puedes inicia sesión con</h5>
+                                    <h5>tambien puedes Iniciar Sesión con</h5>
                                     <a href="#" class="btn btn-outline-primary me-2">
                                         <i class="bi bi-facebook"></i>
                                     </a>
