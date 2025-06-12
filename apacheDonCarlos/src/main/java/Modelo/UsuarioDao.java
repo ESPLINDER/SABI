@@ -1,7 +1,6 @@
 package Modelo;
 
 import Config.conexion;
-import Modelo.Usuario;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
