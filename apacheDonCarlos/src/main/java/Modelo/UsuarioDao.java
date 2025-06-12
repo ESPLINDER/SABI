@@ -1,3 +1,6 @@
+package Modelo;
+
+import Config.conexion;
 import Modelo.Usuario;
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,7 +11,7 @@ import java.util.List;
  */
 public class UsuarioDao {
     
-    Conexion cn = new Conexion();
+    conexion cn = new conexion();
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
@@ -51,7 +54,6 @@ public class UsuarioDao {
                 usu.setNomUsuario(rs.getString(2));
                 usu.setApeUsuario(rs.getString(3));
                 usu.setEmaUsuario(rs.getString(4));
-                usu.setCelUsu(rs.getString(5));
                 lista.add(usu);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -59,4 +61,5 @@ public class UsuarioDao {
         }
         return lista;
     }
+}
     
