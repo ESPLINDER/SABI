@@ -40,18 +40,16 @@
                             <form id="userForm" novalidate>
                                 <div class="form-group">
                                     <label for="emaUsuario">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="emaUsuario" required>
+                                    <input type="email" class="form-control" id="emaUsuario" name="emaUsuario" required>
                                     <div class="invalid-feedback">Por favor, ingrese un correo electrónico válido.</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="passUsuario">Contraseña</label>
-                                    <input type="password" class="form-control" id="passUsuario" required>
+                                    <input type="password" class="form-control" id="passUsuario" name="passUsuario" required>
                                     <div class="invalid-feedback">Por favor, ingrese una contraseña.</div>
                                 </div>
                                 <div class="card-title mt-3 mb-0 text-center">
-                                    <button type="button" class="btn btn-primary me-2" action="">
-                                        Iniciar Sesión
-                                    </button>
+                                    <input type="submit" name="accion" value="Ingresar" class="btn btn-primary me-2" action="/ValidarUsuario">
                                 </div>
                             </form>
                         </div>
