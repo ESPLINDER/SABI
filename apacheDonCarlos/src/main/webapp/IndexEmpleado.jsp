@@ -19,18 +19,22 @@
                 </div>
             </div>
             <div class="right">
+                <a href="index.jsp">
+                    <i class="bi bi-arrow-return-left"></i>
+                    <span class="names">Regresar</span>
+                </a>
                 <a href="#">
                     <i class="bi bi-plus"></i>
-                    <span class="names">Crear</span>
+                    <span class="names">Cliente</span>
+                </a>
+                <a href="#">
+                    <i class="bi bi-plus"></i>
+                    <span class="names">Credito</span>
                 </a>
                 <div class="right">
                     <a href="#" class="d-flex align-items-center">
                         <i class="bi bi-people"></i>
                         <span class="names">Clientes</span>
-                    </a>
-                    <a href="#">
-                        <i class="bi bi-exclamation-circle"></i>
-                        <span class="names">reportes</span>
                     </a>
                 </div>
                 <img src="recursos/empleado.jpg" alt="usuario" class="user">

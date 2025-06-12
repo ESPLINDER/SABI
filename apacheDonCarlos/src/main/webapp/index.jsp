@@ -19,6 +19,16 @@
                 </div>
             </div>
             <div class="right">
+                <a href="IndexAdmin.jsp">
+                    <i class="bi bi-plus"></i>
+                    <span class="names">Administrador</span>
+                </a>
+                <a href="IndexEmpleado.jsp">
+                    <i class="bi bi-plus"></i>
+                    <span class="names">Empleado</span>
+                </a>
+            </div>
+            <div class="right">
                 <a href="login.jsp">
                     <i class="bi bi-plus"></i>
                     <span class="names">Iniciar Sesion</span>
