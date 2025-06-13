@@ -41,7 +41,7 @@ public class UsuarioDao {
     }
     
     public List<Usuario> listar() {
-        String sql = "select idUsuario, nombre, apellido, email, telefono from usuarios";
+        String sql = "SELECT idUsuario, nomUsuario, apeUsuario, emaUsuario FROM usuarios";
         List<Usuario> lista = new ArrayList<>();
         try {
             conn = cn.Conexion();
