@@ -21,7 +21,7 @@ public class UsuarioDao {
         String sql = "SELECT idUsuario, nomUsuario ,apeUsuario ,emaUsuario, rolUsuario FROM usuarios WHERE emaUsuario = ? AND passUsuario = ?;";
         try {
             conn = cn.Conexion();
-            ps = this.conn.prepareStatement(sql);
+            ps = conn.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, pass);
             rs = ps.executeQuery();
@@ -35,7 +35,7 @@ public class UsuarioDao {
                 obj_usu.setRolUsuario(roles);
             }
         } catch (SQLException e) {
-            
+            System.out.println("Correo o contraseña invalidos");
         }
         return obj_usu;
     }

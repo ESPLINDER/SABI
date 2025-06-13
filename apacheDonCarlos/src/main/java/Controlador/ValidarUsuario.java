@@ -20,6 +20,7 @@ public class ValidarUsuario extends HttpServlet {
     
     UsuarioDao u_dao = new UsuarioDao();
     Usuario usu = new Usuario();
+    print("aiuabidf");
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -57,15 +58,17 @@ public class ValidarUsuario extends HttpServlet {
             try {
                 usu = u_dao.Validar(user, pass);
             } catch (ClassNotFoundException ex) {
+                System.out.println("");
                 Logger.getLogger(ValidarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (usu.getEmaUsuario() != null || usu.getPassUsuario() != null) {
+                request.setAttribute("usuario", usu); //vamos a la pagina donde se autentica el usuario
                 if (usu.getRolUsuario().equals("Administrador")) {
-                    request.setAttribute("usuario", usu); //vamos a la pagina donde se autentica el usuario
-                    request.getRequestDispatcher("indexAdmin.jsp").forward(request, response);
+                    System.out.println("ESTOS SON LOS DATOS"+usu.getEmaUsuario()+usu.getPassUsuario()+usu.getRolUsuario());   
+                    request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("usuario", usu);
-                    request.getRequestDispatcher("IndexEmpleado.jsp");
+                    System.out.println("es empleado");
+                    request.getRequestDispatcher("IndexEmpleado.jsp").forward(request, response);
                 }
             } else {
                 request.setAttribute("fail", "Datos no existen en BD");
