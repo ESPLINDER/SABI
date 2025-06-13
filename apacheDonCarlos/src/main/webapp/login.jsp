@@ -37,7 +37,7 @@
                             <h1 class="card-title mb-0 text-center">Inicio De Sesion Usuarios</h1>
                         </div>
                         <div class="card-body">
-                            <form id="userForm" method="post" action="ValidarUsuario" novalidate>
+                            <form id="userForm" method="post" action="/ValidarUsuario" novalidate>
                                 <div class="form-group">
                                     <label for="emaUsuario">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="emaUsuario" name="emaUsuario" required>
@@ -59,26 +59,6 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-        <script>
-                          // Validación del formulario
-                          (function () {
-                              'use strict'
-                              const form = document.getElementById('userForm')
-                              form.addEventListener('submit', function (event) {
-                                  if (!form.checkValidity()) {
-                                      event.preventDefault()
-                                      event.stopPropagation()
-                                  }
-                                  form.classList.add('was-validated')
-                              }, false)
-                          })()
-
-                          // Función para redirigir a index.html
-                          function redirectToIndex() {
-                              window.location.href = 'index.html'
-                          }
-        </script>
-
         <script src="../Scripts/slideBar.js"></script>
     </body>
 </html>
