@@ -20,7 +20,7 @@ public class ValidarUsuario extends HttpServlet {
     
     UsuarioDao u_dao = new UsuarioDao();
     Usuario usu = new Usuario();
-    print("aiuabidf");
+
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
