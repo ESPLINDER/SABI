@@ -64,17 +64,14 @@ public class ValidarUsuario extends HttpServlet {
                 Logger.getLogger(ValidarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (usu.getEmaUsuario() != null || usu.getPassUsuario() != null) {
-                request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
                 request.setAttribute("usuario", usu); //vamos a la pagina donde se autentica el usuario
                 if (usu.getRolUsuario().equals("Administrador")) {
-                    System.out.println("ESTOS SON LOS DATOS"+usu.getEmaUsuario()+usu.getPassUsuario()+usu.getRolUsuario()); 
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("IndexAdmin.jsp");
-                    //request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
+                    request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
                 } else {
-                    System.out.println("es empleado");
                     request.getRequestDispatcher("IndexEmpleado.jsp").forward(request, response);
                 }
             } else {
+                request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
                 request.setAttribute("fail", "Datos no existen en BD");
                 request.getRequestDispatcher("login.jsp");
             }

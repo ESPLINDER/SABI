@@ -27,11 +27,11 @@ public class UsuarioDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 obj_usu.setIdUsuario(rs.getInt("idUsuario"));
-                obj_usu.setNomUsuario(rs.getString("nombre"));
-                obj_usu.setApeUsuario(rs.getString("apellido"));
-                obj_usu.setEmaUsuario(rs.getString("email"));
-                obj_usu.setPassUsuario(rs.getString("contrasena"));
-                String[] roles = {rs.getString("rol")};
+                obj_usu.setNomUsuario(rs.getString("nomUsuario"));
+                obj_usu.setApeUsuario(rs.getString("apeUsuario"));
+                obj_usu.setEmaUsuario(rs.getString("emaUsuario"));
+                obj_usu.setPassUsuario(rs.getString("passUsuario"));
+                String[] roles = {rs.getString("rolUsuario")};
                 obj_usu.setRolUsuario(roles);
             }
         } catch (SQLException e) {
