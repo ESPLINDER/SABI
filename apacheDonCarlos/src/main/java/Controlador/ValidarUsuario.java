@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 /**
  * @author William
  */
-
+@WebServlet("/ValidarUsuario")
 public class ValidarUsuario extends HttpServlet {
     
     UsuarioDao u_dao = new UsuarioDao();

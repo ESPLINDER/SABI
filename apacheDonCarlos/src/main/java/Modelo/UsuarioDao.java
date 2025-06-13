@@ -21,7 +21,7 @@ public class UsuarioDao {
         String sql = "SELECT idUsuario, nomUsuario ,apeUsuario ,emaUsuario, rolUsuario FROM usuarios WHERE emaUsuario = ? AND passUsuario = ?;";
         try {
             conn = cn.Conexion();
-            ps = conn.prepareStatement(sql);
+            ps = this.conn.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, pass);
             rs = ps.executeQuery();

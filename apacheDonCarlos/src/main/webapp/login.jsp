@@ -37,7 +37,7 @@
                             <h1 class="card-title mb-0 text-center">Inicio De Sesion Usuarios</h1>
                         </div>
                         <div class="card-body">
-                            <form id="userForm" method="post" novalidate>
+                            <form id="userForm" method="post" action="ValidarUsuario" novalidate>
                                 <div class="form-group">
                                     <label for="emaUsuario">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="emaUsuario" name="emaUsuario" required>
@@ -49,7 +49,7 @@
                                     <div class="invalid-feedback">Por favor, ingrese una contraseña.</div>
                                 </div>
                                 <div class="card-title mt-3 mb-0 text-center">
-                                    <input type="submit" name="accion" value="Ingresar" class="btn btn-primary me-2" action="/ValidarUsuario">
+                                    <input type="submit" name="accion" value="Ingresar" class="btn btn-primary me-2">
                                 </div>
                             </form>
                         </div>
