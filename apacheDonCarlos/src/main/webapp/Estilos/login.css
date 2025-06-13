@@ -1,6 +1,6 @@
 body {
-    background-image: url('../recursos/donJorge.jpg');
-    background-size: cover;
+    background-image: url("../recursos/FondoVecinoAmigo.png");
+    background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
