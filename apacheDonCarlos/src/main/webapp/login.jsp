@@ -4,10 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pagina_Principal</title>
+        <title>Login-Pagina Principal</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="Estilos/formUsuarios.css"> 
+        <link rel="stylesheet" href="Estilos/login.css"> 
+        <link rel="stylesheet" href="Estilos/formCredito.css"> 
     </head>
     <body>
         <header>
@@ -37,7 +38,7 @@
                             <h1 class="card-title mb-0 text-center">Inicio De Sesion Usuarios</h1>
                         </div>
                         <div class="card-body">
-                            <form id="userForm" method="post" action="/ValidarUsuario" novalidate>
+                            <form id="userForm" method="POST" action="ValidarUsuario" novalidate>
                                 <div class="form-group">
                                     <label for="emaUsuario">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="emaUsuario" name="emaUsuario" required>

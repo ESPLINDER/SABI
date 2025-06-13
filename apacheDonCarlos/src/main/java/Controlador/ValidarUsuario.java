@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.UsuarioDao;
 import Modelo.Usuario;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,12 +16,13 @@ import java.util.logging.Logger;
 /**
  * @author William
  */
+
 @WebServlet("/ValidarUsuario")
 public class ValidarUsuario extends HttpServlet {
     
     UsuarioDao u_dao = new UsuarioDao();
     Usuario usu = new Usuario();
-    print("aiuabidf");
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,22 +52,25 @@ public class ValidarUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        
         String accion = request.getParameter("accion"); //name del boton ingresar/registrar
         if (accion.equalsIgnoreCase("Ingresar")){
+            
             //al hacer click en el boton con value ingresar
             String user = request.getParameter("emaUsuario"); //name del formulario campo usuario
             String pass = request.getParameter("passUsuario"); // campo contrasena
             try {
                 usu = u_dao.Validar(user, pass);
             } catch (ClassNotFoundException ex) {
-                System.out.println("");
                 Logger.getLogger(ValidarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (usu.getEmaUsuario() != null || usu.getPassUsuario() != null) {
+                request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
                 request.setAttribute("usuario", usu); //vamos a la pagina donde se autentica el usuario
                 if (usu.getRolUsuario().equals("Administrador")) {
-                    System.out.println("ESTOS SON LOS DATOS"+usu.getEmaUsuario()+usu.getPassUsuario()+usu.getRolUsuario());   
-                    request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
+                    System.out.println("ESTOS SON LOS DATOS"+usu.getEmaUsuario()+usu.getPassUsuario()+usu.getRolUsuario()); 
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("IndexAdmin.jsp");
+                    //request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
                 } else {
                     System.out.println("es empleado");
                     request.getRequestDispatcher("IndexEmpleado.jsp").forward(request, response);
