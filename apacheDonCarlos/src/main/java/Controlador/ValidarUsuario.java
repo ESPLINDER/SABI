@@ -62,10 +62,10 @@ public class ValidarUsuario extends HttpServlet {
             if (usu.getEmaUsuario() != null || usu.getPassUsuario() != null) {
                 if (usu.getRolUsuario().equals("Administrador")) {
                     request.setAttribute("usuario", usu); //vamos a la pagina donde se autentica el usuario
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("indexAdmin.jsp").forward(request, response);
                 } else {
                     request.setAttribute("usuario", usu);
-                    request.getRequestDispatcher("index.jsp");
+                    request.getRequestDispatcher("IndexEmpleado.jsp");
                 }
             } else {
                 request.setAttribute("fail", "Datos no existen en BD");

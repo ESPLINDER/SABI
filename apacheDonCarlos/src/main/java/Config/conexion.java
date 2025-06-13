@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 /**
  * @author William
  */
-public class conexion {
+public class Conexion {
 
     Connection conn;
     String url = "jdbc:mysql://localhost:3306/el_vecino_amigo";

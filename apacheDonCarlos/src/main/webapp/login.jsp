@@ -37,7 +37,7 @@
                             <h1 class="card-title mb-0 text-center">Inicio De Sesion Usuarios</h1>
                         </div>
                         <div class="card-body">
-                            <form id="userForm" novalidate>
+                            <form id="userForm" method="post" novalidate>
                                 <div class="form-group">
                                     <label for="emaUsuario">Correo Electrónico</label>
                                     <input type="email" class="form-control" id="emaUsuario" name="emaUsuario" required>

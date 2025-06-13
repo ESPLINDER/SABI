@@ -1,6 +1,6 @@
 package Modelo;
 
-import Config.conexion;
+import Config.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class UsuarioDao {
     
-    conexion cn = new conexion();
+    Conexion cn = new Conexion();
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
