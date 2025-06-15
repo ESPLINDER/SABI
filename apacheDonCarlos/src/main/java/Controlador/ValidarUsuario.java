@@ -2,7 +2,6 @@ package Controlador;
 
 import Modelo.UsuarioDao;
 import Modelo.Usuario;
-import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -46,11 +45,9 @@ public class ValidarUsuario extends HttpServlet {
         processRequest(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         
         String accion = request.getParameter("accion"); //name del boton ingresar/registrar
         if (accion.equalsIgnoreCase("Ingresar")){
@@ -81,10 +78,8 @@ public class ValidarUsuario extends HttpServlet {
         }
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
