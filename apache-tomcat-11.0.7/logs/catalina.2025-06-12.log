@@ -64,3 +64,8 @@
 12-Jun-2025 19:48:49.500 WARNING [http-nio-8080-exec-25] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheDonCarlos] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheDonCarlos.xml] has been ignored
 12-Jun-2025 19:48:49.553 INFO [http-nio-8080-exec-25] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheDonCarlos.xml] has finished in [54] ms
 12-Jun-2025 19:48:49.555 INFO [http-nio-8080-exec-31] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheDonCarlos]] after start() had already been called. The second call will be ignored.
+12-Jun-2025 19:50:24.286 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+12-Jun-2025 19:50:24.287 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+12-Jun-2025 19:50:24.290 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+12-Jun-2025 19:50:24.299 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+12-Jun-2025 19:50:24.302 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
