@@ -15,7 +15,7 @@
             <div class="left">
                 <div class="brand">
                     <i class="bi bi-shop logo"></i>
-                    <span class="name">Tienda Don Carlos</span>
+                    <span class="name">El Vecino Amigo</span>
                 </div>
             </div>
             <div class="right">
@@ -41,7 +41,8 @@
                         <span class="names">reportes</span>
                     </a>
                 </div>
-                <img src="recursos/empleado.jpg" alt="usuario" class="user">
+                <img src="recursos/admin.jpg" alt="usuario" class="user">
+                <span class="names">Administrador</span>
             </div>
         </header>
         <div class="sidebar">
