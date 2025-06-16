@@ -18,7 +18,7 @@ public class UsuarioDao {
     
     public Usuario Validar(String email, String pass) throws ClassNotFoundException {
         Usuario obj_usu = new Usuario();
-        String sql = "SELECT idUsuario, nomUsuario ,apeUsuario ,emaUsuario, rolUsuario FROM usuarios WHERE emaUsuario = ? AND passUsuario = ?;";
+        String sql = "SELECT * FROM usuarios WHERE emaUsuario = ? AND passUsuario = ?;";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);

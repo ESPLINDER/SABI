@@ -68,9 +68,8 @@ public class ValidarUsuario extends HttpServlet {
                     request.getRequestDispatcher("IndexEmpleado.jsp").forward(request, response);
                 }
             } else {
-                request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
                 request.setAttribute("fail", "Datos no existen en BD");
-                request.getRequestDispatcher("login.jsp");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("fail", "Ingrese Usuario y Contraseña");
