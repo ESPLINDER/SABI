@@ -85,3 +85,9 @@
 0:0:0:0:0:0:0:1 - - [12/Jun/2025:19:48:54 -0500] "GET /Scripts/slideBar.js HTTP/1.1" 404 710
 0:0:0:0:0:0:0:1 - - [12/Jun/2025:19:49:00 -0500] "GET /apacheDonCarlos/Estilos/formUsuarios.css HTTP/1.1" 404 735
 0:0:0:0:0:0:0:1 - - [12/Jun/2025:19:49:00 -0500] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 743
+127.0.0.1 - - [12/Jun/2025:19:50:23 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [12/Jun/2025:19:50:23 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [12/Jun/2025:19:50:23 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [12/Jun/2025:19:50:23 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [12/Jun/2025:19:50:23 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [12/Jun/2025:19:50:23 -0500] "GET /manager/text/ HTTP/1.1" 200 44
