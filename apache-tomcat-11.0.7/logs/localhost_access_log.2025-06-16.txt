@@ -135,3 +135,13 @@
 0:0:0:0:0:0:0:1 - - [16/Jun/2025:18:53:23 -0500] "GET /Scripts/slideBar.js HTTP/1.1" 404 710
 0:0:0:0:0:0:0:1 - - [16/Jun/2025:18:53:33 -0500] "POST /apacheDonCarlos/ValidarUsuario HTTP/1.1" 200 3159
 0:0:0:0:0:0:0:1 - - [16/Jun/2025:18:53:33 -0500] "GET /Scripts/slideBar.js HTTP/1.1" 404 710
+127.0.0.1 - - [16/Jun/2025:18:54:26 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [16/Jun/2025:18:54:26 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [16/Jun/2025:18:54:26 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [16/Jun/2025:18:54:26 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [16/Jun/2025:18:54:26 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [16/Jun/2025:18:54:26 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [16/Jun/2025:18:54:27 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [16/Jun/2025:18:54:27 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [16/Jun/2025:18:54:28 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [16/Jun/2025:18:54:28 -0500] "GET /manager/text/ HTTP/1.1" 200 44
