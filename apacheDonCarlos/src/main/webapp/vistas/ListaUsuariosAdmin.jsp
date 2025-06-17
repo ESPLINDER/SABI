@@ -49,7 +49,7 @@
         <div class="sidebar">
             <ul>
                 <li>
-                    <a href="UsuarioController?menu=Usuarios&accion=Listar">
+                    <a href="ListaUsuariosAdmin">
                         <i class="bi bi-people"></i>
                         <span class="names">Usuarios</span>
                     </a>
