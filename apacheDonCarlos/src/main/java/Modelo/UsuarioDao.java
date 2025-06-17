@@ -59,5 +59,14 @@ public class UsuarioDao {
         }
         return lista;
     }
-}
     
+    public int agregar(Usuario usu){
+        String sql "(INSERT INTO usuarios(nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES ();)";
+        try{
+            conn = cn.Conexion();
+            ps = conn.PreparedStatement(sql);
+            
+        }
+    }
+}
+
