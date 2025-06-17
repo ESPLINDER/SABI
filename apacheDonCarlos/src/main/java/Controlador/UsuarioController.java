@@ -80,7 +80,7 @@ public class UsuarioController extends HttpServlet {
                     break;
                     
             }
-            request.getRequestDispatcher("usuarios.jsp");
+            request.getRequestDispatcher("vistas/ListarUsuariosAdmin.jsp");
         }
         
         
