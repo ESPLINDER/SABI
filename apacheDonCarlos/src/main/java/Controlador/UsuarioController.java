@@ -65,7 +65,23 @@ public class UsuarioController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        String menu = request.getParameter("menu");
+        String accion = request.getParameter("accion");
+        if (menu.equals("Administrador")) {
+            request.getRequestDispatcher("IndexAdmin.jsp");
+            
+        }
+        if (menu.equals("Usuarios")) {
+            switch (accion) {
+                case "Listar": 
+                    List listaUsuarios=usu_dao.listar();
+                   
+                   request.setAttribute("lista_usu", listaUsuarios);
+                    break;
+                    
+            }
+            request.getRequestDispatcher("usuarios.jsp");
+        }
         
         
         
@@ -106,23 +122,7 @@ public class UsuarioController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String menu = request.getParameter("menu");
-        String accion = request.getParameter("accion");
-        if (menu.equals("Administrador")) {
-            request.getRequestDispatcher("IndexAdmin.jsp");
-            
-        }
-        if (menu.equals("Usuarios")) {
-            switch (accion) {
-                case "Listar" -> { 
-                    List listaUsuarios=usu_dao.listar();
-                    
-                    request.setAttribute("lista_usu", listaUsuarios);
-               }
-                    
-            }
-            request.getRequestDispatcher("usuarios.jsp");
-        }
+        processRequest(request, response);
     }
 
     /**
