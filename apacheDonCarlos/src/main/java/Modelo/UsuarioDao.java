@@ -31,8 +31,7 @@ public class UsuarioDao {
                 obj_usu.setApeUsuario(rs.getString("apeUsuario"));
                 obj_usu.setEmaUsuario(rs.getString("emaUsuario"));
                 obj_usu.setPassUsuario(rs.getString("passUsuario"));
-                String[] roles = {rs.getString("rolUsuario")};
-                obj_usu.setRolUsuario(roles);
+                obj_usu.setRolUsuario(rs.getString("rolUsuario"));
             }
         } catch (SQLException e) {
             System.out.println("Correo o contraseña invalidos");

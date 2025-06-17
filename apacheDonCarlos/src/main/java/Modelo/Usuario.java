@@ -8,7 +8,7 @@ public class Usuario {
     private String passUsuario;
     private String nomUsuario;
     private String apeUsuario;
-    private String[] rolUsuario = {"Administrador", "Empleado"};
+    private String rolUsuario;
 
     public Usuario() {
     }
@@ -40,7 +40,7 @@ public class Usuario {
         return apeUsuario;
     }
 
-    public String[] getRolUsuario() {
+    public String getRolUsuario() {
         return rolUsuario;
     }
 
@@ -64,7 +64,7 @@ public class Usuario {
         this.apeUsuario = apeUsuario;
     }
 
-    public void setRolUsuario(String[] rolUsuario) {
+    public void setRolUsuario(String rolUsuario) {
         this.rolUsuario = rolUsuario;
     }
 
