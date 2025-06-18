@@ -59,5 +59,20 @@ public class UsuarioDao {
         }
         return lista;
     }
-}
     
+  public int agregar(Usuario usuario) {
+    String sql = "INSERT INTO usuarios(nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?)";
+    try {
+        conn = cn.Conexion();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, usuario.getNomUsuario());
+        ps.setString(2, usuario.getApeUsuario());
+        ps.setString(3, usuario.getEmaUsuario());
+        ps.setString(4, usuario.getPassUsuario());
+        ps.setString(5, usuario.getRolUsuario());
+        r = ps.executeUpdate();
+    } catch (ClassNotFoundException | SQLException e) {
+        System.out.println("Error al agregar usuario: " + e.getMessage());
+    }
+    return r;
+}

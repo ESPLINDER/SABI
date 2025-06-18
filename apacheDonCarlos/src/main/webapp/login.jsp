@@ -21,7 +21,7 @@
                 </div>
                 <div class="brand">
                     <i class="bi bi-shop logo"></i>
-                    <span class="name">Wl Vecino Amigo</span>
+                    <span class="name">El Vecino Amigo</span>
                 </div>
             </div>
             <div class="right">
