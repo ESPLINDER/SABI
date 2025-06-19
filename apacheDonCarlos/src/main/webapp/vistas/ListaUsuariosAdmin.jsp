@@ -1,5 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, Modelo.Usuario" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -64,12 +64,11 @@
                     </a>
                 </li>
                 <li>
-                <body>
                     <a href="#">
                         <i class="bi bi-people"></i>
                         <span class="names">clientes</span>
                     </a>
-                    </li>
+                </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-exclamation-circle"></i>
@@ -84,28 +83,41 @@
             <h1>Lista de Usuarios</h1>
             <button class="boton-agregar">Agregar</button>
             <div class="tabla">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="u" items="${lista_usu}">
-                    <tr>
-                        <td>${u.getIdUsuario()}</td>
-                        <td>${u.getNomUsuario()}</td>
-                        <td>${u.getApeUsuario()}</td>
-                        <td>${u.getEmaUsuario()}</td>
-                        <td><button class="boton boton-editar">Editar</button><button class="boton boton-eliminar">Eliminar</button></td>
-                    </tr>
-                </c:forEach> 
-                </tbody>
-            </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            List<Modelo.Usuario> lista_usu = (List<Modelo.Usuario>) request.getAttribute("lista_usu");
+                            if (lista_usu != null && !lista_usu.isEmpty()) {
+                                for (Modelo.Usuario u : lista_usu) {
+                        %>
+                        <tr>
+                            <td><%= u.getIdUsuario()%></td>
+                            <td><%= u.getNomUsuario()%></td>
+                            <td><%= u.getApeUsuario()%></td>
+                            <td><%= u.getEmaUsuario()%></td>
+                            <td><button class="boton boton-editar">Editar</button><button class="boton boton-eliminar">Eliminar</button></td>
+                        </tr>
+                        <%
+                            }
+                        } else {
+                        %>
+                        <tr>
+                            <td colspan="2">No hay usuarios registrados</td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
