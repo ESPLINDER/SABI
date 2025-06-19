@@ -76,6 +76,5 @@
                 </li>
             </ul>
         </div>
-        <script src="../Scripts/slideBar.js"></script>
     </body>
 </html>

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="Estilos/navbarEstilo.css">
     </head>
     <body>
-        <header name="nombre" value="valor">
+        <header>
             <div class="left">
                 <div class="brand">
                     <i class="bi bi-shop logo"></i>
@@ -79,7 +79,7 @@
         
         <%--Aqui Empieza el area de trabajo--%>
         
-        <div name="AreaTrabajo">
+        <div name="contenido">
         </div>
     </body>
 </html>
