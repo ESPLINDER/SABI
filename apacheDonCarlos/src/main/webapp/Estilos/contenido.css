@@ -6,7 +6,6 @@
     margin-left: 250px;
     margin-top: 10px;
     flex: 1; /* si usas flexbox en el layout */
-    position: fixed;
     overflow: auto; /* en caso de que haya mucho contenido */
 }
 
@@ -14,6 +13,10 @@
     text-align: center;
     margin-left: 3%;
     margin-right: 2%;
+}
+
+.tabla h1 {
+    font-size: 10px;
 }
 
 .contenido table {
@@ -27,7 +30,7 @@
 
 .contenido th, .contenido .td {
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -44,4 +47,23 @@
 
 contenido tr:nth-child(even) {
     background-color: #fafafa;
+}
+/*botones de opciones*/
+.boton {
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.boton-editar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.boton-eliminar {
+    background-color: #f44336;
+    color: white;
 }

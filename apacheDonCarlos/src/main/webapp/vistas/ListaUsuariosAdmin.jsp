@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pagina_Principal</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="Estilos/navbarEstilo.css">
         <link rel="Stylesheet" href="Estilos/contenido.css">
@@ -79,7 +80,7 @@
 
         <%--Aqui empieza el contenido--%>
         <div class="contenido">
-            <<h1>Lista de Usuarios</h1>
+            <h1>Lista de Usuarios</h1>
             <div class="tabla">
             <table>
                 <thead>
@@ -98,7 +99,7 @@
                         <td>${u.getNomUsuario()}</td>
                         <td>${u.getApeUsuario()}</td>
                         <td>${u.getEmaUsuario()}</td>
-                        <td>Editar - Eliminar</td>
+                        <td><button class="boton boton-editar">Editar</button><button class="boton boton-eliminar">Eliminar</button></td>
                     </tr>
                 </c:forEach> 
                 </tbody>
