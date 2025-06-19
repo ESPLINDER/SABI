@@ -66,39 +66,11 @@ public class UsuarioController extends HttpServlet {
             switch (accion) {
                 case "Listar": 
                     List listaUsuarios=usu_dao.listar();
-                   
-                   request.setAttribute("lista_usu", listaUsuarios);
+                    request.setAttribute("lista_usu", listaUsuarios);
                     break;
-                    
             }
             request.getRequestDispatcher("vistas/ListaUsuariosAdmin.jsp").forward(request, response);
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-       
         processRequest(request, response);
     }
 

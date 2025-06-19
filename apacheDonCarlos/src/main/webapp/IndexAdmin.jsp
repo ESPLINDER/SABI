@@ -79,7 +79,7 @@
         
         <%--Aqui Empieza el area de trabajo--%>
         
-        <div name="contenido">
+        <div class="contenido">
         </div>
     </body>
 </html>
