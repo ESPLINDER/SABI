@@ -81,6 +81,7 @@
         <%--Aqui empieza el contenido--%>
         <div class="contenido">
             <h1>Lista de Usuarios</h1>
+            <button class="boton-agregar">Agregar</button>
             <div class="tabla">
             <table>
                 <thead>
