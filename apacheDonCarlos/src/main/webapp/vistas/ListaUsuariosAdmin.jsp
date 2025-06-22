@@ -81,7 +81,8 @@
         <%--Aqui empieza el contenido--%>
         <div class="contenido">
             <h1>Lista de Usuarios</h1>
-            <button class="boton-agregar">Agregar</button>
+            <button class="boton-agregar"><a class="nav-link active" href="formAgregarUsuario">Agregar</a></button>
+            
             <div class="tabla">
                 <table>
                     <thead>
