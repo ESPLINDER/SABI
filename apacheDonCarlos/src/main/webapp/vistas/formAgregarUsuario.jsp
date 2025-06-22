@@ -1,18 +1,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulario Usuarios</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <link rel="Stylesheet" href="Estilos/contenido.css">        
+        <link rel="Stylesheet" href="../Estilos/contenido.css">
+        <link rel="stylesheet" href="../Estilos/navbarEstilo.css">
     </head>
     <body>
-
-
-
-        <div class="row justify-content-center">
+        <%--Aqui Insertamos el dasboard--%>
+        <%@ include file="../plantillas/DashAdminHtml.jsp" %>
+        
+        <%--Aqui empieza el contenido--%>
+        <div class="row contenido justify-content-center">
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
@@ -60,8 +64,5 @@
                 </div>
             </div>
         </div>
-
-
-
     </body>
 </html>
