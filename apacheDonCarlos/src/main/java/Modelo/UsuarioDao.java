@@ -14,7 +14,7 @@ public class UsuarioDao {
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
-    int r;
+    int r; //Valor que se retorna al agregar un nuevo registro
     
     public Usuario Validar(String email, String pass) throws ClassNotFoundException {
         Usuario obj_usu = new Usuario();
@@ -55,25 +55,27 @@ public class UsuarioDao {
                 lista.add(usu);
             }
         } catch (ClassNotFoundException | SQLException e) {
-            
+            System.out.println("Error al generar lista de usuarios");
         }
         return lista;
     }
     
-  public int agregar(Usuario usuario) {
-    String sql = "INSERT INTO usuarios(nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?)";
+  public int Agregar(Usuario usuario) {
+    String sql = "INSERT INTO usuarios(idUsuario, nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?, ?)";
     try {
         conn = cn.Conexion();
         ps = conn.prepareStatement(sql);
-        ps.setString(1, usuario.getNomUsuario());
-        ps.setString(2, usuario.getApeUsuario());
-        ps.setString(3, usuario.getEmaUsuario());
-        ps.setString(4, usuario.getPassUsuario());
-        ps.setString(5, usuario.getRolUsuario());
+        
+        ps.setInt(1, usuario.getIdUsuario());
+        ps.setString(2, usuario.getNomUsuario());
+        ps.setString(3, usuario.getApeUsuario());
+        ps.setString(4, usuario.getEmaUsuario());
+        ps.setString(5, usuario.getPassUsuario());
+        ps.setString(6, usuario.getRolUsuario());
         r = ps.executeUpdate();
     } catch (ClassNotFoundException | SQLException e) {
         System.out.println("Error al agregar usuario: " + e.getMessage());
     }
     return r;
-}
+    }
 }
