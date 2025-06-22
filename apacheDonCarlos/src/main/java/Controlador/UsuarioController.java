@@ -61,7 +61,7 @@ public class UsuarioController extends HttpServlet {
                     request.getRequestDispatcher("vistas/ListaUsuariosAdmin.jsp").forward(request, response);
                     break;
                 case "Agregar":
-                    
+                    this.AgregarUsuario(request, response);
                     break;
             }
         }
@@ -79,14 +79,14 @@ public class UsuarioController extends HttpServlet {
     }
 
     //Nuestros metodos
-    protected void AgregarUsuario(HttpServletRequest request, HttpServletResponse response){
+    protected void AgregarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
             String idUsuario = request.getParameter("idUsuario"); //el request solo sirve con Strings
-            String nomUsuario = request.getParameter("nomUsuario");;
-            String apeUsuario = request.getParameter("apeUsuario");;
-            String emaUsuario = request.getParameter("emaUsuario");;
-            String passUsuario = request.getParameter("passUsuario");;
-            String rolUsuario = request.getParameter("rolUsuario");;
+            String nomUsuario = request.getParameter("nomUsuario");
+            String apeUsuario = request.getParameter("apeUsuario");
+            String emaUsuario = request.getParameter("emaUsuario");
+            String passUsuario = request.getParameter("passUsuario");
+            String rolUsuario = request.getParameter("rolUsuario");
             
             //le damos los valores del formulario al objeto usu
             usu.setIdUsuario(Integer.parseInt(idUsuario));
@@ -97,7 +97,8 @@ public class UsuarioController extends HttpServlet {
             usu.setRolUsuario(rolUsuario);
             
             usu_dao.Agregar(usu);
-        } catch(NumberFormatException e){
+            request.getRequestDispatcher("UsuarioController?menu=Usuarios&accion=Listar").forward(request, response);
+        } catch(ServletException | IOException | NumberFormatException e){
             System.out.println("Error en el registro");
         }
     }

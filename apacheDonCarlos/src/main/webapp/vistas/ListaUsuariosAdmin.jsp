@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pagina_Principal</title>
+        <title>Usuarios</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -81,7 +81,7 @@
         <%--Aqui empieza el contenido--%>
         <div class="contenido">
             <h1>Lista de Usuarios</h1>
-            <button class="boton-agregar"><a class="nav-link active" href="formAgregarUsuario">Agregar</a></button>
+            <button class="boton-agregar"><a class="nav-link active" href="vistas/formAgregarUsuario.jsp">Agregar</a></button>
             
             <div class="tabla">
                 <table>
