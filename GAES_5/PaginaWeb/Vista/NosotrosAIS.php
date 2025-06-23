@@ -1,5 +1,14 @@
+<?php
+if (isset($_SESSION['idUsuario'])) {
+    session_unset();
+    session_destroy();
+    header("Location: inicioSesion.php?logout=true");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +20,19 @@
             font-family: 'Bonello-Regular';
             src: url('Fonts/Bonello-Regular.otf') format('opentype');
         }
+
         body {
             background-color: #E2E2B6;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
         .navbar-custom {
             background-color: #021526;
             color: whitesmoke;
         }
+
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: bold;
@@ -30,43 +42,53 @@
             margin: 0 auto;
             text-decoration: none;
         }
+
         .menu {
             background-color: #6EACDA;
             text-align: center;
             padding: 10px 0;
         }
+
         .menu a {
             color: #021526;
             font-weight: bold;
             margin: 0 15px;
             text-decoration: none;
         }
+
         .menu a:hover {
             text-decoration: underline;
         }
+
         .content-container {
             margin: 20px 0;
         }
+
         .content-container .row {
             align-items: center;
         }
+
         .text-content {
             text-align: center;
             padding: 20px;
         }
+
         footer {
             background-color: #021526;
             color: #fff;
             padding: 10px 0;
             margin-top: auto;
         }
+
         footer a {
             color: #6EACDA;
             text-decoration: none;
         }
+
         footer a:hover {
             color: #fff;
         }
+
         .sidebar {
             height: 100%;
             width: 0;
@@ -79,6 +101,7 @@
             transition: 0.5s;
             padding-top: 60px;
         }
+
         .sidebar a {
             padding: 10px 15px;
             text-decoration: none;
@@ -87,15 +110,18 @@
             display: block;
             transition: 0.3s;
         }
+
         .sidebar a:hover {
             color: #fff;
         }
+
         .sidebar .closebtn {
             position: absolute;
             top: 0;
             right: 25px;
             font-size: 36px;
         }
+
         .openbtn {
             font-size: 20px;
             cursor: pointer;
@@ -104,9 +130,11 @@
             padding: 5px 7.5px;
             border: none;
         }
+
         .openbtn:hover {
             background-color: #03346E;
         }
+
         .btn-custom {
             background-color: black;
             color: azure;
@@ -120,9 +148,11 @@
             transition: color 0.3s ease;
             z-index: 1;
         }
+
         .btn-custom:hover {
             color: black;
         }
+
         .btn-custom::before {
             content: "";
             position: absolute;
@@ -138,14 +168,25 @@
             border-radius: 12px;
             animation: glowing 50s linear infinite;
         }
+
         .btn-custom:hover::before {
             opacity: 1;
         }
+
         @keyframes glowing {
-            0% { background-position: 0 0; }
-            50% { background-position: 200% 0; }
-            100% { background-position: 0 0; }
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
         }
+
         .content-container {
             flex: 1;
             display: flex;
@@ -154,11 +195,14 @@
             padding-top: 50px;
             text-align: center;
         }
+
         .extra-space {
-            margin-bottom: 50px; /* Ajusta este valor según tus necesidades */
+            margin-bottom: 50px;
+            /* Ajusta este valor según tus necesidades */
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
@@ -166,26 +210,26 @@
                 <div class="col-md-2"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-2 text-center">
-                    <a href="InicioSesion.html" class="text-light text-decoration-none">Iniciar Sesion</a>
+                    <a href="InicioSesion.php" class="text-light text-decoration-none">Iniciar Sesion</a>
                     <button class="openbtn" onclick="openNav()">☰</button>
                     <div id="mySidebar" class="sidebar">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="Paginas principal AIS.html">Inicio</a>
-                        <a href="NosotrosAIS.html">Sobre nosotros</a>
-                        <a href="Servicios y contactos AIS.html">Servicios y Contactos</a>
-                        <a href="Error404AIS.html">Blog</a>
-                        <a href="InicioSesion.html">Iniciar Sesion</a>
+                        <a href="Paginas principal AIS.php">Inicio</a>
+                        <a href="NosotrosAIS.php">Sobre nosotros</a>
+                        <a href="Servicios y contactos AIS.php">Servicios y Contactos</a>
+                        <a href="Error404AIS.php">Blog</a>
+                        <a href="InicioSesion.php">Iniciar Sesion</a>
                     </div>
+                </div>
             </div>
-        </div>
     </nav>
 
-    
+
 
     <div class="menu">
-        <a href="InicioSesion.html">Entrenamiento</a>
-        <a href="InicioSesion.html">Entrenadores</a>
-        <a href="NosotrosAIS.html">Nosotros</a>
+        <a href="InicioSesion.php">Entrenamiento</a>
+        <a href="InicioSesion.php">Entrenadores</a>
+        <a href="NosotrosAIS.php">Nosotros</a>
     </div>
 
     <div class="container mt-5 pt-4 extra-space">
@@ -203,7 +247,7 @@
                         Nuestra misión es transformar la manera en que las personas entrenan, eliminando barreras organizativas y tecnológicas, y ofreciendo herramientas prácticas que impulsen el compromiso y los resultados. SABI no solo es una solución, sino un aliado en el camino hacia una vida más saludable y activa.
                     </p>
                     <div class="text-center mt-4">
-                        <a class="btn btn-custom w-30 mb-3" href="Error404AIS.html">¿Quieres saber más? ¡Únete a nuestro blog!</a>
+                        <a class="btn btn-custom w-30 mb-3" href="Error404AIS.php">¿Quieres saber más? ¡Únete a nuestro blog!</a>
                     </div>
                 </div>
             </div>
@@ -246,16 +290,18 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
-        }
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-        }
-    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+            }
+        </script>
 </body>
+
 </html>

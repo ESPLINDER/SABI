@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuestionario de Fitness</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #E2E2B6;
+            background-image: url(../Media/fondoSabi.png);
+            background-size: 100% auto;
+            background-repeat: repeat-y;
             display: flex;
             justify-content: center;
             align-items:flex-start;
@@ -17,14 +19,12 @@
         .form-container {
             width: 100%;
             max-width: 500px;
-            padding: 10px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .form-container h2 {
             text-align: center;
-            margin-bottom: 20px;
         }
         .btn-custom {
             background-color: black;
@@ -68,11 +68,11 @@
     </style>
 </head>
 <body>
-    <div class="form-container">
+    <div class="form-container mb-5 p-2">
         <h2>Cuestionario de Fitness</h2>
-        <form id="fitnessForm" action="Pagina principal.html" method="get">
+        <form id="fitnessForm" action="Pagina principal.php" method="get">
             <div class="mb-3">
-                <label for="objetivoPrincipal" class="form-label">¿Cuál es tu principal objetivo?</label>
+                <label for="objetivoPrincipal" class="form-label">¿Cuál es tu principal objetivo? *</label>
                 <select id="objetivoPrincipal" class="form-select" required>
                     <option value="" disabled selected>Selecciona una opción</option>
                     <option value="perderPeso">Perder peso</option>
@@ -81,7 +81,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="metasEspecificas" class="form-label">¿Qué metas deseas alcanzar en los próximos meses?</label>
+                <label for="metasEspecificas" class="form-label">¿Qué metas deseas alcanzar en los próximos meses? *</label>
                 <select id="metas" class="form-select" required>
                     <option value="Resistencia Fisica">Mejorar mi resistencia fisica</option>
                     <option value="Perder peso">Perder 5 kg de peso</option>
@@ -90,7 +90,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="nivelActividad" class="form-label">¿Cual es su nivel de actividad Fisica?</label>
+                <label for="nivelActividad" class="form-label">¿Cual es su nivel de actividad Fisica? *</label>
                 <select id="nivelActividad" class="form-select" required>
                     <option value="" disabled selected>Selecciona una opción</option>
                     <option value="sedentario">Sedentario</option>
@@ -99,22 +99,23 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="frecuenciaEjercicio" class="form-label">¿Cuántas veces a la semana haces ejercicio?</label>
+                <label for="frecuenciaEjercicio" class="form-label">¿Cuántas veces a la semana haces ejercicio? *</label>
                 <input type="number" id="frecuenciaEjercicio" class="form-control" placeholder="Ejemplo: 3" required min="0">
             </div>
 
             <div class="mb-3">
-                <label for="preferenciaLugar" class="form-label">¿Prefieres entrenar en casa o en el gimnasio?</label>
+                <label for="preferenciaLugar" class="form-label">¿Prefieres entrenar en casa o en el gimnasio? *</label>
                 <select id="preferenciaLugar" class="form-select" required>
                     <option value="" disabled selected>Selecciona una opción</option>
                     <option value="casa">Casa</option>
                     <option value="gimnasio">Gimnasio</option>
+                    <option value="cualquiera">Cualquiera</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="tipoEjercicio" class="form-label">¿Qué tipo de ejercicios disfrutas más?</label>
-                <select id="tipoEjercicio" class="form-select" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
+                <select id="tipoEjercicio" class="form-select">
+                    <option value="" disabled selected></option>
                     <option value="cardio">Cardio</option>
                     <option value="fuerza">Fuerza</option>
                     <option value="yoga">Yoga</option>
@@ -130,7 +131,7 @@
                 <input type="text" id="ejerciciosEvitar" class="form-control" placeholder="Especifica los ejercicios">
             </div>
             <div class="mb-3">
-                <label class="form-label">¿Qué días puedes hacer tus rutinas?</label>
+                <label class="form-label">¿Qué días puedes hacer tus rutinas? *</label>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="lunes" name="dias" value="Lunes">
                     <label class="form-check-label" for="lunes">Lunes</label>
@@ -163,7 +164,7 @@
 
            
             <div class="mb-3">
-                <label for="horas" class="form-label">¿Cuántas horas al día dedicarás?</label>
+                <label for="horas" class="form-label">¿Cuántas horas al día dedicarás? *</label>
                 <select class="form-select" id="horas" name="horas" required>
                     <option value="" selected disabled>Selecciona una opción</option>
                     <option value="1 hora">1 hora</option>
@@ -175,7 +176,7 @@
 
       
             <div class="mb-3">
-                <label for="parteDelDia" class="form-label">¿En qué parte del día realizarás las rutinas?</label>
+                <label for="parteDelDia" class="form-label">¿En qué horario del día realizarás las rutinas? *</label>
                 <select class="form-select" id="parteDelDia" name="parteDelDia" required>
                     <option value="" selected disabled>Selecciona una opción</option>
                     <option value="Mañana">Mañana</option>
@@ -183,12 +184,8 @@
                     <option value="Noche">Noche</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="edad" class="form-label">¿Cuál es tu edad?</label>
-                <input type="text" id="edadPesoAltura" class="form-control" placeholder="Ejemplo: 25" required>
-            </div>
             <div class =""mb-3>
-                <label for ="Peso" class="form-label">¿Cual es tu peso actual?</label>
+                <label for ="Peso" class="form-label">¿Cual es tu peso actual? *</label>
                 <select id="pesokg" class="form-select" required>
                     <option value="40-49 kg">40-49 kg</option>
                     <option value="50-59 kg">50-59 kg</option>
@@ -202,7 +199,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="nivelExperiencia" class="form-label">¿Cuál es tu nivel de actividad Física?</label>
+                <label for="nivelExperiencia" class="form-label">¿Cuál es tu nivel de actividad Física? *</label>
                 <select id="nivelExperiencia" class="form-select" required>
                     <option value="" disabled selected>Selecciona una opción</option>
                     <option value="principiante">Principiante</option>
@@ -212,7 +209,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="horasSueno" class="form-label">¿Cuántas horas duermes normalmente?</label>
+                <label for="horasSueno" class="form-label">¿Cuántas horas duermes normalmente? *</label>
                 <select id="horasdesueño" class="form-select"required>
                     <option value="Menos de 4 horas">Menos de 4 horas</option>
                     <option value="Entre 4 y 5 horas">Entre 4 y 5 horas</option>
@@ -224,7 +221,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="nivelEstres" class="form-label">¿Cómo calificarías tu nivel de estrés diario?</label>
+                <label for="nivelEstres" class="form-label">¿Cómo calificarías tu nivel de estrés diario? *</label>
                 <select id="nivelEstres" class="form-select" required>
                     <option value="" disabled selected>Selecciona una opción</option>
                     <option value="bajo">Bajo</option>
@@ -235,22 +232,22 @@
 
             <div class="mb-3">
                 <label for="preferenciasDieteticas" class="form-label">¿Tienes alguna preferencia dietética o restricción alimentaria?</label>
-                <input type="text" id="preferenciasDieteticas" class="form-control" placeholder="Especifica tus preferencias o restricciones" required>
+                <input type="text" id="preferenciasDieteticas" class="form-control" placeholder="Especifica tus preferencias o restricciones">
             </div>
             <div class="mb-3">
                 <label for="motivacion" class="form-label">¿Qué te motiva a seguir un programa de fitness?</label>
-                <input type="text" id="motivacion" class="form-control" placeholder="Escribe tu motivación" required>
+                <input type="text" id="motivacion" class="form-control" placeholder="Aumentar masa muscular">
             </div>
             <div class="mb-3">
                 <label for="apoyo" class="form-label">¿Tienes amigos o familiares que te apoyen en tus objetivos?</label>
-                <input type="text" id="apoyo" class="form-control" placeholder="Especifica si tienes apoyo" required>
+                <input type="text" id="apoyo" class="form-control" placeholder="Especifica si tienes apoyo">
             </div>
 
             <button type="submit" class="btn btn-custom w-100">Enviar</button>
         </form>
     </div>
 
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
        document.getElementById('fitnessForm').addEventListener('submit', function(event) {

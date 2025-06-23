@@ -1,5 +1,53 @@
+<?php
+session_start();
+include('../Controlador/conexion.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $rol = $_POST['rol'];
+
+    if ($rol === 'cliente') {
+        $tipCliente = 'Natural';
+        $planCliente = 'gratuito';
+        $fkIdUsuario = $_SESSION['idUsuario'];
+        $nomCliente = $_SESSION['nombre'];
+        $apeCliente = $_SESSION['apellido'];
+
+        $sql = "INSERT INTO cliente (tipCliente, planCliente, fkIdUsuario, nomCliente, apeCliente) 
+        VALUES ('$tipCliente', '$planCliente', '$fkIdUsuario', '$nomCliente', '$apeCliente')";
+        $resultado = mysqli_query($conexion, $sql);
+
+        if ($resultado) {
+            $_SESSION['tipo'] = 'cliente';
+            $_SESSION['nombre'] = $nomCliente;
+            header("Location: Cliente/FormularioDiagnostico.php");
+            exit();
+        }
+    } elseif ($rol === 'entrenador') {
+
+        $espEntrenador = 'Fitness';
+        $expEntrenador = 5;
+        $bioEntrenador = 'Entrenador apasionado por el bienestar y la salud física.';
+        $pagEntrenador = 'nequi';
+        $fkIdUsuario = $_SESSION['idUsuario'];
+        $nomEntrenador = $_SESSION['nombre'];
+        $apeEntrenador = $_SESSION['apellido'];
+
+        $sql = "INSERT INTO entrenador (espEntrenador, expEntrenador, bioEntrenador, pagEntrenador, fkIdUsuario, nomEntrenador, apeEntrenador) 
+        VALUES ('$espEntrenador', '$expEntrenador', '$bioEntrenador', '$pagEntrenador', '$fkIdUsuario', '$nomEntrenador', '$apeEntrenador')";
+        $resultado = mysqli_query($conexion, $sql);
+
+        if ($resultado) {
+            $_SESSION['tipo'] = 'entrenador';
+            $_SESSION['nombre'] = $nomEntrenador;
+            header("Location: Entrenador/PaginaPrincipalEntrenador.php");
+            exit();
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +59,21 @@
             font-family: 'Bonello-Regular';
             src: url('Fonts/Bonello-Regular.otf') format('opentype');
         }
+
         body {
-            background-color: #E2E2B6;
+            background-image: url(Media/fondoSabi.png);
+            background-size: 100% auto;
+            background-repeat: repeat-y;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
         .navbar-custom {
             background-color: #021526;
             color: whitesmoke;
         }
+
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: bold;
@@ -30,39 +83,49 @@
             margin: 0 auto;
             text-decoration: none;
         }
+
         .main-content {
             background-color: #E2E2B6;
             color: #021526;
             padding: 30px;
             text-align: center;
         }
+
         .card {
             border: none;
             background-color: #6EACDA;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .card img {
-            width: 350px; /* Aumentamos el tamaño de la imagen */
-            height: 350px; /* Aseguramos que la imagen sea cuadrada */
+            width: 350px;
+            /* Aumentamos el tamaño de la imagen */
+            height: 350px;
+            /* Aseguramos que la imagen sea cuadrada */
             margin: 20px auto 10px;
         }
+
         .card-body {
             padding: 20px;
         }
+
         footer {
             background-color: #021526;
             color: #fff;
             padding: 10px 0;
             margin-top: auto;
         }
+
         footer a {
             color: #6EACDA;
             text-decoration: none;
         }
+
         footer a:hover {
             color: #fff;
         }
+
         .btn-custom {
             background-color: black;
             color: azure;
@@ -76,6 +139,7 @@
             transition: color 0.3s ease;
             z-index: 1;
         }
+
         .btn-custom {
             background-color: black;
             color: azure;
@@ -89,9 +153,11 @@
             transition: color 0.3s ease;
             z-index: 1;
         }
+
         .btn-custom:hover {
             color: black;
         }
+
         .btn-custom::before {
             content: "";
             position: absolute;
@@ -107,16 +173,27 @@
             border-radius: 12px;
             animation: glowing 50s linear infinite;
         }
+
         .btn-custom:hover::before {
             opacity: 1;
         }
+
         @keyframes glowing {
-            0% { background-position: 0 0; }
-            50% { background-position: 200% 0; }
-            100% { background-position: 0 0; }
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
@@ -127,34 +204,35 @@
                 </div>
             </div>
         </div>
-        </nav>
-   
+    </nav>
 
     <div class="main-content">
-        <h1 class="mb-4">¿QUÉ DESEAS HACER?</h1>
+        <h1 class="mb-4">¿QUÉ TE GUSTARIA HACER?</h1>
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card text-center">
-                        <img src="Media/Entrenar.jpg" alt="Usuario" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Entrenar</h5>
-                            <p class="card-text">Selecciona esta opción si deseas seguir un plan de entrenamiento personalizado y mejorar tu forma física.</p>
-                            <a href="FormularioDiagnostico.html" class="btn btn-custom w-10 mb-3">Seleccionar</a>
+            <form method="POST">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <img src="Media/Entrenar.jpg" alt="Usuario" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Entrenar</h5>
+                                <p class="card-text">Selecciona esta opción si deseas seguir un plan de entrenamiento personalizado y mejorar tu forma física.</p>
+                                <button type="submit" name="rol" value="cliente" class="btn btn-custom w-10 mb-3">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <img src="Media/Entrenador.jpg" alt="Ser Entrenador" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Ser Entrenador</h5>
+                                <p class="card-text">Selecciona esta opción si quieres crear entrenamientos y guiar a otros en su camino hacia el bienestar.</p>
+                                <button type="submit" name="rol" value="entrenador" class="btn btn-custom w-10 mb-3">Seleccionar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card text-center">
-                        <img src="Media/Entrenador.jpg" alt="Ser Entrenador" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Ser Entrenador</h5>
-                            <p class="card-text">Selecciona esta opción si quieres crear entrenamientos y guiar a otros en su camino hacia el bienestar.</p>
-                            <a href="RegistroEntrenador.html" class="btn btn-custom w-10 mb-3">Seleccionar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -195,8 +273,9 @@
             </div>
         </div>
     </footer>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

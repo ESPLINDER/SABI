@@ -1,26 +1,39 @@
+<?php
+session_start();
+
+if ($_SESSION['tipo'] != 'entrenador') {
+    header("Location: ../accesoDenegado.php");
+    exit();
+}
+$nombreEntrenador = $_SESSION['nombre'];
+?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
         @font-face {
             font-family: 'Bonello-Regular';
             src: url('Fonts/Bonello-Regular.otf') format('opentype');
         }
+
         body {
-            background-color: #E2E2B6;
+            background-image: url(../media/fondoSabi.png);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
         .navbar-custom {
             background-color: #021526;
             color: whitesmoke;
         }
+
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: bold;
@@ -30,48 +43,59 @@
             margin: 0 auto;
             text-decoration: none;
         }
+
         .menu {
             background-color: #6EACDA;
             text-align: center;
             padding: 10px 0;
         }
+
         .menu a {
             color: #021526;
             font-weight: bold;
             margin: 0 15px;
             text-decoration: none;
         }
+
         .menu a:hover {
             text-decoration: underline;
         }
+
         .content-container {
             margin: 20px 0;
         }
+
         .content-container .row {
             align-items: center;
         }
+
         .content-container video {
             width: 100%;
             height: auto;
             border-radius: 8px;
         }
+
         .text-content {
             text-align: justify;
             padding: 20px;
         }
+
         footer {
             background-color: #021526;
             color: #fff;
             padding: 10px 0;
             margin-top: auto;
         }
+
         footer a {
             color: #6EACDA;
             text-decoration: none;
         }
+
         footer a:hover {
             color: #fff;
         }
+
         .sidebar {
             height: 100%;
             width: 0;
@@ -84,6 +108,7 @@
             transition: 0.5s;
             padding-top: 60px;
         }
+
         .sidebar a {
             padding: 10px 15px;
             text-decoration: none;
@@ -92,15 +117,18 @@
             display: block;
             transition: 0.3s;
         }
+
         .sidebar a:hover {
             color: #fff;
         }
+
         .sidebar .closebtn {
             position: absolute;
             top: 0;
             right: 25px;
             font-size: 36px;
         }
+
         .openbtn {
             font-size: 20px;
             cursor: pointer;
@@ -109,38 +137,38 @@
             padding: 5px 7.5px;
             border: none;
         }
+
         .openbtn:hover {
             background-color: #03346E;
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-custom">
         <div class="container-fluid d-flex flex-column align-items-center">
             <div class="d-flex align-items-center w-100 justify-content-between row">
-                <div class="col-md-2"><img src="Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
+                <div class="col-md-2"><img src="../media/logoNuevo.png" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-2 text-center">
-                    <a href="PaginaPrincipalEntrenador.html" class="text-light text-decoration-none">Adriana | Entrenador</a>
-        <button class="openbtn" onclick="openNav()">☰</button>
-        <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="PaginaPrincipalEntrenador.html">Inicio</a>
-        <a href="NosotrosEntrenador.html">Sobre nosotros</a>
-        <a href="Servicios y Contactos Entrenador.html">Servicios y contactos</a>
-        <a href="Error404Entrenador.html">Blog</a>
-        <div class="mt-auto"><a href="Paginas principal AIS.html">Cerra sesion</a></div>
-        
+                    <a href="PaginaPrincipalEntrenador.php" class="text-light text-decoration-none"><?php echo $nombreEntrenador ?> | Entrenador</a>
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="PaginaPrincipalEntrenador.php">Inicio</a>
+                        <a href="NosotrosEntrenador.php">Sobre nosotros</a>
+                        <a href="Servicios y Contactos Entrenador.php">Servicios y contactos</a>
+                        <a href="Error404Entrenador.php">Blog</a>
+                        <div class="mt-auto"><a href="../../controlador/logOut.php">Cerra sesion</a></div>
+                    </div>
 
-        </div>
-
-        </div>
-        </div>
+                </div>
+            </div>
         </div>
     </nav>
 
     <div class="menu">
-        <a href="rutinasGuardadas.html">Rutinas</a>
+        <a href="CreacionRutina.php">Rutinas</a>
         <a href="clientes.html">Clientes</a>
         <a href="NosotrosEntrenador.html">Nosotros</a>
     </div>
@@ -160,7 +188,7 @@
             </div>
         </div>
 
-       
+
         <div class="content-container">
             <div class="row">
                 <div class="col-md-6 order-md-2">
@@ -180,7 +208,7 @@
                             <li>Con SABI, optimizamos la creación y gestión de programas de entrenamiento para brindarte la mejor experiencia, todo en un solo lugar.</li>
                         </ul>
                     </ul>
-                    
+
                 </div>
             </div>
         </div>
@@ -195,8 +223,8 @@
                 </div>
                 <div class="col-md-6 text-content">
                     <h3><strong>Transformaciones con SABI</strong></h3>
-                    <p>Nuestros usuarios han experimentado cambios increíbles en sus vidas gracias a nuestros programas de entrenamiento personalizados. 
-                    Desde mejoras en su bienestar físico hasta alcanzar sus objetivos de fitness, aquí tienes algunos testimonios de quienes ya han transformado sus vidas con SABI:</p>
+                    <p>Nuestros usuarios han experimentado cambios increíbles en sus vidas gracias a nuestros programas de entrenamiento personalizados.
+                        Desde mejoras en su bienestar físico hasta alcanzar sus objetivos de fitness, aquí tienes algunos testimonios de quienes ya han transformado sus vidas con SABI:</p>
                 </div>
             </div>
         </div>
@@ -238,7 +266,7 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -246,9 +274,11 @@
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
         }
+
         function closeNav() {
             document.getElementById("mySidebar").style.width = "0";
         }
     </script>
 </body>
+
 </html>

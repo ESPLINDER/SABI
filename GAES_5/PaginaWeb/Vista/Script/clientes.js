@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const goasignar = document.querySelectorAll(".asignar"); // Botón ir a editar
     goasignar.forEach(button => {
         button.addEventListener("click", function () {
-            window.location.href = 'rutinasGuardadas.html';
+            window.location.href = '../Entrenador/rutinasGuardadas.php';
         });
     });
 
@@ -27,6 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ver progreso
     const progreso = document.querySelector(".progreso"); // Botón asignar
     progreso.addEventListener("click", function () {
-        window.location.href = 'progreso.html';
+        window.location.href = '../Entrenador/progreso.php';
     });
 });

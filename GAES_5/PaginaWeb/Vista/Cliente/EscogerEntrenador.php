@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
         @font-face {
@@ -12,7 +12,7 @@
             src: url('Fonts/Bonello-Regular.otf') format('opentype');
         }
         body {
-            background-color: #E2E2B6;
+            background-image: url(../media/fondoSabi.png);
             display: flex;
             flex-direction: column;
             min-height: 100vh;

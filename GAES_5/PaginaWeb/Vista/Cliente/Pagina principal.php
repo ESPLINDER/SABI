@@ -1,10 +1,19 @@
+<?php
+session_start();
+
+if ($_SESSION['tipo'] != 'cliente') {
+    header("Location: ../accesoDenegado.php");
+    exit();
+}
+$nombreCliente = $_SESSION['nombre'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
         @font-face {
@@ -121,7 +130,7 @@
                 <div class="col-md-2"><img src="../Logo/sabi.enc" alt="Logo" width="60" height="60" class="logo"></div>
                 <div class="col-md-8 text-center"><a class="navbar-brand" href="#">SABI</a></div>
                 <div class="col-lg-2 text-center">
-                    <a href="PerfilUsuario.php" class="text-light text-decoration-none">Camila</a>
+                    <a href="PerfilUsuario.php" class="text-light text-decoration-none"><?php echo $nombreCliente ?></a>
                     <button class="openbtn" onclick="openNav()">☰</button>
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -150,7 +159,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <video controls>
-                        <source src="Videos/¡Bienvenidos a SABI!.mp4" type="video/mp4">
+                        <source src="../Videos/¡Bienvenidos a SABI!.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="col-md-6 text-content">
@@ -165,7 +174,7 @@
             <div class="row">
                 <div class="col-md-6 order-md-2">
                     <video controls>
-                        <source src="Videos/¡Descubre los Entrenamientos de SABI!.mp4" type="video/mp4">
+                        <source src="../Videos/¡Descubre los Entrenamientos de SABI!.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="col-md-6 text-content order-md-1">
@@ -190,7 +199,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <video controls>
-                        <source src="Videos/Testimonios de Éxito con SABI.mp4" type="video/mp4">
+                        <source src="../Videos/Testimonios de Éxito con SABI.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="col-md-6 text-content">

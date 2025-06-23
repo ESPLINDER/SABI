@@ -7,7 +7,7 @@
     <title>Clientes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="Stiles/clientes.css">
+    <link rel="stylesheet" href="../Stiles/clientes.css">
 </head>
 
 <body class="cuerpo">
@@ -24,6 +24,7 @@
         </div>
     </nav>
 
+
     <!-- Dashboard -->
     <div class="menu">
         <a href="rutinasGuardadas.html">Mis Rutinas</a>
@@ -36,22 +37,22 @@
     </header>
 
     <!-- Contenido -->
-    <div class="row col-md-8 mx-auto mt-1">
+    <div class="row col-sm-11 mx-auto mt-1">
         <!-- Cliente 1-->
         <div class="cliente mt-4 row">
             <div class="col-md-2 d-flex">
-                <img src="Media/fotoPerfilNull.png" alt="Foto de perfil" class="my-auto mx-auto img-fluid">
+                <img src="../Media/fotoPerfilNull.png" alt="Foto de perfil" class="my-auto mx-auto img-fluid">
             </div>
-            <div class="col-md-7 row align-items-center">
+            <div class="col-md-8 row align-items-center">
                 <div class="col-md-6"><button disabled class="datos">Nombre: Nicolas Alejandro Cifuentes</button></div>
                 <div class="col-md-6"><button disabled class="datos">Edad: 24 Años</button></div>
                 <div class="col-md-6"><button disabled class="datos">Genero: Masculino</button></div>
                 <div class="col-md-6"><button disabled class="datos">Objetivo: Perdida de peso</button></div>
             </div>
-            <div class="col-md-3 d-flex">
+            <div class="col-md-2 d-flex">
                 <div class="my-auto mx-auto row">
                     <button class="diagnostico1 diagnostico" data-bs-toggle="modal" data-bs-target="#diagnostico">Consultar diagnostico</button>
-                    <button class="asignar1 asignar" disabled>Asignar rutina</button>
+                    <button class="asignar1 asignar" href='../Entrenador/rutinasGuardadas.php' disabled>Asignar rutina</button>
                 </div>
             </div>
         </div>
@@ -59,7 +60,7 @@
         <!-- Cliente 2-->
         <div class="cliente mt-4 row">
             <div class="col-md-2 d-flex">
-                <img src="Media/fotoPerfilNull.png" alt="Foto de perfil" class="my-auto mx-auto img-fluid">
+                <img src="../Media/fotoPerfilNull.png" alt="Foto de perfil" class="my-auto mx-auto img-fluid">
             </div>
             <div class="col-md-7 row align-items-center">
                 <div class="col-md-6"><button disabled class="datos">Nombre: William Humberto Espinel Corredor</button>
@@ -80,7 +81,7 @@
         <!-- Cliente 3-->
         <div class="cliente mt-4 row">
             <div class="col-md-2 d-flex">
-                <img src="Media/fotoPerfilNull.png" alt="Foto de perfil" class="my-auto mx-auto img-fluid">
+                <img src="../Media/fotoPerfilNull.png" alt="Foto de perfil" class="my-auto mx-auto img-fluid">
             </div>
             <div class="col-md-7 row align-items-center">
                 <div class="col-md-6"><button disabled class="datos">Nombre: Andres Felipe Mena</button></div>
@@ -100,7 +101,7 @@
         <!-- Cliente 4-->
         <div class="cliente mt-4 row">
             <div class="col-md-2 d-flex">
-                <img src="Media/fotoPerfilNull.png" alt="Foto de perfil" class="my-auto mx-auto img-fluid">
+                <img src="../Media/fotoPerfilNull.png" alt="Foto de perfil" class="my-auto mx-auto img-fluid">
             </div>
             <div class="col-md-7 row align-items-center">
                 <div class="col-md-6"><button disabled class="datos">Nombre: Santiago David Castro</button></div>
@@ -216,7 +217,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Script/clientes.js"></script>
+    <script src="../Script/clientes.js"></script>
 </body>
 
 </html>
