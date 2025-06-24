@@ -40,6 +40,10 @@
     font-weight: bold;
 }
 
+.contenido tr {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .contenido .tr:hover {
     background-color: #f1f1f1;
     cursor: pointer;
@@ -59,20 +63,26 @@ contenido tr:nth-child(even) {
 }
 
 .boton-editar {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #009DFF;
 }
 
 .boton-eliminar {
     background-color: #f44336;
     color: white;
 }
+.boton-editar a {
+    color: #000000;
+}
+
+.boton-eliminar a {
+    color: #000000;
+}
+
 .boton-agregar {
     padding: 6px 12px;
     font-size: 18px;
     border: none;
     border-radius: 4px;
-    background-color: #2196F3;
-    color: white;
+    background-color: #5ccb5f;
     cursor: pointer;
 }

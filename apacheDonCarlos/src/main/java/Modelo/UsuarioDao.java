@@ -40,7 +40,7 @@ public class UsuarioDao {
     }
 
     public List<Usuario> listar() {
-        String sql = "SELECT idUsuario, nomUsuario, apeUsuario, emaUsuario FROM usuarios";
+        String sql = "SELECT idUsuario, nomUsuario, apeUsuario, emaUsuario, rolUsuario FROM usuarios";
         List<Usuario> lista = new ArrayList<>();
         try {
             conn = cn.Conexion();
@@ -52,6 +52,7 @@ public class UsuarioDao {
                 usu.setNomUsuario(rs.getString(2));
                 usu.setApeUsuario(rs.getString(3));
                 usu.setEmaUsuario(rs.getString(4));
+                usu.setRolUsuario(rs.getString(5));
                 lista.add(usu);
             }
         } catch (ClassNotFoundException | SQLException e) {
