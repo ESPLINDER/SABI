@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,6 +56,7 @@ public class ValidarUsuario extends HttpServlet {
                 Logger.getLogger(ValidarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (usu.getEmaUsuario() != null || usu.getPassUsuario() != null) {
+                HttpSession session = request.getSession();
                 request.setAttribute("usuario", usu); //vamos a la pagina donde se autentica el usuario
                 if (usu.getRolUsuario().equals("Administrador")) {
                     request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
@@ -62,11 +64,11 @@ public class ValidarUsuario extends HttpServlet {
                     request.getRequestDispatcher("IndexEmpleado.jsp").forward(request, response);
                 }
             } else {
-                request.setAttribute("fail", "Datos no existen en BD");
+                request.setAttribute("error", "Usuario o contraseña incorrectos");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("fail", "Ingrese Usuario y Contraseña");
+            request.setAttribute("error", "Ingrese Usuario y Contraseña");
             request.getRequestDispatcher("../../index.jsp");
         }
     }

@@ -1,5 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, Modelo.Usuario" %>
+<%@page import="jakarta.servlet.http.*,jakarta.servlet.*"%>
+<%
+    HttpSession session = request.getSession(false);
+    Modelo.Usuario logger = (Usuario) request.getAttribute("usuario");
+    %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
