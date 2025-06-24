@@ -57,6 +57,7 @@ public class ValidarUsuario extends HttpServlet {
             }
             if (usu.getEmaUsuario() != null || usu.getPassUsuario() != null) {
                 HttpSession session = request.getSession();
+                session.setAttribute("logger", usu);
                 request.setAttribute("usuario", usu); //vamos a la pagina donde se autentica el usuario
                 if (usu.getRolUsuario().equals("Administrador")) {
                     request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);

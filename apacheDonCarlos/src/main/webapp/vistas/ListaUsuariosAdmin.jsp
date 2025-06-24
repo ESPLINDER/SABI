@@ -2,8 +2,16 @@
 <%@ page import="java.util.*, Modelo.Usuario" %>
 <%@page import="jakarta.servlet.http.*,jakarta.servlet.*"%>
 <%
-    HttpSession session = request.getSession(false);
     Modelo.Usuario logger = (Usuario) request.getAttribute("usuario");
+    
+    if (logger == null) {
+            response.sendRedirect("index.jsp");
+        }
+    if (logger.getRolUsuario().equals("Administrador")){
+    
+    } else {
+        response.sendRedirect("sinAutorizacion.jsp");
+    }
     %>
 <!DOCTYPE html>
 <html lang="en">
