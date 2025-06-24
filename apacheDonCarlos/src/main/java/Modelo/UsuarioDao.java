@@ -84,16 +84,17 @@ public class UsuarioDao {
     }
 
     public int Agregar(Usuario usuario) {
-        String sql = "INSERT INTO usuarios(nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios(idUsuario, nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
 
-            ps.setString(1, usuario.getNomUsuario());
-            ps.setString(2, usuario.getApeUsuario());
-            ps.setString(3, usuario.getEmaUsuario());
-            ps.setString(4, usuario.getPassUsuario());
-            ps.setString(5, usuario.getRolUsuario());
+            ps.setInt(1, usuario.getIdUsuario());
+            ps.setString(2, usuario.getNomUsuario());
+            ps.setString(3, usuario.getApeUsuario());
+            ps.setString(4, usuario.getEmaUsuario());
+            ps.setString(5, usuario.getPassUsuario());
+            ps.setString(6, usuario.getRolUsuario());
             r = ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al agregar usuario: " + e.getMessage());
