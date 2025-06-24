@@ -44,8 +44,8 @@
                             <td><%= u.getApeUsuario()%></td>
                             <td><%= u.getEmaUsuario()%></td>
                             <td><%= u.getRolUsuario()%></td>
-                            <td><button class="boton boton-editar"><a style="text-decoration: none" href="UsuarioController?menu=Usuarios&accion=Editar&idUsuario=<%= u.getIdUsuario()%>">Editar</a></button>
-                                <button class="boton boton-eliminar"><a style="text-decoration: none" href="UsuarioController?menu=Usuarios&accion=Eliminar&idUsuario=<%= u.getIdUsuario()%>">Eliminar</button></td>
+                            <td><button class="boton boton-editar"><a href="UsuarioController?menu=Usuarios&accion=Editar&idUsuario=<%= u.getIdUsuario()%>">Editar</a></button>
+                                <button class="boton boton-eliminar"><a href="UsuarioController?menu=Usuarios&accion=Eliminar&idUsuario=<%= u.getIdUsuario()%>">Eliminar</button></td>
                         </tr>
                         <%
                             }

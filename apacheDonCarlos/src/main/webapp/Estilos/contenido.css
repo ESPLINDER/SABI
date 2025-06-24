@@ -28,7 +28,7 @@
     border: 1px solid #ddd;
 }
 
-.contenido th, .contenido .td {
+.contenido th, .contenido td {
     padding: 12px 15px;
     text-align: center;
     border-bottom: 1px solid #ddd;
@@ -40,18 +40,11 @@
     font-weight: bold;
 }
 
-.contenido tr {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.contenido .tr:hover {
+.contenido tr:hover {
     background-color: #f1f1f1;
     cursor: pointer;
 }
 
-contenido tr:nth-child(even) {
-    background-color: #fafafa;
-}
 /*botones de opciones*/
 .boton {
     padding: 5px 10px;
@@ -72,10 +65,16 @@ contenido tr:nth-child(even) {
 }
 .boton-editar a {
     color: #000000;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .boton-eliminar a {
     color: #000000;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .boton-agregar {
