@@ -70,6 +70,9 @@ public class UsuarioController extends HttpServlet {
                 case "Actualizar":
                     this.ActualizarUsuario(request, response);
                     break;
+                case "Eliminar":
+                    this.EliminarUsuario(request, response);
+                    break;
             }
         }
         processRequest(request, response);
@@ -141,6 +144,16 @@ public class UsuarioController extends HttpServlet {
             request.getRequestDispatcher("UsuarioController?menu=Usuarios&accion=Listar").forward(request, response);
         } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error al actualizar");
+        }
+    }
+    
+    protected void EliminarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try{
+        doc = Integer.parseInt(request.getParameter("idUsuario"));
+        usu_dao.Eliminar(doc);
+        request.getRequestDispatcher("UsuarioController?menu=Usuarios&accion=Listar").forward(request, response);
+        }catch(ServletException | IOException | NumberFormatException e){
+            System.out.println("Error al eliminar");
         }
     }
 }
