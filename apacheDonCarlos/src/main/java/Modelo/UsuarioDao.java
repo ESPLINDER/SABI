@@ -62,31 +62,49 @@ public class UsuarioDao {
 
     public Usuario ListarId(int id) {
         Usuario usu = new Usuario();
-        String sql = "SELECT * FROM USUARIOS where idUsuario =" + id;
+        String sql = "SELECT * FROM usuarios WHERE idUsuario = ?";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                usu.setIdUsuario(rs.getInt(1));
-                usu.setEmaUsuario(rs.getString(2));
-                usu.setPassUsuario(rs.getString(3));
-                usu.setNomUsuario(rs.getString(4));
-                usu.setApeUsuario(rs.getString(5));
-                usu.setRolUsuario(rs.getString(6));
+                usu.setIdUsuario(rs.getInt("idUsuario"));
+                usu.setNomUsuario(rs.getString("nomUsuario"));
+                usu.setApeUsuario(rs.getString("apeUsuario"));
+                usu.setEmaUsuario(rs.getString("emaUsuario"));
+                usu.setPassUsuario(rs.getString("passUsuario"));
+                usu.setRolUsuario(rs.getString("rolUsuario"));
             }
         } catch (Exception e) {
-            System.out.println("Error al seleccionar el usuario");
+            System.out.println("Error al seleccionar el usuario: " + e.getMessage());
         }
         return usu;
     }
 
-    public int Actualizar(Usuario usu){
-        String sql = "UPDATE USUARIOS SET nomUsuario = ?, apeUsuario = ?, emaUsuario = ?, passUsuario = ?, rolUsuario = ? where idUsuario = ?";
-        System.out.println("vamos a actualizar");
-        System.out.println("actualizando al usuario "+usu);
-        try{
+    public int Agregar(Usuario usuario) {
+        String sql = "INSERT INTO usuarios(nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?)";
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+
+            ps.setString(1, usuario.getNomUsuario());
+            ps.setString(2, usuario.getApeUsuario());
+            ps.setString(3, usuario.getEmaUsuario());
+            ps.setString(4, usuario.getPassUsuario());
+            ps.setString(5, usuario.getRolUsuario());
+            r = ps.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al agregar usuario: " + e.getMessage());
+        }
+        return r;
+    }
+
+    public int Actualizar(Usuario usu) {
+        String sql = "UPDATE usuarios SET nomUsuario = ?, apeUsuario = ?, emaUsuario = ?, passUsuario = ?, rolUsuario = ? WHERE idUsuario = ?";
+        System.out.println("Actualizando usuario con ID: " + usu.getIdUsuario());
+        try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
             
@@ -97,29 +115,33 @@ public class UsuarioDao {
             ps.setString(5, usu.getRolUsuario());
             ps.setInt(6, usu.getIdUsuario());
             r = ps.executeUpdate();
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println("Error al actualizar usuario");
+            
+            if (r > 0) {
+                System.out.println("Usuario actualizado correctamente");
+            } else {
+                System.out.println("No se pudo actualizar el usuario");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al actualizar usuario: " + e.getMessage());
         }
-        System.out.println(r);
         return r;
     }
     
-    public int Agregar(Usuario usuario) {
-        String sql = "INSERT INTO usuarios(idUsuario, nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?, ?)";
+    public int Eliminar(int idUsuario) {
+        String sql = "DELETE FROM usuarios WHERE idUsuario = ?";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
-
-            ps.setInt(1, usuario.getIdUsuario());
-            ps.setString(2, usuario.getNomUsuario());
-            ps.setString(3, usuario.getApeUsuario());
-            ps.setString(4, usuario.getEmaUsuario());
-            ps.setString(5, usuario.getPassUsuario());
-            ps.setString(6, usuario.getRolUsuario());
+            ps.setInt(1, idUsuario);
             r = ps.executeUpdate();
-            rs.close();
+            
+            if (r > 0) {
+                System.out.println("Usuario eliminado correctamente");
+            } else {
+                System.out.println("No se encontró el usuario con ID: " + idUsuario);
+            }
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al agregar usuario: " + e.getMessage());
+            System.out.println("Error al eliminar usuario: " + e.getMessage());
         }
         return r;
     }
