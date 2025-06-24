@@ -55,9 +55,11 @@ public class ValidarUsuario extends HttpServlet {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ValidarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (usu.getEmaUsuario() != null || usu.getPassUsuario() != null) {
+            if (usu.getEmaUsuario() != null && usu.getPassUsuario() != null) {
+                
                 HttpSession session = request.getSession();
-                session.setAttribute("logger", usu);
+                session.setAttribute("usuario", usu);
+                
                 request.setAttribute("usuario", usu); //vamos a la pagina donde se autentica el usuario
                 if (usu.getRolUsuario().equals("Administrador")) {
                     request.getRequestDispatcher("IndexAdmin.jsp").forward(request, response);
@@ -66,7 +68,7 @@ public class ValidarUsuario extends HttpServlet {
                 }
             } else {
                 request.setAttribute("error", "Usuario o contraseña incorrectos");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("error", "Ingrese Usuario y Contraseña");

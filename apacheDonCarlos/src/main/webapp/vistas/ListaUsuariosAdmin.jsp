@@ -1,18 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, Modelo.Usuario" %>
-<%@page import="jakarta.servlet.http.*,jakarta.servlet.*"%>
-<%
-    Modelo.Usuario logger = (Usuario) request.getAttribute("usuario");
-    
-    if (logger == null) {
-            response.sendRedirect("index.jsp");
-        }
-    if (logger.getRolUsuario().equals("Administrador")){
-    
-    } else {
-        response.sendRedirect("sinAutorizacion.jsp");
-    }
-    %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -74,13 +61,13 @@
                 </table>
             </div>
             <div>
-                <% Modelo.Usuario usuario = (Usuario) request.getAttribute("mostrar_usuario"); 
-                String idValue = (usuario != null) ? String.valueOf(usuario.getIdUsuario()) : "";
-                String nomValue = (usuario != null) ? String.valueOf(usuario.getNomUsuario()) : "";
-                String apeValue = (usuario != null) ? String.valueOf(usuario.getApeUsuario()) : "";
-                String emaValue = (usuario != null) ? String.valueOf(usuario.getEmaUsuario()) : "";
-                String passValue = (usuario != null) ? String.valueOf(usuario.getPassUsuario()) : "";
-                String rolValue = (usuario != null) ? String.valueOf(usuario.getRolUsuario()) : "";
+                <% Modelo.Usuario usuarioEditar = (Usuario) request.getAttribute("mostrar_usuario"); 
+                String idValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getIdUsuario()) : "";
+                String nomValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getNomUsuario()) : "";
+                String apeValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getApeUsuario()) : "";
+                String emaValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getEmaUsuario()) : "";
+                String passValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getPassUsuario()) : "";
+                String rolValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getRolUsuario()) : "";
                 %>
                 <!-- Modal -->
                 <div class="modal fade" id="editarUsuario" aria-labelledby="editarUsuarioLabel" aria-hidden="true">
@@ -138,7 +125,7 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-        <% if (usuario != null) {
+        <% if (usuarioEditar != null) {
             System.out.println("el objeto no esta vacio");%>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
