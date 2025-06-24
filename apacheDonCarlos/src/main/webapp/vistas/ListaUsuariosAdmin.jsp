@@ -15,7 +15,7 @@
     <body>
         <%--Aqui Insertamos el dasboard--%>
         <%@ include file="../plantillas/DashAdminController.jsp" %>
-        
+
         <%--Aqui empieza el contenido--%>
         <div class="contenido">
             <h1>Lista de Usuarios</h1>
@@ -58,6 +58,85 @@
                     </tbody>
                 </table>
             </div>
+            <div>
+                <% Modelo.Usuario usuario = (Usuario) request.getAttribute("mostrar_usuario"); 
+                String idValue = (usuario != null) ? String.valueOf(usuario.getIdUsuario()) : "";
+                String nomValue = (usuario != null) ? String.valueOf(usuario.getNomUsuario()) : "";
+                String apeValue = (usuario != null) ? String.valueOf(usuario.getApeUsuario()) : "";
+                String emaValue = (usuario != null) ? String.valueOf(usuario.getEmaUsuario()) : "";
+                String passValue = (usuario != null) ? String.valueOf(usuario.getPassUsuario()) : "";
+                String rolValue = (usuario != null) ? String.valueOf(usuario.getRolUsuario()) : "";
+                %>
+                <!-- Modal -->
+                <div class="modal fade" id="editarUsuario" aria-labelledby="editarUsuarioLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editarUsuarioLabel">Editar Usuario</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="edicionUsuario" action="UsuarioController">
+                                    <input type="hidden" name="menu" value="Usuarios">
+                                    <input type="hidden" name="accion" value="Actualizar">
+                                    <div class="form-group">
+                                        <label for="nomUsuario">Numero de documento</label>
+                                        <input name="idUsuario" type="text" class="form-control" id="idUsuario" value="<%=idValue%>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nomUsuario">Nombre</label>
+                                        <input name="nomUsuario" type="text" class="form-control" id="nomUsuario" value="<%=nomValue%>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apeUsuario">Apellido</label>
+                                        <input name="apeUsuario" type="text" class="form-control" id="apeUsuario" value="<%=apeValue%>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="emaUsuario">Correo Electrónico</label>
+                                        <input name="emaUsuario" type="email" class="form-control" id="emaUsuario" value="<%=emaValue%>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passUsuario">Contraseña</label>
+                                        <input name="passUsuario" type="text" class="form-control" id="passUsuario" value="<%=passValue%>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rolUsuario">Rol</label>
+                                        <select name="rolUsuario" class="form-control" id="rolUsuario" required>
+                                            <option value="<%=rolValue%>"><%=rolValue%></option>
+                                            <option value="Administrador">Administrador</option>
+                                            <option value="Empleado">Empleado</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" form="edicionUsuario">Guardar cambios</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+        <% if (usuario != null) {
+            System.out.println("el objeto no esta vacio");%>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var modalElement = document.getElementById('editarUsuario');
+                if (modalElement) {
+                    var modal = new bootstrap.Modal(modalElement);
+                    modal.show();
+                }
+            });
+        </script>
+        <%} else {
+            System.out.println("el objeto esta vacio");
+        %>  <script></script> <%
+                }%>
     </body>
 </html>
