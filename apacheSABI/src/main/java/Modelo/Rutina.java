@@ -16,12 +16,12 @@ public class Rutina {
     String descRutina;
     LocalDateTime creaRutina;
     Entrenador autRutina;
-    Cachorro autorCachorro;
+    Cliente autorCachorro;
 
     public Rutina() {
     }
 
-    public Rutina(int idRutina, int semRutina, String descRutina, LocalDateTime creaRutina, Entrenador autRutina, Cachorro autorCachorro) {
+    public Rutina(int idRutina, int semRutina, String descRutina, LocalDateTime creaRutina, Entrenador autRutina, Cliente autorCachorro) {
         this.idRutina = idRutina;
         this.semRutina = semRutina;
         this.descRutina = descRutina;
@@ -50,7 +50,7 @@ public class Rutina {
         return autRutina;
     }
 
-    public Cachorro getAutorCachorro() {
+    public Cliente getAutorCachorro() {
         return autorCachorro;
     }
 
@@ -74,7 +74,7 @@ public class Rutina {
         this.autRutina = autRutina;
     }
 
-    public void setAutorCachorro(Cachorro autorCachorro) {
+    public void setAutorCachorro(Cliente autorCachorro) {
         this.autorCachorro = autorCachorro;
     }
 

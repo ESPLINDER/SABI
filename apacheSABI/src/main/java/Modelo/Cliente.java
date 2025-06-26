@@ -1,6 +1,6 @@
 package Modelo;
 
-class Cachorro {
+class Cliente {
     private int idCliente;
     private String tipCliente;
     private String planCliente;
@@ -12,10 +12,10 @@ class Cachorro {
     private Usuario usuario;
 
     // Constructor vacío
-    public Cachorro() {}
+    public Cliente() {}
 
     // Constructor completo
-    public Cachorro(int idCliente, String tipCliente, String planCliente, 
+    public Cliente(int idCliente, String tipCliente, String planCliente, 
                    int fkIdUsuario, String nomCliente, String apeCliente) {
         this.idCliente = idCliente;
         this.tipCliente = tipCliente;

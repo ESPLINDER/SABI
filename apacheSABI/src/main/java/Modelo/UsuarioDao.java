@@ -16,25 +16,28 @@ public class UsuarioDao {
     int r; //Valor que se retorna al agregar un nuevo registro
     
     // Crear usuario
-    public boolean crear(Usuario usuario) throws SQLException {
+    public int crear(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuario (tipUsuario, emaUsuario, nacUsuario, edadUsuario, " +
                      "pasUsuario, genUsuario, tipDocumento, docUsuario, ciuUsuario, domicilio) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, usuario.getTipUsuario());
-            stmt.setString(2, usuario.getEmaUsuario());
-            stmt.setDate(3, Date.valueOf(usuario.getNacUsuario()));
-            stmt.setInt(4, usuario.getEdadUsuario());
-            stmt.setString(5, hashPassword(usuario.getPasUsuario()));
-            stmt.setString(6, usuario.getGenUsuario());
-            stmt.setString(7, usuario.getTipDocumento());
-            stmt.setInt(8, usuario.getDocUsuario());
-            stmt.setString(9, usuario.getCiuUsuario());
-            stmt.setString(10, usuario.getDomicilio());
+        try {
+            ps.setString(1, usuario.getTipUsuario());
+            ps.setString(2, usuario.getEmaUsuario());
+            ps.setDate(3, Date.valueOf(usuario.getNacUsuario()));
+            ps.setInt(4, usuario.getEdadUsuario());
+            ps.setString(5, hashPassword(usuario.getPasUsuario()));
+            ps.setString(6, usuario.getGenUsuario());
+            ps.setString(7, usuario.getTipDocumento());
+            ps.setInt(8, usuario.getDocUsuario());
+            ps.setString(9, usuario.getCiuUsuario());
+            ps.setString(10, usuario.getDomicilio());
             
-            return stmt.executeUpdate() > 0;
+            r = ps.executeUpdate();
+        }catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al agregar usuario: " + e.getMessage());
         }
+        return r;
     }
 
     // Crear usuario y retornar ID generado
