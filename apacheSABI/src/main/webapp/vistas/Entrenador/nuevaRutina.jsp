@@ -40,6 +40,7 @@
                     </div>
                 </form>
             </div>
+            
             <div id="contenedorTabla" class="col-md-10" style="display: none;">
                 <h1>Crea tu rutina</h1>
                 <form action="">

@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +16,7 @@
 
        function selectRole(role) {
            if (role === 'entrenador') {
-               window.location.href = 'entrenar.jsp'; // Redirigir a la página de entrenar
+               window.location.href = '<%= contextPath %>/vistas/Entrenador/index.jsp'; // Redirigir a la página de entrenar
            } else if (role === 'cliente') {
                window.location.href = 'cliente.jsp'; // Redirigir a la página del cliente
            }
