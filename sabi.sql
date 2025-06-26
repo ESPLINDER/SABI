@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2025 a las 17:05:03
+-- Tiempo de generación: 26-06-2025 a las 19:55:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `newsabi`
+-- Base de datos: `sabi`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,37 @@ CREATE TABLE `calificacion` (
   `calificacion` float NOT NULL,
   `fechaCalificacion` date NOT NULL,
   `comentario` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `diagnostico`
+--
+
+CREATE TABLE `diagnostico` (
+  `idDiagnostico` int(12) NOT NULL,
+  `fkIdCliente` int(11) NOT NULL,
+  `fkIdRutina` int(11) DEFAULT NULL,
+  `genero` enum('masculino','femenino') NOT NULL,
+  `edad` int(3) NOT NULL,
+  `estatura` float NOT NULL,
+  `peso` float NOT NULL,
+  `imcCliente` float NOT NULL,
+  `fechaDiagnostico` date NOT NULL,
+  `frecuenciaDiagnostico` int(2) NOT NULL,
+  `proxDiagnostico` date NOT NULL,
+  `objetivo` varchar(30) NOT NULL,
+  `medidaBrazo` float NOT NULL,
+  `medidaCintura` float NOT NULL,
+  `medidaPierna` float NOT NULL,
+  `condicionMedica` varchar(30) NOT NULL,
+  `medicamentos` varchar(30) NOT NULL,
+  `frecCardiaca` varchar(10) NOT NULL,
+  `nivelHidratacion` varchar(20) NOT NULL,
+  `tipoHidratacion` varchar(100) NOT NULL,
+  `nivelActividadFisica` enum('sedentario','ligeramente activo','moderadamente activo','muy activo','extremadamente activo') NOT NULL,
+  `suplementos` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -145,7 +176,17 @@ CREATE TABLE `usuario` (
 -- Indices de la tabla `calificacion`
 --
 ALTER TABLE `calificacion`
-  ADD PRIMARY KEY (`idCalificaion`);
+  ADD PRIMARY KEY (`idCalificaion`),
+  ADD KEY `fkIdCliente` (`fkIdCliente`,`fkIdRutina`),
+  ADD KEY `fkIdRutina` (`fkIdRutina`);
+
+--
+-- Indices de la tabla `diagnostico`
+--
+ALTER TABLE `diagnostico`
+  ADD PRIMARY KEY (`idDiagnostico`),
+  ADD KEY `fkIdRutina` (`fkIdRutina`),
+  ADD KEY `fkIdCliente` (`fkIdCliente`);
 
 --
 -- Indices de la tabla `ejercicio`
@@ -166,7 +207,8 @@ ALTER TABLE `ejercicio_rutina`
 -- Indices de la tabla `redes`
 --
 ALTER TABLE `redes`
-  ADD PRIMARY KEY (`idRed`);
+  ADD PRIMARY KEY (`idRed`),
+  ADD KEY `idUsuario` (`idUsuario`);
 
 --
 -- Indices de la tabla `rutina`
@@ -199,6 +241,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `calificacion`
   MODIFY `idCalificaion` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `diagnostico`
+--
+ALTER TABLE `diagnostico`
+  MODIFY `idDiagnostico` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
@@ -241,6 +289,20 @@ ALTER TABLE `usuario`
 --
 
 --
+-- Filtros para la tabla `calificacion`
+--
+ALTER TABLE `calificacion`
+  ADD CONSTRAINT `calificacion_ibfk_1` FOREIGN KEY (`fkIdCliente`) REFERENCES `usuario` (`idUsuario`),
+  ADD CONSTRAINT `calificacion_ibfk_2` FOREIGN KEY (`fkIdRutina`) REFERENCES `rutina` (`idRutina`);
+
+--
+-- Filtros para la tabla `diagnostico`
+--
+ALTER TABLE `diagnostico`
+  ADD CONSTRAINT `diagnostico_ibfk_1` FOREIGN KEY (`fkIdRutina`) REFERENCES `rutina` (`idRutina`),
+  ADD CONSTRAINT `diagnostico_ibfk_2` FOREIGN KEY (`fkIdCliente`) REFERENCES `usuario` (`idUsuario`);
+
+--
 -- Filtros para la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
@@ -252,6 +314,12 @@ ALTER TABLE `ejercicio`
 ALTER TABLE `ejercicio_rutina`
   ADD CONSTRAINT `ejercicio_rutina_ibfk_1` FOREIGN KEY (`fkIdEjercicio`) REFERENCES `ejercicio` (`idEjercicio`),
   ADD CONSTRAINT `ejercicio_rutina_ibfk_2` FOREIGN KEY (`fkIdRutina`) REFERENCES `rutina` (`idRutina`);
+
+--
+-- Filtros para la tabla `redes`
+--
+ALTER TABLE `redes`
+  ADD CONSTRAINT `redes_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
 
 --
 -- Filtros para la tabla `rutina`
