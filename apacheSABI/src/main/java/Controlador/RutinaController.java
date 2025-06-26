@@ -21,11 +21,11 @@ public class RutinaController extends HttpServlet {
     RutinaDao rutina_dao = new RutinaDao();
     Rutina rutina = new Rutina();
     int idRutina;
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
 
@@ -43,27 +43,21 @@ public class RutinaController extends HttpServlet {
                     break;
                 case "Delete":
                     break;
+                case "tabla":
+                    this.tablaRutina(request, response);
+                    break;
             }
         }
         processRequest(request, response);
     }
-    
-    protected void AgregarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void tablaRutina(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String idUsuario = request.getParameter("idUsuario"); //el request solo sirve con Strings
-            String nomUsuario = request.getParameter("nomUsuario");
-            String apeUsuario = request.getParameter("apeUsuario");
-            String emaUsuario = request.getParameter("emaUsuario");
-            String passUsuario = request.getParameter("passUsuario");
-            String rolUsuario = request.getParameter("rolUsuario");
+            String numSemanas = request.getParameter("numSemanas"); //el request solo sirve con Strings
+            String numDias = request.getParameter("numDias");
+            String numEjercicios = request.getParameter("numEjercicios");
 
             //le damos los valores del formulario al objeto usu
-            int idRutina;
-    int semRutina;
-    String descRutina;
-    LocalDateTime creaRutina;
-    Entrenador autRutina;
-    Cliente autorCliente;
             rutina.setIdRutina(Integer.parseInt(idRutina));
             rutina.setSemRutina(semRutina);
             rutina.setDescRutina(descRutina);
@@ -77,7 +71,7 @@ public class RutinaController extends HttpServlet {
             System.out.println("Error en el registro");
         }
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

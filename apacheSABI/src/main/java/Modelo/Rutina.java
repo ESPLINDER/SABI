@@ -12,45 +12,51 @@ import java.time.LocalDateTime;
  */
 public class Rutina {
     int idRutina;
-    int semRutina;
+    int semanasRutina;
     String descRutina;
-    LocalDateTime creaRutina;
-    Entrenador autRutina;
+    String nivelRutina; //basico, intermedio, avanzado
+    LocalDateTime creacionRutina;
+    Usuario autRutina;
     Cliente autorCliente;
 
     public Rutina() {
     }
 
-    public Rutina(int idRutina, int semRutina, String descRutina, LocalDateTime creaRutina, Entrenador autRutina, Cliente autorCachorro) {
+    public Rutina(int idRutina, int semanasRutina, String descRutina, String nivelRutina, LocalDateTime creacionRutina, Usuario autRutina, Cliente autorCliente) {
         this.idRutina = idRutina;
-        this.semRutina = semRutina;
+        this.semanasRutina = semanasRutina;
         this.descRutina = descRutina;
-        this.creaRutina = creaRutina;
+        this.nivelRutina = nivelRutina;
+        this.creacionRutina = creacionRutina;
         this.autRutina = autRutina;
-        this.autorCliente = autorCachorro;
+        this.autorCliente = autorCliente;
     }
 
     public int getIdRutina() {
         return idRutina;
     }
 
-    public int getSemRutina() {
-        return semRutina;
+    public int getSemanasRutina() {
+        return semanasRutina;
     }
 
     public String getDescRutina() {
         return descRutina;
     }
 
-    public LocalDateTime getCreaRutina() {
-        return creaRutina;
+    public String getNivelRutina() {
+        return nivelRutina;
     }
 
-    public Entrenador getAutRutina() {
+    public LocalDateTime getCreacionRutina() {
+        return creacionRutina;
+    }
+
+    public Usuario getAutRutina() {
         return autRutina;
     }
 
-    public Cliente getAutorCachorro() {
+    public Cliente getAutorCliente() {
         return autorCliente;
     }
 
@@ -58,28 +64,27 @@ public class Rutina {
         this.idRutina = idRutina;
     }
 
-    public void setSemRutina(int semRutina) {
-        this.semRutina = semRutina;
+    public void setSemanasRutina(int semanasRutina) {
+        this.semanasRutina = semanasRutina;
     }
 
     public void setDescRutina(String descRutina) {
         this.descRutina = descRutina;
     }
 
-    public void setCreaRutina(LocalDateTime creaRutina) {
-        this.creaRutina = creaRutina;
+    public void setNivelRutina(String nivelRutina) {
+        this.nivelRutina = nivelRutina;
     }
 
-    public void setAutRutina(Entrenador autRutina) {
+    public void setCreacionRutina(LocalDateTime creacionRutina) {
+        this.creacionRutina = creacionRutina;
+    }
+
+    public void setAutRutina(Usuario autRutina) {
         this.autRutina = autRutina;
     }
 
-    public void setAutorCachorro(Cliente autorCachorro) {
-        this.autorCliente = autorCachorro;
-    }
-
-    @Override
-    public String toString() {
-        return "Rutina{" + "idRutina=" + idRutina + ", semRutina=" + semRutina + ", descRutina=" + descRutina + ", creaRutina=" + creaRutina + ", autRutina=" + autRutina + ", autorCachorro=" + autorCliente + '}';
+    public void setAutorCliente(Cliente autorCliente) {
+        this.autorCliente = autorCliente;
     }
 }

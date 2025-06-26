@@ -15,7 +15,7 @@ public class UsuarioDao {
 
     public Usuario Validar(String email, String pass) throws ClassNotFoundException {
         Usuario obj_usu = new Usuario();
-        String sql = "SELECT * FROM usuario WHERE emaUsuario = ? AND passUsuario = ?;";
+        String sql = "SELECT idUsuario, emaUsuario, passUsuario, nomUsuario, apeUsuario, rolUsuario FROM usuario WHERE emaUsuario = ? AND passUsuario = ?;";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
@@ -31,7 +31,7 @@ public class UsuarioDao {
                 obj_usu.setRolUsuario(rs.getString("rolUsuario"));
             }
         } catch (SQLException e) {
-            System.out.println("Correo o contraseña ingresados son invalidos");
+            System.out.println("Correo o contraseña ingresados, son invalidos");
         }
         return obj_usu;
     }

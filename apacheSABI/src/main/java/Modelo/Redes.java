@@ -4,17 +4,17 @@ package Modelo;
  */
 public class Redes {
     int idRed;
-    Entrenador idEntrenador;
-    String nombreRed;
+    Usuario idUsuario;
+    String nomRed;
     String urlRed;
 
     public Redes() {
     }
 
-    public Redes(int idRed, Entrenador idEntrenador, String nombreRed, String urlRed) {
+    public Redes(int idRed, Usuario idUsuario, String nomRed, String urlRed) {
         this.idRed = idRed;
-        this.idEntrenador = idEntrenador;
-        this.nombreRed = nombreRed;
+        this.idUsuario = idUsuario;
+        this.nomRed = nomRed;
         this.urlRed = urlRed;
     }
 
@@ -22,12 +22,12 @@ public class Redes {
         return idRed;
     }
 
-    public Entrenador getIdEntrenador() {
-        return idEntrenador;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public String getNombreRed() {
-        return nombreRed;
+    public String getNomRed() {
+        return nomRed;
     }
 
     public String getUrlRed() {
@@ -38,12 +38,12 @@ public class Redes {
         this.idRed = idRed;
     }
 
-    public void setIdEntrenador(Entrenador idEntrenador) {
-        this.idEntrenador = idEntrenador;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public void setNombreRed(String nombreRed) {
-        this.nombreRed = nombreRed;
+    public void setNomRed(String nomRed) {
+        this.nomRed = nomRed;
     }
 
     public void setUrlRed(String urlRed) {
@@ -52,7 +52,8 @@ public class Redes {
 
     @Override
     public String toString() {
-        return "Redes{" + "idRed=" + idRed + ", idEntrenador=" + idEntrenador + ", nombreRed=" + nombreRed + ", urlRed=" + urlRed + '}';
+        return "Redes{" + "idRed=" + idRed + ", idUsuario=" + idUsuario + ", nomRed=" + nomRed + ", urlRed=" + urlRed + '}';
     }
+
     
 }

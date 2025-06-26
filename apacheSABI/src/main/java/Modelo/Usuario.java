@@ -1,88 +1,153 @@
 package Modelo;
 
-import java.time.LocalDate;
-
 public class Usuario {
     int idUsuario;
-    String tipUsuario;
+    String nomUsuario;
+    String apeUsuario;
     String emaUsuario;
-    LocalDate nacUsuario;
-    int edadUsuario;
-    String pasUsuario;
-    String genUsuario;
+    String passUsuario;
     String tipDocumento;
-    int docUsuario;
-    String ciuUsuario;
-    String domicilio;
+    int numDocumento;
+    String ciudadUsuario;
+    String rolUsuario; //cliente, entrenador
+    String especialidad;
+    String xpAños;
+    String biogreafia; //Se muestra en su perfil
+    float promCalificacion;
+    String estadoUsuario;
 
-    // Constructor vacío
-    public Usuario() {}
+    public Usuario() {
+    }
 
-    // Constructor completo
-    public Usuario(int idUsuario, String tipUsuario, String emaUsuario, LocalDate nacUsuario,
-                   int edadUsuario, String pasUsuario, String genUsuario, String tipDocumento,
-                   int docUsuario, String ciuUsuario, String domicilio) {
+    public Usuario(int idUsuario, String nomUsuario, String apeUsuario, String emaUsuario, String pasUssuario, String tipDocumento, int numDocumento, String ciudadUsuario, String rolUsuario, String especialidad, String xpAños, String biogreafia, float promCalificacion, String estadoUsuario) {
         this.idUsuario = idUsuario;
-        this.tipUsuario = tipUsuario;
+        this.nomUsuario = nomUsuario;
+        this.apeUsuario = apeUsuario;
         this.emaUsuario = emaUsuario;
-        this.nacUsuario = nacUsuario;
-        this.edadUsuario = edadUsuario;
-        this.pasUsuario = pasUsuario;
-        this.genUsuario = genUsuario;
+        this.passUsuario = pasUssuario;
         this.tipDocumento = tipDocumento;
-        this.docUsuario = docUsuario;
-        this.ciuUsuario = ciuUsuario;
-        this.domicilio = domicilio;
+        this.numDocumento = numDocumento;
+        this.ciudadUsuario = ciudadUsuario;
+        this.rolUsuario = rolUsuario;
+        this.especialidad = especialidad;
+        this.xpAños = xpAños;
+        this.biogreafia = biogreafia;
+        this.promCalificacion = promCalificacion;
+        this.estadoUsuario = estadoUsuario;
     }
 
-    // Getters y Setters
-    public int getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
-
-    public String getTipUsuario() { return tipUsuario; }
-    public void setTipUsuario(String tipUsuario) { this.tipUsuario = tipUsuario; }
-
-    public String getEmaUsuario() { return emaUsuario; }
-    public void setEmaUsuario(String emaUsuario) { this.emaUsuario = emaUsuario; }
-
-    public LocalDate getNacUsuario() { return nacUsuario; }
-    public void setNacUsuario(LocalDate nacUsuario) { this.nacUsuario = nacUsuario; }
-
-    public int getEdadUsuario() { return edadUsuario; }
-    public void setEdadUsuario(int edadUsuario) { this.edadUsuario = edadUsuario; }
-
-    public String getPasUsuario() { return pasUsuario; }
-    public void setPasUsuario(String pasUsuario) { this.pasUsuario = pasUsuario; }
-
-    public String getGenUsuario() { return genUsuario; }
-    public void setGenUsuario(String genUsuario) { this.genUsuario = genUsuario; }
-
-    public String getTipDocumento() { return tipDocumento; }
-    public void setTipDocumento(String tipDocumento) { this.tipDocumento = tipDocumento; }
-
-    public int getDocUsuario() { return docUsuario; }
-    public void setDocUsuario(int docUsuario) { this.docUsuario = docUsuario; }
-
-    public String getCiuUsuario() { return ciuUsuario; }
-    public void setCiuUsuario(String ciuUsuario) { this.ciuUsuario = ciuUsuario; }
-
-    public String getDomicilio() { return domicilio; }
-    public void setDomicilio(String domicilio) { this.domicilio = domicilio; }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "idUsuario=" + idUsuario +
-                ", tipUsuario='" + tipUsuario + '\'' +
-                ", emaUsuario='" + emaUsuario + '\'' +
-                ", nacUsuario=" + nacUsuario +
-                ", edadUsuario=" + edadUsuario +
-                ", genUsuario='" + genUsuario + '\'' +
-                ", tipDocumento='" + tipDocumento + '\'' +
-                ", docUsuario=" + docUsuario +
-                ", ciuUsuario='" + ciuUsuario + '\'' +
-                ", domicilio='" + domicilio + '\'' +
-                '}';
+    public int getIdUsuario() {
+        return idUsuario;
     }
+
+    public String getNomUsuario() {
+        return nomUsuario;
+    }
+
+    public String getApeUsuario() {
+        return apeUsuario;
+    }
+
+    public String getEmaUsuario() {
+        return emaUsuario;
+    }
+
+    public String getPassUsuario() {
+        return passUsuario;
+    }
+
+    public String getTipDocumento() {
+        return tipDocumento;
+    }
+
+    public int getNumDocumento() {
+        return numDocumento;
+    }
+
+    public String getCiudadUsuario() {
+        return ciudadUsuario;
+    }
+
+    public String getRolUsuario() {
+        return rolUsuario;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public String getXpAños() {
+        return xpAños;
+    }
+
+    public String getBiogreafia() {
+        return biogreafia;
+    }
+
+    public float getPromCalificacion() {
+        return promCalificacion;
+    }
+
+    public String getEstadoUsuario() {
+        return estadoUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public void setNomUsuario(String nomUsuario) {
+        this.nomUsuario = nomUsuario;
+    }
+
+    public void setApeUsuario(String apeUsuario) {
+        this.apeUsuario = apeUsuario;
+    }
+
+    public void setEmaUsuario(String emaUsuario) {
+        this.emaUsuario = emaUsuario;
+    }
+
+    public void setPassUsuario(String pasUssuario) {
+        this.passUsuario = pasUssuario;
+    }
+
+    public void setTipDocumento(String tipDocumento) {
+        this.tipDocumento = tipDocumento;
+    }
+
+    public void setNumDocumento(int numDocumento) {
+        this.numDocumento = numDocumento;
+    }
+
+    public void setCiudadUsuario(String ciudadUsuario) {
+        this.ciudadUsuario = ciudadUsuario;
+    }
+
+    public void setRolUsuario(String rolUsuario) {
+        this.rolUsuario = rolUsuario;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public void setXpAños(String xpAños) {
+        this.xpAños = xpAños;
+    }
+
+    public void setBiogreafia(String biogreafia) {
+        this.biogreafia = biogreafia;
+    }
+
+    public void setPromCalificacion(float promCalificacion) {
+        this.promCalificacion = promCalificacion;
+    }
+
+    public void setEstadoUsuario(String estadoUsuario) {
+        this.estadoUsuario = estadoUsuario;
+    }
+    
+    
 }
 
