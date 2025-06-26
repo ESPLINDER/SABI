@@ -167,11 +167,11 @@
                    <div class="form-row">
                        <div class="form-group">
                            <label>Contraseña *</label>
-                           <input type="password" name="password" placeholder="Contraseña" required minlength="8">
+                           <input type="password" name="password" placeholder="Contraseña" required minlength="1">
                        </div>
                        <div class="form-group">
                            <label>Confirmar Contraseña *</label>
-                           <input type="password" name="confirmPassword" placeholder="Confirmar contraseña" required minlength="8">
+                           <input type="password" name="confirmPassword" placeholder="Confirmar contraseña" required minlength="1">
                        </div>
                    </div>
 
