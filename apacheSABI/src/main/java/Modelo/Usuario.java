@@ -4,6 +4,8 @@ package Modelo;
  */
 public class Usuario {
     private int idUsuario;
+    private String nomUsuario;
+    private String apeUsuario;
     private String emaUsuario;
     private String passUsuario;
     private String tipDocumento;
@@ -19,8 +21,10 @@ public class Usuario {
     public Usuario() {
     }
     
-    public Usuario(int idUsuario, String emaUsuario, String passUsuario, String tipDocumento, int numDocumento, String ciudadUsuario, String rolUsuario) {
+    public Usuario(int idUsuario,String nomUsuario, String apeUsuario, String emaUsuario, String passUsuario, String tipDocumento, int numDocumento, String ciudadUsuario, String rolUsuario) {
         this.idUsuario = idUsuario;
+        this.nomUsuario = nomUsuario;
+        this.apeUsuario = apeUsuario;
         this.emaUsuario = emaUsuario;
         this.passUsuario = passUsuario;
         this.tipDocumento = tipDocumento;
@@ -31,6 +35,14 @@ public class Usuario {
     
     public int getIdUsuario() {
         return idUsuario;
+    }
+    
+    public String getnomUsuario() {
+        return nomUsuario;
+    }
+    
+    public String getapeUsuario() {
+        return apeUsuario;
     }
     
     public String getEmaUsuario() {
@@ -81,6 +93,14 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
     
+    public void setnomUsuario(String nomUsuario) {
+        this.nomUsuario = nomUsuario;
+    }
+        
+        public void setapeUsuario(String apeUsuario) {
+        this.apeUsuario = apeUsuario;
+    }    
+    
     public void setEmaUsuario(String emaUsuario) {
         this.emaUsuario = emaUsuario;
     }
@@ -125,8 +145,8 @@ public class Usuario {
         this.estadoUsuario = estadoUsuario;
     }
     
-    @Override
-    public String toString() {
-        return "Usuario{" + "idUsuario=" + idUsuario + ", emaUsuario=" + emaUsuario + ", passUsuario=" + passUsuario + ", tipDocumento=" + tipDocumento + ", numDocumento=" + numDocumento + ", ciudadUsuario=" + ciudadUsuario + ", rolUsuario=" + rolUsuario + ", especialidad=" + especialidad + ", xpAños=" + xpAños + ", biografia=" + biografia + ", promCalificacion=" + promCalificacion + ", estadoUsuario=" + estadoUsuario + '}';
-    }
+   @Override
+public String toString() {
+    return "Usuario{" + "idUsuario=" + idUsuario + ", emaUsuario='" + emaUsuario + "', passUsuario='" + passUsuario + "', tipDocumento=" + tipDocumento + ", numDocumento=" + numDocumento + ", nomUsuario='" + nomUsuario + "', apeUsuario='" + apeUsuario + "', ciudadUsuario='" + ciudadUsuario + "', rolUsuario=" + rolUsuario + ", especialidad='" + especialidad + "', xpAños=" + xpAños + ", biografia='" + biografia + "', promCalificacion=" + promCalificacion + ", estadoUsuario=" + estadoUsuario + '}';
+  }
 }
