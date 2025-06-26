@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author William
@@ -14,6 +15,38 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/RutinaController")
 public class RutinaController extends HttpServlet {
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String menu = request.getParameter("menu");
+        String accion = request.getParameter("accion");
+
+        if (menu.equals("Administrador")) {
+            request.getRequestDispatcher("/vistas/admin/IndexAdmin.jsp");
+
+        }
+        if (menu.equals("Usuarios")) {
+            switch (accion) {
+                case "Read":
+                    break;
+                case "Agregar":
+                    this.AgregarUsuario(request, response);
+                    break;
+                case "Editar":
+                    this.EditarUsuario(request, response);
+                    break;
+                case "Actualizar":
+                    this.ActualizarUsuario(request, response);
+                    break;
+                case "Eliminar":
+                    this.EliminarUsuario(request, response);
+                    break;
+            }
+        }
+        processRequest(request, response);
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -29,12 +62,6 @@ public class RutinaController extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     @Override
