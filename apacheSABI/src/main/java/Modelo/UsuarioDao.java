@@ -1,21 +1,20 @@
 package Modelo;
     
-import com.sabi.config.DatabaseConnection;
-import com.sabi.Modelo.Usuario;
+import Config.Conexion;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class UsuarioDao {
-    private Connection connection;
 
-    public UsuarioDao() throws SQLException {
-        this.connection = DatabaseConnection.getInstance().getConnection();
-    }
-
+    Conexion cn = new Conexion();
+    Connection conn;
+    PreparedStatement ps;
+    ResultSet rs;
+    int r; //Valor que se retorna al agregar un nuevo registro
+    
     // Crear usuario
     public boolean crear(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuario (tipUsuario, emaUsuario, nacUsuario, edadUsuario, " +
