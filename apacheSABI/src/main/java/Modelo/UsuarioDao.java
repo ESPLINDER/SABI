@@ -5,6 +5,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author SDC
+ */
 public class UsuarioDao {
 
     Conexion cn = new Conexion();
@@ -15,7 +18,7 @@ public class UsuarioDao {
 
     public Usuario Validar(String email, String pass) throws ClassNotFoundException {
         Usuario obj_usu = new Usuario();
-        String sql = "SELECT idUsuario, emaUsuario, passUsuario, nomUsuario, apeUsuario, rolUsuario FROM usuario WHERE emaUsuario = ? AND passUsuario = ?;";
+        String sql = "SELECT * FROM usuario WHERE emaUsuario = ? AND passUsuario = ? AND estadoUsuario = 'activo';";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
@@ -26,18 +29,24 @@ public class UsuarioDao {
                 obj_usu.setIdUsuario(rs.getInt("idUsuario"));
                 obj_usu.setEmaUsuario(rs.getString("emaUsuario"));
                 obj_usu.setPassUsuario(rs.getString("passUsuario"));
-                obj_usu.setNomUsuario(rs.getString("nomUsuario"));
-                obj_usu.setApeUsuario(rs.getString("apeUsuario"));
+                obj_usu.setTipDocumento(rs.getString("tipDocumento"));
+                obj_usu.setNumDocumento(rs.getInt("numDocumento"));
+                obj_usu.setCiudadUsuario(rs.getString("ciudadUsuario"));
                 obj_usu.setRolUsuario(rs.getString("rolUsuario"));
+                obj_usu.setEspecialidad(rs.getString("especialidad"));
+                obj_usu.setXpAños(rs.getFloat("xpAños"));
+                obj_usu.setBiografia(rs.getString("biografia"));
+                obj_usu.setPromCalificacion(rs.getInt("promCalificacion"));
+                obj_usu.setEstadoUsuario(rs.getString("estadoUsuario"));
             }
         } catch (SQLException e) {
-            System.out.println("Correo o contraseña ingresados, son invalidos");
+            System.out.println("Correo o contraseña invalidos: " + e.getMessage());
         }
         return obj_usu;
     }
-    
+
     public List<Usuario> listar() {
-        String sql = "SELECT idUsuario, nomUsuario, apeUsuario, emaUsuario FROM usuario";
+        String sql = "SELECT * FROM usuario WHERE estadoUsuario = 'activo'";
         List<Usuario> lista = new ArrayList<>();
         try {
             conn = cn.Conexion();
@@ -45,22 +54,29 @@ public class UsuarioDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 Usuario usu = new Usuario();
-                usu.setIdUsuario(rs.getInt(1));
-                usu.setNomUsuario(rs.getString(2));
-                usu.setApeUsuario(rs.getString(3));
-                usu.setEmaUsuario(rs.getString(4));
-                usu.setRolUsuario(rs.getString(5));
+                usu.setIdUsuario(rs.getInt("idUsuario"));
+                usu.setEmaUsuario(rs.getString("emaUsuario"));
+                usu.setPassUsuario(rs.getString("passUsuario"));
+                usu.setTipDocumento(rs.getString("tipDocumento"));
+                usu.setNumDocumento(rs.getInt("numDocumento"));
+                usu.setCiudadUsuario(rs.getString("ciudadUsuario"));
+                usu.setRolUsuario(rs.getString("rolUsuario"));
+                usu.setEspecialidad(rs.getString("especialidad"));
+                usu.setXpAños(rs.getFloat("xpAños"));
+                usu.setBiografia(rs.getString("biografia"));
+                usu.setPromCalificacion(rs.getInt("promCalificacion"));
+                usu.setEstadoUsuario(rs.getString("estadoUsuario"));
                 lista.add(usu);
             }
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al generar lista de usuarios");
+            System.out.println("Error al generar lista de usuarios: " + e.getMessage());
         }
         return lista;
     }
 
     public Usuario ListarId(int id) {
         Usuario usu = new Usuario();
-        String sql = "SELECT * FROM usuarios WHERE idUsuario = ?";
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ?";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
@@ -69,11 +85,17 @@ public class UsuarioDao {
 
             while (rs.next()) {
                 usu.setIdUsuario(rs.getInt("idUsuario"));
-                usu.setNomUsuario(rs.getString("nomUsuario"));
-                usu.setApeUsuario(rs.getString("apeUsuario"));
                 usu.setEmaUsuario(rs.getString("emaUsuario"));
                 usu.setPassUsuario(rs.getString("passUsuario"));
+                usu.setTipDocumento(rs.getString("tipDocumento"));
+                usu.setNumDocumento(rs.getInt("numDocumento"));
+                usu.setCiudadUsuario(rs.getString("ciudadUsuario"));
                 usu.setRolUsuario(rs.getString("rolUsuario"));
+                usu.setEspecialidad(rs.getString("especialidad"));
+                usu.setXpAños(rs.getFloat("xpAños"));
+                usu.setBiografia(rs.getString("biografia"));
+                usu.setPromCalificacion(rs.getInt("promCalificacion"));
+                usu.setEstadoUsuario(rs.getString("estadoUsuario"));
             }
         } catch (Exception e) {
             System.out.println("Error al seleccionar el usuario: " + e.getMessage());
@@ -82,21 +104,29 @@ public class UsuarioDao {
     }
 
     public int Agregar(Usuario usuario) {
-        String sql = "INSERT INTO usuario (tipUsuario, emaUsuario, nacUsuario, edadUsuario, " +
-                     "pasUsuario, genUsuario, tipDocumento, docUsuario, ciuUsuario, domicilio) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+        String sql = "INSERT INTO usuario(emaUsuario, passUsuario, tipDocumento, numDocumento, ciudadUsuario, rolUsuario, especialidad, xpAños, biografia, promCalificacion, estadoUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
 
-            ps.setInt(1, usuario.getIdUsuario());
-            ps.setString(2, usuario.getNomUsuario());
-            ps.setString(3, usuario.getApeUsuario());
-            ps.setString(4, usuario.getEmaUsuario());
-            ps.setString(5, usuario.getPassUsuario());
+            ps.setString(1, usuario.getEmaUsuario());
+            ps.setString(2, usuario.getPassUsuario());
+            ps.setString(3, usuario.getTipDocumento());
+            ps.setInt(4, usuario.getNumDocumento());
+            ps.setString(5, usuario.getCiudadUsuario());
             ps.setString(6, usuario.getRolUsuario());
+            ps.setString(7, usuario.getEspecialidad());
+            ps.setFloat(8, usuario.getXpAños());
+            ps.setString(9, usuario.getBiografia());
+            ps.setInt(10, usuario.getPromCalificacion());
+            ps.setString(11, usuario.getEstadoUsuario());
             r = ps.executeUpdate();
+            
+            if (r > 0) {
+                System.out.println("Usuario agregado correctamente");
+            } else {
+                System.out.println("No se pudo agregar el usuario");
+            }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al agregar usuario: " + e.getMessage());
         }
@@ -104,18 +134,24 @@ public class UsuarioDao {
     }
 
     public int Actualizar(Usuario usu) {
-        String sql = "UPDATE usuarios SET nomUsuario = ?, apeUsuario = ?, emaUsuario = ?, passUsuario = ?, rolUsuario = ? WHERE idUsuario = ?";
+        String sql = "UPDATE usuario SET emaUsuario = ?, passUsuario = ?, tipDocumento = ?, numDocumento = ?, ciudadUsuario = ?, rolUsuario = ?, especialidad = ?, xpAños = ?, biografia = ?, promCalificacion = ?, estadoUsuario = ? WHERE idUsuario = ?";
         System.out.println("Actualizando usuario con ID: " + usu.getIdUsuario());
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
             
-            ps.setString(1, usu.getNomUsuario());
-            ps.setString(2, usu.getApeUsuario());
-            ps.setString(3, usu.getEmaUsuario());
-            ps.setString(4, usu.getPassUsuario());
-            ps.setString(5, usu.getRolUsuario());
-            ps.setInt(6, usu.getIdUsuario());
+            ps.setString(1, usu.getEmaUsuario());
+            ps.setString(2, usu.getPassUsuario());
+            ps.setString(3, usu.getTipDocumento());
+            ps.setInt(4, usu.getNumDocumento());
+            ps.setString(5, usu.getCiudadUsuario());
+            ps.setString(6, usu.getRolUsuario());
+            ps.setString(7, usu.getEspecialidad());
+            ps.setFloat(8, usu.getXpAños());
+            ps.setString(9, usu.getBiografia());
+            ps.setInt(10, usu.getPromCalificacion());
+            ps.setString(11, usu.getEstadoUsuario());
+            ps.setInt(12, usu.getIdUsuario());
             r = ps.executeUpdate();
             
             if (r > 0) {
@@ -130,7 +166,7 @@ public class UsuarioDao {
     }
     
     public int Eliminar(int idUsuario) {
-        String sql = "DELETE FROM usuarios WHERE idUsuario = ?";
+        String sql = "UPDATE usuario SET estadoUsuario = 'inactivo' WHERE idUsuario = ?";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
@@ -138,13 +174,111 @@ public class UsuarioDao {
             r = ps.executeUpdate();
             
             if (r > 0) {
-                System.out.println("Usuario eliminado correctamente");
+                System.out.println("Usuario desactivado correctamente");
             } else {
                 System.out.println("No se encontró el usuario con ID: " + idUsuario);
             }
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al eliminar usuario: " + e.getMessage());
+            System.out.println("Error al desactivar usuario: " + e.getMessage());
         }
         return r;
+    }
+    
+    // Método para eliminar físicamente un usuario (usar con precaución)
+    public int EliminarFisico(int idUsuario) {
+        String sql = "DELETE FROM usuario WHERE idUsuario = ?";
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, idUsuario);
+            r = ps.executeUpdate();
+            
+            if (r > 0) {
+                System.out.println("Usuario eliminado físicamente");
+            } else {
+                System.out.println("No se encontró el usuario con ID: " + idUsuario);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al eliminar usuario físicamente: " + e.getMessage());
+        }
+        return r;
+    }
+    
+    // Método para listar usuarios por rol
+    public List<Usuario> listarPorRol(String rol) {
+        String sql = "SELECT * FROM usuario WHERE rolUsuario = ? AND estadoUsuario = 'activo'";
+        List<Usuario> lista = new ArrayList<>();
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, rol);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Usuario usu = new Usuario();
+                usu.setIdUsuario(rs.getInt("idUsuario"));
+                usu.setEmaUsuario(rs.getString("emaUsuario"));
+                usu.setPassUsuario(rs.getString("passUsuario"));
+                usu.setTipDocumento(rs.getString("tipDocumento"));
+                usu.setNumDocumento(rs.getInt("numDocumento"));
+                usu.setCiudadUsuario(rs.getString("ciudadUsuario"));
+                usu.setRolUsuario(rs.getString("rolUsuario"));
+                usu.setEspecialidad(rs.getString("especialidad"));
+                usu.setXpAños(rs.getFloat("xpAños"));
+                usu.setBiografia(rs.getString("biografia"));
+                usu.setPromCalificacion(rs.getInt("promCalificacion"));
+                usu.setEstadoUsuario(rs.getString("estadoUsuario"));
+                lista.add(usu);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al generar lista de usuarios por rol: " + e.getMessage());
+        }
+        return lista;
+    }
+    
+    // Método para verificar si existe un email se usa el boolean para evitar datos previamente registrados en BD
+    public boolean existeEmail(String email) {
+        String sql = "SELECT COUNT(*) FROM usuario WHERE emaUsuario = ?";
+        boolean existe = false;
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                existe = rs.getInt(1) > 0;
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al verificar email: " + e.getMessage());
+        }
+        return existe;
+    }
+    
+    // Método para verificar si existe un número de documento se usa el boolean para evitar datos previamente registrados en BD 
+    public boolean existeDocumento(int numDocumento) {
+        String sql = "SELECT COUNT(*) FROM usuario WHERE numDocumento = ?";
+        boolean existe = false;
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, numDocumento);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                existe = rs.getInt(1) > 0;
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al verificar documento: " + e.getMessage());
+        }
+        return existe;
+    }
+    
+    // Método adicional para cerrar la conexión
+    public void cerrarConexion() {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar la conexión: " + e.getMessage());
+        }
     }
 }
