@@ -1,14 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SABI - Dashboard Entrenador</title>
-   <link rel="stylesheet" href="META-INF/estilos/dashTrain.css">
+   <link rel="stylesheet" type="text/css" href="<%= contextPath %>/estilos/indexEntre.css">
    <style>
        .pattern-bg {
-           background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><g fill="%23E3F2FD" opacity="0.3"><path d="M15 15h6v6h-6zM30 15h6v6h-6zM45 15h6v6h-6zM15 30h6v6h-6zM30 30h6v6h-6zM45 30h6v6h-6zM15 45h6v6h-6zM30 45h6v6h-6zM45 45h6v6h-6z"/><circle cx="12" cy="12" r="2"/><circle cx="27" cy="12" r="2"/><circle cx="42" cy="12" r="2"/><circle cx="12" cy="27" r="2"/><circle cx="27" cy="27" r="2"/><circle cx="42" cy="27" r="2"/><circle cx="12" cy="42" r="2"/><circle cx="27" cy="42" r="2"/><circle cx="42" cy="42" r="2"/></g></svg>');
+           background-image: url('../recursos/fondoSabiNuevo.png');
        }
    </style>
 </head>
