@@ -1,24 +1,22 @@
 
 /* Reset y configuración base */
-  * {
+* {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
 }
 
-
 body {
    font-family: 'Arial', sans-serif;
    line-height: 1.6;
    scroll-behavior: smooth;
-   background-image: url('../../recursos/fondoSabiNuevo.png');
+   background-image: url('../recursos/fondoSabiNuevo.png');
    background-repeat: repeat;
    background-size: auto;
    background-attachment: fixed;
    background-position: center;
    min-height: 100vh;
 }
-
 
 /* Navbar */
 .navbar {
@@ -30,7 +28,6 @@ body {
    z-index: 100;
 }
 
-
 .nav-container {
    max-width: 1200px;
    margin: 0 auto;
@@ -39,7 +36,6 @@ body {
    align-items: center;
    justify-content: space-between;
 }
-
 
 .back-btn {
    background: rgba(255, 255, 255, 0.2);
@@ -56,12 +52,10 @@ body {
    height: 45px;
 }
 
-
 .back-btn:hover {
    background: rgba(255, 255, 255, 0.3);
    transform: translateX(-2px);
 }
-
 
 .brand-title {
    font-size: 2.5em;
@@ -73,7 +67,6 @@ body {
    left: 50%;
    transform: translateX(-50%);
 }
-
 
 /* Modal Styles */
 .modal-overlay {
@@ -92,12 +85,10 @@ body {
    transition: all 0.3s ease;
 }
 
-
 .modal-overlay.active {
    opacity: 1;
    visibility: visible;
 }
-
 
 .modal-content {
    background: white;
@@ -111,11 +102,9 @@ body {
    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
-
 .modal-overlay.active .modal-content {
    transform: scale(1);
 }
-
 
 .modal-title {
    font-size: 2.2em;
@@ -124,13 +113,11 @@ body {
    font-weight: bold;
 }
 
-
 .modal-subtitle {
    font-size: 1.1em;
    color: #666;
    margin-bottom: 30px;
 }
-
 
 .role-buttons {
    display: flex;
@@ -138,7 +125,6 @@ body {
    justify-content: center;
    flex-wrap: wrap;
 }
-
 
 .role-btn {
    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
@@ -157,18 +143,15 @@ body {
    gap: 10px;
 }
 
-
 .role-btn:hover {
    background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
    transform: translateY(-3px);
    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
 }
 
-
 .role-icon {
    font-size: 2.5em;
 }
-
 
 /* Sección de Registro */
 .register-section {
@@ -179,7 +162,6 @@ body {
    padding: 40px 20px;
    background: rgba(245, 247, 250, 0.3);
 }
-
 
 .register-container {
    display: flex;
@@ -192,12 +174,10 @@ body {
    backdrop-filter: blur(10px);
 }
 
-
 .register-card {
    flex: 2;
    padding: 50px 40px;
 }
-
 
 .register-card h2 {
    font-size: 2.5em;
@@ -207,11 +187,9 @@ body {
    text-align: center;
 }
 
-
 .register-form {
    max-width: 100%;
 }
-
 
 .form-row {
    display: grid;
@@ -220,17 +198,14 @@ body {
    margin-bottom: 25px;
 }
 
-
 .form-group {
    display: flex;
    flex-direction: column;
 }
 
-
 .form-group.full-width {
    grid-column: 1 / -1;
 }
-
 
 .form-group label {
    margin-bottom: 8px;
@@ -238,7 +213,6 @@ body {
    font-size: 14px;
    color: #333;
 }
-
 
 .form-group input,
 .form-group select {
@@ -250,13 +224,11 @@ body {
    background: rgba(255, 255, 255, 0.9);
 }
 
-
 .form-group input:focus,
 .form-group select:focus {
    outline: none;
    border-color: #2196F3;
 }
-
 
 .password-hint {
    color: #666;
@@ -264,7 +236,6 @@ body {
    margin-top: -20px;
    margin-bottom: 20px;
 }
-
 
 .register-btn {
    width: 100%;
@@ -280,19 +251,16 @@ body {
    transition: all 0.3s ease;
 }
 
-
 .register-btn:hover {
    background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
    transform: translateY(-2px);
    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
 }
 
-
 .login-link-container {
    text-align: center;
    color: #666;
 }
-
 
 .login-link {
    color: #2196F3;
@@ -300,11 +268,9 @@ body {
    font-weight: 500;
 }
 
-
 .login-link:hover {
    text-decoration: underline;
 }
-
 
 .logo-section {
    flex: 1;
@@ -316,11 +282,9 @@ body {
    min-height: 600px;
 }
 
-
 .logo {
    text-align: center;
 }
-
 
 .logo-img {
    width: 140px;
@@ -333,13 +297,11 @@ body {
    padding: 20px;
 }
 
-
 .logo h2 {
    font-size: 3.2em;
    font-weight: bold;
    letter-spacing: 4px;
 }
-
 
 /* Footer */
 .main-footer {
@@ -349,7 +311,6 @@ body {
    margin-top: 40px;
 }
 
-
 .footer-content {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
@@ -358,24 +319,20 @@ body {
    margin: 0 auto;
 }
 
-
 .footer-section h4 {
    font-size: 1.1em;
    margin-bottom: 15px;
    color: #64B5F6;
 }
 
-
 .footer-section ul {
    list-style: none;
 }
-
 
 .footer-section li {
    margin-bottom: 8px;
    font-size: 14px;
 }
-
 
 .footer-section a {
    color: #ccc;
@@ -383,11 +340,9 @@ body {
    transition: color 0.3s;
 }
 
-
 .footer-section a:hover {
    color: #64B5F6;
 }
-
 
 .footer-bottom {
    border-top: 1px solid rgba(255,255,255,0.1);
@@ -399,23 +354,19 @@ body {
    font-size: 14px;
 }
 
-
 .social-icons {
    display: flex;
    gap: 15px;
 }
-
 
 .social-icons a {
    font-size: 18px;
    transition: transform 0.3s;
 }
 
-
 .social-icons a:hover {
    transform: scale(1.2);
 }
-
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -437,7 +388,6 @@ body {
        font-size: 2.5em;
    }
 }
-
 
 @media (max-width: 768px) {
    .form-row {
@@ -472,18 +422,15 @@ body {
        padding: 30px 20px 15px;
    }
 
-
    .role-buttons {
        flex-direction: column;
        align-items: center;
    }
 
-
    .modal-content {
        padding: 30px 20px;
    }
 }
-
 
 @media (max-width: 480px) {
    .navbar {
@@ -527,21 +474,17 @@ body {
        font-size: 16px;
    }
 
-
    .modal-content {
        width: 95%;
        padding: 25px 15px;
    }
 
-
    .modal-title {
        font-size: 1.8em;
    }
-
 
    .role-btn {
        min-width: 120px;
        padding: 15px 20px;
    }
 }
-

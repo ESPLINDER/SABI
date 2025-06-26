@@ -11,7 +11,7 @@ body {
    line-height: 1.6;
    scroll-behavior: smooth;
    /* Ruta corregida para que no joda mas la imagen de fondo */
-   background-image: url('../../recursos/fondoSabiNuevo.png');
+   background-image: url('../recursos/fondoSabiNuevo.png');
    background-repeat: repeat;
    background-size: auto;
    background-attachment: fixed;
