@@ -1,0 +1,10 @@
+td:hover {
+  background-color: #d3e0ff;  /* Color al pasar el mouse */
+  cursor: pointer;            /* Cursor tipo mano */
+  transition: 0.3s ease;      /* Transición suave */
+}
+
+.boton-eliminar {
+    background-color: #f44336;
+    color: white;
+}

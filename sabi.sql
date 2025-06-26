@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2025 a las 19:55:15
+-- Tiempo de generación: 27-06-2025 a las 00:22:24
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -155,6 +155,8 @@ CREATE TABLE `suscripcion` (
 
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
+  `nomUsuario` varchar(20) NOT NULL,
+  `apeUsuario` varchar(20) NOT NULL,
   `emaUsuario` varchar(40) NOT NULL,
   `passUsuario` varchar(100) NOT NULL,
   `tipDocumento` enum('CC','TI','CE') NOT NULL,
@@ -164,7 +166,7 @@ CREATE TABLE `usuario` (
   `especialidad` varchar(40) NOT NULL,
   `xpAños` float NOT NULL,
   `biografia` varchar(200) NOT NULL,
-  `promCalificacion` int(11) NOT NULL,
+  `promCalificacion` float NOT NULL,
   `estadoUsuario` enum('activo','inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

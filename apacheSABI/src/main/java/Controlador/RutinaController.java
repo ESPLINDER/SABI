@@ -20,6 +20,7 @@ public class RutinaController extends HttpServlet {
 
     RutinaDao rutina_dao = new RutinaDao();
     Rutina rutina = new Rutina();
+    Rutina tablaRutina = new Rutina();
     int idRutina;
 
     @Override
@@ -43,30 +44,35 @@ public class RutinaController extends HttpServlet {
                     break;
                 case "Delete":
                     break;
-                case "tabla":
-                    this.tablaRutina(request, response);
+                case "estructura":
                     break;
             }
         }
         processRequest(request, response);
     }
 
-    protected void tablaRutina(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void CrearTabla(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String numSemanas = request.getParameter("numSemanas"); //el request solo sirve con Strings
-            String numDias = request.getParameter("numDias");
-            String numEjercicios = request.getParameter("numEjercicios");
-
-            //le damos los valores del formulario al objeto usu
-            rutina.setIdRutina(Integer.parseInt(idRutina));
-            rutina.setSemRutina(semRutina);
-            rutina.setDescRutina(descRutina);
-            rutina.setCreaRutina(LocalDateTime.MIN);
-            rutina.setAutRutina(autRutina);
-            rutina.setAutorCliente(autorCliente);
-
-            usu_dao.Agregar(usu);
-            request.getRequestDispatcher("UsuarioController?menu=Usuarios&accion=Listar").forward(request, response);
+            String NumSemanas = request.getParameter("numSemanas");
+            String NumDias = request.getParameter("numDias");
+            String NumEjercicios = request.getParameter("numEjercicios");
+            int numSemanas = 0;
+            int numDias = 0;
+            int numEjercicios = 0;
+            if (NumSemanas != null && NumDias != null && NumEjercicios != null) {
+                numSemanas = Integer.parseInt(NumSemanas);
+                numDias = Integer.parseInt(NumDias);
+                numEjercicios = Integer.parseInt(NumEjercicios);
+                String tabla = "block";
+                request.setAttribute("numSemanas", numSemanas);
+                request.setAttribute("numDias", numDias);
+                request.setAttribute("numEjercicios", numEjercicios);
+                request.getRequestDispatcher("vistas/Entrenador/nuevaRutina.jsp").forward(request, response);
+            } else {
+                String alerta = "Por favor rellenar todos los campos con numeros enteros";
+                request.setAttribute("alerta", alerta);
+                request.getRequestDispatcher("vistas/Entrenador/nuevaRutina.jsp").forward(request, response);
+            }
         } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error en el registro");
         }

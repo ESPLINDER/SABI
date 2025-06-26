@@ -18,6 +18,9 @@ public class Rutina {
     LocalDateTime creacionRutina;
     Usuario autRutina;
     Cliente autorCliente;
+    
+    //para la creacion base de la rutina
+    int numDias;
 
     public Rutina() {
     }
