@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2025 a las 01:15:15
+-- Tiempo de generación: 26-06-2025 a las 02:58:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -195,11 +195,10 @@ INSERT INTO `ejercicio_rutina` (`idEje_Rut`, `fkIdEjercicio`, `fkIdRutina`, `pes
 
 CREATE TABLE `entrenador` (
   `idEntrenador` int(11) NOT NULL,
+  `fkIdUsuario` int(11) DEFAULT NULL,
   `espEntrenador` varchar(40) NOT NULL,
   `expEntrenador` float DEFAULT NULL,
   `bioEntrenador` varchar(200) DEFAULT NULL,
-  `pagEntrenador` varchar(20) NOT NULL,
-  `fkIdUsuario` int(11) DEFAULT NULL,
   `nomEntrenador` varchar(20) NOT NULL,
   `apeEntrenador` varchar(20) NOT NULL,
   `estadoEntrenador` enum('activo','inactivo') NOT NULL,
@@ -210,8 +209,21 @@ CREATE TABLE `entrenador` (
 -- Volcado de datos para la tabla `entrenador`
 --
 
-INSERT INTO `entrenador` (`idEntrenador`, `espEntrenador`, `expEntrenador`, `bioEntrenador`, `pagEntrenador`, `fkIdUsuario`, `nomEntrenador`, `apeEntrenador`, `estadoEntrenador`, `calificacion`) VALUES
-(1, 'atletismo', 5, 'corredor de largas distancias desde hace 5 anios', 'davivienda', 1, 'Jersson', 'Contreras', 'activo', NULL);
+INSERT INTO `entrenador` (`idEntrenador`, `fkIdUsuario`, `espEntrenador`, `expEntrenador`, `bioEntrenador`, `nomEntrenador`, `apeEntrenador`, `estadoEntrenador`, `calificacion`) VALUES
+(1, 1, 'atletismo', 5, 'corredor de largas distancias desde hace 5 anios', 'Jersson', 'Contreras', 'activo', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `redes`
+--
+
+CREATE TABLE `redes` (
+  `idRed` int(11) NOT NULL,
+  `idEntrenador` int(11) NOT NULL,
+  `nombreRed` varchar(15) NOT NULL,
+  `urlRed` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -344,11 +356,19 @@ ALTER TABLE `entrenador`
   ADD KEY `fkIdUsuario` (`fkIdUsuario`);
 
 --
+-- Indices de la tabla `redes`
+--
+ALTER TABLE `redes`
+  ADD PRIMARY KEY (`idRed`),
+  ADD KEY `idEntrenador` (`idEntrenador`);
+
+--
 -- Indices de la tabla `rutina`
 --
 ALTER TABLE `rutina`
   ADD PRIMARY KEY (`idRutina`),
-  ADD KEY `autRutina` (`autRutina`);
+  ADD KEY `autRutina` (`autRutina`),
+  ADD KEY `autorCachorro` (`autorCachorro`);
 
 --
 -- Indices de la tabla `suscripcion`
@@ -466,10 +486,17 @@ ALTER TABLE `entrenador`
   ADD CONSTRAINT `entrenador_ibfk_1` FOREIGN KEY (`fkIdUsuario`) REFERENCES `usuario` (`idUsuario`);
 
 --
+-- Filtros para la tabla `redes`
+--
+ALTER TABLE `redes`
+  ADD CONSTRAINT `redes_ibfk_1` FOREIGN KEY (`idEntrenador`) REFERENCES `entrenador` (`idEntrenador`);
+
+--
 -- Filtros para la tabla `rutina`
 --
 ALTER TABLE `rutina`
-  ADD CONSTRAINT `rutina_ibfk_1` FOREIGN KEY (`autRutina`) REFERENCES `entrenador` (`idEntrenador`);
+  ADD CONSTRAINT `rutina_ibfk_1` FOREIGN KEY (`autRutina`) REFERENCES `entrenador` (`idEntrenador`),
+  ADD CONSTRAINT `rutina_ibfk_2` FOREIGN KEY (`autorCachorro`) REFERENCES `cliente` (`idCliente`);
 
 --
 -- Filtros para la tabla `suscripcion`
