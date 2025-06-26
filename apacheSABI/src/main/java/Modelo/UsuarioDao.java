@@ -34,7 +34,7 @@ public class UsuarioDao {
             ps.setString(10, usuario.getDomicilio());
             
             r = ps.executeUpdate();
-        }catch (ClassNotFoundException | SQLException e) {
+        }catch (SQLException e) {
             System.out.println("Error al agregar usuario: " + e.getMessage());
         }
         return r;
