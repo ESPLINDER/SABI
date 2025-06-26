@@ -1,5 +1,7 @@
 package Controlador;
 
+import Modelo.Rutina;
+import Modelo.RutinaDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -7,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -15,6 +18,10 @@ import java.util.List;
 @WebServlet("/RutinaController")
 public class RutinaController extends HttpServlet {
 
+    RutinaDao rutina_dao = new RutinaDao();
+    Rutina rutina = new Rutina();
+    int idRutina;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -28,23 +35,47 @@ public class RutinaController extends HttpServlet {
         }
         if (menu.equals("Usuarios")) {
             switch (accion) {
+                case "Create":
+                    break;
                 case "Read":
                     break;
-                case "Agregar":
-                    this.AgregarUsuario(request, response);
+                case "Update":
                     break;
-                case "Editar":
-                    this.EditarUsuario(request, response);
-                    break;
-                case "Actualizar":
-                    this.ActualizarUsuario(request, response);
-                    break;
-                case "Eliminar":
-                    this.EliminarUsuario(request, response);
+                case "Delete":
                     break;
             }
         }
         processRequest(request, response);
+    }
+    
+    protected void AgregarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String idUsuario = request.getParameter("idUsuario"); //el request solo sirve con Strings
+            String nomUsuario = request.getParameter("nomUsuario");
+            String apeUsuario = request.getParameter("apeUsuario");
+            String emaUsuario = request.getParameter("emaUsuario");
+            String passUsuario = request.getParameter("passUsuario");
+            String rolUsuario = request.getParameter("rolUsuario");
+
+            //le damos los valores del formulario al objeto usu
+            int idRutina;
+    int semRutina;
+    String descRutina;
+    LocalDateTime creaRutina;
+    Entrenador autRutina;
+    Cliente autorCliente;
+            rutina.setIdRutina(Integer.parseInt(idRutina));
+            rutina.setSemRutina(semRutina);
+            rutina.setDescRutina(descRutina);
+            rutina.setCreaRutina(LocalDateTime.MIN);
+            rutina.setAutRutina(autRutina);
+            rutina.setAutorCliente(autorCliente);
+
+            usu_dao.Agregar(usu);
+            request.getRequestDispatcher("UsuarioController?menu=Usuarios&accion=Listar").forward(request, response);
+        } catch (ServletException | IOException | NumberFormatException e) {
+            System.out.println("Error en el registro");
+        }
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

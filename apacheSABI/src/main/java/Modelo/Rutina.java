@@ -16,7 +16,7 @@ public class Rutina {
     String descRutina;
     LocalDateTime creaRutina;
     Entrenador autRutina;
-    Cliente autorCachorro;
+    Cliente autorCliente;
 
     public Rutina() {
     }
@@ -27,7 +27,7 @@ public class Rutina {
         this.descRutina = descRutina;
         this.creaRutina = creaRutina;
         this.autRutina = autRutina;
-        this.autorCachorro = autorCachorro;
+        this.autorCliente = autorCachorro;
     }
 
     public int getIdRutina() {
@@ -51,7 +51,7 @@ public class Rutina {
     }
 
     public Cliente getAutorCachorro() {
-        return autorCachorro;
+        return autorCliente;
     }
 
     public void setIdRutina(int idRutina) {
@@ -75,11 +75,11 @@ public class Rutina {
     }
 
     public void setAutorCachorro(Cliente autorCachorro) {
-        this.autorCachorro = autorCachorro;
+        this.autorCliente = autorCachorro;
     }
 
     @Override
     public String toString() {
-        return "Rutina{" + "idRutina=" + idRutina + ", semRutina=" + semRutina + ", descRutina=" + descRutina + ", creaRutina=" + creaRutina + ", autRutina=" + autRutina + ", autorCachorro=" + autorCachorro + '}';
+        return "Rutina{" + "idRutina=" + idRutina + ", semRutina=" + semRutina + ", descRutina=" + descRutina + ", creaRutina=" + creaRutina + ", autRutina=" + autRutina + ", autorCachorro=" + autorCliente + '}';
     }
 }
