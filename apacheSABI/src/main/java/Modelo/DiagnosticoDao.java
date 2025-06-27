@@ -23,47 +23,54 @@ public class DiagnosticoDao {
             e.printStackTrace();
         }
     }
-    // Crear un nuevo diagnóstico
-    public boolean crearDiagnostico(Diagnostico diagnostico) {
-        String sql = "INSERT INTO diagnostico (fkIdCliente, fkIdRutina, genero, edad, estatura, peso, " +
-                    "imcCliente, fechaDiagnostico, frecuenciaDiagnostico, proxDiagnostico, objetivo, " +
-                    "medidaBrazo, medidaCintura, medidaPierna, condicionMedica, medicamentos, " +
-                    "frecCardiaca, nivelHidratacion, tipoHidratacion, nivelActividadFisica, suplementos) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, diagnostico.getFkIdCliente());
-            if (diagnostico.getFkIdRutina() != null) {
-                pstmt.setInt(2, diagnostico.getFkIdRutina());
-            } else {
-                pstmt.setNull(2, Types.INTEGER);
-            }
-            pstmt.setString(3, diagnostico.getGenero());
-            pstmt.setInt(4, diagnostico.getEdad());
-            pstmt.setFloat(5, diagnostico.getEstatura());
-            pstmt.setFloat(6, diagnostico.getPeso());
-            pstmt.setFloat(7, diagnostico.getImcCliente());
-            pstmt.setDate(8, Date.valueOf(diagnostico.getFechaDiagnostico()));
-            pstmt.setInt(9, diagnostico.getFrecuenciaDiagnostico());
-            pstmt.setDate(10, Date.valueOf(diagnostico.getProxDiagnostico()));
-            pstmt.setString(11, diagnostico.getObjetivo());
-            pstmt.setFloat(12, diagnostico.getMedidaBrazo());
-            pstmt.setFloat(13, diagnostico.getMedidaCintura());
-            pstmt.setFloat(14, diagnostico.getMedidaPierna());
-            pstmt.setString(15, diagnostico.getCondicionMedica());
-            pstmt.setString(16, diagnostico.getMedicamentos());
-            pstmt.setString(17, diagnostico.getFrecCardiaca());
-            pstmt.setString(18, diagnostico.getNivelHidratacion());
-            pstmt.setString(19, diagnostico.getTipoHidratacion());
-            pstmt.setString(20, diagnostico.getNivelActividadFisica());
-            pstmt.setString(21, diagnostico.getSuplementos());
-            
-            return pstmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.err.println("Error al crear diagnóstico: " + e.getMessage());
-            return false;
+
+// Crear diagnóstico y retornar ID insertado
+public Integer crearDiagnosticoYRetornarId(Diagnostico diagnostico) {
+    String sql = "INSERT INTO diagnostico (fkIdCliente, fkIdRutina, genero, edad, estatura, peso, " +
+                 "imcCliente, fechaDiagnostico, frecuenciaDiagnostico, proxDiagnostico, objetivo, " +
+                 "medidaBrazo, medidaCintura, medidaPierna, condicionMedica, medicamentos, " +
+                 "frecCardiaca, nivelHidratacion, tipoHidratacion, nivelActividadFisica, suplementos) " +
+                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    try (PreparedStatement pstmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+        pstmt.setInt(1, diagnostico.getFkIdCliente());
+        if (diagnostico.getFkIdRutina() != null) {
+            pstmt.setInt(2, diagnostico.getFkIdRutina());
+        } else {
+            pstmt.setNull(2, Types.INTEGER);
         }
+        pstmt.setString(3, diagnostico.getGenero());
+        pstmt.setInt(4, diagnostico.getEdad());
+        pstmt.setFloat(5, diagnostico.getEstatura());
+        pstmt.setFloat(6, diagnostico.getPeso());
+        pstmt.setFloat(7, diagnostico.getImcCliente());
+        pstmt.setDate(8, Date.valueOf(diagnostico.getFechaDiagnostico()));
+        pstmt.setInt(9, diagnostico.getFrecuenciaDiagnostico());
+        pstmt.setDate(10, Date.valueOf(diagnostico.getProxDiagnostico()));
+        pstmt.setString(11, diagnostico.getObjetivo());
+        pstmt.setFloat(12, diagnostico.getMedidaBrazo());
+        pstmt.setFloat(13, diagnostico.getMedidaCintura());
+        pstmt.setFloat(14, diagnostico.getMedidaPierna());
+        pstmt.setString(15, diagnostico.getCondicionMedica());
+        pstmt.setString(16, diagnostico.getMedicamentos());
+        pstmt.setString(17, diagnostico.getFrecCardiaca());
+        pstmt.setString(18, diagnostico.getNivelHidratacion());
+        pstmt.setString(19, diagnostico.getTipoHidratacion());
+        pstmt.setString(20, diagnostico.getNivelActividadFisica());
+        pstmt.setString(21, diagnostico.getSuplementos());
+
+        int rows = pstmt.executeUpdate();
+        if (rows > 0) {
+            ResultSet generatedKeys = pstmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1); // ID generado
+            }
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al crear diagnóstico: " + e.getMessage());
     }
+    return null;
+}
     
     // Obtener diagnóstico por ID
     public Diagnostico obtenerDiagnosticoPorId(int idDiagnostico) {
