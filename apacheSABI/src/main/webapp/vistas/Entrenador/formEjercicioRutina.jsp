@@ -1,3 +1,4 @@
+<%@page import="Modelo.Ejercicio"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String contextPath = request.getContextPath();%>
@@ -72,21 +73,24 @@
                     <label for="Descanso">Tiempo de descanso en segundos</label>
                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
                 </div>
-                <div>
-                    <iframe width="560" height="315"
-                            src="<%=ejer. %>"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                </div>   
+                <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+                if (ejercicio != null) {%>
+                    <div>
+                        <iframe width="560" height="315"
+                                src="<%= ejercicio.getUrlVideo()%>"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                <%}%>
             </form>
         </div>
         <script>
             function TraerEjercicio() {
-                var ejercicio = document.getElementById("ejercicio").value;
-                window.location.href = "<%= contextPath%>/Ejercicio_RutinaCotroller?accion=TraerEjercicio&semana=<%=semana%>&dia=<%=dia%>&ordenEjercicio=<%=ordenEjercicio%>&idEjercicio=" + var;
+            var ejercicio = document.getElementById("ejercicio").value;
+                    window.location.href = "<%= contextPath%>/Ejercicio_RutinaCotroller?accion=TraerEjercicio&semana=<%=semana%>&dia=<%=dia%>&ordenEjercicio=<%=ordenEjercicio%>&idEjercicio=" + var ;
         </script>
     </body>
 </html>

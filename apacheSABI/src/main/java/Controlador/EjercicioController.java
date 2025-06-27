@@ -2,8 +2,6 @@ package Controlador;
 
 import Modelo.Ejercicio;
 import Modelo.EjercicioDao;
-import Modelo.Ejercicio_Rutina;
-import Modelo.Ejercicio_RutinaDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -49,15 +47,16 @@ public class EjercicioController extends HttpServlet {
         String semana = request.getParameter("semana");
         String dia = request.getParameter("dia");
         String ordenEjercicio = request.getParameter("ordenEjercicio");
-        String idEjercicio = request.getParameter("idEjercicio");
+        String IdEjercicio = request.getParameter("idEjercicio");
         List listaEjercicios = ejercicio_dao.listar();
         request.setAttribute("lista_ejercicios", listaEjercicios);
         request.setAttribute("semana", semana);
         request.setAttribute("dia", dia);
         request.setAttribute("ordenEjercicio", ordenEjercicio);
-        if (idEjercicio != null) {
-            //ejercicio_dao.
-            //request.setAttribute("ejercicio", ejercicio);
+        if (IdEjercicio != null) {
+            int idEjercicio = Integer.parseInt(IdEjercicio);
+            ejercicio_dao.listarId(idEjercicio);
+            request.setAttribute("ejercicio", ejercicio);
         }
         request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
     }

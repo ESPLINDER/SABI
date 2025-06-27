@@ -80,7 +80,7 @@
                                     <%Map<Integer, String[][]> ejercicios = (Map<Integer, String[][]>) request.getAttribute("ejercicios");
                                         String ejercicioValue = (ejercicios != null && ejercicios.get(i) != null && ejercicios.get(i)[j][k] != null)
                                                 ? ejercicios.get(i)[j][k] : "Ejercicio " + k;%>
-                                    <a href="<%= contextPath%>/EjercicioCotroller?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>"><%=ejercicioValue%></a>
+                                    <a href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>"><%=ejercicioValue%></a>
                                     <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
                                 </td>
                                 <%}%>
