@@ -593,3 +593,13 @@
 0:0:0:0:0:0:0:1 - - [26/Jun/2025:19:55:28 -0500] "GET /apacheSABI/vistas/Entrenador/nuevaRutina.jsp?numSemanas=4&numDias=7&numEjercicios=6 HTTP/1.1" 200 97032
 0:0:0:0:0:0:0:1 - - [26/Jun/2025:19:55:48 -0500] "GET /apacheSABI/vistas/Entrenador/nuevaRutina.jsp?numSemanas=100&numDias=7&numEjercicios=100 HTTP/1.1" 200 37783036
 0:0:0:0:0:0:0:1 - - [26/Jun/2025:20:00:15 -0500] "GET /apacheSABI/vistas/Entrenador/nuevaRutina.jsp?numSemanas=10000&numDias=7&numEjercicios=10000 HTTP/1.1" 200 238800406
+127.0.0.1 - - [26/Jun/2025:21:29:43 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [26/Jun/2025:21:29:43 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [26/Jun/2025:21:29:43 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [26/Jun/2025:21:29:43 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [26/Jun/2025:21:29:43 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [26/Jun/2025:21:29:43 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [26/Jun/2025:21:29:44 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [26/Jun/2025:21:29:44 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [26/Jun/2025:21:29:45 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - usuario [26/Jun/2025:21:29:45 -0500] "GET /manager/text/ HTTP/1.1" 200 44

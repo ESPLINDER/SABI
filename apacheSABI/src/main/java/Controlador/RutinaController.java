@@ -82,7 +82,7 @@ public class RutinaController extends HttpServlet {
                 request.setAttribute("numSemanas", numSemanas);
                 request.setAttribute("numDias", numDias);
                 request.setAttribute("numEjercicios", numEjercicios);
-                request.getRequestDispatcher("vistas/Entrenador/nuevaRutina.jsp").forward(request, response);
+                request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
             } else {
                 String alerta = "Por favor rellenar todos los campos con numeros enteros";
                 request.setAttribute("alerta", alerta);

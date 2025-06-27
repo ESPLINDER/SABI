@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="<%= contextPath %>/estilos/barranavegacion.css">
     </head>
     <body>
-        <jsp:include page="/plantillas/barraNavegacion.jsp" />
+        <%@ include file="/plantillas/barraNavegacion.jsp" %>
 
         <div class="contenido">
             <h1>¡Hola Juan Garzon!</h1>

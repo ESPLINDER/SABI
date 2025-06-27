@@ -316,3 +316,8 @@
 26-Jun-2025 19:54:41.594 WARNING [http-nio-8080-exec-237] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
 26-Jun-2025 19:54:41.638 INFO [http-nio-8080-exec-237] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [44] ms
 26-Jun-2025 19:54:41.639 INFO [http-nio-8080-exec-235] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+26-Jun-2025 21:29:45.652 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+26-Jun-2025 21:29:45.654 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+26-Jun-2025 21:29:45.666 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+26-Jun-2025 21:29:45.687 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+26-Jun-2025 21:29:45.702 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]

@@ -41,3 +41,5 @@ Stacktrace:] con causa raíz
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
 		at java.base/java.lang.Thread.run(Thread.java:1575)
+26-Jun-2025 21:29:45.674 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+26-Jun-2025 21:29:45.674 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
