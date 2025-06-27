@@ -20,7 +20,9 @@
             String departamento = request.getParameter("departamento");
             String ciudad = request.getParameter("ciudad");
             String rol = request.getParameter("rol");
-            
+
+            out.println("ROL RECIBIDO (debug): " + rol); // Quita esto si ya ves que llega bien
+
             // Validaciones básicas
             if (nombre == null || nombre.trim().isEmpty() ||
                 apellido == null || apellido.trim().isEmpty() ||
@@ -28,6 +30,8 @@
                 password == null || password.isEmpty() ||
                 numeroDocumento == null || numeroDocumento.trim().isEmpty()) {
                 errorMessage = "Todos los campos obligatorios deben ser completados";
+            } else if (rol == null || rol.trim().isEmpty()) {
+                errorMessage = "Debes seleccionar un rol antes de registrarte";
             } else if (!password.equals(confirmPassword)) {
                 errorMessage = "Las contraseñas no coinciden";
             } else if (password.length() < 8) {
@@ -81,6 +85,14 @@
             // En producción, loguear el error completo
             e.printStackTrace();
         }
+    }
+
+    // Mostrar mensajes de error en la vista
+    if (errorMessage != null) {
+        request.setAttribute("error", errorMessage);
+    }
+    if (successMessage != null) {
+        request.setAttribute("success", successMessage);
     }
 %>
 
