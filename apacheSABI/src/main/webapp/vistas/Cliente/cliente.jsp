@@ -2,7 +2,6 @@
     <%@page contentType="text/html" pageEncoding="UTF-8" %>
         <!DOCTYPE html>
         <html>
-
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <title>Pagina principal del cliente</title>
@@ -26,7 +25,6 @@
                     <div class="encabezado">
                         <h1>Estas son tus estadísticas</h1>
                     </div>
-
                     <div class="grupo-estadisticas">
                         <div class="estadistica">
                             <h2><i class="fa-solid fa-weight-scale"></i> Peso</h2>

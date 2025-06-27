@@ -2,9 +2,10 @@
 
 body {
     font-family: 'Nunito Sans', sans-serif;
-    background: linear-gradient(to bottom, #ffffff 0%, #73d9ff 100%);
+    background-color: #0064e9;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
+    max-height: auto;
 }
 
 .superior {
@@ -20,7 +21,7 @@ body {
 }
 
 .superior .izquierda img {
-    width: 100px;
+    width: 200px;
 }
 
 /*centro*/

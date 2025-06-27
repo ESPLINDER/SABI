@@ -1,5 +1,5 @@
 .contenido {
-    max-width: 700px;
+    max-width: 500px;
     margin: 50px auto;
     text-align: center;
     padding: 30px;
@@ -36,7 +36,6 @@
 .contenido-estadisticas {
     max-width: 2000px;
     margin: 50px auto;
-    border: 3px solid #f4c01e;
     display: flex;
     align-items: center;
     flex-direction: column;
