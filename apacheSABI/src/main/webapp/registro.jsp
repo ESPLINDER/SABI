@@ -1,11 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Modelo.Usuario" %>
 <%@page import="Modelo.UsuarioDao" %>
+
 <%
     String contextPath = request.getContextPath();
     String errorMessage = null;
-    String successMessage = null;
-    
+
     // Procesar el formulario si se envía por POST
     if ("POST".equals(request.getMethod())) {
         try {
@@ -21,17 +21,15 @@
             String ciudad = request.getParameter("ciudad");
             String rol = request.getParameter("rol");
 
-            out.println("ROL RECIBIDO (debug): " + rol); // Quita esto si ya ves que llega bien
-
             // Validaciones básicas
             if (nombre == null || nombre.trim().isEmpty() ||
                 apellido == null || apellido.trim().isEmpty() ||
                 email == null || email.trim().isEmpty() ||
                 password == null || password.isEmpty() ||
-                numeroDocumento == null || numeroDocumento.trim().isEmpty()) {
+                numeroDocumento == null || numeroDocumento.trim().isEmpty() ||
+                departamento == null || departamento.trim().isEmpty() ||
+                ciudad == null || ciudad.trim().isEmpty()) {
                 errorMessage = "Todos los campos obligatorios deben ser completados";
-            } else if (rol == null || rol.trim().isEmpty()) {
-                errorMessage = "Debes seleccionar un rol antes de registrarte";
             } else if (!password.equals(confirmPassword)) {
                 errorMessage = "Las contraseñas no coinciden";
             } else if (password.length() < 8) {
@@ -39,7 +37,7 @@
             } else {
                 // Crear instancia del DAO
                 UsuarioDao usuarioDao = new UsuarioDao();
-                
+
                 // Verificar duplicados
                 if (usuarioDao.existeEmail(email.trim())) {
                     errorMessage = "El correo electrónico ya está registrado";
@@ -48,10 +46,10 @@
                 } else {
                     // Crear nuevo usuario
                     Usuario nuevoUsuario = new Usuario();
-                    nuevoUsuario.setnomUsuario(nombre.trim());
-                    nuevoUsuario.setapeUsuario(apellido.trim());
+                    nuevoUsuario.setNomUsuario(nombre.trim());
+                    nuevoUsuario.setApeUsuario(apellido.trim());
                     nuevoUsuario.setEmaUsuario(email.trim());
-                    nuevoUsuario.setPassUsuario(password);
+                    nuevoUsuario.setPassUsuario(password); // Sin hash por ahora
                     nuevoUsuario.setTipDocumento(tipoDocumento);
                     nuevoUsuario.setNumDocumento(Integer.parseInt(numeroDocumento.trim()));
                     nuevoUsuario.setCiudadUsuario(ciudad);
@@ -61,18 +59,18 @@
                     nuevoUsuario.setBiografia("");
                     nuevoUsuario.setPromCalificacion(0);
                     nuevoUsuario.setEstadoUsuario("activo");
-                    
+
                     // Agregar usuario a la base de datos
                     int resultado = usuarioDao.Agregar(nuevoUsuario);
-                    
+
                     if (resultado > 0) {
-                        // Redirigir según el rol - IMPORTANTE: usar return después de sendRedirect
+                        // Redirigir según el rol
                         if ("entrenador".equals(rol)) {
                             response.sendRedirect(contextPath + "/vistas/Entrenador/index.jsp");
                         } else {
                             response.sendRedirect(contextPath + "/vistas/Cliente/cliente.jsp");
                         }
-                        return; // Importante: detener la ejecución aquí
+                        return; // Detener la ejecución aquí
                     } else {
                         errorMessage = "Error al registrar el usuario";
                     }
@@ -82,17 +80,13 @@
             errorMessage = "El número de documento debe ser válido";
         } catch (Exception e) {
             errorMessage = "Error inesperado: " + e.getMessage();
-            // En producción, loguear el error completo
-            e.printStackTrace();
+            e.printStackTrace(); // En producción, loguear el error completo
         }
     }
 
     // Mostrar mensajes de error en la vista
     if (errorMessage != null) {
         request.setAttribute("error", errorMessage);
-    }
-    if (successMessage != null) {
-        request.setAttribute("success", successMessage);
     }
 %>
 
@@ -106,117 +100,132 @@
    <script>
        let selectedRole = null;
 
-function showRoleModal() {
-    // Validar formulario antes de mostrar modal
-    if (!validateForm()) {
-        return false;
-    }
-    document.getElementById('roleModal').classList.add('active');
-    return false; // Prevenir submit del formulario
-}
+       function showRoleModal() {
+           // Validar formulario antes de mostrar modal
+           if (!validateForm()) {
+               return false;
+           }
+           document.getElementById('roleModal').classList.add('active');
+           return false; // Prevenir submit del formulario
+       }
 
-function selectRole(role) {
-    selectedRole = role;
-    document.getElementById('selectedRole').value = role;
-    document.getElementById('roleModal').classList.remove('active');
-    
-    // Enviar el formulario después de seleccionar el rol
-    document.getElementById('registerForm').submit();
-} // ← ESTA LLAVE FALTABA
+       function selectRole(role) {
+           selectedRole = role;
+           document.getElementById('selectedRole').value = role;
+           document.getElementById('roleModal').classList.remove('active');
+           document.getElementById('registerForm').submit(); // Enviar el formulario después de seleccionar el rol
+       }
 
-function closeModal() {
-    document.getElementById('roleModal').classList.remove('active');
-}
+       function closeModal() {
+           document.getElementById('roleModal').classList.remove('active');
+       }
 
-function updateCiudades() {
-    const departamentoSelect = document.getElementById('departamento');
-    const ciudadSelect = document.getElementById('ciudad');
-    const departamento = departamentoSelect.value;
+       function updateCiudades() {
+           const departamentoSelect = document.getElementById('departamento');
+           const ciudadSelect = document.getElementById('ciudad');
+           const departamento = departamentoSelect.value;
 
-    // Limpiar opciones anteriores
-    ciudadSelect.innerHTML = '';
+           // Limpiar opciones anteriores
+           ciudadSelect.innerHTML = '';
 
-    if (departamento) {
-        ciudadSelect.disabled = false;
-        const ciudades = {
-            antioquia: ['Medellín', 'Envigado', 'Bello', 'Itagüí', 'Sabaneta'],
-            atlantico: ['Barranquilla', 'Soledad', 'Malambo', 'Puerto Colombia'],
-            bogota: ['Bogotá'],
-            cundinamarca: ['Soacha', 'Chía', 'Zipaquirá', 'Facatativá'],
-            valle: ['Cali', 'Palmira', 'Buenaventura', 'Tulua']
-        };
+           if (departamento) {
+               ciudadSelect.disabled = false;
+               const ciudades = {
+                   antioquia: ['Medellín', 'Envigado', 'Bello', 'Itagüí', 'Sabaneta'],
+                   atlantico: ['Barranquilla', 'Soledad', 'Malambo', 'Puerto Colombia'],
+                   bogota: ['Bogotá'],
+                   cundinamarca: ['Soacha', 'Chía', 'Zipaquirá', 'Facatativá'],
+                   valle: ['Cali', 'Palmira', 'Buenaventura', 'Tulua']
+               };
 
-        if (ciudades[departamento]) {
-            ciudades[departamento].forEach(ciudad => {
-                const option = document.createElement('option');
-                option.value = ciudad;
-                option.textContent = ciudad;
-                ciudadSelect.appendChild(option);
-            });
-        }
-    } else {
-        ciudadSelect.disabled = true;
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = 'Primero selecciona un departamento';
-        ciudadSelect.appendChild(defaultOption);
-    }
-}
+               if (ciudades[departamento]) {
+                   ciudades[departamento].forEach(ciudad => {
+                       const option = document.createElement('option');
+                       option.value = ciudad;
+                       option.textContent = ciudad;
+                       ciudadSelect.appendChild(option);
+                   });
+               }
+           } else {
+               ciudadSelect.disabled = true;
+               const defaultOption = document.createElement('option');
+               defaultOption.value = '';
+               defaultOption.textContent = 'Primero selecciona un departamento';
+               ciudadSelect.appendChild(defaultOption);
+           }
+       }
 
-function validateForm() {
-    const form = document.getElementById('registerForm');
-    const password = form.password.value;
-    const confirmPassword = form.confirmPassword.value;
-    const email = form.email.value;
-    const numeroDocumento = form.numeroDocumento.value;
-    
-    // Validar campos obligatorios
-    const requiredFields = ['nombre', 'apellido', 'email', 'password', 'confirmPassword', 
-                          'tipoDocumento', 'numeroDocumento', 'departamento', 'ciudad', 'genero'];
-    
-    for (let field of requiredFields) {
-        if (!form[field] || !form[field].value.trim()) {
-            alert(`El campo ${field} es obligatorio`);
-            if (form[field]) form[field].focus();
-            return false;
-        }
-    }
-    
-    // Validar contraseña
-    if (password.length < 8) {
-        alert('La contraseña debe tener al menos 8 caracteres');
-        form.password.focus();
-        return false;
-    }
-    
-    // Validar coincidencia de contraseñas
-    if (password !== confirmPassword) {
-        alert('Las contraseñas no coinciden');
-        form.confirmPassword.focus();
-        return false;
-    }
-    
-    // Validar email básico
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Por favor ingresa un correo electrónico válido');
-        form.email.focus();
-        return false;
-    }
-    
-    // Validar número de documento
-    if (!/^\d+$/.test(numeroDocumento)) {
-        alert('El número de documento debe contener solo números');
-        form.numeroDocumento.focus();
-        return false;
-    }
-    
-    return true;
-}
+       function validateForm() {
+           const form = document.getElementById('registerForm');
+           const password = form.password.value;
+           const confirmPassword = form.confirmPassword.value;
+           const email = form.email.value;
+           const numeroDocumento = form.numeroDocumento.value;
 
-function goBack() {
-    window.location.href = '${pageContext.request.contextPath}/index.jsp';
-}
+           // Validar campos obligatorios
+           const requiredFields = ['nombre', 'apellido', 'email', 'password', 'confirmPassword', 
+                                   'tipoDocumento', 'numeroDocumento', 'departamento', 'ciudad', 'genero'];
+           
+           for (let field of requiredFields) {
+               if (!form[field] || !form[field].value.trim()) {
+                   alert(`El campo ${field} es obligatorio`);
+                   if (form[field]) form[field].focus();
+                   return false;
+               }
+           }
+           
+           // Validar contraseña
+           if (password.length < 8) {
+               alert('La contraseña debe tener al menos 8 caracteres');
+               form.password.focus();
+               return false;
+           }
+           
+           // Validar coincidencia de contraseñas
+           if (password !== confirmPassword) {
+               alert('Las contraseñas no coinciden');
+               form.confirmPassword.focus();
+               return false;
+           }
+           
+           // Validar email básico
+           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+           if (!emailRegex.test(email)) {
+               alert('Por favor ingresa un correo electrónico válido');
+               form.email.focus();
+               return false;
+           }
+           
+           // Validar número de documento
+           if (!/^\d+$/.test(numeroDocumento)) {
+               alert('El número de documento debe contener solo números');
+               form.numeroDocumento.focus();
+               return false;
+           }
+           
+           return true;
+       }
+
+       function goBack() {
+           window.location.href = '${pageContext.request.contextPath}/index.jsp';
+       }
+
+       // Restaurar ciudades si hay valores previos
+       window.onload = function() {
+           const departamento = '${param.departamento != null ? param.departamento : ""}';
+           const ciudad = '${param.ciudad != null ? param.ciudad : ""}';
+           
+           if (departamento) {
+               document.getElementById('departamento').value = departamento;
+               updateCiudades();
+               
+               if (ciudad) {
+                   setTimeout(() => {
+                       document.getElementById('ciudad').value = ciudad;
+                   }, 100);
+               }
+           }
+       };
    </script>
 </head>
 <body>
@@ -257,22 +266,14 @@ function goBack() {
            <div class="register-card">
                <h2>Bienvenido a SABI<br>Ingresa tus datos</h2>
                
-               <!-- Mostrar mensajes de error o éxito -->
+               <!-- Mostrar mensajes de error -->
                <% if (request.getAttribute("error") != null) { %>
                    <div class="error-message" style="color: #d32f2f; margin-bottom: 15px; padding: 12px; background-color: #ffebee; border: 1px solid #f44336; border-radius: 4px; font-size: 14px;">
                        <%= request.getAttribute("error") %>
                    </div>
                <% } %>
                
-               <% if (request.getAttribute("success") != null) { %>
-                   <div class="success-message" style="color: #2e7d32; margin-bottom: 15px; padding: 12px; background-color: #e8f5e8; border: 1px solid #4caf50; border-radius: 4px; font-size: 14px;">
-                       <%= request.getAttribute("success") %>
-                   </div>
-               <% } %>
-               
-               <div id="roleMessage" style="display: none; color: #1976d2; margin-bottom: 15px; padding: 12px; background-color: #e3f2fd; border: 1px solid #2196f3; border-radius: 4px; font-size: 14px;"></div>
-               
-               <form class="register-form" id="registerForm" method="POST" action="${pageContext.request.contextPath}/registro" onsubmit="return showRoleModal()">
+               <form class="register-form" id="registerForm" method="POST" action="${pageContext.request.contextPath}/usuario" onsubmit="return showRoleModal()">
                    <input type="hidden" id="selectedRole" name="rol" value="">
                    
                    <div class="form-row">
@@ -367,10 +368,6 @@ function goBack() {
 
                    <button type="submit" class="register-btn">
                        <span class="btn-text">Registrarse</span>
-                       <span class="btn-loading" style="display: none;">
-                           <div class="btn-spinner"></div>
-                           Procesando...
-                       </span>
                    </button>
                   
                    <div class="login-link-container">
@@ -422,24 +419,5 @@ function goBack() {
            </div>
        </div>
    </footer>
-
-   <script>
-       // Restaurar ciudades si hay valores previos
-       window.onload = function() {
-           const departamento = '${param.departamento != null ? param.departamento : ""}';
-           const ciudad = '${param.ciudad != null ? param.ciudad : ""}';
-           
-           if (departamento) {
-               document.getElementById('departamento').value = departamento;
-               updateCiudades();
-               
-               if (ciudad) {
-                   setTimeout(() => {
-                       document.getElementById('ciudad').value = ciudad;
-                   }, 100);
-               }
-           }
-       };
-   </script>
 </body>
 </html>
