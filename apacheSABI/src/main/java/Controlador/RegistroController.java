@@ -71,16 +71,16 @@ public class RegistroController extends HttpServlet {
                 int resultado = usuarioDao.Agregar(nuevoUsuario);
 
                 if (resultado > 0) {
-                    // Redirigir según el rol
-                    if ("entrenador".equals(rol)) {
-                        response.sendRedirect(request.getContextPath() + "/vistas/Entrenador/index.jsp");
-                    } else {
-                        response.sendRedirect(request.getContextPath() + "/vistas/Cliente/cliente.jsp");
-                    }
-                    return; // Detener la ejecución aquí
+                // Redirigir según el rol
+                if ("entrenador".equals(rol)) {
+                response.sendRedirect(request.getContextPath() + "/vistas/Entrenador/index.jsp");
                 } else {
-                    errorMessage = "Error al registrar el usuario";
+                 response.sendRedirect(request.getContextPath() + "/vistas/Cliente/cliente.jsp");
                 }
+                } else {
+                errorMessage = "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
+                 System.err.println("Error al registrar el usuario: " + nuevoUsuario); // Para depuración
+               }
             }
         }
 
