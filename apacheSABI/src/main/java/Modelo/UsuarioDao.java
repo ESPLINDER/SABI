@@ -78,6 +78,38 @@ public class UsuarioDao {
         }
         return false; // Retorna false si no existe
     }
+    // Método para obtener un usuario por su ID
+public Usuario listarPorId(int idUsuario) {
+    String sql = "SELECT * FROM usuarios WHERE id = ?";
+    Usuario usuario = null;
+    try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        ps.setInt(1, idUsuario);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            usuario = new Usuario();
+            usuario.setIdUsuario(rs.getInt("id"));
+            usuario.setNomUsuario(rs.getString("nombre"));
+            usuario.setApeUsuario(rs.getString("apellido"));
+            usuario.setEmaUsuario(rs.getString("email"));
+            usuario.setPassUsuario(rs.getString("password"));
+            usuario.setTipDocumento(rs.getString("tipo_documento"));
+            usuario.setNumDocumento(rs.getInt("numero_documento"));
+            usuario.setCiudadUsuario(rs.getString("ciudad"));
+            usuario.setRolUsuario(rs.getString("rol"));
+            usuario.setEspecialidad(rs.getString("especialidad"));
+            usuario.setXpAños(rs.getFloat("xp_años"));
+            usuario.setBiografia(rs.getString("biografia"));
+            usuario.setPromCalificacion(rs.getFloat("prom_calificacion"));
+            usuario.setEstadoUsuario(rs.getString("estado"));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        cerrarConexion(); // Cierra la conexión después de la operación
+    }
+    return usuario; // Devuelve null si no se encuentra
+}
+
 
     // Método para cerrar la conexión
     private void cerrarConexion() {
