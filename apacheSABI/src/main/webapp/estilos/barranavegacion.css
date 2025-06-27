@@ -13,19 +13,17 @@ body {
     gap: 100px;
 }
 
-.superior .logo{
+/*izquierda*/
+
+.superior .izquierda{
     margin-right: auto;
 }
 
-.superior .perfil{
-    margin-left: auto;
-}
-.superior .logo img {
+.superior .izquierda img {
     width: 100px;
 }
-.superior .perfil img {
-    width: 100px;
-}
+
+/*centro*/
 
 .superior nav {
     display: flex;
@@ -41,4 +39,23 @@ body {
     font-size: 16px;
 
     
+}
+
+/*derecha*/
+
+.superior .derecha{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.superior .derecha img {
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+.superior .derecha span {
+    color: #ffffff;
+    font-size: 16px;
+    margin-left: 10px;
 }
