@@ -28,7 +28,7 @@ public class UsuarioDao {
             while (rs.next()) {
                 obj_usu.setIdUsuario(rs.getInt("idUsuario"));
                 obj_usu.setnomUsuario(rs.getString("nomUsuario"));
-                obj_usu.setnomUsuario(rs.getString("apeUsuario"));
+                obj_usu.setapeUsuario(rs.getString("apeUsuario")); // CORREGIDO: era setnomUsuario
                 obj_usu.setEmaUsuario(rs.getString("emaUsuario"));
                 obj_usu.setPassUsuario(rs.getString("passUsuario"));
                 obj_usu.setTipDocumento(rs.getString("tipDocumento"));
@@ -58,7 +58,7 @@ public class UsuarioDao {
                 Usuario usu = new Usuario();
                 usu.setIdUsuario(rs.getInt("idUsuario"));
                 usu.setnomUsuario(rs.getString("nomUsuario"));
-                usu.setnomUsuario(rs.getString("apeUsuario"));
+                usu.setapeUsuario(rs.getString("apeUsuario")); // CORREGIDO: era setnomUsuario
                 usu.setEmaUsuario(rs.getString("emaUsuario"));
                 usu.setPassUsuario(rs.getString("passUsuario"));
                 usu.setTipDocumento(rs.getString("tipDocumento"));
@@ -90,7 +90,7 @@ public class UsuarioDao {
             while (rs.next()) {
                 usu.setIdUsuario(rs.getInt("idUsuario"));
                 usu.setnomUsuario(rs.getString("nomUsuario"));
-                usu.setnomUsuario(rs.getString("apeUsuario"));
+                usu.setapeUsuario(rs.getString("apeUsuario")); // CORREGIDO: era setnomUsuario
                 usu.setEmaUsuario(rs.getString("emaUsuario"));
                 usu.setPassUsuario(rs.getString("passUsuario"));
                 usu.setTipDocumento(rs.getString("tipDocumento"));
@@ -110,10 +110,10 @@ public class UsuarioDao {
     }
 
     public int Agregar(Usuario usuario) {
-        String sql = "INSERT INTO usuarios (nomUsuario, apeUsuario, emaUsuario, passUsuario, " +
+        String sql = "INSERT INTO usuario (nomUsuario, apeUsuario, emaUsuario, passUsuario, " +
                     "tipDocumento, numDocumento, ciudadUsuario, rolUsuario, especialidad, " +
                     "xpAños, biografia, promCalificacion, estadoUsuario) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; // CORREGIDO: usuario no usuarios
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
@@ -145,10 +145,10 @@ public class UsuarioDao {
     }
 
     public int Actualizar(Usuario usu) {
-        String sql = "UPDATE usuarios SET nomUsuario = ?, apeUsuario = ?, emaUsuario = ?, " +
+        String sql = "UPDATE usuario SET nomUsuario = ?, apeUsuario = ?, emaUsuario = ?, " +
                     "passUsuario = ?, tipDocumento = ?, numDocumento = ?, ciudadUsuario = ?, " +
                     "rolUsuario = ?, especialidad = ?, xpAños = ?, biografia = ?, " +
-                    "promCalificacion = ?, estadoUsuario = ? WHERE idUsuario = ?";
+                    "promCalificacion = ?, estadoUsuario = ? WHERE idUsuario = ?"; // CORREGIDO: usuario no usuarios
         System.out.println("Actualizando usuario con ID: " + usu.getIdUsuario());
         try {
             conn = cn.Conexion();
@@ -214,7 +214,7 @@ public class UsuarioDao {
                 Usuario usu = new Usuario();
                 usu.setIdUsuario(rs.getInt("idUsuario"));
                 usu.setnomUsuario(rs.getString("nomUsuario"));
-                usu.setnomUsuario(rs.getString("apeUsuario"));
+                usu.setapeUsuario(rs.getString("apeUsuario")); // CORREGIDO: era setnomUsuario
                 usu.setEmaUsuario(rs.getString("emaUsuario"));
                 usu.setPassUsuario(rs.getString("passUsuario"));
                 usu.setTipDocumento(rs.getString("tipDocumento"));
@@ -248,6 +248,8 @@ public class UsuarioDao {
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al verificar email: " + e.getMessage());
+        } finally {
+            cerrarConexion(); // AÑADIDO: cerrar conexión
         }
         return existe;
     }
@@ -266,6 +268,8 @@ public class UsuarioDao {
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al verificar documento: " + e.getMessage());
+        } finally {
+            cerrarConexion(); // AÑADIDO: cerrar conexión
         }
         return existe;
     }
