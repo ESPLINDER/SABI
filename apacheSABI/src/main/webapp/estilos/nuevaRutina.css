@@ -4,7 +4,10 @@ td:hover {
   transition: 0.3s ease;      /* Transición suave */
 }
 
-.boton-eliminar {
-    background-color: #f44336;
-    color: white;
+.bi-trash3-fill {
+    color: #f44336;
+}
+.bi-trash3-fill:hover {
+    color: #d60000;
+    transition: 0.3s ease;
 }
