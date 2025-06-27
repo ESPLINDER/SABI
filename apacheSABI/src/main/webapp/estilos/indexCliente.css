@@ -3,33 +3,113 @@
     margin: 50px auto;
     text-align: center;
     padding: 30px;
-    border: 1px solid #f5f5f5;
+    border: 3px solid #f4c01e;
     border-radius: 10px;
     background-color: #f5f5f5;
 }
+
+.contenido-entrenadores {
+    max-width: auto;
+    display: flex;
+    margin: 50px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+.contenido-entrenador {
+    max-width: 370px;
+    margin: 10px;
+    text-align: center;
+    padding: 30px;
+    border: 3px solid #f4c01e;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.contenido-entrenador img {
+    width: 100px;
+    height: 100px;
+    border-radius: 75%;
+    border: 2px solid #000000;
+}
+
+.contenido-estadisticas {
+    max-width: 2000px;
+    margin: 50px auto;
+    border: 3px solid #f4c01e;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.grupo-estadisticas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+
+.contenido-estadisticas h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #000000;
+    
+}
+.encabezado h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.estadistica {
+    min-width: 150px;
+    max-width: 20px;
+    text-align: center;
+    margin: 20px;
+    border: 5px solid #f4c01e;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.estadistica h2 {
+    font-size: 18px;
+    color: #000000;
+}
+.estadistica h3 {
+    font-size: 15px;
+    color: #000000;
+}
+.estadistica i {
+    font-size: 24px;
+    color: #0064e9;
+}
+
+.boton-accion {
+    margin-top: 20px;
+    padding: 12px 20px;
+    text-decoration: none;
+    background-color: #0064e9;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.boton-accion:hover {
+    background-color: #73d9ff;
+}
+
 .boton-diagnostico {
     margin-top: 20px;
     padding: 12px 20px;
+    text-decoration: none;
     background-color: #73d9ff;
-    border: none;
-    color: white;
+    color: #000000;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
 }
 .boton-diagnostico:hover {
-    background-color: #0064e9;
-}
-.boton-solicitar {
-    margin-top: 20px;
-    padding: 12px 20px;
-    background-color: #73d9ff;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-.boton-solicitar:hover {
-    background-color: #0064e9;
+    background-color: #f5f5f5;
 }

@@ -11,21 +11,46 @@
     <body>
         <%@ include file="/plantillas/barraNavegacion.jsp" %>
         
-        <div class="contenido">
+        <div class="contenido-entrenadores">
+            <div class="contenido-entrenador">
             <%--<% if (!hayEntrenadores) { %>--%>
-            <h1>Juan Felipe Melano</h1>
+            <h1>Juan Felipe Melano</h1><img src="<%= contextPath %>/recursos/entrenador.jpg" alt="">
             <p>Esta es la descripcion del entrenador</p>
             <p>Soy entrenador fitness con 5 años de experencia en la salud y el bienestar
-            del cuerpo.
-            Solicitame ahora y te dare una rutina acorde a tu diagnostico</p>
-            <form action="EntrenadorController" method="get">
-                <button class="boton-solicitar" type="submit">Solicitar Entrenador</button>
-            </form>
+            del cuerpo. Solicitame ahora y te dare una rutina acorde a tu diagnostico.</p>
+            <a class="boton-accion" href="SupcripcionController">Solicitar Entrenador</a>
             <%--<% } else { %>
             <h1>!Oh no¡</h1>
             <p>Por el momento no hay entrenadores.</p>
             <a href="rutinas.jsp">haz tu propia rutina</a>
             <% }%>--%>
+        </div>
+        <div class="contenido-entrenador">
+            <%--<% if (!hayEntrenadores) { %>--%>
+            <h1>Juan Felipe Melano</h1><img src="<%= contextPath %>/recursos/entrenador.jpg" alt="">
+            <p>Esta es la descripcion del entrenador</p>
+            <p>Soy entrenador fitness con 5 años de experencia en la salud y el bienestar
+            del cuerpo. Solicitame ahora y te dare una rutina acorde a tu diagnostico.</p>
+            <a class="boton-accion" href="SupcripcionController">Solicitar Entrenador</a>
+            <%--<% } else { %>
+            <h1>!Oh no¡</h1>
+            <p>Por el momento no hay entrenadores.</p>
+            <a href="rutinas.jsp">haz tu propia rutina</a>
+            <% }%>--%>
+        </div>
+        <div class="contenido-entrenador">
+            <%--<% if (!hayEntrenadores) { %>--%>
+            <h1>Juan Felipe Melano</h1><img src="<%= contextPath %>/recursos/entrenador.jpg" alt="">
+            <p>Esta es la descripcion del entrenador</p>
+            <p>Soy entrenador fitness con 5 años de experencia en la salud y el bienestar
+            del cuerpo. Solicitame ahora y te dare una rutina acorde a tu diagnostico.</p>
+            <a class="boton-accion" href="SupcripcionController">Solicitar Entrenador</a>
+            <%--<% } else { %>
+            <h1>!Oh no¡</h1>
+            <p>Por el momento no hay entrenadores.</p>
+            <a href="rutinas.jsp">haz tu propia rutina</a>
+            <% }%>--%>
+        </div>
         </div>
     </body>
 </html>
