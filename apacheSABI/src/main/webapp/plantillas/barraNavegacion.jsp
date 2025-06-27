@@ -3,13 +3,13 @@
         <img src="../../recursos/logoF.png" alt="Logo" class="logo">
     </div>
     <nav>
-        <a href="<%= contextPath %>/vistas/Cliente/index.jsp">
+        <a href="<%= contextPath %>/vistas/Cliente/cliente.jsp">
             <span>Progreso</span>
         </a>
         <a href="<%= contextPath %>/vistas/Cliente/rutinas.jsp">
             <span>Rutinas</span>
         </a>
-        <a href="<%= contextPath %>/vistas/cliente/entrenadores.jsp">
+        <a href="<%= contextPath %>/vistas/Cliente/entrenadores.jsp">
             <span>Entrenadores</span>
         </a>
     </nav>

@@ -1,3 +1,4 @@
+<% String contextPath = request.getContextPath(); %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <!DOCTYPE html>
     <html>
@@ -5,10 +6,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Rutinas</title>
-        <link rel="stylesheet" href="../estilos/estiloRutina.css">
+        <link rel="stylesheet" href="<%= contextPath %>/estilos/estiloRutina.css">
+        <link rel="stylesheet" href="<%= contextPath %>/estilos/barranavegacion.css">
     </head>
 
     <body>
+        <%@ include file="/plantillas/barraNavegacion.jsp" %>
+        
         <div class="rutinas">
             <div class="semana">
                 <h2>Semana 1</h2>
