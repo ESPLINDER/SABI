@@ -35,11 +35,12 @@ public class EjercicioDao {
                 ejercicio.setTipEjercicio(rs.getString(4));
                 // Obtener ID del autor
                 int idAutor = rs.getInt(5);
+                // debo compara el id obtenido con el del usuario que tenga la sesion iniciada para decidir mostralo o no
                 if (rs.wasNull()) {
                     ejercicio.setAutorEjercicio(null);
                 } else {
                     UsuarioDao usuarioDao = new UsuarioDao();
-                    Usuario autor = usuarioDao.ListarId(idAutor);
+                    Usuario autor = usuarioDao.listarPorId(idAutor);
                     ejercicio.setAutorEjercicio(autor);
                 }
                 ejercicio.setUrlVideo(rs.getString(6));
@@ -49,5 +50,27 @@ public class EjercicioDao {
             System.out.println("Error al generar lista de usuarios");
         }
         return lista;
+    }
+    
+    public Ejercicio listarId(int id){
+        String sql = "SELECT idEjercicio, nomEjercicio, descEjercicio, tipEjercicio, urlVideo FROM ejercicio where idEjercicio = ?";
+        Ejercicio ejercicio = new Ejercicio();
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ejercicio.setIdEjercicio(rs.getInt("idEjercicio"));
+                ejercicio.setNomEjercicio(rs.getString("nomEjercicio"));
+                ejercicio.setDescEjercicio(rs.getString("descEjercicio"));
+                ejercicio.setTipEjercicio(rs.getString("tipEjercicio"));
+                ejercicio.setUrlVideo(rs.getString(sql));
+            }
+        } catch (Exception e) {
+            System.out.println("Error al seleccionar el usuario: " + e.getMessage());
+        }
+        return ejercicio;
     }
 }

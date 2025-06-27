@@ -17,7 +17,7 @@ public class Rutina {
     String nivelRutina; //basico, intermedio, avanzado
     LocalDateTime creacionRutina;
     Usuario autRutina;
-    Cliente autorCliente;
+    Usuario autorCliente;
     
     //para la creacion base de la rutina
     int numDias;
@@ -25,7 +25,7 @@ public class Rutina {
     public Rutina() {
     }
 
-    public Rutina(int idRutina, int semanasRutina, String descRutina, String nivelRutina, LocalDateTime creacionRutina, Usuario autRutina, Cliente autorCliente) {
+    public Rutina(int idRutina, int semanasRutina, String descRutina, String nivelRutina, LocalDateTime creacionRutina, Usuario autRutina, Usuario autorCliente) {
         this.idRutina = idRutina;
         this.semanasRutina = semanasRutina;
         this.descRutina = descRutina;
@@ -59,7 +59,7 @@ public class Rutina {
         return autRutina;
     }
 
-    public Cliente getAutorCliente() {
+    public Usuario getAutorCliente() {
         return autorCliente;
     }
 
@@ -87,7 +87,7 @@ public class Rutina {
         this.autRutina = autRutina;
     }
 
-    public void setAutorCliente(Cliente autorCliente) {
+    public void setAutorCliente(Usuario autorCliente) {
         this.autorCliente = autorCliente;
     }
 }

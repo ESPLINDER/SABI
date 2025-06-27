@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Ejercicio;
 import Modelo.EjercicioDao;
 import Modelo.Ejercicio_Rutina;
 import Modelo.Ejercicio_RutinaDao;
@@ -17,9 +18,8 @@ import java.util.List;
  */
 @WebServlet("/EjercicioController")
 public class EjercicioController extends HttpServlet {
-
-    Ejercicio_RutinaDao eje_rut_dao = new Ejercicio_RutinaDao();
-    Ejercicio_Rutina eje_rut = new Ejercicio_Rutina();
+    
+    Ejercicio ejercicio = new Ejercicio();
     EjercicioDao ejercicio_dao = new EjercicioDao();
     int id;
     
@@ -28,23 +28,38 @@ public class EjercicioController extends HttpServlet {
             throws ServletException, IOException {
         
         String accion = request.getParameter("accion");
-
+        
         switch (accion) {
-                case "Create":
-                    break;
-                case "Read":
-                    break;
-                case "Update":
-                    break;
-                case "Delete":
-                    break;
-                case "TraerEjercicio":
-                    List listaEjercicios = ejercicio_dao.listar();
-                    request.setAttribute("lista_ejercicios", listaEjercicios);
-                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
-                    break;
-            }
+            case "Create":
+                break;
+            case "Read":
+                break;
+            case "Update":
+                break;
+            case "Delete":
+                break;
+            case "TraerEjercicio":
+                this.EnviarEjercicios(request, response);
+                break;
+        }
         processRequest(request, response);
+    }
+    
+    protected void EnviarEjercicios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String semana = request.getParameter("semana");
+        String dia = request.getParameter("dia");
+        String ordenEjercicio = request.getParameter("ordenEjercicio");
+        String idEjercicio = request.getParameter("idEjercicio");
+        List listaEjercicios = ejercicio_dao.listar();
+        request.setAttribute("lista_ejercicios", listaEjercicios);
+        request.setAttribute("semana", semana);
+        request.setAttribute("dia", dia);
+        request.setAttribute("ordenEjercicio", ordenEjercicio);
+        if (idEjercicio != null) {
+            //ejercicio_dao.
+            //request.setAttribute("ejercicio", ejercicio);
+        }
+        request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -63,13 +78,13 @@ public class EjercicioController extends HttpServlet {
             out.println("</html>");
         }
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";
