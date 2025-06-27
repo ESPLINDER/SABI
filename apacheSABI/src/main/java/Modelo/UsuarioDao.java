@@ -4,6 +4,8 @@ import Config.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  * @author SDC
@@ -15,7 +17,19 @@ public class UsuarioDao {
     PreparedStatement ps;
     ResultSet rs;
     int r; //Valor que se retorna al agregar un nuevo registro
-
+    public UsuarioDao() {
+        try {
+            // Cambia estos valores por los de tu base de datos
+            String url = "jdbc:mysql://localhost:3306/sabi";
+            String usuario = "root";
+            String password = "";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            this.conn = DriverManager.getConnection(url, usuario, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+            this.conn = null;
+        }
+    } 
     public Usuario Validar(String email, String pass) throws ClassNotFoundException {
         Usuario obj_usu = new Usuario();
         String sql = "SELECT * FROM usuario WHERE emaUsuario = ? AND passUsuario = ? AND estadoUsuario = 'activo';";
