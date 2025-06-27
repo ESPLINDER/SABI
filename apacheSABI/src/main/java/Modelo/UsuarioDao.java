@@ -27,6 +27,8 @@ public class UsuarioDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 obj_usu.setIdUsuario(rs.getInt("idUsuario"));
+                obj_usu.setnomUsuario(rs.getString("nomUsuario"));
+                obj_usu.setapeUsuario(rs.getString("apeUsuario")); // CORREGIDO: era setnomUsuario
                 obj_usu.setEmaUsuario(rs.getString("emaUsuario"));
                 obj_usu.setPassUsuario(rs.getString("passUsuario"));
                 obj_usu.setTipDocumento(rs.getString("tipDocumento"));
@@ -55,6 +57,8 @@ public class UsuarioDao {
             while (rs.next()) {
                 Usuario usu = new Usuario();
                 usu.setIdUsuario(rs.getInt("idUsuario"));
+                usu.setnomUsuario(rs.getString("nomUsuario"));
+                usu.setapeUsuario(rs.getString("apeUsuario")); // CORREGIDO: era setnomUsuario
                 usu.setEmaUsuario(rs.getString("emaUsuario"));
                 usu.setPassUsuario(rs.getString("passUsuario"));
                 usu.setTipDocumento(rs.getString("tipDocumento"));
@@ -85,6 +89,8 @@ public class UsuarioDao {
 
             while (rs.next()) {
                 usu.setIdUsuario(rs.getInt("idUsuario"));
+                usu.setnomUsuario(rs.getString("nomUsuario"));
+                usu.setapeUsuario(rs.getString("apeUsuario")); // CORREGIDO: era setnomUsuario
                 usu.setEmaUsuario(rs.getString("emaUsuario"));
                 usu.setPassUsuario(rs.getString("passUsuario"));
                 usu.setTipDocumento(rs.getString("tipDocumento"));
@@ -104,22 +110,27 @@ public class UsuarioDao {
     }
 
     public int Agregar(Usuario usuario) {
-        String sql = "INSERT INTO usuario(emaUsuario, passUsuario, tipDocumento, numDocumento, ciudadUsuario, rolUsuario, especialidad, xpAños, biografia, promCalificacion, estadoUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nomUsuario, apeUsuario, emaUsuario, passUsuario, " +
+                    "tipDocumento, numDocumento, ciudadUsuario, rolUsuario, especialidad, " +
+                    "xpAños, biografia, promCalificacion, estadoUsuario) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; // CORREGIDO: usuario no usuarios
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
-
-            ps.setString(1, usuario.getEmaUsuario());
-            ps.setString(2, usuario.getPassUsuario());
-            ps.setString(3, usuario.getTipDocumento());
-            ps.setInt(4, usuario.getNumDocumento());
-            ps.setString(5, usuario.getCiudadUsuario());
-            ps.setString(6, usuario.getRolUsuario());
-            ps.setString(7, usuario.getEspecialidad());
-            ps.setFloat(8, usuario.getXpAños());
-            ps.setString(9, usuario.getBiografia());
-            ps.setInt(10, usuario.getPromCalificacion());
-            ps.setString(11, usuario.getEstadoUsuario());
+            
+            ps.setString(1, usuario.getnomUsuario());
+            ps.setString(2, usuario.getapeUsuario());
+            ps.setString(3, usuario.getEmaUsuario());
+            ps.setString(4, usuario.getPassUsuario());
+            ps.setString(5, usuario.getTipDocumento());
+            ps.setInt(6, usuario.getNumDocumento());
+            ps.setString(7, usuario.getCiudadUsuario());
+            ps.setString(8, usuario.getRolUsuario());
+            ps.setString(9, usuario.getEspecialidad());
+            ps.setFloat(10, usuario.getXpAños());
+            ps.setString(11, usuario.getBiografia());
+            ps.setInt(12, usuario.getPromCalificacion());
+            ps.setString(13, usuario.getEstadoUsuario());
             r = ps.executeUpdate();
             
             if (r > 0) {
@@ -134,24 +145,29 @@ public class UsuarioDao {
     }
 
     public int Actualizar(Usuario usu) {
-        String sql = "UPDATE usuario SET emaUsuario = ?, passUsuario = ?, tipDocumento = ?, numDocumento = ?, ciudadUsuario = ?, rolUsuario = ?, especialidad = ?, xpAños = ?, biografia = ?, promCalificacion = ?, estadoUsuario = ? WHERE idUsuario = ?";
+        String sql = "UPDATE usuario SET nomUsuario = ?, apeUsuario = ?, emaUsuario = ?, " +
+                    "passUsuario = ?, tipDocumento = ?, numDocumento = ?, ciudadUsuario = ?, " +
+                    "rolUsuario = ?, especialidad = ?, xpAños = ?, biografia = ?, " +
+                    "promCalificacion = ?, estadoUsuario = ? WHERE idUsuario = ?"; // CORREGIDO: usuario no usuarios
         System.out.println("Actualizando usuario con ID: " + usu.getIdUsuario());
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
             
-            ps.setString(1, usu.getEmaUsuario());
-            ps.setString(2, usu.getPassUsuario());
-            ps.setString(3, usu.getTipDocumento());
-            ps.setInt(4, usu.getNumDocumento());
-            ps.setString(5, usu.getCiudadUsuario());
-            ps.setString(6, usu.getRolUsuario());
-            ps.setString(7, usu.getEspecialidad());
-            ps.setFloat(8, usu.getXpAños());
-            ps.setString(9, usu.getBiografia());
-            ps.setInt(10, usu.getPromCalificacion());
-            ps.setString(11, usu.getEstadoUsuario());
-            ps.setInt(12, usu.getIdUsuario());
+            ps.setString(1, usu.getnomUsuario());
+            ps.setString(2, usu.getapeUsuario());
+            ps.setString(3, usu.getEmaUsuario());
+            ps.setString(4, usu.getPassUsuario());
+            ps.setString(5, usu.getTipDocumento());
+            ps.setInt(6, usu.getNumDocumento());
+            ps.setString(7, usu.getCiudadUsuario());
+            ps.setString(8, usu.getRolUsuario());
+            ps.setString(9, usu.getEspecialidad());
+            ps.setFloat(10, usu.getXpAños());
+            ps.setString(11, usu.getBiografia());
+            ps.setInt(12, usu.getPromCalificacion());
+            ps.setString(13, usu.getEstadoUsuario());
+            ps.setInt(14, usu.getIdUsuario());
             r = ps.executeUpdate();
             
             if (r > 0) {
@@ -165,27 +181,8 @@ public class UsuarioDao {
         return r;
     }
     
+    // Método para eliminar físicamente un usuario (usar con precaución no QUIERO ERRORES)
     public int Eliminar(int idUsuario) {
-        String sql = "UPDATE usuario SET estadoUsuario = 'inactivo' WHERE idUsuario = ?";
-        try {
-            conn = cn.Conexion();
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, idUsuario);
-            r = ps.executeUpdate();
-            
-            if (r > 0) {
-                System.out.println("Usuario desactivado correctamente");
-            } else {
-                System.out.println("No se encontró el usuario con ID: " + idUsuario);
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al desactivar usuario: " + e.getMessage());
-        }
-        return r;
-    }
-    
-    // Método para eliminar físicamente un usuario (usar con precaución)
-    public int EliminarFisico(int idUsuario) {
         String sql = "DELETE FROM usuario WHERE idUsuario = ?";
         try {
             conn = cn.Conexion();
@@ -206,7 +203,7 @@ public class UsuarioDao {
     
     // Método para listar usuarios por rol
     public List<Usuario> listarPorRol(String rol) {
-        String sql = "SELECT * FROM usuario WHERE rolUsuario = ? AND estadoUsuario = 'activo'";
+        String sql = "SELECT * FROM usuario WHERE rolUsuario = ? AND estadoUsuario = 'activo' ORDER BY nomUsuario";
         List<Usuario> lista = new ArrayList<>();
         try {
             conn = cn.Conexion();
@@ -216,6 +213,8 @@ public class UsuarioDao {
             while (rs.next()) {
                 Usuario usu = new Usuario();
                 usu.setIdUsuario(rs.getInt("idUsuario"));
+                usu.setnomUsuario(rs.getString("nomUsuario"));
+                usu.setapeUsuario(rs.getString("apeUsuario")); // CORREGIDO: era setnomUsuario
                 usu.setEmaUsuario(rs.getString("emaUsuario"));
                 usu.setPassUsuario(rs.getString("passUsuario"));
                 usu.setTipDocumento(rs.getString("tipDocumento"));
@@ -249,6 +248,8 @@ public class UsuarioDao {
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al verificar email: " + e.getMessage());
+        } finally {
+            cerrarConexion(); // AÑADIDO: cerrar conexión
         }
         return existe;
     }
@@ -267,6 +268,8 @@ public class UsuarioDao {
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al verificar documento: " + e.getMessage());
+        } finally {
+            cerrarConexion(); // AÑADIDO: cerrar conexión
         }
         return existe;
     }

@@ -19,6 +19,12 @@
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>tomcat</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>5.5.23</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     
     <build>
