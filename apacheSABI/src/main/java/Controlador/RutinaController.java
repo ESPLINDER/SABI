@@ -56,13 +56,28 @@ public class RutinaController extends HttpServlet {
             String NumSemanas = request.getParameter("numSemanas");
             String NumDias = request.getParameter("numDias");
             String NumEjercicios = request.getParameter("numEjercicios");
-            int numSemanas = 0;
-            int numDias = 0;
-            int numEjercicios = 0;
             if (NumSemanas != null && NumDias != null && NumEjercicios != null) {
-                numSemanas = Integer.parseInt(NumSemanas);
-                numDias = Integer.parseInt(NumDias);
-                numEjercicios = Integer.parseInt(NumEjercicios);
+                int numSemanas = Integer.parseInt(NumSemanas);
+                int numDias = Integer.parseInt(NumDias);
+                int numEjercicios = Integer.parseInt(NumEjercicios);
+                if (numSemanas > 12) {
+                    System.out.println("Demasiadas semanas");
+                    String alertaSemanas = "Demasiadas semanas, por favor ingresar maximo 12";
+                    request.setAttribute("alertaSemanas", alertaSemanas);
+                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+                }
+                if (numDias > 7) {
+                    System.out.println("Demasiados dias");
+                    String alertaDias = "Demasiados dias, la semana no puede tener mas de 7 dias";
+                    request.setAttribute("alertaDias", alertaDias);
+                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+                }
+                if (numEjercicios > 30) {
+                    System.out.println("Demasiados ejercicios");
+                    String alertaEjercicios = "Demasiados ejercicios, por favor ingresar maximo 100";
+                    request.setAttribute("alertaEjercicios", alertaEjercicios);
+                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+                }
                 String tabla = "block";
                 request.setAttribute("numSemanas", numSemanas);
                 request.setAttribute("numDias", numDias);
@@ -71,7 +86,7 @@ public class RutinaController extends HttpServlet {
             } else {
                 String alerta = "Por favor rellenar todos los campos con numeros enteros";
                 request.setAttribute("alerta", alerta);
-                request.getRequestDispatcher("vistas/Entrenador/nuevaRutina.jsp").forward(request, response);
+                request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
             }
         } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error en el registro");

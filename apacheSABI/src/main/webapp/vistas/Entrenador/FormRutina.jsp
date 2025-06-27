@@ -4,7 +4,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,10 +18,11 @@
     <body>
         <div class="col-md-5 m-auto">
             <h1>Estructura tu rutina</h1>
-            <form id="estructuraRutina" method="GET" action="nuevaRutina.jsp">
+            <form id="estructuraRutina" method="GET" action="<%= contextPath%>/RutinaController">
+                <input type="hidden" name="accion" value="Estructurar">
                 <div class="form-group">
                     <label for="numSemanas">Cuantas semanas deseas en tu rutina?</label>
-                    <input name="numSemanas" type="number" class="form-control" id="numSemanas" required>
+                    <input name="numSemanas" type="number" class="form-control" id="numSemanas" required max="12">
                 </div>
                 <div class="form-group">
                     <label for="numDias">Cuantos dias quieres por semana?
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="numEjercicios">Cuantos ejercicios quieres en cada dia?</label>
-                    <input name="numEjercicios" type="number" class="form-control" id="numEjercicios" required>
+                    <input name="numEjercicios" type="number" class="form-control" id="numEjercicios" required max="30">
                 </div>
 
                 <div class="card-title mb-0 text-center">
@@ -56,7 +56,7 @@
                 tabla = "block";
             }
         %>
-        
+
         <div id="contenedorTabla" class="col-md-8 mx-auto" style="display: <%=tabla%>">
             <h1 class="mb-5">Crea tu rutina</h1>
             <form action="<%= contextPath%>/RutinaController">
@@ -66,39 +66,38 @@
                     <table class="table table-md table-bordered">
                         <thead>
                             <tr>
-                                <%for(int j = 1; j <= numDias; j++) {%>
-                                    <th class="mx-2">Dia <%=j%></th>
-                                <%}%>
+                                <%for (int j = 1; j <= numDias; j++) {%>
+                                <th class="mx-2">Dia <%=j%></th>
+                                    <%}%>
                             </tr>
                         </thead>
                         <tbody>
-                            <%for(int k = 1; k <= numEjercicios; k++) {%>
-                                <tr>
-                                    <%for(int j = 1; j <= numDias; j++) {%>
-                                        <td class="td-hover">
-                                            <a href="<%= contextPath%>/Ejercicio_RutinaController?accion=form&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>">
-                                                <%Map<Integer, String[][]> ejercicios = (Map<Integer, String[][]>) request.getAttribute("ejercicios");
-                                                String ejercicioValue = (ejercicios != null && ejercicios.get(i) != null && ejercicios.get(i)[j][k] != null)
-                                                        ? ejercicios.get(i)[j][k] : "Ejercicio " + k;%>
-                                                <%=ejercicioValue%>
-                                                <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
-                                        </td>
-                                    <%}%>
-                                </tr>
+                            <%for (int k = 1; k <= numEjercicios; k++) {%>
+                            <tr>
+                                <%for (int j = 1; j <= numDias; j++) {%>
+                                <td class="td-hover">
+                                    <%Map<Integer, String[][]> ejercicios = (Map<Integer, String[][]>) request.getAttribute("ejercicios");
+                                        String ejercicioValue = (ejercicios != null && ejercicios.get(i) != null && ejercicios.get(i)[j][k] != null)
+                                                ? ejercicios.get(i)[j][k] : "Ejercicio " + k;%>
+                                    <a href=""><%=ejercicioValue%></a>
+                                    <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
+                                </td>
+                                <%}%>
+                            </tr>
                             <%}%>
                         </tbody>
                     </table>
                 </div>
                 <%}%>
                 <%
-            /*  Modelo.Ejercicio_Rutina ejercicio_Rutina = (Ejercicio_Rutina) request.getAttribute("ejercicio_Rutina");
+                    /*  Modelo.Ejercicio_Rutina ejercicio_Rutina = (Ejercicio_Rutina) request.getAttribute("ejercicio_Rutina");
                 String idEjercicio_Rutina = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getIdUsuario()) : "";
                 String fkIdEjercicio = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getNomUsuario()) : "";
                 String fkIdRutina = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getApeUsuario()) : "";
                 String emaValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getEmaUsuario()) : "";
                 String passValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getPassUsuario()) : "";
                 String rolValue = (usuarioEditar != null) ? String.valueOf(usuarioEditar.getRolUsuario()) : "";
-             */%>
+                     */%>
             </form>
         </div>
     </body>
