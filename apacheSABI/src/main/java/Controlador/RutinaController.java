@@ -9,9 +9,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 /**
  * @author William
+ *
+ * @author arvsa
  */
 @WebServlet("/RutinaController")
 public class RutinaController extends HttpServlet {
@@ -42,7 +43,7 @@ public class RutinaController extends HttpServlet {
         processRequest(request, response);
     }
 
-    protected void CrearTabla(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void CrearTabla(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
         try {
             String NumSemanas = request.getParameter("numSemanas");
             String NumDias = request.getParameter("numDias");
@@ -120,5 +121,9 @@ public class RutinaController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void CrearTabla(HttpServletRequest request, HttpServletResponse response) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
