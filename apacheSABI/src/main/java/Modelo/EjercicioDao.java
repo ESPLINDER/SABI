@@ -1,6 +1,7 @@
 package Modelo;
 
 import Config.Conexion;
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public class EjercicioDao {
 
+    
     Conexion cn = new Conexion();
     Connection conn;
     PreparedStatement ps;
@@ -20,13 +22,15 @@ public class EjercicioDao {
     int r; //Valor que se retorna al agregar un nuevo registro
 
     public List<Ejercicio> listar() {
+        System.out.println("creando lista");
         String sql = "SELECT idEjercicio, nomEjercicio, descEjercicio, tipEjercicio, autorEjercicio, urlVideo FROM ejercicio";
         List<Ejercicio> lista = new ArrayList<>();
         try {
+            System.out.println("inicia la conexion para listar");
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-
+            System.out.println("error en dao");
             while (rs.next()) {
                 Ejercicio ejercicio = new Ejercicio();
                 ejercicio.setIdEjercicio(rs.getInt(1));
@@ -66,7 +70,7 @@ public class EjercicioDao {
                 ejercicio.setNomEjercicio(rs.getString("nomEjercicio"));
                 ejercicio.setDescEjercicio(rs.getString("descEjercicio"));
                 ejercicio.setTipEjercicio(rs.getString("tipEjercicio"));
-                ejercicio.setUrlVideo(rs.getString(sql));
+                ejercicio.setUrlVideo(rs.getString("urlVideo"));
             }
         } catch (Exception e) {
             System.out.println("Error al seleccionar el usuario: " + e.getMessage());

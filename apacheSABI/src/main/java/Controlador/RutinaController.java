@@ -25,27 +25,19 @@ public class RutinaController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-
-        if (menu.equals("Administrador")) {
-            request.getRequestDispatcher("/vistas/admin/IndexAdmin.jsp");
-
-        }
-        if (menu.equals("Usuarios")) {
-            switch (accion) {
-                case "Create":
-                    break;
-                case "Read":
-                    break;
-                case "Update":
-                    break;
-                case "Delete":
-                    break;
-                case "estructura":
-                    this.CrearTabla(request, response);
-                    break;
-            }
+        switch (accion) {
+            case "Create":
+                break;
+            case "Read":
+                break;
+            case "Update":
+                break;
+            case "Delete":
+                break;
+            case "Estructurar":
+                this.CrearTabla(request, response);
+                break;
         }
         processRequest(request, response);
     }
@@ -82,8 +74,11 @@ public class RutinaController extends HttpServlet {
                 request.setAttribute("numSemanas", numSemanas);
                 request.setAttribute("numDias", numDias);
                 request.setAttribute("numEjercicios", numEjercicios);
+                
+                System.out.println("listo para generar la tabla");
                 request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
             } else {
+                System.out.println("valor de estructura nulo");
                 String alerta = "Por favor rellenar todos los campos con numeros enteros";
                 request.setAttribute("alerta", alerta);
                 request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
