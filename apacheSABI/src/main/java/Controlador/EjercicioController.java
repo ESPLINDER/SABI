@@ -56,8 +56,8 @@ public class EjercicioController extends HttpServlet {
         request.setAttribute("dia", dia);
         request.setAttribute("ordenEjercicio", ordenEjercicio);
         if (idEjercicio != null) {
-            ejercicio_dao.
-            request.setAttribute("ejercicio", ejercicio);
+            //ejercicio_dao.
+            //request.setAttribute("ejercicio", ejercicio);
         }
         request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
     }
