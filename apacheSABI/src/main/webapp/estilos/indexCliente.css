@@ -1,0 +1,22 @@
+.contenido {
+    max-width: 700px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+.boton-diagnostico {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.boton-diagnostico:hover {
+    background-color: #0056b3;
+}
