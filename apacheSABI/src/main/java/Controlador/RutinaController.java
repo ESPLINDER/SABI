@@ -9,8 +9,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author William
@@ -45,6 +43,7 @@ public class RutinaController extends HttpServlet {
                 case "Delete":
                     break;
                 case "estructura":
+                    this.CrearTabla(request, response);
                     break;
             }
         }
@@ -79,6 +78,7 @@ public class RutinaController extends HttpServlet {
                     request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
                 }
                 String tabla = "block";
+                request.setAttribute("tabla", tabla);
                 request.setAttribute("numSemanas", numSemanas);
                 request.setAttribute("numDias", numDias);
                 request.setAttribute("numEjercicios", numEjercicios);
