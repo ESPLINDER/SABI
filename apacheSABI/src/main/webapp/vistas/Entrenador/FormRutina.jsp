@@ -12,7 +12,7 @@
         <link rel="stylesheet"
               href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <title>Crea tu rutina</title>
-        <link rel="stylesheet" href="<%= contextPath%>/estilos/nuevaRutina.css">
+        <link rel="stylesheet" href="<%= contextPath%>/estilos/formRutina.css">
     </head>
 
     <body>
@@ -49,11 +49,12 @@
             String NumSemanas = request.getParameter("numSemanas");
             String NumDias = request.getParameter("numDias");
             String NumEjercicios = request.getParameter("numEjercicios");
-            if (NumSemanas != null && NumDias != null && NumEjercicios != null) {
+            String Tabla = request.getParameter("numEjercicios");
+            if (NumSemanas != null && NumDias != null && NumEjercicios != null && Tabla != null) {
                 numSemanas = Integer.parseInt(NumSemanas);
                 numDias = Integer.parseInt(NumDias);
                 numEjercicios = Integer.parseInt(NumEjercicios);
-                tabla = "block";
+                tabla = Tabla;
             }
         %>
 
@@ -79,7 +80,7 @@
                                     <%Map<Integer, String[][]> ejercicios = (Map<Integer, String[][]>) request.getAttribute("ejercicios");
                                         String ejercicioValue = (ejercicios != null && ejercicios.get(i) != null && ejercicios.get(i)[j][k] != null)
                                                 ? ejercicios.get(i)[j][k] : "Ejercicio " + k;%>
-                                    <a href=""><%=ejercicioValue%></a>
+                                    <a href="<%= contextPath%>/EjercicioCotroller?accion=preparar&semana=<%=i%>&dias=<%=j%>&ordenEjercicio=<%=k%>"><%=ejercicioValue%></a>
                                     <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
                                 </td>
                                 <%}%>

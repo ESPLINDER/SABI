@@ -149,3 +149,9 @@
 27-Jun-2025 06:58:46.164 WARNING [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
 27-Jun-2025 06:58:46.215 INFO [http-nio-8080-exec-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [52] ms
 27-Jun-2025 06:58:46.217 INFO [http-nio-8080-exec-30] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+27-Jun-2025 07:21:44.159 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/apacheSABI]
+27-Jun-2025 07:21:44.160 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/apacheSABI]
+27-Jun-2025 07:21:44.214 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+27-Jun-2025 09:47:43.952 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/apacheSABI]
+27-Jun-2025 09:47:43.953 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/apacheSABI]
+27-Jun-2025 09:47:44.028 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto

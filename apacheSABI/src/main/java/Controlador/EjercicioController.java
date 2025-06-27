@@ -15,8 +15,13 @@ import java.util.List;
 /**
  * @author William
  */
-@WebServlet("/Ejercicio_RutinaController")
-public class Ejercicio_RutinaController extends HttpServlet {
+@WebServlet("/EjercicioController")
+public class EjercicioController extends HttpServlet {
+
+    Ejercicio_RutinaDao eje_rut_dao = new Ejercicio_RutinaDao();
+    Ejercicio_Rutina eje_rut = new Ejercicio_Rutina();
+    EjercicioDao ejercicio_dao = new EjercicioDao();
+    int id;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,11 +38,14 @@ public class Ejercicio_RutinaController extends HttpServlet {
                     break;
                 case "Delete":
                     break;
+                case "TraerEjercicio":
+                    List listaEjercicios = ejercicio_dao.listar();
+                    request.setAttribute("lista_ejercicios", listaEjercicios);
+                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    break;
             }
         processRequest(request, response);
     }
-
-    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,10 +55,10 @@ public class Ejercicio_RutinaController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Ejercicio_RutinaController</title>");
+            out.println("<title>Servlet EjercicioController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Ejercicio_RutinaController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EjercicioController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
