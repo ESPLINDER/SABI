@@ -5,8 +5,8 @@ package Modelo;
  */
 public class Ejercicio_Rutina {
     int idEjercicio_Rutina;
-    Ejercicio fkIdEjercicio;
-    Rutina fkIdRutina;
+    int fkIdEjercicio;
+    int fkIdRutina;
     int semana;
     int dia;
     int ordenEjercicio;
@@ -15,11 +15,13 @@ public class Ejercicio_Rutina {
     int peso;
     String intensidad; //'baja', 'intermedia', 'alta', 'maxima'
     int descanso; //En segundos
+    
+    String nomEjercicio;
 
     public Ejercicio_Rutina() {
     }
 
-    public Ejercicio_Rutina(int idEjercicio_Rutina, Ejercicio fkIdEjercicio, Rutina fkIdRutina, int semana, int dia, int ordenEjercicio, int serie, int repeticiones, int peso, String intensidad, int descanso) {
+    public Ejercicio_Rutina(int idEjercicio_Rutina, int fkIdEjercicio, int fkIdRutina, int semana, int dia, int ordenEjercicio, int serie, int repeticiones, int peso, String intensidad, int descanso, String nomEjercicio) {
         this.idEjercicio_Rutina = idEjercicio_Rutina;
         this.fkIdEjercicio = fkIdEjercicio;
         this.fkIdRutina = fkIdRutina;
@@ -31,17 +33,18 @@ public class Ejercicio_Rutina {
         this.peso = peso;
         this.intensidad = intensidad;
         this.descanso = descanso;
+        this.nomEjercicio = nomEjercicio;
     }
 
     public int getIdEjercicio_Rutina() {
         return idEjercicio_Rutina;
     }
 
-    public Ejercicio getFkIdEjercicio() {
+    public int getFkIdEjercicio() {
         return fkIdEjercicio;
     }
 
-    public Rutina getFkIdRutina() {
+    public int getFkIdRutina() {
         return fkIdRutina;
     }
 
@@ -77,15 +80,19 @@ public class Ejercicio_Rutina {
         return descanso;
     }
 
+    public String getNomEjercicio() {
+        return nomEjercicio;
+    }
+
     public void setIdEjercicio_Rutina(int idEjercicio_Rutina) {
         this.idEjercicio_Rutina = idEjercicio_Rutina;
     }
 
-    public void setFkIdEjercicio(Ejercicio fkIdEjercicio) {
+    public void setFkIdEjercicio(int fkIdEjercicio) {
         this.fkIdEjercicio = fkIdEjercicio;
     }
 
-    public void setFkIdRutina(Rutina fkIdRutina) {
+    public void setFkIdRutina(int fkIdRutina) {
         this.fkIdRutina = fkIdRutina;
     }
 
@@ -121,8 +128,12 @@ public class Ejercicio_Rutina {
         this.descanso = descanso;
     }
 
+    public void setNomEjercicio(String nomEjercicio) {
+        this.nomEjercicio = nomEjercicio;
+    }
+
     @Override
     public String toString() {
-        return "Ejercicio_Rutina{" + "idEjercicio_Rutina=" + idEjercicio_Rutina + ", fkIdEjercicio=" + fkIdEjercicio + ", fkIdRutina=" + fkIdRutina + ", semana=" + semana + ", dia=" + dia + ", ordenEjercicio=" + ordenEjercicio + ", serie=" + serie + ", repeticiones=" + repeticiones + ", peso=" + peso + ", intensidad=" + intensidad + ", descanso=" + descanso + '}';
+        return "Ejercicio_Rutina{" + "idEjercicio_Rutina=" + idEjercicio_Rutina + ", fkIdEjercicio=" + fkIdEjercicio + ", fkIdRutina=" + fkIdRutina + ", semana=" + semana + ", dia=" + dia + ", ordenEjercicio=" + ordenEjercicio + ", serie=" + serie + ", repeticiones=" + repeticiones + ", peso=" + peso + ", intensidad=" + intensidad + ", descanso=" + descanso + ", nomEjercicio=" + nomEjercicio + '}';
     }
 }

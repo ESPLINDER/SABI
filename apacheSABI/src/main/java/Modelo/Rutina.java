@@ -16,8 +16,8 @@ public class Rutina {
     String descRutina;
     String nivelRutina; //basico, intermedio, avanzado
     LocalDateTime creacionRutina;
-    Usuario autRutina;
-    Usuario autorCliente;
+    int autRutina;
+    int autorCliente;
     
     //para la creacion base de la rutina
     int numDias;
@@ -25,7 +25,7 @@ public class Rutina {
     public Rutina() {
     }
 
-    public Rutina(int idRutina, int semanasRutina, String descRutina, String nivelRutina, LocalDateTime creacionRutina, Usuario autRutina, Usuario autorCliente) {
+    public Rutina(int idRutina, int semanasRutina, String descRutina, String nivelRutina, LocalDateTime creacionRutina, int autRutina, int autorCliente, int numDias) {
         this.idRutina = idRutina;
         this.semanasRutina = semanasRutina;
         this.descRutina = descRutina;
@@ -33,6 +33,7 @@ public class Rutina {
         this.creacionRutina = creacionRutina;
         this.autRutina = autRutina;
         this.autorCliente = autorCliente;
+        this.numDias = numDias;
     }
 
     public int getIdRutina() {
@@ -55,12 +56,16 @@ public class Rutina {
         return creacionRutina;
     }
 
-    public Usuario getAutRutina() {
+    public int getAutRutina() {
         return autRutina;
     }
 
-    public Usuario getAutorCliente() {
+    public int getAutorCliente() {
         return autorCliente;
+    }
+
+    public int getNumDias() {
+        return numDias;
     }
 
     public void setIdRutina(int idRutina) {
@@ -83,11 +88,20 @@ public class Rutina {
         this.creacionRutina = creacionRutina;
     }
 
-    public void setAutRutina(Usuario autRutina) {
+    public void setAutRutina(int autRutina) {
         this.autRutina = autRutina;
     }
 
-    public void setAutorCliente(Usuario autorCliente) {
+    public void setAutorCliente(int autorCliente) {
         this.autorCliente = autorCliente;
+    }
+
+    public void setNumDias(int numDias) {
+        this.numDias = numDias;
+    }
+
+    @Override
+    public String toString() {
+        return "Rutina{" + "idRutina=" + idRutina + ", semanasRutina=" + semanasRutina + ", descRutina=" + descRutina + ", nivelRutina=" + nivelRutina + ", creacionRutina=" + creacionRutina + ", autRutina=" + autRutina + ", autorCliente=" + autorCliente + ", numDias=" + numDias + '}';
     }
 }

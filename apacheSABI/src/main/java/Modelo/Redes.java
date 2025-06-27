@@ -4,14 +4,14 @@ package Modelo;
  */
 public class Redes {
     int idRed;
-    Usuario idUsuario;
+    int idUsuario;
     String nomRed;
     String urlRed;
 
     public Redes() {
     }
 
-    public Redes(int idRed, Usuario idUsuario, String nomRed, String urlRed) {
+    public Redes(int idRed, int idUsuario, String nomRed, String urlRed) {
         this.idRed = idRed;
         this.idUsuario = idUsuario;
         this.nomRed = nomRed;
@@ -22,7 +22,7 @@ public class Redes {
         return idRed;
     }
 
-    public Usuario getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
@@ -38,7 +38,7 @@ public class Redes {
         this.idRed = idRed;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -54,6 +54,4 @@ public class Redes {
     public String toString() {
         return "Redes{" + "idRed=" + idRed + ", idUsuario=" + idUsuario + ", nomRed=" + nomRed + ", urlRed=" + urlRed + '}';
     }
-
-    
 }

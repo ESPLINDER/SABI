@@ -8,13 +8,13 @@ public class Ejercicio {
     String nomEjercicio;
     String descEjercicio;
     String tipEjercicio;
-    Usuario autorEjercicio;
+    int autorEjercicio;
     String urlVideo;
 
     public Ejercicio() {
     }
 
-    public Ejercicio(int idEjercicio, String nomEjercicio, String descEjercicio, String tipEjercicio, Usuario autorEjercicio, String urlVideo) {
+    public Ejercicio(int idEjercicio, String nomEjercicio, String descEjercicio, String tipEjercicio, int autorEjercicio, String urlVideo) {
         this.idEjercicio = idEjercicio;
         this.nomEjercicio = nomEjercicio;
         this.descEjercicio = descEjercicio;
@@ -39,7 +39,7 @@ public class Ejercicio {
         return tipEjercicio;
     }
 
-    public Usuario getAutorEjercicio() {
+    public int getAutorEjercicio() {
         return autorEjercicio;
     }
 
@@ -63,7 +63,7 @@ public class Ejercicio {
         this.tipEjercicio = tipEjercicio;
     }
 
-    public void setAutorEjercicio(Usuario autorEjercicio) {
+    public void setAutorEjercicio(int autorEjercicio) {
         this.autorEjercicio = autorEjercicio;
     }
 
