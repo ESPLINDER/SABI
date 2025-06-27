@@ -1,6 +1,6 @@
 <header class="superior">
     <div class="izquierda">
-        <img src="../../recursos/logoF.png" alt="Logo" class="logo">
+        <img src="../../recursos/LogoLargo.jpeg" alt="Logo" class="logo">
     </div>
     <nav>
         <a href="<%= contextPath %>/vistas/Cliente/cliente.jsp">
