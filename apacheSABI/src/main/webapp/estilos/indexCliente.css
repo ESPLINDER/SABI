@@ -3,14 +3,14 @@
     margin: 50px auto;
     text-align: center;
     padding: 30px;
-    border: 1px solid #ddd;
+    border: 1px solid #f5f5f5;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background-color: #f5f5f5;
 }
 .boton-diagnostico {
     margin-top: 20px;
     padding: 12px 20px;
-    background-color: #007bff;
+    background-color: #73d9ff;
     border: none;
     color: white;
     border-radius: 8px;
@@ -18,5 +18,18 @@
     cursor: pointer;
 }
 .boton-diagnostico:hover {
-    background-color: #0056b3;
+    background-color: #0064e9;
+}
+.boton-solicitar {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #73d9ff;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.boton-solicitar:hover {
+    background-color: #0064e9;
 }

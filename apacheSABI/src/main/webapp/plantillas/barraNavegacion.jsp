@@ -3,14 +3,14 @@
         <img src="../../recursos/logoF.png" alt="Logo" class="logo">
     </div>
     <nav>
-        <a href="/vistas/Cliente/index.jsp">
+        <a href="<%= contextPath %>/vistas/Cliente/index.jsp">
             <span>Progreso</span>
         </a>
-        <a href="/vistas/Cliente/index.jsp">
+        <a href="<%= contextPath %>/vistas/Cliente/rutinas.jsp">
             <span>Rutinas</span>
         </a>
-        <a href="/vistas/Cliente/index.jsp">
-            <span>Notificaciones</span>
+        <a href="<%= contextPath %>/vistas/cliente/entrenadores.jsp">
+            <span>Entrenadores</span>
         </a>
     </nav>
     <div class="derecha">
