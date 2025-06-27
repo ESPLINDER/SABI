@@ -66,7 +66,7 @@
                         if ("entrenador".equals(rol)) {
                             response.sendRedirect(contextPath + "/vistas/Entrenador/index.jsp");
                         } else {
-                            response.sendRedirect(contextPath + "/cliente.jsp");
+                            response.sendRedirect(contextPath + "/vistas/Cliente/cliente.jsp");
                         }
                         return; // Importante: detener la ejecución aquí
                     } else {

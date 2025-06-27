@@ -2,9 +2,8 @@ package Controlador;
 
 import Modelo.Usuario;
 import Modelo.UsuarioDao;
-// TODOS los imports deben ser jakarta.servlet para Tomcat 11
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -89,9 +88,9 @@ public class RegistroController extends HttpServlet {
                 session.setAttribute("tipoUsuario", rol);
                 
                 // Log del registro exitoso
-                LOGGER.info("Usuario registrado exitosamente: " + email + " - Rol: " + rol);
+                LOGGER.log(Level.INFO, "Usuario registrado exitosamente: {0} - Rol: {1}", new Object[]{email, rol});
                 
-                // Redirigir según el rol
+                // Redirigir según el rol con DEBUG
                 String redirectUrl = determinarRedirect(rol, request.getContextPath());
                 response.sendRedirect(redirectUrl);
                 
@@ -186,14 +185,26 @@ public class RegistroController extends HttpServlet {
     }
     
     private String determinarRedirect(String rol, String contextPath) {
+        String redirectUrl;
         switch (rol) {
             case "entrenador":
-                return contextPath + "/vistas/Entrenador/index.jsp";
+                redirectUrl = contextPath + "/vistas/Entrenador/index.jsp";
+                break;
             case "cliente":
-                return contextPath + "/vistas/Cliente/index.jsp";
+                redirectUrl = contextPath + "/vistas/Cliente/index.jsp";
+                break;
             default:
-                return contextPath + "/index.jsp";
+                redirectUrl = contextPath + "/index.jsp";
         }
+        
+        // DEBUG: Imprime la URL que se está generando
+        System.out.println("=== DEBUG REDIRECT ===");
+        System.out.println("Rol: " + rol);
+        System.out.println("Context Path: " + contextPath);
+        System.out.println("URL Final: " + redirectUrl);
+        System.out.println("===================");
+        
+        return redirectUrl;
     }
     
     private void enviarError(HttpServletRequest request, HttpServletResponse response, String mensaje)
