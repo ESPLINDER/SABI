@@ -69,9 +69,8 @@
                                         ? ejer.getNomEjercicio() : "Ejercicio " + k;
                                         if (ejer.getSemana() == i && ejer.getDia() == j && ejer.getOrdenEjercicio() == k) {%>
                                         <td class="td-hover">
-                                            <a href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&
-                                               semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>
-                                               numSemanas=<%=max.getSemanas()%>&numDias=<%=max.getDias()%>&numEjercicios=<%=max.getEjercicios()%>"><%=ejerValue%></a>
+                                            <a href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&numSemanas=<%=max.getSemanas()%>&numDias=<%=max.getDias()%>&numEjercicios=<%=max.getEjercicios()%>">
+                                                <%=ejerValue%></a>
                                             <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
                                         </td>
                                         <%}%>

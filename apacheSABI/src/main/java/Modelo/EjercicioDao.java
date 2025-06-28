@@ -22,22 +22,17 @@ public class EjercicioDao {
 
     public List<Ejercicio> listar() {
         System.out.println("creando lista");
-        String sql = "SELECT idEjercicio, nomEjercicio, descEjercicio, tipEjercicio, autorEjercicio, urlVideo FROM ejercicio";
+        String sql = "SELECT idEjercicio, nomEjercicio FROM ejercicio";
         List<Ejercicio> lista = new ArrayList<>();
         try {
-            System.out.println("inicia la conexion para listar");
+            System.out.println("inicia la conexion para listar ejercicios");
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            System.out.println("error en dao");
             while (rs.next()) {
                 Ejercicio ejercicio = new Ejercicio();
                 ejercicio.setIdEjercicio(rs.getInt(1));
                 ejercicio.setNomEjercicio(rs.getString(2));
-                ejercicio.setDescEjercicio(rs.getString(3));
-                ejercicio.setTipEjercicio(rs.getString(4));
-                ejercicio.setAutorEjercicio(rs.getInt(5));
-                ejercicio.setUrlVideo(rs.getString(6));
                 lista.add(ejercicio);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -48,6 +43,7 @@ public class EjercicioDao {
     
     public Ejercicio listarId(int id){
         String sql = "SELECT idEjercicio, nomEjercicio, descEjercicio, tipEjercicio, urlVideo FROM ejercicio where idEjercicio = ?";
+        System.out.println("supuesto id que llega al dao: "+id);
         Ejercicio ejercicio = new Ejercicio();
         try {
             conn = cn.Conexion();

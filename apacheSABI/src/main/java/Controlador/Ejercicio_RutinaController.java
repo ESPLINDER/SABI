@@ -41,10 +41,11 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 List ejercicios = eje_rut_dao.listar();
                 break;
             case "Update":
+
                 break;
             case "Delete":
                 break;
-            case "DefinirEjercicio":
+            case "numSeries":
                 break;
         }
         processRequest(request, response);
@@ -63,57 +64,95 @@ public class Ejercicio_RutinaController extends HttpServlet {
                     System.out.println("Demasiadas semanas");
                     String alertaSemanas = "Demasiadas semanas, por favor ingresar maximo 12";
                     request.setAttribute("alertaSemanas", alertaSemanas);
-                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    return;
+                } else if (numSemanas < 1) {
+                    System.out.println("Valor de semanas invalido");
+                    String alertaSemanas = "Valor de semanas invalido";
+                    request.setAttribute("alertaSemanas", alertaSemanas);
+                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    return;
                 }
                 if (numDias > 7) {
                     System.out.println("Demasiados dias");
                     String alertaDias = "Demasiados dias, la semana no puede tener mas de 7 dias";
                     request.setAttribute("alertaDias", alertaDias);
-                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    return;
+                } else if (numDias < 1) {
+                    System.out.println("Valor de dias invalido");
+                    String alertaDias = "Valor de dias invalido";
+                    request.setAttribute("alertaDias", alertaDias);
+                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    return;
                 }
                 if (numEjercicios > 30) {
                     System.out.println("Demasiados ejercicios");
                     String alertaEjercicios = "Demasiados ejercicios, por favor ingresar maximo 100";
                     request.setAttribute("alertaEjercicios", alertaEjercicios);
-                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    return;
+                } else if (numEjercicios < 1) {
+                    System.out.println("Valor de ejercicios invalido");
+                    String alertaEjercicios = "Valor de ejercicios invalido";
+                    request.setAttribute("alertaEjercicios", alertaEjercicios);
+                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    return;
                 }
 
                 max.setSemanas(numSemanas);
                 max.setDias(numDias);
                 max.setEjercicios(numEjercicios);
-                List ejercicios = this.CrearTabla(request, response, max);
+                System.out.println("creando tabla");
+                List<Ejercicio_Rutina> ejercicios = new ArrayList<>();
+                for (int i = 0; i <= max.getSemanas(); i++) {
+                    for (int j = 0; j <= max.getDias(); j++) {
+                        for (int k = 0; k <= max.getEjercicios(); k++) {
+                            Ejercicio_Rutina lista_eje_rut = new Ejercicio_Rutina();
+
+                            lista_eje_rut.setSemana(i + 1);
+                            lista_eje_rut.setDia(j + 1);
+                            lista_eje_rut.setOrdenEjercicio(k + 1);
+                            ejercicios.add(lista_eje_rut);
+                        }
+                    }
+                }
 
                 request.setAttribute("max", max);
                 request.setAttribute("ejercicios", ejercicios); //lista
-                request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
-            } else {
-                System.out.println("valor de estructura nulo");
-                String alerta = "Por favor rellenar todos los campos con numeros enteros";
-                request.setAttribute("alerta", alerta);
-                request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+                request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
             }
         } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error en el registro");
         }
     }
 
-    protected List<Ejercicio_Rutina> CrearTabla(HttpServletRequest request, HttpServletResponse response, Maximos max) throws ServletException, IOException {
+    protected void Update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String fkIdEjercicio = request.getParameter("fkIdEjercicio");
+        String semana = request.getParameter("semana");
+        String dia = request.getParameter("dia");
+        String ordenEjercicio = request.getParameter("ordenEjercicio");
+        
+        String serie = request.getParameter("series");
+        String repeticiones = request.getParameter("repeticiones");
+        String peso = request.getParameter("peso");
+        String intensidad = request.getParameter("intensidad");
+        String descanso = request.getParameter("descanso");
         
         List<Ejercicio_Rutina> ejercicios = new ArrayList<>();
         for (int i = 0; i <= max.getSemanas(); i++) {
             for (int j = 0; j <= max.getDias(); j++) {
                 for (int k = 0; k <= max.getEjercicios(); k++) {
                     Ejercicio_Rutina lista_eje_rut = new Ejercicio_Rutina();
-                    
-                    lista_eje_rut.setSemana(i+1);
-                    lista_eje_rut.setDia(j+1);
-                    lista_eje_rut.setOrdenEjercicio(k+1);
+
+                    lista_eje_rut.setSemana(i + 1);
+                    lista_eje_rut.setDia(j + 1);
+                    lista_eje_rut.setOrdenEjercicio(k + 1);
                     ejercicios.add(lista_eje_rut);
                 }
             }
         }
-        System.out.println(ejercicios);
-        return ejercicios;
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2025 a las 00:22:24
+-- Tiempo de generación: 28-06-2025 a las 19:16:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -77,10 +77,18 @@ CREATE TABLE `ejercicio` (
   `idEjercicio` int(11) NOT NULL,
   `nomEjercicio` varchar(20) NOT NULL,
   `descEjercicio` varchar(100) NOT NULL,
-  `tipEjercicio` varchar(20) NOT NULL,
+  `tipEjercicio` enum('Fuerza - pecho','Fuerza - espalda','Fuerza - piernas','Cardio','Movilidad','Estiramiento','Core / Abdomen','Explosivo / Potencia','Descanso') NOT NULL,
   `autorEjercicio` int(11) DEFAULT NULL,
   `urlVideo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ejercicio`
+--
+
+INSERT INTO `ejercicio` (`idEjercicio`, `nomEjercicio`, `descEjercicio`, `tipEjercicio`, `autorEjercicio`, `urlVideo`) VALUES
+(1, 'Descanso', 'Pausar la actividad física para que los músculos se recuperen', 'Descanso', NULL, 'https://www.youtube.com/embed/g64BkZjSNBM?si=ecHGnyqm5C3CATqF'),
+(2, 'Press de banca', 'Acostado en banco, baja y sube la barra desde el pecho con control.', 'Fuerza - pecho', NULL, 'https://www.youtube.com/embed/AcYaaJLWhvU?si=pLibwnjmlsogEhRK');
 
 -- --------------------------------------------------------
 
@@ -89,11 +97,12 @@ CREATE TABLE `ejercicio` (
 --
 
 CREATE TABLE `ejercicio_rutina` (
-  `idEjercicio` int(11) NOT NULL,
+  `idEjercicio_Rutina` int(11) NOT NULL,
   `fkIdEjercicio` int(11) NOT NULL,
   `fkIdRutina` int(11) NOT NULL,
   `semana` int(11) NOT NULL,
   `dia` int(2) NOT NULL,
+  `ordenEjercicio` int(2) NOT NULL,
   `serie` int(2) NOT NULL,
   `repeticiones` int(3) NOT NULL,
   `peso` int(4) NOT NULL,
@@ -201,7 +210,7 @@ ALTER TABLE `ejercicio`
 -- Indices de la tabla `ejercicio_rutina`
 --
 ALTER TABLE `ejercicio_rutina`
-  ADD PRIMARY KEY (`idEjercicio`),
+  ADD PRIMARY KEY (`idEjercicio_Rutina`),
   ADD KEY `fkIdEjercicio` (`fkIdEjercicio`,`fkIdRutina`),
   ADD KEY `fkIdRutina` (`fkIdRutina`);
 
@@ -254,13 +263,13 @@ ALTER TABLE `diagnostico`
 -- AUTO_INCREMENT de la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
-  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio_rutina`
 --
 ALTER TABLE `ejercicio_rutina`
-  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEjercicio_Rutina` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `redes`

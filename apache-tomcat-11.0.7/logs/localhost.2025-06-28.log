@@ -1,0 +1,1802 @@
+28-Jun-2025 08:02:41.196 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+28-Jun-2025 08:02:41.196 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+28-Jun-2025 08:02:41.197 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@2dd1086')
+28-Jun-2025 08:02:45.458 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [43]
+
+40:                     <label for="ejercicio">Ejercicio</label>
+41:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()" required>
+42:                         <option value="">Elije un ejercicio</option>
+43:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+44:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+45:                         <%}%>
+46:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:179)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:03:56.882 SEVERE [http-nio-8080-exec-13] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [43]
+
+40:                     <label for="ejercicio">Ejercicio</label>
+41:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()" required>
+42:                         <option value="">Elije un ejercicio</option>
+43:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+44:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+45:                         <%}%>
+46:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:179)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:05:41.511 SEVERE [http-nio-8080-exec-11] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.EjercicioController] lanzó excepción
+	java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "this.conn" is null
+		at Modelo.EjercicioDao.listar(EjercicioDao.java:30)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:51)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:06:23.452 SEVERE [http-nio-8080-exec-26] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @1bf95da9)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:220)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:60)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:06:23.452 SEVERE [http-nio-8080-exec-26] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [75]
+
+72:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+73:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+74:                 </div>
+75:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+76:                 if (ejercicio != null) {%>
+77:                     <div>
+78:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @1bf95da9)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:220)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:60)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:10:23.899 SEVERE [http-nio-8080-exec-31] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [43]
+
+40:                     <label for="ejercicio">Ejercicio</label>
+41:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()" required>
+42:                         <option value="">Elije un ejercicio</option>
+43:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+44:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+45:                         <%}%>
+46:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:179)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:10:32.132 SEVERE [http-nio-8080-exec-29] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [43]
+
+40:                     <label for="ejercicio">Ejercicio</label>
+41:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()" required>
+42:                         <option value="">Elije un ejercicio</option>
+43:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+44:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+45:                         <%}%>
+46:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:179)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:15:57.309 SEVERE [http-nio-8080-exec-46] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:78)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:16:58.891 SEVERE [http-nio-8080-exec-39] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:97)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:18:27.189 SEVERE [http-nio-8080-exec-60] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:82)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:19:39.513 SEVERE [http-nio-8080-exec-61] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:77)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:21:34.836 SEVERE [http-nio-8080-exec-52] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:103)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:21:47.835 SEVERE [http-nio-8080-exec-62] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:103)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:22:29.751 SEVERE [http-nio-8080-exec-68] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:103)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:22:44.607 SEVERE [http-nio-8080-exec-69] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:82)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:23:52.325 SEVERE [http-nio-8080-exec-71] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:82)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:28:43.909 SEVERE [http-nio-8080-exec-85] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:82)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:30:11.327 SEVERE [http-nio-8080-exec-93] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:82)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:30:21.025 SEVERE [http-nio-8080-exec-90] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() para servlet [Controlador.Ejercicio_RutinaController] lanzó excepción
+	java.lang.IllegalStateException: No puedo reenviar después de que la respuesta se haya llevado a cabo.
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:206)
+		at Controlador.Ejercicio_RutinaController.Create(Ejercicio_RutinaController.java:104)
+		at Controlador.Ejercicio_RutinaController.doGet(Ejercicio_RutinaController.java:38)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:33:30.285 SEVERE [http-nio-8080-exec-88] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @6f22d213)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:220)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:60)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:33:30.285 SEVERE [http-nio-8080-exec-88] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [75]
+
+72:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+73:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+74:                 </div>
+75:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+76:                 if (ejercicio != null) {%>
+77:                     <div>
+78:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @6f22d213)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:220)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:60)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:38:05.674 SEVERE [http-nio-8080-exec-110] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @596d76ad)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:220)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:38:05.674 SEVERE [http-nio-8080-exec-110] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [75]
+
+72:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+73:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+74:                 </div>
+75:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+76:                 if (ejercicio != null) {%>
+77:                     <div>
+78:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @596d76ad)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:220)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:38:34.143 SEVERE [http-nio-8080-exec-103] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [43]
+
+40:                     <label for="ejercicio">Ejercicio</label>
+41:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()" required>
+42:                         <option value="">Elije un ejercicio</option>
+43:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+44:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+45:                         <%}%>
+46:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:179)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:39:12.772 SEVERE [http-nio-8080-exec-111] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @7392f46e)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:221)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:39:12.773 SEVERE [http-nio-8080-exec-111] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [76]
+
+73:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+74:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+75:                 </div>
+76:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+77:                 if (ejercicio != null) {%>
+78:                     <div>
+79:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @7392f46e)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:221)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:41:09.628 SEVERE [http-nio-8080-exec-114] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @13cab300)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:221)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:41:09.628 SEVERE [http-nio-8080-exec-114] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [76]
+
+73:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+74:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+75:                 </div>
+76:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+77:                 if (ejercicio != null) {%>
+78:                     <div>
+79:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @13cab300)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:221)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:41:56.828 SEVERE [http-nio-8080-exec-124] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [43]
+
+40:                     <label for="ejercicio">Ejercicio</label>
+41:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()" required>
+42:                         <option value="">Elije un ejercicio</option>
+43:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+44:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+45:                         <%}%>
+46:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:179)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:42:05.639 SEVERE [http-nio-8080-exec-122] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @722ba613)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:220)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:42:05.639 SEVERE [http-nio-8080-exec-122] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [75]
+
+72:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+73:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+74:                 </div>
+75:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+76:                 if (ejercicio != null) {%>
+77:                     <div>
+78:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @722ba613)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:220)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:44:11.028 SEVERE [http-nio-8080-exec-136] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @60a0e4aa)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:223)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:44:11.028 SEVERE [http-nio-8080-exec-136] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [78]
+
+75:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+76:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+77:                 </div>
+78:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+79:                 if (ejercicio != null) {%>
+80:                     <div>
+81:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @60a0e4aa)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:223)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:61)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:50:06.399 SEVERE [http-nio-8080-exec-148] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @68b6f3c2)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:224)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:64)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:50:06.400 SEVERE [http-nio-8080-exec-148] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [79]
+
+76:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+77:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+78:                 </div>
+79:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+80:                 if (ejercicio != null) {%>
+81:                     <div>
+82:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @68b6f3c2)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:224)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:64)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:55:52.944 SEVERE [http-nio-8080-exec-167] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.NumberFormatException: For input string: "1numSemanas=2"
+		at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+		at java.base/java.lang.Integer.parseInt(Integer.java:588)
+		at java.base/java.lang.Integer.parseInt(Integer.java:685)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:161)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:64)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:55:52.945 SEVERE [http-nio-8080-exec-167] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [33]
+
+30:                     if (Semana != null && Dia != null && OrdenEjercicio != null && lista_ejercicios != null) {
+31:                         semana = Integer.parseInt(Semana);
+32:                         dia = Integer.parseInt(Dia);
+33:                         ordenEjercicio = Integer.parseInt(OrdenEjercicio);
+34:                     } else {
+35:                         System.out.println("algo estaba vacio al llegar a la vista");
+36:                         request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+
+
+Stacktrace:] con causa raíz
+	java.lang.NumberFormatException: For input string: "1numSemanas=2"
+		at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+		at java.base/java.lang.Integer.parseInt(Integer.java:588)
+		at java.base/java.lang.Integer.parseInt(Integer.java:685)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:161)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:64)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:57:55.297 SEVERE [http-nio-8080-exec-170] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @22dd8b9a)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:224)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:64)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 08:57:55.297 SEVERE [http-nio-8080-exec-170] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [79]
+
+76:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+77:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+78:                 </div>
+79:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+80:                 if (ejercicio != null) {%>
+81:                     <div>
+82:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @22dd8b9a)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:224)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:64)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 09:13:10.783 SEVERE [http-nio-8080-exec-178] org.apache.catalina.core.ApplicationDispatcher.invoke El Servlet.service() para servlet [jsp] lanzó una excepción
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @3c13a502)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:225)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:67)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 09:13:10.784 SEVERE [http-nio-8080-exec-178] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [Controlador.EjercicioController] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [80]
+
+77:                     <label for="Descanso">Tiempo de descanso en segundos</label>
+78:                     <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="60" required>seg
+79:                 </div>
+80:                 <%Ejercicio ejercicio = (Ejercicio) request.getAttribute("lista_ejercicios");
+81:                 if (ejercicio != null) {%>
+82:                     <div>
+83:                         <iframe width="560" height="315"
+
+
+Stacktrace:] con causa raíz
+	java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class Modelo.Ejercicio (java.util.ArrayList is in module java.base of loader 'bootstrap'; Modelo.Ejercicio is in unnamed module of loader org.apache.catalina.loader.ParallelWebappClassLoader @3c13a502)
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:225)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:514)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:334)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:263)
+		at Controlador.EjercicioController.EnviarEjercicios(EjercicioController.java:67)
+		at Controlador.EjercicioController.doGet(EjercicioController.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 09:15:46.812 SEVERE [http-nio-8080-exec-187] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [48]
+
+45:                     <label for="ejercicio">Ejercicio</label>
+46:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()" required>
+47:                         <option value="">Elije un ejercicio</option>
+48:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+49:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+50:                         <%}%>
+51:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:184)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 10:17:49.770 SEVERE [http-nio-8080-exec-293] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [47]
+
+44:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()">
+45:                         <%String selectValue = (ejercicio != null) ? ejercicio.getNomEjercicio() : "Selecciona un ejercicio";%>
+46:                         <option value=""><%=selectValue%></option>
+47:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+48:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+49:                         <%}%>
+50:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:187)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 10:52:41.011 SEVERE [http-nio-8080-exec-302] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [No se puede compilar la clase para JSP: 
+
+Ha tenido lugar un error en la línea: [104] en el archivo jsp: [/vistas/Entrenador/formEjercicioRutina.jsp]
+numSemanas cannot be resolved to a variable
+101: 
+102:                 window.location.href = "<%= contextPath%>/EjercicioController?accion=TraerEjercicio" +
+103:                         "&semana=<%=semana%>&dia=<%=dia%>&ordenEjercicio=<%=ordenEjercicio%>" +
+104:                         "&numSemanas=<%=numSemanas%>&numDias=<%=numDias%>&numEjercicios=<%=numEjercicios%>" +
+105:                         "&idEjercicio=" + ejercicio;
+106:             }
+107:         </script>
+
+
+Ha tenido lugar un error en la línea: [104] en el archivo jsp: [/vistas/Entrenador/formEjercicioRutina.jsp]
+numDias cannot be resolved to a variable
+101: 
+102:                 window.location.href = "<%= contextPath%>/EjercicioController?accion=TraerEjercicio" +
+103:                         "&semana=<%=semana%>&dia=<%=dia%>&ordenEjercicio=<%=ordenEjercicio%>" +
+104:                         "&numSemanas=<%=numSemanas%>&numDias=<%=numDias%>&numEjercicios=<%=numEjercicios%>" +
+105:                         "&idEjercicio=" + ejercicio;
+106:             }
+107:         </script>
+
+
+Ha tenido lugar un error en la línea: [104] en el archivo jsp: [/vistas/Entrenador/formEjercicioRutina.jsp]
+numEjercicios cannot be resolved to a variable
+101: 
+102:                 window.location.href = "<%= contextPath%>/EjercicioController?accion=TraerEjercicio" +
+103:                         "&semana=<%=semana%>&dia=<%=dia%>&ordenEjercicio=<%=ordenEjercicio%>" +
+104:                         "&numSemanas=<%=numSemanas%>&numDias=<%=numDias%>&numEjercicios=<%=numEjercicios%>" +
+105:                         "&idEjercicio=" + ejercicio;
+106:             }
+107:         </script>
+
+
+Stacktrace:] con causa raíz
+	org.apache.jasper.JasperException: No se puede compilar la clase para JSP: 
+
+Ha tenido lugar un error en la línea: [104] en el archivo jsp: [/vistas/Entrenador/formEjercicioRutina.jsp]
+numSemanas cannot be resolved to a variable
+101: 
+102:                 window.location.href = "<%= contextPath%>/EjercicioController?accion=TraerEjercicio" +
+103:                         "&semana=<%=semana%>&dia=<%=dia%>&ordenEjercicio=<%=ordenEjercicio%>" +
+104:                         "&numSemanas=<%=numSemanas%>&numDias=<%=numDias%>&numEjercicios=<%=numEjercicios%>" +
+105:                         "&idEjercicio=" + ejercicio;
+106:             }
+107:         </script>
+
+
+Ha tenido lugar un error en la línea: [104] en el archivo jsp: [/vistas/Entrenador/formEjercicioRutina.jsp]
+numDias cannot be resolved to a variable
+101: 
+102:                 window.location.href = "<%= contextPath%>/EjercicioController?accion=TraerEjercicio" +
+103:                         "&semana=<%=semana%>&dia=<%=dia%>&ordenEjercicio=<%=ordenEjercicio%>" +
+104:                         "&numSemanas=<%=numSemanas%>&numDias=<%=numDias%>&numEjercicios=<%=numEjercicios%>" +
+105:                         "&idEjercicio=" + ejercicio;
+106:             }
+107:         </script>
+
+
+Ha tenido lugar un error en la línea: [104] en el archivo jsp: [/vistas/Entrenador/formEjercicioRutina.jsp]
+numEjercicios cannot be resolved to a variable
+101: 
+102:                 window.location.href = "<%= contextPath%>/EjercicioController?accion=TraerEjercicio" +
+103:                         "&semana=<%=semana%>&dia=<%=dia%>&ordenEjercicio=<%=ordenEjercicio%>" +
+104:                         "&numSemanas=<%=numSemanas%>&numDias=<%=numDias%>&numEjercicios=<%=numEjercicios%>" +
+105:                         "&idEjercicio=" + ejercicio;
+106:             }
+107:         </script>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:531)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:374)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:346)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:332)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:591)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:376)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 10:53:35.893 SEVERE [http-nio-8080-exec-299] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/vistas/Entrenador/formEjercicioRutina.jsp] en línea [43]
+
+40:                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()">
+41:                         <%String selectValue = (ejercicio != null) ? ejercicio.getNomEjercicio() : "Selecciona un ejercicio";%>
+42:                         <option value=""><%=selectValue%></option>
+43:                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
+44:                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
+45:                         <%}%>
+46:                     </select>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "lista_ejercicios" is null
+		at org.apache.jsp.vistas.Entrenador.formEjercicioRutina_jsp._jspService(formEjercicioRutina_jsp.java:183)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)

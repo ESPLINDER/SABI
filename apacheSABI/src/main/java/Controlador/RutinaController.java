@@ -44,54 +44,10 @@ public class RutinaController extends HttpServlet {
     }
 
     protected void CrearTabla(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
-        try {
-            String NumSemanas = request.getParameter("numSemanas");
-            String NumDias = request.getParameter("numDias");
-            String NumEjercicios = request.getParameter("numEjercicios");
-            if (NumSemanas != null && NumDias != null && NumEjercicios != null) {
-                int numSemanas = Integer.parseInt(NumSemanas);
-                int numDias = Integer.parseInt(NumDias);
-                int numEjercicios = Integer.parseInt(NumEjercicios);
-                if (numSemanas > 12) {
-                    System.out.println("Demasiadas semanas");
-                    String alertaSemanas = "Demasiadas semanas, por favor ingresar maximo 12";
-                    request.setAttribute("alertaSemanas", alertaSemanas);
-                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
-                }
-                if (numDias > 7) {
-                    System.out.println("Demasiados dias");
-                    String alertaDias = "Demasiados dias, la semana no puede tener mas de 7 dias";
-                    request.setAttribute("alertaDias", alertaDias);
-                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
-                }
-                if (numEjercicios > 30) {
-                    System.out.println("Demasiados ejercicios");
-                    String alertaEjercicios = "Demasiados ejercicios, por favor ingresar maximo 100";
-                    request.setAttribute("alertaEjercicios", alertaEjercicios);
-                    request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
-                }
-                
-                
-                
-                
-                String tabla = "block";
-                request.setAttribute("tabla", tabla);
-                request.setAttribute("numSemanas", numSemanas);
-                request.setAttribute("numDias", numDias);
-                request.setAttribute("numEjercicios", numEjercicios);
-                request.setAttribute("ejercicios", ejercicios); //listas
-                
-                System.out.println("listo para generar la tabla");
-                request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
-            } else {
-                System.out.println("valor de estructura nulo");
-                String alerta = "Por favor rellenar todos los campos con numeros enteros";
-                request.setAttribute("alerta", alerta);
-                request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
-            }
+        /*try {
         } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error en el registro");
-        }
+        }*/
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

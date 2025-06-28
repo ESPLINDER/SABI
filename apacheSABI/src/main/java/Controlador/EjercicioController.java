@@ -44,20 +44,16 @@ public class EjercicioController extends HttpServlet {
     }
     
     protected void EnviarEjercicios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String semana = request.getParameter("semana");
-        String dia = request.getParameter("dia");
-        String ordenEjercicio = request.getParameter("ordenEjercicio");
         String IdEjercicio = request.getParameter("idEjercicio");
         List listaEjercicios = ejercicio_dao.listar();
         request.setAttribute("lista_ejercicios", listaEjercicios);
-        request.setAttribute("semana", semana);
-        request.setAttribute("dia", dia);
-        request.setAttribute("ordenEjercicio", ordenEjercicio);
+        
         if (IdEjercicio != null) {
             int idEjercicio = Integer.parseInt(IdEjercicio);
-            request.setAttribute("ejercicio", ejercicio_dao.listarId(id));
+            request.setAttribute("ejercicio", ejercicio_dao.listarId(idEjercicio));
         }
-        request.getRequestDispatcher("vistas/Entrenador/formEjercicioRutina.jsp").forward(request, response);
+        System.out.println("enviando lista a form ejercicio rutina");
+        request.getRequestDispatcher("/vistas/Entrenador/formEjercicioRutina.jsp").forward(request, response);
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
