@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2025 a las 19:16:51
+-- Tiempo de generación: 28-06-2025 a las 23:42:06
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -88,7 +88,9 @@ CREATE TABLE `ejercicio` (
 
 INSERT INTO `ejercicio` (`idEjercicio`, `nomEjercicio`, `descEjercicio`, `tipEjercicio`, `autorEjercicio`, `urlVideo`) VALUES
 (1, 'Descanso', 'Pausar la actividad física para que los músculos se recuperen', 'Descanso', NULL, 'https://www.youtube.com/embed/g64BkZjSNBM?si=ecHGnyqm5C3CATqF'),
-(2, 'Press de banca', 'Acostado en banco, baja y sube la barra desde el pecho con control.', 'Fuerza - pecho', NULL, 'https://www.youtube.com/embed/AcYaaJLWhvU?si=pLibwnjmlsogEhRK');
+(2, 'Press de banca', 'Acostado en banco, baja y sube la barra desde el pecho con control.', 'Fuerza - pecho', NULL, 'https://www.youtube.com/embed/AcYaaJLWhvU?si=pLibwnjmlsogEhRK'),
+(3, 'Resistencia', 'Realizar un trote suave ya sea al aire libre o en cinta.', 'Cardio', NULL, 'https://www.youtube.com/embed/6_5_wI-FXzE?si=He-ly0W_Vt-rCvvZ'),
+(4, 'Abdominales', 'Harás  abdominales clásicas sobre una superficie apta para realizarlas.', 'Fuerza - pecho', NULL, 'https://www.youtube.com/embed/FBh_7mQvkFc?si=VIMge9s9HNiDVvAk');
 
 -- --------------------------------------------------------
 
@@ -105,10 +107,40 @@ CREATE TABLE `ejercicio_rutina` (
   `ordenEjercicio` int(2) NOT NULL,
   `serie` int(2) NOT NULL,
   `repeticiones` int(3) NOT NULL,
-  `peso` int(4) NOT NULL,
+  `peso_tiempo` int(4) NOT NULL,
   `intesidad` enum('baja','intermedia','alta','maxima') NOT NULL,
   `descanso` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ejercicio_rutina`
+--
+
+INSERT INTO `ejercicio_rutina` (`idEjercicio_Rutina`, `fkIdEjercicio`, `fkIdRutina`, `semana`, `dia`, `ordenEjercicio`, `serie`, `repeticiones`, `peso_tiempo`, `intesidad`, `descanso`) VALUES
+(1, 4, 1, 1, 1, 1, 3, 10, 0, 'intermedia', 5),
+(2, 3, 1, 1, 1, 2, 1, 2, 30, 'baja', 10),
+(3, 2, 1, 1, 1, 3, 2, 10, 30, 'intermedia', 5),
+(4, 1, 1, 1, 2, 1, 1, 1, 0, 'baja', 0),
+(5, 4, 1, 1, 3, 1, 3, 10, 0, 'intermedia', 5),
+(6, 3, 1, 1, 3, 2, 2, 1, 30, 'baja', 5),
+(7, 2, 1, 1, 3, 3, 2, 10, 30, 'intermedia', 5),
+(8, 1, 1, 1, 4, 1, 1, 1, 0, 'baja', 0),
+(9, 4, 1, 1, 5, 1, 2, 10, 0, 'intermedia', 10),
+(10, 3, 1, 1, 5, 2, 1, 1, 40, 'baja', 15),
+(11, 4, 1, 1, 6, 1, 4, 10, 0, 'intermedia', 5),
+(12, 3, 1, 1, 6, 2, 3, 1, 25, 'intermedia', 5),
+(13, 1, 1, 1, 7, 1, 1, 1, 0, 'baja', 0),
+(14, 2, 1, 2, 1, 1, 3, 10, 20, 'intermedia', 5),
+(15, 3, 1, 2, 1, 2, 3, 10, 15, 'intermedia', 10),
+(16, 1, 1, 2, 2, 1, 1, 1, 0, 'baja', 0),
+(17, 1, 1, 2, 3, 1, 4, 12, 25, 'intermedia', 5),
+(18, 3, 1, 2, 3, 2, 4, 12, 30, 'alta', 10),
+(19, 1, 1, 2, 4, 1, 1, 1, 1, 'baja', 0),
+(20, 2, 1, 2, 5, 1, 5, 15, 35, 'alta', 10),
+(21, 4, 1, 2, 5, 2, 5, 15, 40, 'alta', 10),
+(22, 1, 1, 2, 6, 1, 1, 1, 1, 'baja', 0),
+(23, 3, 1, 2, 7, 1, 3, 10, 20, 'intermedia', 10),
+(24, 2, 1, 2, 7, 2, 3, 10, 15, 'intermedia', 10);
 
 -- --------------------------------------------------------
 
@@ -131,6 +163,7 @@ CREATE TABLE `redes` (
 
 CREATE TABLE `rutina` (
   `idRutina` int(11) NOT NULL,
+  `nomRutina` varchar(50) NOT NULL,
   `semanasRutina` int(3) NOT NULL,
   `descRutina` varchar(100) NOT NULL,
   `nivelRutina` enum('basico','intermedio','avanzado') NOT NULL,
@@ -138,6 +171,13 @@ CREATE TABLE `rutina` (
   `autorRutina` int(11) DEFAULT NULL,
   `autorCliente` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `rutina`
+--
+
+INSERT INTO `rutina` (`idRutina`, `nomRutina`, `semanasRutina`, `descRutina`, `nivelRutina`, `creacionRutina`, `autorRutina`, `autorCliente`) VALUES
+(1, 'Rutina Estándar', 2, 'En esta rutina encontraras ejercicios básicos para generar resistencia y ganar masa muscular.', 'basico', '2025-06-28', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -263,13 +303,13 @@ ALTER TABLE `diagnostico`
 -- AUTO_INCREMENT de la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
-  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio_rutina`
 --
 ALTER TABLE `ejercicio_rutina`
-  MODIFY `idEjercicio_Rutina` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEjercicio_Rutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `redes`
@@ -281,7 +321,7 @@ ALTER TABLE `redes`
 -- AUTO_INCREMENT de la tabla `rutina`
 --
 ALTER TABLE `rutina`
-  MODIFY `idRutina` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRutina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `suscripcion`
