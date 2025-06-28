@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/usuario")
+@WebServlet("/registro")
 public class UsuarioController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UsuarioDao usuarioDao = new UsuarioDao();
@@ -93,3 +93,4 @@ public class UsuarioController extends HttpServlet {
         return null; // Sin errores
     }
 }
+
