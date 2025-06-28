@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author William
@@ -45,7 +44,7 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 break;
             case "Delete":
                 break;
-            case "Estructurar":
+            case "DefinirEjercicio":
                 break;
         }
         processRequest(request, response);
@@ -104,10 +103,12 @@ public class Ejercicio_RutinaController extends HttpServlet {
         for (int i = 0; i <= max.getSemanas(); i++) {
             for (int j = 0; j <= max.getDias(); j++) {
                 for (int k = 0; k <= max.getEjercicios(); k++) {
-                    eje_rut.setSemana(i);
-                    eje_rut.setDia(j);
-                    eje_rut.setOrdenEjercicio(k);
-                    ejercicios.add(eje_rut);
+                    Ejercicio_Rutina lista_eje_rut = new Ejercicio_Rutina();
+                    
+                    lista_eje_rut.setSemana(i+1);
+                    lista_eje_rut.setDia(j+1);
+                    lista_eje_rut.setOrdenEjercicio(k+1);
+                    ejercicios.add(lista_eje_rut);
                 }
             }
         }

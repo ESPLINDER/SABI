@@ -55,10 +55,9 @@ public class EjercicioController extends HttpServlet {
         request.setAttribute("ordenEjercicio", ordenEjercicio);
         if (IdEjercicio != null) {
             int idEjercicio = Integer.parseInt(IdEjercicio);
-            ejercicio_dao.listarId(idEjercicio);
-            request.setAttribute("ejercicio", ejercicio);
+            request.setAttribute("ejercicio", ejercicio_dao.listarId(id));
         }
-        request.getRequestDispatcher("vistas/Entrenador/formRutina.jsp").forward(request, response);
+        request.getRequestDispatcher("vistas/Entrenador/formEjercicioRutina.jsp").forward(request, response);
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
