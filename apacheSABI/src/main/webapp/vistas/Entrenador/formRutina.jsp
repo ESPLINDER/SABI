@@ -42,8 +42,7 @@
                 </div>
             </form>
         </div>
-        <%Ejercicio_Rutina eje_rut = (Ejercicio_Rutina) request.getAttribute("eje_rut");
-        Maximos max = (Maximos) request.getAttribute("max");
+        <%Maximos max = (Maximos) request.getAttribute("max");
         if (max != null) {%>
         <div id="contenedorTabla" class="col-md-8 mx-auto">
             <h1 class="mb-5">Crea tu rutina</h1>
