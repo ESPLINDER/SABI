@@ -19,6 +19,25 @@ public class Ejercicio_RutinaDao {
     ResultSet rs;
     int r; //Valor que se retorna al agregar un nuevo registro
 
+    /*public List<Ejercicio_Rutina> Crear() {
+        String sql = "INSERT INTO usuarios(idUsuario, nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, usuario.getIdUsuario());
+            ps.setString(2, usuario.getNomUsuario());
+            ps.setString(3, usuario.getApeUsuario());
+            ps.setString(4, usuario.getEmaUsuario());
+            ps.setString(5, usuario.getPassUsuario());
+            ps.setString(6, usuario.getRolUsuario());
+            r = ps.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al agregar usuario: " + e.getMessage());
+        }
+        return ejercicios;
+    }*/
+    
     public List<Ejercicio_Rutina> listar() {
         String sql = "SELECT *, nomEjercicio FROM ejercicio_rutina INNER JOIN"
                 + " ejercicio on ejercicio_rutina.fkIdEjercicio = ejercicio.idEjercicio;";
@@ -30,24 +49,19 @@ public class Ejercicio_RutinaDao {
             while (rs.next()) {
                 Ejercicio_Rutina eje_rut = new Ejercicio_Rutina();
                 eje_rut.setIdEjercicio_Rutina(rs.getInt(1));
-                // Obtener ID del ejercicio
-                int idEjercicio = rs.getInt(2);
-                EjercicioDao ejercicioDao = new EjercicioDao();
-                Ejercicio ejercicio = Ejercicio.listarPorId(idEjercicio);
-                eje_rut.setFkIdEjercicio(ejercicio);
-
-                // Obtener ID del autor
-                int idAutor = rs.getInt(5);
-                // debo compara el id obtenido con el del usuario que tenga la sesion iniciada para decidir mostralo o no
-                if (rs.wasNull()) {
-                    ejercicio.setAutorEjercicio(null);
-                } else {
-                    UsuarioDao usuarioDao = new UsuarioDao();
-                    Usuario autor = usuarioDao.listarPorId(idAutor);
-                    ejercicio.setAutorEjercicio(autor);
-                }
-                ejercicio.setUrlVideo(rs.getString(6));
-                lista.add(ejercicio);
+                eje_rut.setFkIdEjercicio(rs.getInt(2));
+                eje_rut.setFkIdRutina(rs.getInt(3));
+                eje_rut.setSemana(rs.getInt(4));
+                eje_rut.setDia(rs.getInt(5));
+                eje_rut.setOrdenEjercicio(rs.getInt(6));
+                eje_rut.setSerie(rs.getInt(7));
+                eje_rut.setRepeticiones(rs.getInt(8));
+                eje_rut.setPeso(rs.getInt(9));
+                eje_rut.setIntensidad(rs.getString(10));
+                eje_rut.setDescanso(rs.getInt(11));
+                eje_rut.setNomEjercicio(rs.getString(12));
+                
+                lista.add(eje_rut);
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al generar lista de usuarios");

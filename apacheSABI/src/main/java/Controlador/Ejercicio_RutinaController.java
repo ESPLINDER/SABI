@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,18 +36,22 @@ public class Ejercicio_RutinaController extends HttpServlet {
 
         switch (accion) {
             case "Create":
+                this.Create(request, response);
                 break;
             case "Read":
+                List ejercicios = eje_rut_dao.listar();
                 break;
             case "Update":
                 break;
             case "Delete":
                 break;
+            case "Estructurar":
+                break;
         }
         processRequest(request, response);
     }
 
-    protected void CrearTabla(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void Create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String NumSemanas = request.getParameter("numSemanas");
             String NumDias = request.getParameter("numDias");
@@ -77,9 +82,7 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 max.setSemanas(numSemanas);
                 max.setDias(numDias);
                 max.setEjercicios(numEjercicios);
-                List ejercicios = eje_rut_dao.listar();
-                request.setAttribute("ejercicios", ejercicios);
-                request.getRequestDispatcher("vistas/admin/ListaUsuariosAdmin.jsp").forward(request, response);
+                List ejercicios = this.CrearTabla(request, response, max);
 
                 request.setAttribute("max", max);
                 request.setAttribute("ejercicios", ejercicios); //lista
@@ -93,6 +96,23 @@ public class Ejercicio_RutinaController extends HttpServlet {
         } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error en el registro");
         }
+    }
+
+    protected List<Ejercicio_Rutina> CrearTabla(HttpServletRequest request, HttpServletResponse response, Maximos max) throws ServletException, IOException {
+        
+        List<Ejercicio_Rutina> ejercicios = new ArrayList<>();
+        for (int i = 0; i <= max.getSemanas(); i++) {
+            for (int j = 0; j <= max.getDias(); j++) {
+                for (int k = 0; k <= max.getEjercicios(); k++) {
+                    eje_rut.setSemana(i);
+                    eje_rut.setDia(j);
+                    eje_rut.setOrdenEjercicio(k);
+                    ejercicios.add(eje_rut);
+                }
+            }
+        }
+        System.out.println(ejercicios);
+        return ejercicios;
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -36,16 +36,7 @@ public class EjercicioDao {
                 ejercicio.setNomEjercicio(rs.getString(2));
                 ejercicio.setDescEjercicio(rs.getString(3));
                 ejercicio.setTipEjercicio(rs.getString(4));
-                // Obtener ID del autor
-                int idAutor = rs.getInt(5);
-                // debo compara el id obtenido con el del usuario que tenga la sesion iniciada para decidir mostralo o no
-                if (rs.wasNull()) {
-                    ejercicio.setAutorEjercicio(null);
-                } else {
-                    UsuarioDao usuarioDao = new UsuarioDao();
-                    Usuario autor = usuarioDao.listarPorId(idAutor);
-                    ejercicio.setAutorEjercicio(autor);
-                }
+                ejercicio.setAutorEjercicio(rs.getInt(5));
                 ejercicio.setUrlVideo(rs.getString(6));
                 lista.add(ejercicio);
             }

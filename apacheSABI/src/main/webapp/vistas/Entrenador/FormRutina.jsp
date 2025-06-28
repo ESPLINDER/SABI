@@ -1,6 +1,5 @@
 <%@page import="java.util.List"%>
 <%@page import="Modelo.Maximos"%>
-<%@page import="java.util.Map"%>
 <%@page import="Modelo.Ejercicio_Rutina"%>
 <% String contextPath = request.getContextPath();%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
@@ -20,20 +19,20 @@
     <body>
         <div class="col-md-5 m-auto">
             <h1>Estructura tu rutina</h1>
-            <form id="estructuraRutina" method="GET" action="<%= contextPath%>/RutinaController">
-                <input type="hidden" name="accion" value="Estructurar">
+            <form id="estructuraRutina" method="GET" action="<%= contextPath%>/Ejercicio_RutinaController">
+                <input type="hidden" name="accion" value="Create">
                 <div class="form-group">
                     <label for="numSemanas">Cuantas semanas deseas en tu rutina?</label>
-                    <input name="numSemanas" type="number" class="form-control" id="numSemanas" required max="12">
+                    <input name="numSemanas" type="number" class="form-control" id="numSemanas" required>
                 </div>
                 <div class="form-group">
                     <label for="numDias">Cuantos dias quieres por semana?
                         (Posteriormente podras borrar los dias o ejercicios sobrantes)</label>
-                    <input name="numDias" type="number" class="form-control" id="numDias" required max="7">
+                    <input name="numDias" type="number" class="form-control" id="numDias" required>
                 </div>
                 <div class="form-group">
                     <label for="numEjercicios">Cuantos ejercicios quieres en cada dia?</label>
-                    <input name="numEjercicios" type="number" class="form-control" id="numEjercicios" required max="30">
+                    <input name="numEjercicios" type="number" class="form-control" id="numEjercicios" required>
                 </div>
 
                 <div class="card-title mb-0 text-center">
@@ -48,11 +47,8 @@
             if (max != null) {%>
         <div id="contenedorTabla" class="col-md-8 mx-auto">
             <h1 class="mb-5">Crea tu rutina</h1>
-            <form action="<%= contextPath%>/RutinaController">
-                <%List<Modelo.Ejercicio_Rutina> ejercicios = (List<Modelo.Ejercicio_Rutina>) request.getAttribute("ejercicios");
-                    if (ejercicios != null && !ejercicios.isEmpty()) {
-                        for (Modelo.Ejercicio_Rutina ejer : ejercicios) {%>
-                            <% for (int i = 1; i <= max.getSemanas(); i++) {%>
+            <form action="<%= contextPath%>/Ejercicio_RutinaController">
+                <%for (int i = 1; i <= max.getSemanas(); i++) {%>
                 <div class="semana text-center mb-5">
                     <h2 class="mb-3">Semana <%=i%></h2>
                     <table class="table table-md table-bordered">
@@ -67,23 +63,25 @@
                             <%for (int k = 1; k <= max.getEjercicios(); k++) {%>
                             <tr>
                                 <%for (int j = 1; j <= max.getDias(); j++) {%>
-                                <td class="td-hover">
-                                    <%String ejerValue = (ejer.getNomEjercicio() != null) ? ejer.getNomEjercicio() : "Ejercicio "+k;%>
-                                    <a href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>"><%=ejerValue%></a>
-                                    <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
-                                </td>
+                                <%List<Modelo.Ejercicio_Rutina> ejercicios = (List<Modelo.Ejercicio_Rutina>) request.getAttribute("ejercicios");
+                                    for (Modelo.Ejercicio_Rutina ejer : ejercicios) {
+                                        String ejerValue = (ejer.getNomEjercicio() != null && ejer.getSemana() == i && ejer.getDia() == j)
+                                        ? ejer.getNomEjercicio() : "Ejercicio " + k;%>
+                                        <td class="td-hover">
+                                            <a href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>"><%=ejerValue%></a>
+                                            <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
+                                        </td>
+                                    <%}%>
                                 <%}%>
                             </tr>
-                            <%}%>
+                                
                         </tbody>
                     </table>
                 </div>
-                        <%}%>
                 <%}%>
             </form>
         </div>
-        <%}
-}%>
+        <%}%>
     </body>
 
 </html>
