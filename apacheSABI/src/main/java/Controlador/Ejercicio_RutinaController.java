@@ -32,20 +32,24 @@ public class Ejercicio_RutinaController extends HttpServlet {
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
+        if (accion == null) {
+            accion = "default";
+        }
 
         switch (accion) {
             case "Create":
                 this.Create(request, response);
                 break;
             case "Read":
-                List ejercicios = eje_rut_dao.listar();
                 break;
             case "Update":
-
+                this.Update(request, response);
                 break;
             case "Delete":
                 break;
             case "numSeries":
+                break;
+            default:
                 break;
         }
         processRequest(request, response);
@@ -129,30 +133,41 @@ public class Ejercicio_RutinaController extends HttpServlet {
 
     protected void Update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String fkIdEjercicio = request.getParameter("fkIdEjercicio");
-        String semana = request.getParameter("semana");
-        String dia = request.getParameter("dia");
-        String ordenEjercicio = request.getParameter("ordenEjercicio");
-        
-        String serie = request.getParameter("series");
-        String repeticiones = request.getParameter("repeticiones");
-        String peso = request.getParameter("peso");
+        String FkIdEjercicio = request.getParameter("fkIdEjercicio");
+        String Semana = request.getParameter("semana");
+        String Dia = request.getParameter("dia");
+        String OrdenEjercicio = request.getParameter("ordenEjercicio");
+        String Series = request.getParameter("series");
+        String Repeticiones = request.getParameter("repeticiones");
+        String Peso = request.getParameter("peso");
         String intensidad = request.getParameter("intensidad");
-        String descanso = request.getParameter("descanso");
-        
-        List<Ejercicio_Rutina> ejercicios = new ArrayList<>();
-        for (int i = 0; i <= max.getSemanas(); i++) {
-            for (int j = 0; j <= max.getDias(); j++) {
-                for (int k = 0; k <= max.getEjercicios(); k++) {
-                    Ejercicio_Rutina lista_eje_rut = new Ejercicio_Rutina();
+        String Descanso = request.getParameter("descanso");
 
-                    lista_eje_rut.setSemana(i + 1);
-                    lista_eje_rut.setDia(j + 1);
-                    lista_eje_rut.setOrdenEjercicio(k + 1);
-                    ejercicios.add(lista_eje_rut);
-                }
+        int fkIdEjercicio = Integer.parseInt(FkIdEjercicio);
+        int semana = Integer.parseInt(Semana);
+        int dia = Integer.parseInt(Dia);
+        int ordenEjercicio = Integer.parseInt(OrdenEjercicio);
+        int series = Integer.parseInt(Series);
+        int repeticiones = Integer.parseInt(Repeticiones);
+        int peso = Integer.parseInt(Peso);
+        int descanso = Integer.parseInt(Descanso);
+
+        List<Modelo.Ejercicio_Rutina> ejercicios = (List<Modelo.Ejercicio_Rutina>) request.getAttribute("ejercicios");
+        
+        for (Modelo.Ejercicio_Rutina ejer : ejercicios) {
+            if (ejer.getSemana() == semana && ejer.getDia() == dia && ejer.getOrdenEjercicio() == ordenEjercicio) {
+                ejer.setFkIdEjercicio(fkIdEjercicio);
+                ejer.setSemana(semana);
+                ejer.setOrdenEjercicio(ordenEjercicio);
+                ejer.setSerie(series);
+                ejer.setRepeticiones(repeticiones);
+                ejer.setPeso(peso);
+                ejer.setIntensidad(intensidad);
+                ejer.setDescanso(descanso);
             }
         }
+        request.setAttribute("ejercicios", ejercicios);
+        request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
