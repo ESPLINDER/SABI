@@ -10,7 +10,6 @@
             <link rel="stylesheet" href="<%= contextPath %>/estilos/indexCliente.css">
             <link rel="stylesheet" href="<%= contextPath %>/estilos/barranavegacion.css">
         </head>
-
         <body>
             <%@ include file="/plantillas/barraNavegacion.jsp" %>
 

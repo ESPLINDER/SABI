@@ -1,27 +1,25 @@
 package Modelo;
 
 import Config.Conexion; // Importa la clase de conexión
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * @author UnPendejo
+ */
 public class UsuarioDao {
-    private Connection connection;
 
-    public UsuarioDao() {
-        try {
-            // Inicializa la conexión a la base de datos
-            this.connection = new Conexion().Conexion();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+    Conexion cn = new Conexion();
+    Connection conn;
+    PreparedStatement ps;
+    ResultSet rs;
+    int r;
 
     // Método para agregar un nuevo usuario
     public int Agregar(Usuario usuario) {
         String sql = "INSERT INTO usuarios (nombre, apellido, email, password, tipo_documento, numero_documento, ciudad, rol, especialidad, xp_años, biografia, prom_calificacion, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try {
             ps.setString(1, usuario.getNomUsuario());
             ps.setString(2, usuario.getApeUsuario());
             ps.setString(3, usuario.getEmaUsuario());
@@ -40,15 +38,13 @@ public class UsuarioDao {
         } catch (SQLException e) {
             e.printStackTrace();
             return 0; // Retorna 0 si hay un error
-        } finally {
-            cerrarConexion(); // Cierra la conexión después de la operación
         }
     }
 
     // Método para verificar si existe un email
     public boolean existeEmail(String email) {
         String sql = "SELECT COUNT(*) FROM usuarios WHERE email = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -56,8 +52,6 @@ public class UsuarioDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            cerrarConexion(); // Cierra la conexión después de la operación
         }
         return false; // Retorna false si no existe
     }
@@ -65,7 +59,7 @@ public class UsuarioDao {
     // Método para verificar si existe un número de documento
     public boolean existeDocumento(int numeroDocumento) {
         String sql = "SELECT COUNT(*) FROM usuarios WHERE numero_documento = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try {
             ps.setInt(1, numeroDocumento);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -73,53 +67,69 @@ public class UsuarioDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            cerrarConexion(); // Cierra la conexión después de la operación
         }
         return false; // Retorna false si no existe
     }
     // Método para obtener un usuario por su ID
-public Usuario listarPorId(int idUsuario) {
-    String sql = "SELECT * FROM usuarios WHERE id = ?";
-    Usuario usuario = null;
-    try (PreparedStatement ps = connection.prepareStatement(sql)) {
-        ps.setInt(1, idUsuario);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            usuario = new Usuario();
-            usuario.setIdUsuario(rs.getInt("id"));
-            usuario.setNomUsuario(rs.getString("nombre"));
-            usuario.setApeUsuario(rs.getString("apellido"));
-            usuario.setEmaUsuario(rs.getString("email"));
-            usuario.setPassUsuario(rs.getString("password"));
-            usuario.setTipDocumento(rs.getString("tipo_documento"));
-            usuario.setNumDocumento(rs.getInt("numero_documento"));
-            usuario.setCiudadUsuario(rs.getString("ciudad"));
-            usuario.setRolUsuario(rs.getString("rol"));
-            usuario.setEspecialidad(rs.getString("especialidad"));
-            usuario.setXpAños(rs.getFloat("xp_años"));
-            usuario.setBiografia(rs.getString("biografia"));
-            usuario.setPromCalificacion(rs.getFloat("prom_calificacion"));
-            usuario.setEstadoUsuario(rs.getString("estado"));
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } finally {
-        cerrarConexion(); // Cierra la conexión después de la operación
-    }
-    return usuario; // Devuelve null si no se encuentra
-}
 
-
-    // Método para cerrar la conexión
-    private void cerrarConexion() {
-        if (connection != null) {
-            try {
-                connection.close();
-                System.out.println("Conexión cerrada");
-            } catch (SQLException e) {
-                e.printStackTrace();
+    public Usuario listarPorId(int idUsuario) {
+        String sql = "SELECT * FROM usuarios WHERE id = ?";
+        Usuario usuario = null;
+        try {
+            ps.setInt(1, idUsuario);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                usuario = new Usuario();
+                usuario.setIdUsuario(rs.getInt("id"));
+                usuario.setNomUsuario(rs.getString("nombre"));
+                usuario.setApeUsuario(rs.getString("apellido"));
+                usuario.setEmaUsuario(rs.getString("email"));
+                usuario.setPassUsuario(rs.getString("password"));
+                usuario.setTipDocumento(rs.getString("tipo_documento"));
+                usuario.setNumDocumento(rs.getInt("numero_documento"));
+                usuario.setCiudadUsuario(rs.getString("ciudad"));
+                usuario.setRolUsuario(rs.getString("rol"));
+                usuario.setEspecialidad(rs.getString("especialidad"));
+                usuario.setXpAños(rs.getFloat("xp_años"));
+                usuario.setBiografia(rs.getString("biografia"));
+                usuario.setPromCalificacion(rs.getFloat("prom_calificacion"));
+                usuario.setEstadoUsuario(rs.getString("estado"));
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return usuario; // Devuelve null si no se encuentra
     }
+
+   public List<Usuario> listarEntrenadores() {
+    List<Usuario> lista = new ArrayList<>();
+    String sql = "SELECT * FROM usuario WHERE rolUsuario = 'entrenador'";
+    try {
+        conn = cn.Conexion();
+        ps = conn.prepareStatement(sql);
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            Usuario usuario = new Usuario();
+            usuario.setIdUsuario(rs.getInt("idUsuario"));
+            usuario.setNomUsuario(rs.getString("nomUsuario"));
+            usuario.setApeUsuario(rs.getString("apeUsuario"));
+            usuario.setEmaUsuario(rs.getString("emaUsuario"));
+            usuario.setPassUsuario(rs.getString("passUsuario"));
+            usuario.setTipDocumento(rs.getString("tipDocumento"));
+            usuario.setNumDocumento(rs.getInt("numDocumento"));
+            usuario.setCiudadUsuario(rs.getString("ciudadUsuario"));
+            usuario.setRolUsuario(rs.getString("rolUsuario"));
+            usuario.setEspecialidad(rs.getString("especialidad"));
+            usuario.setXpAños(rs.getFloat("xpAños"));
+            usuario.setBiografia(rs.getString("biografia"));
+            usuario.setPromCalificacion(rs.getFloat("promCalificacion"));
+            usuario.setEstadoUsuario(rs.getString("estadoUsuario"));
+            lista.add(usuario);
+        }
+    } catch (ClassNotFoundException | SQLException e) {
+        System.out.println("Error al listar");
+    }
+    return lista;
+   }
 }
+

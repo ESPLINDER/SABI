@@ -20,6 +20,23 @@ public class Usuario {
     // Constructor vacío
     public Usuario() {}
 
+    public Usuario(int idUsuario, String nomUsuario, String apeUsuario, String emaUsuario, String passUsuario, String tipDocumento, int numDocumento, String ciudadUsuario, String rolUsuario, String especialidad, float xpAños, String biografia, float promCalificacion, String estadoUsuario) {
+        this.idUsuario = idUsuario;
+        this.nomUsuario = nomUsuario;
+        this.apeUsuario = apeUsuario;
+        this.emaUsuario = emaUsuario;
+        this.passUsuario = passUsuario;
+        this.tipDocumento = tipDocumento;
+        this.numDocumento = numDocumento;
+        this.ciudadUsuario = ciudadUsuario;
+        this.rolUsuario = rolUsuario;
+        this.especialidad = especialidad;
+        this.xpAños = xpAños;
+        this.biografia = biografia;
+        this.promCalificacion = promCalificacion;
+        this.estadoUsuario = estadoUsuario;
+    }
+
     // Getters y Setters
     public int getIdUsuario() {
         return idUsuario;

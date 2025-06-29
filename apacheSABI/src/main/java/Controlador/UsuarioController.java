@@ -3,20 +3,24 @@ package Controlador;
 import Modelo.Usuario;
 import Modelo.UsuarioDao;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/usuario")
+@WebServlet("/UsuarioController")
 public class UsuarioController extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private UsuarioDao usuarioDao = new UsuarioDao();
+    private final UsuarioDao usuarioDao = new UsuarioDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("registro.jsp").forward(request, response);
+        List<Usuario> listaEntrenadores = usuarioDao.listarEntrenadores();
+
+        request.setAttribute("entrenadores", listaEntrenadores);
+        request.getRequestDispatcher("vistas/Cliente/entrenadores.jsp").forward(request, response);
+        System.out.println("El servlt esta funcionando");
     }
 
     @Override
@@ -93,3 +97,4 @@ public class UsuarioController extends HttpServlet {
         return null; // Sin errores
     }
 }
+    
