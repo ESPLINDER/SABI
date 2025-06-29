@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  *
@@ -15,9 +11,10 @@ public class Rutina {
     int semanasRutina;
     String descRutina;
     String nivelRutina; //basico, intermedio, avanzado
-    LocalDateTime creacionRutina;
+    LocalDate creacionRutina;
     int autRutina;
     int autorCliente;
+    String nomRutina;
     
     //para la creacion base de la rutina
     int numDias;
@@ -25,7 +22,7 @@ public class Rutina {
     public Rutina() {
     }
 
-    public Rutina(int idRutina, int semanasRutina, String descRutina, String nivelRutina, LocalDateTime creacionRutina, int autRutina, int autorCliente, int numDias) {
+    public Rutina(int idRutina, int semanasRutina, String descRutina, String nivelRutina, LocalDate creacionRutina, int autRutina, int autorCliente, String nomRutina, int numDias) {
         this.idRutina = idRutina;
         this.semanasRutina = semanasRutina;
         this.descRutina = descRutina;
@@ -33,6 +30,7 @@ public class Rutina {
         this.creacionRutina = creacionRutina;
         this.autRutina = autRutina;
         this.autorCliente = autorCliente;
+        this.nomRutina = nomRutina;
         this.numDias = numDias;
     }
 
@@ -52,7 +50,7 @@ public class Rutina {
         return nivelRutina;
     }
 
-    public LocalDateTime getCreacionRutina() {
+    public LocalDate getCreacionRutina() {
         return creacionRutina;
     }
 
@@ -62,6 +60,10 @@ public class Rutina {
 
     public int getAutorCliente() {
         return autorCliente;
+    }
+
+    public String getNomRutina() {
+        return nomRutina;
     }
 
     public int getNumDias() {
@@ -84,7 +86,7 @@ public class Rutina {
         this.nivelRutina = nivelRutina;
     }
 
-    public void setCreacionRutina(LocalDateTime creacionRutina) {
+    public void setCreacionRutina(LocalDate creacionRutina) {
         this.creacionRutina = creacionRutina;
     }
 
@@ -96,12 +98,16 @@ public class Rutina {
         this.autorCliente = autorCliente;
     }
 
+    public void setNomRutina(String nomRutina) {
+        this.nomRutina = nomRutina;
+    }
+
     public void setNumDias(int numDias) {
         this.numDias = numDias;
     }
 
     @Override
     public String toString() {
-        return "Rutina{" + "idRutina=" + idRutina + ", semanasRutina=" + semanasRutina + ", descRutina=" + descRutina + ", nivelRutina=" + nivelRutina + ", creacionRutina=" + creacionRutina + ", autRutina=" + autRutina + ", autorCliente=" + autorCliente + ", numDias=" + numDias + '}';
+        return "Rutina{" + "idRutina=" + idRutina + ", semanasRutina=" + semanasRutina + ", descRutina=" + descRutina + ", nivelRutina=" + nivelRutina + ", creacionRutina=" + creacionRutina + ", autRutina=" + autRutina + ", autorCliente=" + autorCliente + ", nomRutina=" + nomRutina + ", numDias=" + numDias + '}';
     }
 }

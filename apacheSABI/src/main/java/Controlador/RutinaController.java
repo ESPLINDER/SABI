@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Ejercicio_Rutina;
 import Modelo.Rutina;
 import Modelo.RutinaDao;
 import java.io.IOException;
@@ -10,6 +11,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.util.List;
+
 /**
  * @author William
  *
@@ -46,7 +50,23 @@ public class RutinaController extends HttpServlet {
 
     protected void Create(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        
+        boolean alMenosUno = (boolean) session.getAttribute("alMenosUno");
+        if (alMenosUno) {
+            String SemanasRutina = request.getParameter("semanasRutina");
+            String descRutina = request.getParameter("descRutina");
+            String nivelRutina = request.getParameter("nivelRutina");
+            rutina.setCreacionRutina(LocalDate.now());
+            //df //
+            String Dia = request.getParameter("dia");
+            String OrdenEjercicio = request.getParameter("ordenEjercicio");
+            List<Ejercicio_Rutina> ejerciciosRutina = (List<Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
+            for (Modelo.Ejercicio_Rutina ejer : ejerciciosRutina) {
+                if (ejer.getIntensidad() != null) {
+                    rutina_dao.GuardarAutor(rutina);
+                }
+            }
+            request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp");
+        }
     }
 
     @Override

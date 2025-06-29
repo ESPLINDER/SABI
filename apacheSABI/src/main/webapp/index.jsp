@@ -20,14 +20,14 @@
                <div class="divider">
                    <span>O regístrate</span>
                </div>
-               <form class="login-form">
+               <form class="login-form" action="ValidarUsuarioController?accion=Ingresar">
                    <div class="form-group">
                        <label>Correo Electrónico</label>
-                       <input type="email" placeholder="correo@ejemplo.com">
+                       <input name="emaUsuario" type="email" placeholder="correo@ejemplo.com">
                    </div>
                    <div class="form-group">
                        <label>Contraseña</label>
-                       <input type="password" placeholder="Tu contraseña">
+                       <input name="passUsuario" type="password" placeholder="Tu contraseña">
                    </div>
                    <button type="submit" class="login-btn">Iniciar Sesión</button>
                    <a href="registro.jsp" class="register-link">No tienes cuenta Regístrate aquí</a>
