@@ -56,7 +56,7 @@ public class RutinaController extends HttpServlet {
             String descRutina = request.getParameter("descRutina");
             String nivelRutina = request.getParameter("nivelRutina");
             rutina.setCreacionRutina(LocalDate.now());
-            //df //
+            //dfghfhgfhgfhgfhgfhgfhgfghfhgfhgfhgfhgfghfhgtfghjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj //
             String Dia = request.getParameter("dia");
             String OrdenEjercicio = request.getParameter("ordenEjercicio");
             List<Ejercicio_Rutina> ejerciciosRutina = (List<Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");

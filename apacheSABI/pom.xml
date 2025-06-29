@@ -19,13 +19,6 @@
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Eliminar esta dependencia -->
-        <!-- <dependency>
-            <groupId>tomcat</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>5.5.23</version>
-            <type>jar</type>
-        </dependency> -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-servlet-api</artifactId>

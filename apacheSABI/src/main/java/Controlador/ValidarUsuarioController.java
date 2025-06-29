@@ -27,15 +27,21 @@ public class ValidarUsuarioController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        System.out.println("encontro el controlador");
         String accion = request.getParameter("accion"); //name del boton ingresar/registrar
+        System.out.println("accion: "+accion);
         if (accion.equalsIgnoreCase("Ingresar")){
-            
+            System.out.println("valido la accion");
             //al hacer click en el boton con value ingresar
             String user = request.getParameter("emaUsuario"); //name del formulario campo usuario
             String pass = request.getParameter("passUsuario"); // campo contrasena
             try {
+                System.out.println(user);
+                System.out.println(pass);
                 usu = u_dao.ValidarUsuario(user, pass);
+                System.out.println(usu.toString());
             } catch (ClassNotFoundException ex) {
+                System.out.println("error en validacion");
                 Logger.getLogger(ValidarUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (usu.getEmaUsuario() != null && usu.getPassUsuario() != null) {

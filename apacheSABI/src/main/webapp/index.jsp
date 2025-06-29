@@ -20,7 +20,7 @@
                <div class="divider">
                    <span>O regístrate</span>
                </div>
-               <form class="login-form" action="ValidarUsuarioController?accion=Ingresar">
+               <form class="login-form" method="POST" action="ValidarUsuarioController?">
                    <div class="form-group">
                        <label>Correo Electrónico</label>
                        <input name="emaUsuario" type="email" placeholder="correo@ejemplo.com">
@@ -29,7 +29,7 @@
                        <label>Contraseña</label>
                        <input name="passUsuario" type="password" placeholder="Tu contraseña">
                    </div>
-                   <button type="submit" class="login-btn">Iniciar Sesión</button>
+                   <button name="accion" value="Ingresar" type="submit" class="login-btn">Iniciar Sesión</button>
                    <a href="registro.jsp" class="register-link">No tienes cuenta Regístrate aquí</a>
                </form>
            </div>
