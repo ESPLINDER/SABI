@@ -4,27 +4,9 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.mycompany.servlets.LoginServlet</servlet-class>
     </servlet>
-    <servlet>
-<<<<<<< Updated upstream
-        <servlet-name>EntrenadorController</servlet-name>
-        <servlet-class>Controlador.EntrenadorController</servlet-class>
-=======
-        <servlet-name>PRUEBA2</servlet-name>
-        <servlet-class>Controlador.PRUEBA2</servlet-class>
->>>>>>> Stashed changes
-    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-<<<<<<< Updated upstream
-        <servlet-name>EntrenadorController</servlet-name>
-        <url-pattern>/EntrenadorController</url-pattern>
-=======
-        <servlet-name>PRUEBA2</servlet-name>
-        <url-pattern>/PRUEBA2</url-pattern>
->>>>>>> Stashed changes
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
