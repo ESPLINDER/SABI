@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Modelo.Usuario" %>
 <%
-    Usuario cliente = (Usuario) session.getAttribute("usuarioActual");
+    Usuario cliente = (Usuario) session.getAttribute("logger");
     List<Usuario> entrenadores = (List<Usuario>) request.getAttribute("entrenadores");
 %>
 <!DOCTYPE html>
