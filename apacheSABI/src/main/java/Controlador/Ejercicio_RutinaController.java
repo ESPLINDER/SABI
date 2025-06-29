@@ -22,7 +22,7 @@ import java.util.List;
 @WebServlet("/Ejercicio_RutinaController")
 public class Ejercicio_RutinaController extends HttpServlet {
 
-    Ejercicio_Rutina eje_rut = new Ejercicio_Rutina();
+    Ejercicio_Rutina ubi_eje_rut = new Ejercicio_Rutina();
     Ejercicio_RutinaDao eje_rut_dao = new Ejercicio_RutinaDao();
     Ejercicio ejercicio = new Ejercicio();
     EjercicioDao ejercicio_dao = new EjercicioDao();
@@ -136,7 +136,7 @@ public class Ejercicio_RutinaController extends HttpServlet {
     protected void Update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        eje_rut = (Ejercicio_Rutina) session.getAttribute("ubicacionEjercicio");
+        ubi_eje_rut = (Ejercicio_Rutina) session.getAttribute("ubicacionEjercicio");
         String FkIdEjercicio = request.getParameter("fkIdEjercicio");
         String Series = request.getParameter("series");
         String Repeticiones = request.getParameter("repeticiones");
@@ -155,11 +155,12 @@ public class Ejercicio_RutinaController extends HttpServlet {
         List<Modelo.Ejercicio_Rutina> ejerciciosRutina = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
 
         for (Modelo.Ejercicio_Rutina ejer : ejerciciosRutina) {
-            if (ejer.getSemana() == eje_rut.getSemana() && ejer.getDia() == eje_rut.getDia() && ejer.getOrdenEjercicio() == eje_rut.getOrdenEjercicio()) {
+            //solo actualiza el ejercicioRutina de la lista donde coincida la ubicacion
+            if (ejer.getSemana() == ubi_eje_rut.getSemana() && ejer.getDia() == ubi_eje_rut.getDia() && ejer.getOrdenEjercicio() == ubi_eje_rut.getOrdenEjercicio()) {
                 ejer.setFkIdEjercicio(fkIdEjercicio);
-                ejer.setSemana(eje_rut.getSemana());
-                ejer.setDia(eje_rut.getDia());
-                ejer.setOrdenEjercicio(eje_rut.getOrdenEjercicio());
+                ejer.setSemana(ubi_eje_rut.getSemana());
+                ejer.setDia(ubi_eje_rut.getDia());
+                ejer.setOrdenEjercicio(ubi_eje_rut.getOrdenEjercicio());
                 ejer.setSerie(series);
                 ejer.setRepeticiones(repeticiones);
                 ejer.setPeso(peso);

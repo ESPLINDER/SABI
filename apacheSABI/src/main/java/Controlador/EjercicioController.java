@@ -46,31 +46,41 @@ public class EjercicioController extends HttpServlet {
     }
 
     protected void EnviarEjercicios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        
         String IdEjercicio = request.getParameter("idEjercicio");
+        String FkIdEjercicio = request.getParameter("FkIdEjercicio");
         String Semana = request.getParameter("semana");
         String Dia = request.getParameter("dia");
         String OrdenEjercicio = request.getParameter("ordenEjercicio");
+        if (IdEjercicio != null) {
+            int idEjercicio = Integer.parseInt(IdEjercicio);
+            request.setAttribute("ejercicio", ejercicio_dao.listarId(idEjercicio));
+        }
+        
         Ejercicio_Rutina ubicacionEjercicio = new Ejercicio_Rutina();
         if (Semana != null && Dia != null && OrdenEjercicio != null) {
             int semana = Integer.parseInt(Semana);
             int dia = Integer.parseInt(Dia);
             int ordenEjercicio = Integer.parseInt(OrdenEjercicio);
-            
+
             ubicacionEjercicio.setSemana(semana);
             ubicacionEjercicio.setDia(dia);
             ubicacionEjercicio.setOrdenEjercicio(ordenEjercicio);
-        }
-        HttpSession session = request.getSession();
-        session.setAttribute("ubicacionEjercicio", ubicacionEjercicio);
+            
+            List<Modelo.Ejercicio_Rutina> ejerciciosRutina = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
 
+            for (Modelo.Ejercicio_Rutina ejer : ejerciciosRutina) {
+                //envia los datos si ya existia un ejercicio rutina en esa ubicacion
+                if (ejer.getSemana() == ubicacionEjercicio.getSemana() && ejer.getDia() == ubicacionEjercicio.getDia() && ejer.getOrdenEjercicio() == ubicacionEjercicio.getOrdenEjercicio() && ejer.getIntensidad() != null) {
+                    session.setAttribute("eje_rut_edicion", ejer);
+                }
+            }
+        }
+        
+        session.setAttribute("ubicacionEjercicio", ubicacionEjercicio);
         List listaEjercicios = ejercicio_dao.listar();
         request.setAttribute("lista_ejercicios", listaEjercicios);
-
-        if (IdEjercicio != null) {
-            int idEjercicio = Integer.parseInt(IdEjercicio);
-            request.setAttribute("ejercicio", ejercicio_dao.listarId(idEjercicio));
-        }
-        System.out.println("enviando lista a form ejercicio rutina");
         request.getRequestDispatcher("/vistas/Entrenador/formEjercicioRutina.jsp").forward(request, response);
     }
 

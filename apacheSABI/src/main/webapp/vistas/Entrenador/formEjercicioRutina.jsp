@@ -16,10 +16,8 @@
             <h1>Estructura el ejercicio</h1>
             <form id="formEjercicioRutina" action="Ejercicio_RutinaController">
                 <input type="hidden" name="accion" value="Update">
-                <input type="hidden" name="semana" value="Update">
-                <input type="hidden" name="dia" value="Update">
-                <input type="hidden" name="ordenEjercicio" value="">
                 <%
+                    
                     int semana = 0, dia = 0, ordenEjercicio = 0; //, numSemanas = 0, numDias = 0, numEjercicios = 0;
                     List<Modelo.Ejercicio> lista_ejercicios = (List<Modelo.Ejercicio>) request.getAttribute("lista_ejercicios");
                     if (lista_ejercicios == null) {

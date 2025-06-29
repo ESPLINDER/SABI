@@ -67,7 +67,7 @@
                                         for (Modelo.Ejercicio_Rutina ejer : ejercicios) {
                                             if (ejer.getSemana() == i && ejer.getDia() == j && ejer.getOrdenEjercicio() == k) {%>
                                             <td class="td-hover">
-                                                <a href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&numSemanas=<%=max.getSemanas()%>&numDias=<%=max.getDias()%>&numEjercicios=<%=max.getEjercicios()%>">
+                                                <a href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&numSemanas=<%=max.getSemanas()%>&numDias=<%=max.getDias()%>&numEjercicios=<%=max.getEjercicios()%>&fkIdEjercicio=<%=ejer.getFkIdEjercicio()%>">
                                                     <%=ejer.getNomEjercicio()%></a>
                                                 <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
                                             </td>
