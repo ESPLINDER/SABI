@@ -27,7 +27,7 @@ public class FiltroSesion implements Filter {
         String path = req.getRequestURI();
 
         // Rutas permitidas sin sesión
-        boolean esLogin = path.endsWith("index.jsp") || path.endsWith("ValidarUsuario");
+        boolean esLogin = path.endsWith("index.jsp") || path.endsWith("ValidarUsuarioController");
         boolean esRecursoEstatico = path.contains("/estilos") || path.contains("/js") || path.contains("/recursos");
 
         HttpSession sesion = req.getSession(false);

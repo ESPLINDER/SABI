@@ -12,6 +12,7 @@
 </head>
 <body>
   
+    <%System.out.println("iniciamos sabi");%>
    <!-- Sección de Login -->
    <section class="login-section">
        <div class="login-container">
@@ -20,7 +21,7 @@
                <div class="divider">
                    <span>O regístrate</span>
                </div>
-               <form class="login-form" method="POST" action="ValidarUsuarioController?">
+               <form class="login-form" method="POST" action="ValidarUsuarioController">
                    <div class="form-group">
                        <label>Correo Electrónico</label>
                        <input name="emaUsuario" type="email" placeholder="correo@ejemplo.com">

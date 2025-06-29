@@ -24,6 +24,26 @@ public class ValidarUsuarioController extends HttpServlet {
     Usuario usu = new Usuario();
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String accion = request.getParameter("accion");
+        switch (accion) {
+            case "Ingresar":
+                System.out.println("ahora si llega");
+                break;
+            case "Read":
+                break;
+            case "Update":
+                break;
+            case "Delete":
+                break;
+            case "Estructurar":
+                break;
+        }
+    }
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
