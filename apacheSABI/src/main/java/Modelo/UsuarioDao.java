@@ -16,6 +16,38 @@ public class UsuarioDao {
     ResultSet rs;
     int r;
 
+    public Usuario ValidarUsuario(String emaUsuario, String passUsuario) throws ClassNotFoundException {
+        Usuario usuario = new Usuario();
+        String sql = "SELECT * FROM usuarios WHERE emaUsuario = ? AND passUsuario = ?;";
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, emaUsuario);
+            ps.setString(2, passUsuario);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                usuario = new Usuario();
+                usuario.setIdUsuario(rs.getInt("idUsuario"));
+                usuario.setNomUsuario(rs.getString("nomUsuario"));
+                usuario.setApeUsuario(rs.getString("apeUsuario"));
+                usuario.setEmaUsuario(rs.getString("emaUsuario"));
+                usuario.setPassUsuario(rs.getString("passUsuario"));
+                usuario.setTipDocumento(rs.getString("tipDocumento"));
+                usuario.setNumDocumento(rs.getInt("numDocumento"));
+                usuario.setCiudadUsuario(rs.getString("ciudadUsuario"));
+                usuario.setRolUsuario(rs.getString("rolUsuario"));
+                usuario.setEspecialidad(rs.getString("especialidad"));
+                usuario.setXpAños(rs.getFloat("xpAños"));
+                usuario.setBiografia(rs.getString("biografia"));
+                usuario.setPromCalificacion(rs.getFloat("promCalificacion"));
+                usuario.setEstadoUsuario(rs.getString("estadoUsuario"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Correo o contraseña invalidos");
+        }
+        return usuario;
+    }
+    
     // Método para agregar un nuevo usuario
     public int Agregar(Usuario usuario) {
         String sql = "INSERT INTO usuarios (nombre, apellido, email, password, tipo_documento, numero_documento, ciudad, rol, especialidad, xp_años, biografia, prom_calificacion, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

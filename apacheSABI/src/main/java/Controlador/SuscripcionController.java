@@ -50,12 +50,13 @@ public class SuscripcionController extends HttpServlet {
         if (menu.equals("suscripciones")) {
             switch (accion) {
                 case "listar":
-                    Usuario cliente = (Usuario) request.getSession().getAttribute("usuarioActual");
+                    Usuario cliente = (Usuario) request.getSession().getAttribute("logger");
                     int idCliente = cliente.getIdUsuario(); // este será el ID real del cliente logueado
 
                     List<Suscripcion> listaSuscripciones = suscripcionDao.listarSuscripcionesCliente(idCliente);
                     request.setAttribute("suscripciones", listaSuscripciones);
                     request.getRequestDispatcher("vistas/Cliente/suscripciones.jsp").forward(request, response);
+                    System.out.println("No hay Suscripciones disponibles");
                     break;
                 case "crear": {
                     try {
