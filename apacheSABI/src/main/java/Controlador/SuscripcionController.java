@@ -23,23 +23,6 @@ public class SuscripcionController extends HttpServlet {
 
     private SuscripcionDao suscripcionDao = new SuscripcionDao();
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SuscripcionController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SuscripcionController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,7 +34,7 @@ public class SuscripcionController extends HttpServlet {
             switch (accion) {
                 case "listar":
                     Usuario cliente = (Usuario) request.getSession().getAttribute("logger");
-                    int idCliente = cliente.getIdUsuario(); // este será el ID real del cliente logueado
+                    int idCliente = cliente.getIdUsuario();
 
                     List<Suscripcion> listaSuscripciones = suscripcionDao.listarSuscripcionesCliente(idCliente);
                     request.setAttribute("suscripciones", listaSuscripciones);
@@ -82,7 +65,6 @@ public class SuscripcionController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     protected void crearSuscripcion(HttpServletRequest request, HttpServletResponse response)
@@ -103,12 +85,10 @@ public class SuscripcionController extends HttpServlet {
 
     protected void actualizarSuscripcion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     protected void desactivarSuscripcion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     @Override
