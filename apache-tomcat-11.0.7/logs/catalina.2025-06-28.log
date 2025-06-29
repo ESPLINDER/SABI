@@ -920,3 +920,623 @@
 28-Jun-2025 10:53:35.507 INFO [http-nio-8080-exec-301] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
 28-Jun-2025 10:53:35.509 INFO [http-nio-8080-exec-301] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [264] ms
 28-Jun-2025 10:53:35.510 INFO [http-nio-8080-exec-311] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 13:40:00.185 INFO [http-nio-8080-exec-320] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 13:40:00.200 INFO [http-nio-8080-exec-321] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 13:40:00.203 WARNING [http-nio-8080-exec-321] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 13:40:00.503 INFO [http-nio-8080-exec-321] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 13:40:00.506 INFO [http-nio-8080-exec-321] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [305] ms
+28-Jun-2025 13:40:00.507 INFO [http-nio-8080-exec-315] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 14:27:13.435 WARNING [http-nio-8080-exec-330] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 14:27:13.435 WARNING [http-nio-8080-exec-330] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:27:13.944 INFO [http-nio-8080-exec-330] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 14:27:13.957 INFO [http-nio-8080-exec-327] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 14:27:13.958 WARNING [http-nio-8080-exec-327] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 14:27:14.012 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:27:14.245 INFO [http-nio-8080-exec-327] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 14:27:14.246 INFO [http-nio-8080-exec-327] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [289] ms
+28-Jun-2025 14:27:14.248 INFO [http-nio-8080-exec-328] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 14:30:33.752 WARNING [http-nio-8080-exec-341] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 14:30:33.752 WARNING [http-nio-8080-exec-341] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:30:34.262 INFO [http-nio-8080-exec-341] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 14:30:34.276 INFO [http-nio-8080-exec-339] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 14:30:34.277 WARNING [http-nio-8080-exec-339] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 14:30:34.294 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:857)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:30:34.555 INFO [http-nio-8080-exec-339] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 14:30:34.556 INFO [http-nio-8080-exec-339] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [280] ms
+28-Jun-2025 14:30:34.558 INFO [http-nio-8080-exec-333] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 14:41:48.005 WARNING [http-nio-8080-exec-350] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 14:41:48.005 WARNING [http-nio-8080-exec-350] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:41:48.257 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:857)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:41:48.521 INFO [http-nio-8080-exec-350] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 14:41:48.534 INFO [http-nio-8080-exec-346] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 14:41:48.535 WARNING [http-nio-8080-exec-346] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 14:41:48.801 INFO [http-nio-8080-exec-346] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 14:41:48.802 INFO [http-nio-8080-exec-346] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [268] ms
+28-Jun-2025 14:41:48.804 INFO [http-nio-8080-exec-344] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 14:45:19.727 WARNING [http-nio-8080-exec-360] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 14:45:19.727 WARNING [http-nio-8080-exec-360] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:45:19.951 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:857)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:45:20.232 INFO [http-nio-8080-exec-360] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 14:45:20.247 INFO [http-nio-8080-exec-361] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 14:45:20.248 WARNING [http-nio-8080-exec-361] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 14:45:20.520 INFO [http-nio-8080-exec-361] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 14:45:20.522 INFO [http-nio-8080-exec-361] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [275] ms
+28-Jun-2025 14:45:20.523 INFO [http-nio-8080-exec-355] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 14:47:11.483 WARNING [http-nio-8080-exec-370] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 14:47:11.483 WARNING [http-nio-8080-exec-370] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:47:11.986 INFO [http-nio-8080-exec-370] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 14:47:11.999 INFO [http-nio-8080-exec-362] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 14:47:11.999 WARNING [http-nio-8080-exec-362] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 14:47:12.212 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:857)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:47:12.282 INFO [http-nio-8080-exec-362] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 14:47:12.284 INFO [http-nio-8080-exec-362] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [285] ms
+28-Jun-2025 14:47:12.286 INFO [http-nio-8080-exec-368] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 14:55:38.012 WARNING [http-nio-8080-exec-380] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 14:55:38.012 WARNING [http-nio-8080-exec-380] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:55:38.514 INFO [http-nio-8080-exec-380] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 14:55:38.527 INFO [http-nio-8080-exec-374] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 14:55:38.528 WARNING [http-nio-8080-exec-374] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 14:55:38.615 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:55:38.795 INFO [http-nio-8080-exec-374] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 14:55:38.797 INFO [http-nio-8080-exec-374] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [270] ms
+28-Jun-2025 14:55:38.799 INFO [http-nio-8080-exec-373] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 14:57:07.562 WARNING [http-nio-8080-exec-388] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 14:57:07.563 WARNING [http-nio-8080-exec-388] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:57:08.069 INFO [http-nio-8080-exec-388] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 14:57:08.082 INFO [http-nio-8080-exec-385] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 14:57:08.083 WARNING [http-nio-8080-exec-385] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 14:57:08.204 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 14:57:08.365 INFO [http-nio-8080-exec-385] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 14:57:08.367 INFO [http-nio-8080-exec-385] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [285] ms
+28-Jun-2025 14:57:08.369 INFO [http-nio-8080-exec-384] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 15:00:22.291 WARNING [http-nio-8080-exec-396] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 15:00:22.291 WARNING [http-nio-8080-exec-396] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:00:22.808 INFO [http-nio-8080-exec-396] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 15:00:22.822 INFO [http-nio-8080-exec-395] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 15:00:22.823 WARNING [http-nio-8080-exec-395] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 15:00:22.978 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:00:23.092 INFO [http-nio-8080-exec-395] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 15:00:23.094 INFO [http-nio-8080-exec-395] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [272] ms
+28-Jun-2025 15:00:23.096 INFO [http-nio-8080-exec-398] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 15:07:19.043 WARNING [http-nio-8080-exec-408] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 15:07:19.043 WARNING [http-nio-8080-exec-408] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:07:19.137 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:857)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:07:19.555 INFO [http-nio-8080-exec-408] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 15:07:19.570 INFO [http-nio-8080-exec-407] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 15:07:19.571 WARNING [http-nio-8080-exec-407] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 15:07:19.848 INFO [http-nio-8080-exec-407] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 15:07:19.850 INFO [http-nio-8080-exec-407] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [280] ms
+28-Jun-2025 15:07:19.851 INFO [http-nio-8080-exec-404] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 15:08:07.758 WARNING [http-nio-8080-exec-415] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 15:08:07.758 WARNING [http-nio-8080-exec-415] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:08:08.264 INFO [http-nio-8080-exec-415] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 15:08:08.278 INFO [http-nio-8080-exec-410] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 15:08:08.278 WARNING [http-nio-8080-exec-410] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 15:08:08.330 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:08:08.555 INFO [http-nio-8080-exec-410] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 15:08:08.557 INFO [http-nio-8080-exec-410] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [279] ms
+28-Jun-2025 15:08:08.559 INFO [http-nio-8080-exec-404] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 15:11:14.692 WARNING [http-nio-8080-exec-426] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 15:11:14.692 WARNING [http-nio-8080-exec-426] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:11:15.207 INFO [http-nio-8080-exec-426] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 15:11:15.221 INFO [http-nio-8080-exec-420] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 15:11:15.221 WARNING [http-nio-8080-exec-420] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 15:11:15.281 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:11:15.489 INFO [http-nio-8080-exec-420] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 15:11:15.491 INFO [http-nio-8080-exec-420] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [270] ms
+28-Jun-2025 15:11:15.493 INFO [http-nio-8080-exec-425] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 15:52:30.596 WARNING [http-nio-8080-exec-436] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 15:52:30.596 WARNING [http-nio-8080-exec-436] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:52:31.102 INFO [http-nio-8080-exec-436] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 15:52:31.114 INFO [http-nio-8080-exec-430] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 15:52:31.116 WARNING [http-nio-8080-exec-430] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 15:52:31.181 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 15:52:31.423 INFO [http-nio-8080-exec-430] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 15:52:31.425 INFO [http-nio-8080-exec-430] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [311] ms
+28-Jun-2025 15:52:31.428 INFO [http-nio-8080-exec-433] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 16:53:38.594 WARNING [http-nio-8080-exec-446] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 16:53:38.595 WARNING [http-nio-8080-exec-446] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 16:53:39.106 INFO [http-nio-8080-exec-446] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 16:53:39.120 INFO [http-nio-8080-exec-440] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 16:53:39.123 WARNING [http-nio-8080-exec-440] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 16:53:39.340 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:857)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 16:53:39.452 INFO [http-nio-8080-exec-440] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 16:53:39.454 INFO [http-nio-8080-exec-440] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [334] ms
+28-Jun-2025 16:53:39.456 INFO [http-nio-8080-exec-447] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 17:02:48.689 INFO [http-nio-8080-exec-456] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 17:02:48.701 INFO [http-nio-8080-exec-452] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 17:02:48.703 WARNING [http-nio-8080-exec-452] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 17:02:48.969 INFO [http-nio-8080-exec-452] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 17:02:48.972 INFO [http-nio-8080-exec-452] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [271] ms
+28-Jun-2025 17:02:48.973 INFO [http-nio-8080-exec-448] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 17:10:32.637 INFO [http-nio-8080-exec-466] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 17:10:32.650 INFO [http-nio-8080-exec-462] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 17:10:32.650 WARNING [http-nio-8080-exec-462] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 17:10:32.941 INFO [http-nio-8080-exec-462] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 17:10:32.944 INFO [http-nio-8080-exec-462] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [294] ms
+28-Jun-2025 17:10:32.946 INFO [http-nio-8080-exec-465] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 17:14:16.972 INFO [http-nio-8080-exec-477] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 17:14:16.985 INFO [http-nio-8080-exec-471] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 17:14:16.985 WARNING [http-nio-8080-exec-471] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 17:14:17.257 INFO [http-nio-8080-exec-471] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 17:14:17.259 INFO [http-nio-8080-exec-471] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [274] ms
+28-Jun-2025 17:14:17.263 INFO [http-nio-8080-exec-473] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 17:15:38.880 INFO [http-nio-8080-exec-473] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 17:15:38.892 INFO [http-nio-8080-exec-470] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 17:15:38.892 WARNING [http-nio-8080-exec-470] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 17:15:39.175 INFO [http-nio-8080-exec-470] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 17:15:39.177 INFO [http-nio-8080-exec-470] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [285] ms
+28-Jun-2025 17:15:39.179 INFO [http-nio-8080-exec-478] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 17:22:35.592 INFO [http-nio-8080-exec-492] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 17:22:35.604 INFO [http-nio-8080-exec-487] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 17:22:35.605 WARNING [http-nio-8080-exec-487] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 17:22:35.872 INFO [http-nio-8080-exec-487] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 17:22:35.875 INFO [http-nio-8080-exec-487] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [271] ms
+28-Jun-2025 17:22:35.877 INFO [http-nio-8080-exec-490] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 17:26:25.306 INFO [http-nio-8080-exec-502] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 17:26:25.318 INFO [http-nio-8080-exec-501] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 17:26:25.319 WARNING [http-nio-8080-exec-501] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 17:26:25.589 INFO [http-nio-8080-exec-501] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 17:26:25.591 INFO [http-nio-8080-exec-501] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [273] ms
+28-Jun-2025 17:26:25.593 INFO [http-nio-8080-exec-495] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 17:30:25.208 INFO [http-nio-8080-exec-513] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 17:30:25.220 INFO [http-nio-8080-exec-507] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 17:30:25.221 WARNING [http-nio-8080-exec-507] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 17:30:25.496 INFO [http-nio-8080-exec-507] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 17:30:25.498 INFO [http-nio-8080-exec-507] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [278] ms
+28-Jun-2025 17:30:25.499 INFO [http-nio-8080-exec-510] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 17:56:58.683 INFO [http-nio-8080-exec-522] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 17:56:58.695 INFO [http-nio-8080-exec-523] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 17:56:58.695 WARNING [http-nio-8080-exec-523] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 17:56:58.959 INFO [http-nio-8080-exec-523] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 17:56:58.961 INFO [http-nio-8080-exec-523] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [266] ms
+28-Jun-2025 17:56:58.962 INFO [http-nio-8080-exec-521] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 18:44:43.313 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/apacheSABI]
+28-Jun-2025 18:44:43.313 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/apacheSABI]
+28-Jun-2025 18:44:43.317 WARNING [Catalina-utility-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 18:44:43.317 WARNING [Catalina-utility-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 18:44:43.435 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 18:44:43.613 INFO [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 18:44:43.615 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+28-Jun-2025 18:51:20.883 INFO [http-nio-8080-exec-525] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 18:51:20.896 INFO [http-nio-8080-exec-539] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 18:51:20.897 WARNING [http-nio-8080-exec-539] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 18:51:21.165 INFO [http-nio-8080-exec-539] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 18:51:21.167 INFO [http-nio-8080-exec-539] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [270] ms
+28-Jun-2025 18:51:21.168 INFO [http-nio-8080-exec-540] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 18:54:53.299 INFO [http-nio-8080-exec-549] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 18:54:53.311 INFO [http-nio-8080-exec-545] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 18:54:53.313 WARNING [http-nio-8080-exec-545] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 18:54:53.591 INFO [http-nio-8080-exec-545] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 18:54:53.594 INFO [http-nio-8080-exec-545] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [282] ms
+28-Jun-2025 18:54:53.595 INFO [http-nio-8080-exec-546] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 18:56:46.200 INFO [http-nio-8080-exec-546] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 18:56:46.213 INFO [http-nio-8080-exec-549] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 18:56:46.214 WARNING [http-nio-8080-exec-549] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 18:56:46.492 INFO [http-nio-8080-exec-549] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 18:56:46.494 INFO [http-nio-8080-exec-549] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [281] ms
+28-Jun-2025 18:56:46.496 INFO [http-nio-8080-exec-554] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 18:59:22.154 INFO [http-nio-8080-exec-549] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 18:59:22.167 INFO [http-nio-8080-exec-559] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 18:59:22.167 WARNING [http-nio-8080-exec-559] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 18:59:22.484 INFO [http-nio-8080-exec-559] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 18:59:22.486 INFO [http-nio-8080-exec-559] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [319] ms
+28-Jun-2025 18:59:22.488 INFO [http-nio-8080-exec-561] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 19:04:33.911 INFO [http-nio-8080-exec-574] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 19:04:33.924 INFO [http-nio-8080-exec-571] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 19:04:33.924 WARNING [http-nio-8080-exec-571] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 19:04:34.191 INFO [http-nio-8080-exec-571] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 19:04:34.192 INFO [http-nio-8080-exec-571] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [270] ms
+28-Jun-2025 19:04:34.195 INFO [http-nio-8080-exec-570] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 19:09:29.496 INFO [http-nio-8080-exec-584] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 19:09:29.509 INFO [http-nio-8080-exec-579] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 19:09:29.510 WARNING [http-nio-8080-exec-579] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 19:09:29.772 INFO [http-nio-8080-exec-579] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 19:09:29.773 INFO [http-nio-8080-exec-579] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [264] ms
+28-Jun-2025 19:09:29.775 INFO [http-nio-8080-exec-580] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 19:31:33.901 WARNING [http-nio-8080-exec-593] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 19:31:33.903 WARNING [http-nio-8080-exec-593] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 19:31:34.410 INFO [http-nio-8080-exec-593] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 19:31:34.423 INFO [http-nio-8080-exec-587] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 19:31:34.424 WARNING [http-nio-8080-exec-587] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 19:31:34.574 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 19:31:34.695 INFO [http-nio-8080-exec-587] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 19:31:34.697 INFO [http-nio-8080-exec-587] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [274] ms
+28-Jun-2025 19:31:34.698 INFO [http-nio-8080-exec-592] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 19:34:17.913 WARNING [http-nio-8080-exec-596] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 19:34:17.913 WARNING [http-nio-8080-exec-596] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 19:34:18.422 INFO [http-nio-8080-exec-596] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 19:34:18.435 INFO [http-nio-8080-exec-601] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 19:34:18.436 WARNING [http-nio-8080-exec-601] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 19:34:18.583 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 19:34:18.718 INFO [http-nio-8080-exec-601] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 19:34:18.721 INFO [http-nio-8080-exec-601] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [285] ms
+28-Jun-2025 19:34:18.722 INFO [http-nio-8080-exec-595] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 19:38:09.975 WARNING [http-nio-8080-exec-613] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 19:38:09.975 WARNING [http-nio-8080-exec-613] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 19:38:10.487 INFO [http-nio-8080-exec-613] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/apacheSABI]
+28-Jun-2025 19:38:10.500 INFO [http-nio-8080-exec-605] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml]
+28-Jun-2025 19:38:10.501 WARNING [http-nio-8080-exec-605] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/apacheSABI] in deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has been ignored
+28-Jun-2025 19:38:10.654 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 19:38:10.793 INFO [http-nio-8080-exec-605] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 19:38:10.795 INFO [http-nio-8080-exec-605] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\xampp\htdocs\SABI\apache-tomcat-11.0.7\conf\Catalina\localhost\apacheSABI.xml] has finished in [294] ms
+28-Jun-2025 19:38:10.796 INFO [http-nio-8080-exec-609] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/apacheSABI]] after start() had already been called. The second call will be ignored.
+28-Jun-2025 19:42:17.213 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/apacheSABI]
+28-Jun-2025 19:42:17.213 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/apacheSABI]
+28-Jun-2025 19:42:17.215 WARNING [Catalina-utility-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [apacheSABI] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+28-Jun-2025 19:42:17.215 WARNING [Catalina-utility-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [apacheSABI] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:79)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:151)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:229)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 19:42:17.352 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [com.mysql.cj.protocol.ExportControlled].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1248)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1236)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1092)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1059)
+		at com.mysql.cj.protocol.NetworkResources.forceClose(NetworkResources.java:53)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread$ConnectionFinalizerPhantomReference.finalizeResources(AbandonedConnectionCleanupThread.java:248)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.finalizeResource(AbandonedConnectionCleanupThread.java:226)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+28-Jun-2025 19:42:17.516 INFO [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+28-Jun-2025 19:42:17.518 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
