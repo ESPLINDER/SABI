@@ -47,62 +47,102 @@
         <%} else {%>
         <div id="contenedorTabla" class="col-md-8 mx-auto text-center">
             <h1 class="mb-4 mt-5">Crea tu rutina</h1>
-            <form action="<%= contextPath%>/RutinaController?accion=Create">
-                <button class="mb-5 btn btn-success mx-auto" type="submit">Guardar Rutina</button>
-                <%for (int i = 1; i <= max.getSemanas(); i++) {%>
-                <div class="semana text-center mb-5">
-                    <h2 class="mb-3">Semana <%=i%></h2>
-                    <table class="table table-md table-bordered">
-                        <thead>
+            <button class="mb-5 btn btn-success mx-auto" type="button" data-bs-toggle="modal" data-bs-target="#guardarRutina">Guardar Rutina</button>
+            <%for (int i = 1; i <= max.getSemanas(); i++) {%>
+            <div class="semana text-center mb-5">
+                <h2 class="mb-3">Semana <%=i%></h2>
+                <table class="table table-md table-bordered">
+                    <thead>
+                        <tr>
+                            <%for (int j = 1; j <= max.getDias(); j++) {%>
+                            <th class="mx-2">Dia <%=j%></th>
+                                <%}%>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for (int k = 1; k <= max.getEjercicios(); k++) {%>
                             <tr>
                                 <%for (int j = 1; j <= max.getDias(); j++) {%>
-                                <th class="mx-2">Dia <%=j%></th>
-                                    <%}%>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%for (int k = 1; k <= max.getEjercicios(); k++) {%>
-                                <tr>
-                                    <%for (int j = 1; j <= max.getDias(); j++) {%>
-                                        <%List<Modelo.Ejercicio_Rutina> ejercicios = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
-                                            boolean encontrado = false;
+                                    <%List<Modelo.Ejercicio_Rutina> ejercicios = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
+                                        boolean encontrado = false;
 
-                                            if (ejercicios != null) {
-                                                for (Modelo.Ejercicio_Rutina ejer : ejercicios) {
-                                                    if (ejer.getSemana() == i && ejer.getDia() == j && ejer.getOrdenEjercicio() == k) {
-                                                        encontrado = true;
-                                            %>
-                                            <td class="celda position-relative p-0">
-                                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 8px 12px;">
-                                                    <a class="editar" href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&fkIdEjercicio=<%=ejer.getFkIdEjercicio()%>" 
-                                                        style="flex-grow: 1; text-decoration: none; color: <%=ejer.getEstilo()%>;">
-                                                        <%=ejer.getNomEjercicio()%>
-                                                    </a>
-                                                    <a class="eliminar" href="<%= contextPath%>/Ejercicio_RutinaController?accion=Delete&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&fkIdEjercicio=<%=ejer.getFkIdEjercicio()%>">
-                                                        <i class="bi bi-trash3-fill"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <%
-                                                        break; // ya encontramos el ejercicio, salimos del for
-                                                    }
+                                        if (ejercicios != null) {
+                                            for (Modelo.Ejercicio_Rutina ejer : ejercicios) {
+                                                if (ejer.getSemana() == i && ejer.getDia() == j && ejer.getOrdenEjercicio() == k) {
+                                                    encontrado = true;
+                                        %>
+                                        <td class="celda position-relative p-0">
+                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 8px 12px;">
+                                                <a class="editar" href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&fkIdEjercicio=<%=ejer.getFkIdEjercicio()%>" 
+                                                    style="flex-grow: 1; text-decoration: none; color: <%=ejer.getEstilo()%>;">
+                                                    <%=ejer.getNomEjercicio()%>
+                                                </a>
+                                                <a class="eliminar" href="<%= contextPath%>/Ejercicio_RutinaController?accion=Delete&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&fkIdEjercicio=<%=ejer.getFkIdEjercicio()%>">
+                                                    <i class="bi bi-trash3-fill"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <%
+                                                    break; // ya encontramos el ejercicio, salimos del for
                                                 }
                                             }
+                                        }
 
-                                            if (!encontrado) {
-                                            %>
-                                                <td class="td-vacio"></td> <!-- Aquí generas la celda vacía -->
-                                            <%
-                                            }
-                                    }%>
-                                </tr>
-                            <%}%>    
-                        </tbody>
-                    </table>
+                                        if (!encontrado) {
+                                        %>
+                                            <td class="td-vacio"></td> <!-- Aquí generas la celda vacía -->
+                                        <%
+                                        }
+                                }%>
+                            </tr>
+                        <%}%>    
+                    </tbody>
+                </table>
+            </div>
+            <%}%>
+            <!-- Modal -->
+            <div class="modal fade" id="guardarRutina" aria-labelledby="titulos" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="titulos">Guarda los datos de tu rutina</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form id="edicionUsuario" action="<%=contextPath%>/RutinaController?accion=Create">
+                                <input type="hidden" name="semanasRutina" value="<%=max.getSemanas()%>">
+                                <div class="form-group">
+                                    <label for="NomRutina">Asignale un nombre a tu rutina</label>
+                                    <input name="nomRutina" type="text" class="form-control" id="NomRutina" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="DescRutina">Describe esta rutina</label>
+                                    <input name="descRutina" type="text" class="form-control" id="DescRutina" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nomUsuario">De que nivel es tu rutina?</label>
+                                    <select name="nivelRutina" class="form-control" id="rolUsuario" required>
+                                        <option value=""></option>
+                                        <option value="Basica">Basica</option>
+                                        <option value="Intermedia">Intermedia</option>
+                                        <option value="Avanzada">Avanzada</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success" form="edicionUsuario">Guardar cambios</button>
+                        </div>
+
+                    </div>
                 </div>
-                <%}%>
-            </form>
+            </div>
         </div>
         <%}%>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
