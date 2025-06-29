@@ -9,11 +9,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import Modelo.UsuarioDao;
+import javax.servlet.annotation.WebServlet;
 
 /**
  *
  * @author Rojas
  */
+@WebServlet("/EntrenadorController")
 public class EntrenadorController extends HttpServlet {
     private UsuarioDao usuarioDao = new UsuarioDao();
 

@@ -12,7 +12,7 @@
         <a href="<%= request.getContextPath()%>/EntrenadorController">
             <span>Entrenadores</span>
         </a>
-        <a href="<%= request.getContextPath()%>/SuscripcionController">
+        <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Usuarios&accion=listar&idCliente=1">
             <span>Subcripciones</span>
         </a>
     </nav>

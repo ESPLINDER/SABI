@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Modelo.Usuario" %>
 <%
+    Usuario cliente = (Usuario) session.getAttribute("usuarioActual");
     List<Usuario> entrenadores = (List<Usuario>) request.getAttribute("entrenadores");
 %>
 <!DOCTYPE html>
@@ -26,7 +27,9 @@
                 <img src="<%= request.getContextPath()%>/recursos/entrenador.jpg" alt="">
                 <p><%= entrenador.getEspecialidad()%></p>
                 <p><%= entrenador.getBiografia()%></p>
-                <a class="boton-accion" href="SupcripcionController?idUsuario=<%= entrenador.getIdUsuario()%>">Solicitar Entrenador</a>
+                <a class="boton-accion" href="<%= request.getContextPath() %>/SuscripcionController?menu=Usuarios&accion=Agregar&idCliente=<%= cliente.getIdUsuario() %>&idEntrenador=<%= entrenador.getIdUsuario() %>">
+                    Solicitar Entrenador
+                </a>
             </div>
             <%
                 }
