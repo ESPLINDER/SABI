@@ -1,21 +1,21 @@
 package Controlador;
 
-import Modelo.Usuario;
+import Modelo.Suscripcion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import Modelo.SuscripcionDao;
 import java.util.List;
-import Modelo.UsuarioDao;
 
 /**
  *
  * @author Rojas
  */
-public class EntrenadorController extends HttpServlet {
-    private UsuarioDao usuarioDao = new UsuarioDao();
+public class SuscripcionController extends HttpServlet {
+    private SuscripcionDao suscripcionDao = new SuscripcionDao(); 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -25,21 +25,21 @@ public class EntrenadorController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EntrenadorController</title>");
+            out.println("<title>Servlet SuscripcionController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EntrenadorController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SuscripcionController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Usuario> listaEntrenadores = usuarioDao.listarEntrenadores();
-        
-        request.setAttribute("entrenadores", listaEntrenadores);
-        request.getRequestDispatcher("vistas/Cliente/entrenadores.jsp").forward(request, response);
+        List<Suscripcion> listaSuscripciones = suscripcionDao.listarSuscripciones(1);
+        request.setAttribute("suscripciones", listaSuscripciones);
+        request.getRequestDispatcher("vistas/Cliente/suscripciones.jsp").forward(request, response);
     }
 
     @Override
@@ -51,6 +51,6 @@ public class EntrenadorController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
-
+    }// </editor-fold>
+    
 }

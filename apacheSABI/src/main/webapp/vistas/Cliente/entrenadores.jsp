@@ -3,11 +3,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Modelo.Usuario" %>
 <%
-    if (request.getAttribute("entrenadores") == null) {
-        response.sendRedirect(request.getContextPath() + "/EntrenadorController");
-        return;
-    }
-    
     List<Usuario> entrenadores = (List<Usuario>) request.getAttribute("entrenadores");
 %>
 <!DOCTYPE html>
@@ -28,10 +23,10 @@
             %>
             <div class="contenido-entrenador">
                 <h1><%= entrenador.getNomUsuario() + " " + entrenador.getApeUsuario()%></h1>
-                <img src="<%= request.getContextPath()%>/recursos/fotoPerfil.png" alt="">
+                <img src="<%= request.getContextPath()%>/recursos/entrenador.jpg" alt="">
                 <p><%= entrenador.getEspecialidad()%></p>
                 <p><%= entrenador.getBiografia()%></p>
-                <a class="boton-accion" href="SupcripcionController?id=<%= entrenador.getIdUsuario()%>">Solicitar Entrenador</a>
+                <a class="boton-accion" href="SupcripcionController?idUsuario=<%= entrenador.getIdUsuario()%>">Solicitar Entrenador</a>
             </div>
             <%
                 }
