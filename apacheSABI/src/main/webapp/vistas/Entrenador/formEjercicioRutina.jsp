@@ -1,3 +1,4 @@
+<%@page import="Modelo.Ejercicio_Rutina"%>
 <%@page import="Modelo.Ejercicio"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,20 +18,34 @@
             <form id="formEjercicioRutina" action="Ejercicio_RutinaController">
                 <input type="hidden" name="accion" value="Update">
                 <%
+                    Ejercicio_Rutina eje_rut_edicion = (Ejercicio_Rutina) session.getAttribute("eje_rut_edicion");
+                    Ejercicio ejercicio = (Ejercicio) request.getAttribute("ejercicio");
+                    String selectValue = (ejercicio != null) ? ejercicio.getNomEjercicio() : "Selecciona un ejercicio";
+                    int selectValueId = (ejercicio != null) ? ejercicio.getIdEjercicio() : 0;
+                    String valueSerie = "";
+                    String intensidadValue = "Elije la intensidad para realizar esta serie";
+                    String repeticionesValue = "";
+                    String pesoValue = "";
+                    String descansoValue = "";
                     
-                    int semana = 0, dia = 0, ordenEjercicio = 0; //, numSemanas = 0, numDias = 0, numEjercicios = 0;
+                    if (eje_rut_edicion != null) {
+                        selectValue = eje_rut_edicion.getNomEjercicio();
+                        selectValueId = eje_rut_edicion.getFkIdEjercicio();
+                        valueSerie = "value="+"'"+eje_rut_edicion.getSerie()+"'";
+                        intensidadValue = eje_rut_edicion.getIntensidad();
+                        repeticionesValue = "value="+"'"+eje_rut_edicion.getRepeticiones()+"'";
+                        pesoValue = "value="+"'"+eje_rut_edicion.getPeso()+"'";
+                        descansoValue = "value="+"'"+eje_rut_edicion.getDescanso()+"'";
+                    }
                     List<Modelo.Ejercicio> lista_ejercicios = (List<Modelo.Ejercicio>) request.getAttribute("lista_ejercicios");
                     if (lista_ejercicios == null) {
                         System.out.println("primero debe hacer la tabla");
                         request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
                     }
-                    Ejercicio ejercicio = (Ejercicio) request.getAttribute("ejercicio");
                 %>
                 <div class="form-group">
                     <label for="ejercicio">Ejercicio</label>
                     <select name="fkIdEjercicio" class="form-control" id="ejercicio" onchange="TraerEjercicio()">
-                        <%String selectValue = (ejercicio != null) ? ejercicio.getNomEjercicio() : "Selecciona un ejercicio";%>
-                        <%int selectValueId = (ejercicio != null) ? ejercicio.getIdEjercicio() : 1;%>
                         <option value="<%=selectValueId%>"><%=selectValue%></option>
                         <%for (Modelo.Ejercicio ejer : lista_ejercicios) {%>
                         <option value="<%= ejer.getIdEjercicio()%>"><%=ejer.getNomEjercicio()%></option>
@@ -38,17 +53,16 @@
                     </select>
                 </div>
 
-                <%if (ejercicio != null) {
-                        System.out.println("este es el ejercicio que se encontro: " + ejercicio.toString());%>
+                <%if (ejercicio != null || eje_rut_edicion != null) {%>
                 <div class="form-group">
                     <label for="Series">Series</label>
-                    <input name="series" type="number" class="form-control" id="Series" max="50">
+                    <input name="series" <%=valueSerie%> type="number" class="form-control" id="Series" max="50">
                 </div>
                 <div>
                     <div class="form-group">
                         <label for="Intensidad">Intensidad</label>
                         <select name="intensidad" class="form-control" id="Intensidad" required>
-                            <option value="">Elije la intensidad para realizar esta serie</option>
+                            <option value="<%=intensidadValue%>"><%=intensidadValue%></option>
                             <option value="Baja">Baja</option>
                             <option value="Media">Media</option>
                             <option value="Moderada">Moderada</option>
@@ -58,15 +72,15 @@
                     </div>
                     <div class="form-group">
                         <label for="Repeticiones">Repeticiones</label>
-                        <input name="repeticiones" type="number" class="form-control" id="Repeticiones" value="" required>
+                        <input name="repeticiones" <%=repeticionesValue%> type="number" class="form-control" id="Repeticiones" required min="1">
                     </div>
                     <div class="form-group">
                         <label for="Peso">Peso (kg) / Tiempo (segundos)</label>
-                        <input name="peso" type="number" class="form-control" id="Peso" value="0" required>
+                        <input name="peso" <%=pesoValue%> type="number" class="form-control" id="Peso" required min="0">
                     </div>
                     <div class="form-group">
                         <label for="Descanso">Tiempo de descanso en segundos</label>
-                        <input name="descanso" type="number" class="form-control" id="Descanso" value="" placeholder="Ej: 60" required>seg
+                        <input name="descanso" <%=descansoValue%> type="number" class="form-control" id="Descanso" placeholder="Ej: 60" required min="0">
                     </div>
                 </div>
                 <div>
@@ -99,7 +113,7 @@
 
                 // 3. Agregar o actualizar el parámetro fkIdEjercicio
                 params.set("idEjercicio", ejercicioId);
-                params.set("accion", "TraerEjercicio");       
+                params.set("accion", "TraerEjercicio");
 
                 // 4. Redirigir al controlador con los parámetros
                 window.location.href = "<%= contextPath%>/EjercicioController?" + params.toString();

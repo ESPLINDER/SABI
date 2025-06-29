@@ -42,20 +42,24 @@ public class EjercicioController extends HttpServlet {
                 this.EnviarEjercicios(request, response);
                 break;
         }
-        processRequest(request, response);
     }
 
     protected void EnviarEjercicios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         
         String IdEjercicio = request.getParameter("idEjercicio");
-        String FkIdEjercicio = request.getParameter("FkIdEjercicio");
+        String FkIdEjercicio = request.getParameter("fkIdEjercicio");
         String Semana = request.getParameter("semana");
         String Dia = request.getParameter("dia");
         String OrdenEjercicio = request.getParameter("ordenEjercicio");
         if (IdEjercicio != null) {
             int idEjercicio = Integer.parseInt(IdEjercicio);
             request.setAttribute("ejercicio", ejercicio_dao.listarId(idEjercicio));
+        } else if (FkIdEjercicio != null){
+            int fkIdEjercicio = Integer.parseInt(FkIdEjercicio);
+            if (fkIdEjercicio > 0) {
+                request.setAttribute("ejercicio", ejercicio_dao.listarId(fkIdEjercicio));
+            }
         }
         
         Ejercicio_Rutina ubicacionEjercicio = new Ejercicio_Rutina();
@@ -84,27 +88,9 @@ public class EjercicioController extends HttpServlet {
         request.getRequestDispatcher("/vistas/Entrenador/formEjercicioRutina.jsp").forward(request, response);
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EjercicioController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EjercicioController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     @Override
