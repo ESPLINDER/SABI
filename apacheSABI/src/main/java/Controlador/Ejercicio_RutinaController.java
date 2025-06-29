@@ -150,6 +150,8 @@ public class Ejercicio_RutinaController extends HttpServlet {
         int peso = Integer.parseInt(Peso);
         int descanso = Integer.parseInt(Descanso);
 
+        String nomEjercicio = ejercicio_dao.nombreId(fkIdEjercicio);
+        
         List<Modelo.Ejercicio_Rutina> ejerciciosRutina = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
 
         for (Modelo.Ejercicio_Rutina ejer : ejerciciosRutina) {
@@ -163,6 +165,8 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 ejer.setPeso(peso);
                 ejer.setIntensidad(intensidad);
                 ejer.setDescanso(descanso);
+                
+                ejer.setNomEjercicio(nomEjercicio);
             }
         }
         

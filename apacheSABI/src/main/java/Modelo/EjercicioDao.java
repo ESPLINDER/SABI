@@ -63,11 +63,9 @@ public class EjercicioDao {
         }
         return ejercicio;
     }
-    public Ejercicio nombreId(int id){
-        String sql = "SELECT nomEjercicio FROM ejercicio "
-                + "INNER JOIN ejercicio_rutina on ejercicio_rutina.fkIdEjercicio = ejercicio.idEjercicio "
-                + "where ejercicio_rutina.semana = 1 AND ejercicio_rutina.dia = 2 AND ejercicio_rutina.ordenEjercicio = 3;";
-        Ejercicio ejercicio = new Ejercicio();
+    public String nombreId(int id){
+        String sql = "SELECT nomEjercicio FROM ejercicio where idEjercicio = ?;";
+        String nombre = "";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
@@ -75,15 +73,11 @@ public class EjercicioDao {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                ejercicio.setIdEjercicio(rs.getInt("idEjercicio"));
-                ejercicio.setNomEjercicio(rs.getString("nomEjercicio"));
-                ejercicio.setDescEjercicio(rs.getString("descEjercicio"));
-                ejercicio.setTipEjercicio(rs.getString("tipEjercicio"));
-                ejercicio.setUrlVideo(rs.getString("urlVideo"));
+                nombre = rs.getString("nomEjercicio");
             }
         } catch (Exception e) {
             System.out.println("Error al seleccionar el usuario: " + e.getMessage());
         }
-        return ejercicio;
+        return nombre;
     }
 }
