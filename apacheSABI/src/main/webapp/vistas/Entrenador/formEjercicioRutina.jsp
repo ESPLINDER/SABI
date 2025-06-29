@@ -14,8 +14,11 @@
     <body>
         <div class="col-md-8 mx-auto mt-5">
             <h1>Estructura el ejercicio</h1>
-            <form id="formEjercicioRutina" action="">
+            <form id="formEjercicioRutina" action="Ejercicio_RutinaController">
                 <input type="hidden" name="accion" value="Update">
+                <input type="hidden" name="semana" value="Update">
+                <input type="hidden" name="dia" value="Update">
+                <input type="hidden" name="ordenEjercicio" value="">
                 <%
                     int semana = 0, dia = 0, ordenEjercicio = 0; //, numSemanas = 0, numDias = 0, numEjercicios = 0;
                     List<Modelo.Ejercicio> lista_ejercicios = (List<Modelo.Ejercicio>) request.getAttribute("lista_ejercicios");
@@ -60,7 +63,7 @@
                         <input name="repeticiones" type="number" class="form-control" id="Repeticiones" value="" required>
                     </div>
                     <div class="form-group">
-                        <label for="Peso">Peso/Tiempo</label>
+                        <label for="Peso">Peso (kg) / Tiempo (segundos)</label>
                         <input name="peso" type="number" class="form-control" id="Peso" value="0" required>
                     </div>
                     <div class="form-group">
@@ -79,7 +82,7 @@
                     </iframe>
                 </div>
                 <div class="card-title mb-0 text-center">
-                    <button type="button" class="btn btn-successful me-2 mt-2" onclick="enviarFormularioComoGet()">
+                    <button type="submit" class="btn btn-success me-2 mt-2">
                         Guardar ejercicio
                     </button>
                 </div>
@@ -102,23 +105,6 @@
 
                 // 4. Redirigir al controlador con los parámetros
                 window.location.href = "<%= contextPath%>/EjercicioController?" + params.toString();
-            }
-            function enviarFormularioComoGet() {
-                const form = document.getElementById("formEjercicioRutina");
-                const inputs = form.querySelectorAll("input, select, textarea");
-
-                // Cargar parámetros de la URL actual
-                const currentParams = new URLSearchParams(window.location.search);
-
-                // Agregar también los valores del formulario
-                inputs.forEach(input => {
-                    if (input.name && input.value) {
-                        currentParams.set(input.name, input.value);
-                    }
-                });
-
-                // Redireccionar con todos los parámetros
-                window.location.href = "<%= contextPath%>/Ejercicio_RutinaController?" + currentParams.toString();
             }
         </script>
     </body>
