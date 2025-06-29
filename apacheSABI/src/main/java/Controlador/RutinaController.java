@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 /**
  * @author William
  *
@@ -29,6 +30,7 @@ public class RutinaController extends HttpServlet {
         String accion = request.getParameter("accion");
         switch (accion) {
             case "Create":
+                this.Create(request, response, accion);
                 break;
             case "Read":
                 break;
@@ -40,37 +42,16 @@ public class RutinaController extends HttpServlet {
                 this.CrearTabla(request, response);
                 break;
         }
-        processRequest(request, response);
     }
 
-    protected void CrearTabla(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
-        /*try {
-        } catch (ServletException | IOException | NumberFormatException e) {
-            System.out.println("Error en el registro");
-        }*/
-    }
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RutinaController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RutinaController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+    protected void Create(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     @Override

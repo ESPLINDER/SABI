@@ -1,10 +1,8 @@
 package Controlador;
 
-import Modelo.Ejercicio;
 import Modelo.EjercicioDao;
 import Modelo.Ejercicio_Rutina;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,9 +17,7 @@ import java.util.List;
 @WebServlet("/EjercicioController")
 public class EjercicioController extends HttpServlet {
 
-    Ejercicio ejercicio = new Ejercicio();
     EjercicioDao ejercicio_dao = new EjercicioDao();
-    int id;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

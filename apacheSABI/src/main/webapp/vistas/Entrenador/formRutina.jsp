@@ -17,6 +17,8 @@
     </head>
 
     <body>
+        <%Maximos max = (Maximos) session.getAttribute("max");
+        if (max == null) {%>
         <div class="col-md-5 m-auto">
             <h1>Estructura tu rutina</h1>
             <form id="estructuraRutina" method="GET" action="<%= contextPath%>/Ejercicio_RutinaController">
@@ -42,11 +44,11 @@
                 </div>
             </form>
         </div>
-        <%Maximos max = (Maximos) session.getAttribute("max");
-        if (max != null) {%>
-        <div id="contenedorTabla" class="col-md-8 mx-auto">
-            <h1 class="mb-5">Crea tu rutina</h1>
-            <form action="<%= contextPath%>/Ejercicio_RutinaController">
+        <%} else {%>
+        <div id="contenedorTabla" class="col-md-8 mx-auto text-center">
+            <h1 class="mb-4 mt-5">Crea tu rutina</h1>
+            <form action="<%= contextPath%>/RutinaController?accion=Create">
+                <button class="mb-5 btn btn-success mx-auto" type="submit">Guardar Rutina</button>
                 <%for (int i = 1; i <= max.getSemanas(); i++) {%>
                 <div class="semana text-center mb-5">
                     <h2 class="mb-3">Semana <%=i%></h2>
@@ -55,27 +57,45 @@
                             <tr>
                                 <%for (int j = 1; j <= max.getDias(); j++) {%>
                                 <th class="mx-2">Dia <%=j%></th>
-                                <%}%>
+                                    <%}%>
                             </tr>
                         </thead>
                         <tbody>
                             <%for (int k = 1; k <= max.getEjercicios(); k++) {%>
-                            <tr>
-                                <%for (int j = 1; j <= max.getDias(); j++) {%>
-                                <%List<Modelo.Ejercicio_Rutina> ejercicios = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
-                                    if (ejercicios != null) {
-                                        for (Modelo.Ejercicio_Rutina ejer : ejercicios) {
-                                            if (ejer.getSemana() == i && ejer.getDia() == j && ejer.getOrdenEjercicio() == k) {%>
-                                            <td class="td-hover">
-                                                <a href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&numSemanas=<%=max.getSemanas()%>&numDias=<%=max.getDias()%>&numEjercicios=<%=max.getEjercicios()%>&fkIdEjercicio=<%=ejer.getFkIdEjercicio()%>">
-                                                    <%=ejer.getNomEjercicio()%></a>
-                                                <a class="float-end" href=""><i class="bi bi-trash3-fill"></i></a>
+                                <tr>
+                                    <%for (int j = 1; j <= max.getDias(); j++) {%>
+                                        <%List<Modelo.Ejercicio_Rutina> ejercicios = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
+                                            boolean encontrado = false;
+
+                                            if (ejercicios != null) {
+                                                for (Modelo.Ejercicio_Rutina ejer : ejercicios) {
+                                                    if (ejer.getSemana() == i && ejer.getDia() == j && ejer.getOrdenEjercicio() == k) {
+                                                        encontrado = true;
+                                            %>
+                                            <td class="celda position-relative p-0">
+                                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 8px 12px;">
+                                                    <a class="editar" href="<%= contextPath%>/EjercicioController?accion=TraerEjercicio&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&fkIdEjercicio=<%=ejer.getFkIdEjercicio()%>" 
+                                                        style="flex-grow: 1; text-decoration: none; color: <%=ejer.getEstilo()%>;">
+                                                        <%=ejer.getNomEjercicio()%>
+                                                    </a>
+                                                    <a class="eliminar" href="<%= contextPath%>/Ejercicio_RutinaController?accion=Delete&semana=<%=i%>&dia=<%=j%>&ordenEjercicio=<%=k%>&fkIdEjercicio=<%=ejer.getFkIdEjercicio()%>">
+                                                        <i class="bi bi-trash3-fill"></i>
+                                                    </a>
+                                                </div>
                                             </td>
-                                            <%}%>
-                                        <%}
+                                            <%
+                                                        break; // ya encontramos el ejercicio, salimos del for
+                                                    }
+                                                }
+                                            }
+
+                                            if (!encontrado) {
+                                            %>
+                                                <td class="td-vacio"></td> <!-- Aquí generas la celda vacía -->
+                                            <%
+                                            }
                                     }%>
-                                <%}%>
-                            </tr>
+                                </tr>
                             <%}%>    
                         </tbody>
                     </table>

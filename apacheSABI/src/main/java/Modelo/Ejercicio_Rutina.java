@@ -17,11 +17,12 @@ public class Ejercicio_Rutina {
     int descanso; //En segundos
     
     String nomEjercicio;
+    String estilo; //para mostrar los que estan pendientes por editar
 
     public Ejercicio_Rutina() {
     }
 
-    public Ejercicio_Rutina(int idEjercicio_Rutina, int fkIdEjercicio, int fkIdRutina, int semana, int dia, int ordenEjercicio, int serie, int repeticiones, int peso, String intensidad, int descanso, String nomEjercicio) {
+    public Ejercicio_Rutina(int idEjercicio_Rutina, int fkIdEjercicio, int fkIdRutina, int semana, int dia, int ordenEjercicio, int serie, int repeticiones, int peso, String intensidad, int descanso, String nomEjercicio, String estilo) {
         this.idEjercicio_Rutina = idEjercicio_Rutina;
         this.fkIdEjercicio = fkIdEjercicio;
         this.fkIdRutina = fkIdRutina;
@@ -34,6 +35,7 @@ public class Ejercicio_Rutina {
         this.intensidad = intensidad;
         this.descanso = descanso;
         this.nomEjercicio = nomEjercicio;
+        this.estilo = estilo;
     }
 
     public int getIdEjercicio_Rutina() {
@@ -84,6 +86,10 @@ public class Ejercicio_Rutina {
         return nomEjercicio;
     }
 
+    public String getEstilo() {
+        return estilo;
+    }
+
     public void setIdEjercicio_Rutina(int idEjercicio_Rutina) {
         this.idEjercicio_Rutina = idEjercicio_Rutina;
     }
@@ -132,8 +138,12 @@ public class Ejercicio_Rutina {
         this.nomEjercicio = nomEjercicio;
     }
 
+    public void setEstilo(String estilo) {
+        this.estilo = estilo;
+    }
+
     @Override
     public String toString() {
-        return "Ejercicio_Rutina{" + "idEjercicio_Rutina=" + idEjercicio_Rutina + ", fkIdEjercicio=" + fkIdEjercicio + ", fkIdRutina=" + fkIdRutina + ", semana=" + semana + ", dia=" + dia + ", ordenEjercicio=" + ordenEjercicio + ", serie=" + serie + ", repeticiones=" + repeticiones + ", peso=" + peso + ", intensidad=" + intensidad + ", descanso=" + descanso + ", nomEjercicio=" + nomEjercicio + '}';
+        return "Ejercicio_Rutina{" + "idEjercicio_Rutina=" + idEjercicio_Rutina + ", fkIdEjercicio=" + fkIdEjercicio + ", fkIdRutina=" + fkIdRutina + ", semana=" + semana + ", dia=" + dia + ", ordenEjercicio=" + ordenEjercicio + ", serie=" + serie + ", repeticiones=" + repeticiones + ", peso=" + peso + ", intensidad=" + intensidad + ", descanso=" + descanso + ", nomEjercicio=" + nomEjercicio + ", estilo=" + estilo + '}';
     }
 }

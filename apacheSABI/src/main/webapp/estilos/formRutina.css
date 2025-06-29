@@ -1,13 +1,17 @@
-td:hover {
-  background-color: #d3e0ff;  /* Color al pasar el mouse */
+.celda:hover {
+  background-color: #73d9ff;  /* Color al pasar el mouse */
   cursor: pointer;            /* Cursor tipo mano */
   transition: 0.3s ease;      /* Transición suave */
 }
 
 .bi-trash3-fill {
-    color: #f44336;
+    color: #bb2121;
+    margin-left: 10px;
 }
 .bi-trash3-fill:hover {
-    color: #d60000;
+    color: #f44336; 
     transition: 0.3s ease;
+}
+.td-vacio {
+    border: none;
 }

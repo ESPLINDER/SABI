@@ -1,12 +1,9 @@
 package Controlador;
 
-import Modelo.Ejercicio;
 import Modelo.Maximos;
 import Modelo.EjercicioDao;
 import Modelo.Ejercicio_Rutina;
-import Modelo.Ejercicio_RutinaDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -23,8 +21,6 @@ import java.util.List;
 public class Ejercicio_RutinaController extends HttpServlet {
 
     Ejercicio_Rutina ubi_eje_rut = new Ejercicio_Rutina();
-    Ejercicio_RutinaDao eje_rut_dao = new Ejercicio_RutinaDao();
-    Ejercicio ejercicio = new Ejercicio();
     EjercicioDao ejercicio_dao = new EjercicioDao();
     Maximos max = new Maximos();
 
@@ -47,13 +43,13 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 this.Update(request, response);
                 break;
             case "Delete":
+                this.Delete(request, response);
                 break;
             case "numSeries":
                 break;
             default:
                 break;
         }
-        processRequest(request, response);
     }
 
     protected void Create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,39 +62,33 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 int numDias = Integer.parseInt(NumDias);
                 int numEjercicios = Integer.parseInt(NumEjercicios);
                 if (numSemanas > 12) {
-                    System.out.println("Demasiadas semanas");
                     String alertaSemanas = "Demasiadas semanas, por favor ingresar maximo 12";
                     request.setAttribute("alertaSemanas", alertaSemanas);
                     request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
                     return;
                 } else if (numSemanas < 1) {
-                    System.out.println("Valor de semanas invalido");
                     String alertaSemanas = "Valor de semanas invalido";
                     request.setAttribute("alertaSemanas", alertaSemanas);
                     request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
                     return;
                 }
                 if (numDias > 7) {
-                    System.out.println("Demasiados dias");
                     String alertaDias = "Demasiados dias, la semana no puede tener mas de 7 dias";
                     request.setAttribute("alertaDias", alertaDias);
                     request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
                     return;
                 } else if (numDias < 1) {
-                    System.out.println("Valor de dias invalido");
                     String alertaDias = "Valor de dias invalido";
                     request.setAttribute("alertaDias", alertaDias);
                     request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
                     return;
                 }
                 if (numEjercicios > 30) {
-                    System.out.println("Demasiados ejercicios");
                     String alertaEjercicios = "Demasiados ejercicios, por favor ingresar maximo 100";
                     request.setAttribute("alertaEjercicios", alertaEjercicios);
                     request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
                     return;
                 } else if (numEjercicios < 1) {
-                    System.out.println("Valor de ejercicios invalido");
                     String alertaEjercicios = "Valor de ejercicios invalido";
                     request.setAttribute("alertaEjercicios", alertaEjercicios);
                     request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
@@ -118,11 +108,12 @@ public class Ejercicio_RutinaController extends HttpServlet {
                             lista_eje_rut.setDia(j);
                             lista_eje_rut.setOrdenEjercicio(k);
                             lista_eje_rut.setNomEjercicio("Ejercicio " + k);
+                            lista_eje_rut.setEstilo("#7e7e7e");
                             ejercicios.add(lista_eje_rut);
                         }
                     }
                 }
-                
+
                 HttpSession session = request.getSession();
                 session.setAttribute("max", max);
                 session.setAttribute("ejerciciosRutina", ejercicios);
@@ -151,7 +142,7 @@ public class Ejercicio_RutinaController extends HttpServlet {
         int descanso = Integer.parseInt(Descanso);
 
         String nomEjercicio = ejercicio_dao.nombreId(fkIdEjercicio);
-        
+
         List<Modelo.Ejercicio_Rutina> ejerciciosRutina = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
 
         for (Modelo.Ejercicio_Rutina ejer : ejerciciosRutina) {
@@ -166,36 +157,58 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 ejer.setPeso(peso);
                 ejer.setIntensidad(intensidad);
                 ejer.setDescanso(descanso);
-                
+
                 ejer.setNomEjercicio(nomEjercicio);
+                ejer.setEstilo("#000000");
             }
         }
-        
+
         session.setAttribute("ejerciciosRutina", ejerciciosRutina);
         request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Ejercicio_RutinaController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Ejercicio_RutinaController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+    protected void Delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        String Semana = request.getParameter("semana");
+        String Dia = request.getParameter("dia");
+        String OrdenEjercicio = request.getParameter("ordenEjercicio");
+
+        if (Semana != null && Dia != null && OrdenEjercicio != null) {
+            int semana = Integer.parseInt(Semana);
+            int dia = Integer.parseInt(Dia);
+            int ordenEjercicio = Integer.parseInt(OrdenEjercicio);
+
+            List<Modelo.Ejercicio_Rutina> ejerciciosRutina = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
+
+            int ordenAEliminar = 0; //auxiliar
+
+            Iterator<Modelo.Ejercicio_Rutina> iterator = ejerciciosRutina.iterator();
+            while (iterator.hasNext()) {
+                Modelo.Ejercicio_Rutina ejer = iterator.next();
+                if (ejer.getSemana() == semana && ejer.getDia() == dia && ejer.getOrdenEjercicio() == ordenEjercicio) {
+                    ordenAEliminar = ejer.getOrdenEjercicio();
+                    iterator.remove();
+                    break;
+                }
+            }
+            for (Modelo.Ejercicio_Rutina ejer : ejerciciosRutina) {
+                if (ejer.getSemana() == semana && ejer.getDia() == dia && ejer.getOrdenEjercicio() > ordenAEliminar) {
+                    ejer.setOrdenEjercicio(ejer.getOrdenEjercicio() - 1); // Baja un lugar
+                    if (ejer.getIntensidad() == null) {
+                        ejer.setNomEjercicio("Ejercicio "+ejer.getOrdenEjercicio());
+                    }
+                }
+            }
+
+            session.setAttribute("ejerciciosRutina", ejerciciosRutina);
         }
+        request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     @Override
