@@ -1,6 +1,6 @@
 package Modelo;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 /**
  *
  * @author Rojas
@@ -10,22 +10,22 @@ public class Suscripcion {
     int idSuscripcion;
     int fkIdEntrenador;
     int fkIdCliente;
-    LocalDateTime inicioSuscripcion;
-    LocalDateTime finSuscripcion;
+    LocalDate inicioSuscripcion;
+    LocalDate finSuscripcion;
     String estadoSuscripcion;
-    int renociones;
+    int renovaciones;
     float valorSuscripcion;
     
     public Suscripcion(){}
 
-    public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDateTime inicioSuscripcion, LocalDateTime finSuscripcion, String estadoSuscripcion, int renociones, float valorSuscripcion) {
+    public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDate inicioSuscripcion, LocalDate finSuscripcion, String estadoSuscripcion, int renovaciones, float valorSuscripcion) {
         this.idSuscripcion = idSuscripcion;
         this.fkIdEntrenador = fkIdEntrenador;
         this.fkIdCliente = fkIdCliente;
         this.inicioSuscripcion = inicioSuscripcion;
         this.finSuscripcion = finSuscripcion;
         this.estadoSuscripcion = estadoSuscripcion;
-        this.renociones = renociones;
+        this.renovaciones = renovaciones;
         this.valorSuscripcion = valorSuscripcion;
     }
 
@@ -41,11 +41,11 @@ public class Suscripcion {
         return fkIdCliente;
     }
 
-    public LocalDateTime getInicioSuscripcion() {
+    public LocalDate getInicioSuscripcion() {
         return inicioSuscripcion;
     }
 
-    public LocalDateTime getFinSuscripcion() {
+    public LocalDate getFinSuscripcion() {
         return finSuscripcion;
     }
 
@@ -54,7 +54,7 @@ public class Suscripcion {
     }
 
     public int getRenociones() {
-        return renociones;
+        return renovaciones;
     }
 
     public float getValorSuscripcion() {
@@ -73,11 +73,11 @@ public class Suscripcion {
         this.fkIdCliente = fkIdCliente;
     }
 
-    public void setInicioSuscripcion(LocalDateTime inicioSuscripcion) {
+    public void setInicioSuscripcion(LocalDate inicioSuscripcion) {
         this.inicioSuscripcion = inicioSuscripcion;
     }
 
-    public void setFinSuscripcion(LocalDateTime finSuscripcion) {
+    public void setFinSuscripcion(LocalDate finSuscripcion) {
         this.finSuscripcion = finSuscripcion;
     }
 
@@ -85,8 +85,8 @@ public class Suscripcion {
         this.estadoSuscripcion = estadoSuscripcion;
     }
 
-    public void setRenociones(int renociones) {
-        this.renociones = renociones;
+    public void setRenovaciones(int renovaciones) {
+        this.renovaciones = renovaciones;
     }
 
     public void setValorSuscripcion(float valorSuscripcion) {
@@ -95,6 +95,6 @@ public class Suscripcion {
 
     @Override
     public String toString() {
-        return "Suscripcion{" + "idSuscripcion=" + idSuscripcion + ", fkIdEntrenador=" + fkIdEntrenador + ", fkIdCliente=" + fkIdCliente + ", inicioSuscripcion=" + inicioSuscripcion + ", finSuscripcion=" + finSuscripcion + ", estadoSuscripcion=" + estadoSuscripcion + ", renociones=" + renociones + ", valorSuscripcion=" + valorSuscripcion + '}';
+        return "Suscripcion{" + "idSuscripcion=" + idSuscripcion + ", fkIdEntrenador=" + fkIdEntrenador + ", fkIdCliente=" + fkIdCliente + ", inicioSuscripcion=" + inicioSuscripcion + ", finSuscripcion=" + finSuscripcion + ", estadoSuscripcion=" + estadoSuscripcion + ", renovaciones=" + renovaciones + ", valorSuscripcion=" + valorSuscripcion + '}';
     }
 }
