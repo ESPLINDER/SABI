@@ -1,12 +1,13 @@
 package Modelo;
 
 import java.time.LocalDate;
+
 /**
  *
  * @author Rojas
  */
 public class Suscripcion {
-    
+
     int idSuscripcion;
     int fkIdEntrenador;
     int fkIdCliente;
@@ -15,8 +16,10 @@ public class Suscripcion {
     String estadoSuscripcion;
     int renovaciones;
     float valorSuscripcion;
-    
-    public Suscripcion(){}
+    Usuario entrenador;
+
+    public Suscripcion() {
+    }
 
     public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDate inicioSuscripcion, LocalDate finSuscripcion, String estadoSuscripcion, int renovaciones, float valorSuscripcion) {
         this.idSuscripcion = idSuscripcion;
@@ -27,6 +30,14 @@ public class Suscripcion {
         this.estadoSuscripcion = estadoSuscripcion;
         this.renovaciones = renovaciones;
         this.valorSuscripcion = valorSuscripcion;
+    }
+
+    public Usuario getEntrenador() {
+        return entrenador;
+    }
+
+    public void setEntrenador(Usuario entrenador) {
+        this.entrenador = entrenador;
     }
 
     public int getIdSuscripcion() {

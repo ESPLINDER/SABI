@@ -33,23 +33,22 @@ public class SuscripcionController extends HttpServlet {
 
         System.out.println("llega al metodo");
         if (menu.equals("Suscripciones")) {
-            System.out.println("ejucuta ejecuta el if");
+            System.out.println("ejucuta el if");
             switch (accion) {
                 case "listar":
                     Usuario cliente = (Usuario) request.getSession().getAttribute("logger");
                     int idCliente = cliente.getIdUsuario();
 
                     List<Suscripcion> listaSuscripciones = suscripcionDao.listarSuscripcionesCliente(idCliente);
-                    request.setAttribute("suscripciones", listaSuscripciones);
+                    request.setAttribute("listSuscripciones", listaSuscripciones);
                     request.getRequestDispatcher("vistas/Cliente/suscripciones.jsp").forward(request, response);
-                    System.out.println("No hay Suscripciones disponibles");
                     break;
-                case "crear": {
+                case "Agregar": {
                     try {
                         this.crearSuscripcion(request, response);
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
-                        response.sendRedirect("vistas/Cliente/index.jsp");
+                        response.sendRedirect("vistas/Cliente/cliente.jsp");
                         System.out.println("No se pudo Crear la suscripcion");
                     }
                 }
@@ -80,9 +79,9 @@ public class SuscripcionController extends HttpServlet {
         boolean creada = dao.crearSuscripcionPorDefecto(idCliente, idEntrenador);
 
         if (creada) {
-            response.sendRedirect("vistas/Cliente/Suscripciones.jsp?msg=creada");
+            request.getRequestDispatcher("vistas/Cliente/cliente.jsp").forward(request, response);
         } else {
-            response.sendRedirect("vistas/Cliente/Suscripciones.jsp?msg=error");
+            request.getRequestDispatcher("vistas/Cliente/cliente.jsp").forward(request, response);
         }
     }
 

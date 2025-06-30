@@ -14,69 +14,86 @@ import java.util.List;
  * @author Rojas
  */
 public class SuscripcionDao {
+
     Conexion cn = new Conexion();
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
     int r;
-    
-    public List<Suscripcion> listarSuscripcionesCliente(int idUsuario) {
+
+    public List<Suscripcion> listarSuscripcionesCliente(int idCliente) {
     List<Suscripcion> lista = new ArrayList<>();
-    String sql = "SELECT * FROM Suscripcion WHERE fkIdCliente = ?";
+    String sql = "SELECT s.idSuscripcion, s.fkIdEntrenador, s.fkIdCliente, "
+               + "s.inicioSuscripcion, s.finSuscripcion, s.estadoSuscripcion, "
+               + "s.renovaciones, s.valorSuscripcion, "
+               + "u.nomUsuario, u.apeUsuario "
+               + "FROM suscripcion s "
+               + "JOIN usuario u ON s.fkIdEntrenador = u.idUsuario "
+               + "WHERE s.fkIdCliente = ?";
+
     try {
         conn = cn.Conexion();
         ps = conn.prepareStatement(sql);
+        ps.setInt(1, idCliente);
         rs = ps.executeQuery();
-        ps.setInt(1, idUsuario);
+
         while (rs.next()) {
             Suscripcion suscripcion = new Suscripcion();
-            suscripcion.setIdSuscripcion(rs.getInt("idUsuario"));
+            Usuario entrenador = new Usuario();
+
+            suscripcion.setIdSuscripcion(rs.getInt("idSuscripcion"));
             suscripcion.setFkIdEntrenador(rs.getInt("fkIdEntrenador"));
-            suscripcion.setFkIdCliente(rs.getInt("FkIdCliente"));
+            suscripcion.setFkIdCliente(rs.getInt("fkIdCliente"));
             suscripcion.setInicioSuscripcion(rs.getDate("inicioSuscripcion").toLocalDate());
             suscripcion.setFinSuscripcion(rs.getDate("finSuscripcion").toLocalDate());
-            suscripcion.setEstadoSuscripcion(rs.getString("estadoSsucripcion"));
+            suscripcion.setEstadoSuscripcion(rs.getString("estadoSuscripcion"));
             suscripcion.setRenovaciones(rs.getInt("renovaciones"));
             suscripcion.setValorSuscripcion(rs.getFloat("valorSuscripcion"));
+
+            entrenador.setNomUsuario(rs.getString("nomUsuario"));
+            entrenador.setApeUsuario(rs.getString("apeUsuario"));
+
+            suscripcion.setEntrenador(entrenador);
             lista.add(suscripcion);
         }
     } catch (ClassNotFoundException | SQLException e) {
-        System.out.println("Error al listar");
+        System.out.println("Error al listar: " + e.getMessage());
     }
+
     return lista;
-   }
-    
+}
+
     public List<Suscripcion> listarSuscripcionesEntrenador(int idUsuario) {
-    List<Suscripcion> lista = new ArrayList<>();
-    String sql = "SELECT s.idSuscripcion, s.fkIdEntrenador, s.fkIdCliente, " +
-                 "s.inicioSuscripcion, s.finSuscripcion, s.estadoSuscripcion, " +
-                 "s.renovaciones, s.valorSuscripcion, " +
-                 "u.nomUsuario FROM suscripcion s " +
-                 "JOIN usuario u ON s.fkIdEntrenador = u.idUsuario " +
-                 "WHERE s.fkIdCliente = ?";
-    try {
-        conn = cn.Conexion();
-        ps = conn.prepareStatement(sql);
-        rs = ps.executeQuery();
-        ps.setInt(1, idUsuario);
-        while (rs.next()) {
-            Suscripcion suscripcion = new Suscripcion();
-            suscripcion.setIdSuscripcion(rs.getInt("idUsuario"));
-            suscripcion.setFkIdEntrenador(rs.getInt("fkIdEntrenador"));
-            suscripcion.setFkIdCliente(rs.getInt("FkIdCliente"));
-            suscripcion.setInicioSuscripcion(rs.getDate("inicioSuscripcion").toLocalDate());
-            suscripcion.setFinSuscripcion(rs.getDate("finSuscripcion").toLocalDate());
-            suscripcion.setEstadoSuscripcion(rs.getString("estadoSsucripcion"));
-            suscripcion.setRenovaciones(rs.getInt("renovaciones"));
-            suscripcion.setValorSuscripcion(rs.getFloat("valorSuscripcion"));
-            lista.add(suscripcion);
+        List<Suscripcion> lista = new ArrayList<>();
+        String sql = "SELECT s.idSuscripcion, s.fkIdEntrenador, s.fkIdCliente, "
+                + "s.inicioSuscripcion, s.finSuscripcion, s.estadoSuscripcion, "
+                + "s.renovaciones, s.valorSuscripcion, "
+                + "u.nomUsuario FROM suscripcion s "
+                + "JOIN usuario u ON s.fkIdEntrenador = u.idUsuario "
+                + "WHERE s.fkIdCliente = ?";
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            ps.setInt(1, idUsuario);
+            while (rs.next()) {
+                Suscripcion suscripcion = new Suscripcion();
+                suscripcion.setIdSuscripcion(rs.getInt("idUsuario"));
+                suscripcion.setFkIdEntrenador(rs.getInt("fkIdEntrenador"));
+                suscripcion.setFkIdCliente(rs.getInt("FkIdCliente"));
+                suscripcion.setInicioSuscripcion(rs.getDate("inicioSuscripcion").toLocalDate());
+                suscripcion.setFinSuscripcion(rs.getDate("finSuscripcion").toLocalDate());
+                suscripcion.setEstadoSuscripcion(rs.getString("estadoSsucripcion"));
+                suscripcion.setRenovaciones(rs.getInt("renovaciones"));
+                suscripcion.setValorSuscripcion(rs.getFloat("valorSuscripcion"));
+                lista.add(suscripcion);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al listar");
         }
-    } catch (ClassNotFoundException | SQLException e) {
-        System.out.println("Error al listar");
+        return lista;
     }
-    return lista;
-   }
-    
+
     public boolean crearSuscripcionPorDefecto(int idCliente, int idEntrenador) throws ClassNotFoundException {
         LocalDate inicio = LocalDate.now();
         LocalDate fin = inicio.plusMonths(1);
@@ -84,8 +101,8 @@ public class SuscripcionDao {
         int renovaciones = 0;
         float valor = 0.0f;
 
-        String sql = "INSERT INTO suscripcion (fkIdEntrenador, fkIdCliente, inicioSuscripcion, finSuscripcion, estadoSuscripcion, renovaciones, valorSuscripcion) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO suscripcion (fkIdEntrenador, fkIdCliente, inicioSuscripcion, finSuscripcion, estadoSuscripcion, renovaciones, valorSuscripcion) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn = cn.Conexion();
@@ -106,5 +123,5 @@ public class SuscripcionDao {
             return false;
         }
     }
-    
+
 }

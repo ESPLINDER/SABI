@@ -15,11 +15,14 @@
         <a href="<%= request.getContextPath()%>/EntrenadorController">
             <span>Entrenadores</span>
         </a>
-        <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listar">
-            <span>Subcripciones</span>
+        <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listar&idCliente=<%= cliente.getIdUsuario() %>">
+            <span>Suscripciones</span>
         </a>
     </nav>
     <div class="derecha">
+        <a href="<%= request.getContextPath()%>/CerrarSesion">
+            <span>Cerrar Sesion</span>
+        </a>
         <img src="<%= contextPath%>/recursos/cliente.jpg" alt="user" class="user">
         <span><%= cliente.getNomUsuario() %> <%= cliente.getApeUsuario() %> | <%= cliente.getRolUsuario() %></span>
     </div>

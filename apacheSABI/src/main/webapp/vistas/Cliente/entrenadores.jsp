@@ -26,7 +26,7 @@
                 <img src="<%= request.getContextPath()%>/recursos/entrenador.jpg" alt="">
                 <p><%= entrenador.getEspecialidad()%></p>
                 <p><%= entrenador.getBiografia()%></p>
-                <a class="boton-accion" href="<%= request.getContextPath() %>/SuscripcionController?menu=Usuarios&accion=Agregar&idCliente=<%= cliente.getIdUsuario() %>&idEntrenador=<%= entrenador.getIdUsuario() %>">
+                <a class="boton-accion" href="<%= request.getContextPath() %>/SuscripcionController?menu=Suscripciones&accion=Agregar&idCliente=<%= cliente.getIdUsuario() %>&idEntrenador=<%= entrenador.getIdUsuario() %>">
                     Solicitar Entrenador
                 </a>
             </div>
