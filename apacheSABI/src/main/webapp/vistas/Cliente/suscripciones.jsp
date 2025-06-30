@@ -1,6 +1,5 @@
 <% String contextPath = request.getContextPath(); %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Modelo.Suscripcion" %>
 <%@ page import="Modelo.Usuario" %>
@@ -17,15 +16,6 @@
     </head>
     <body>
         <%@ include file="/plantillas/barraNavegacionCliente.jsp" %>
-
-        <%-- alertas  --%>
-        <c:if test="${param.msg == 'creada'}">
-            <div class="alerta-exito">¡Suscripción creada exitosamente!</div>
-        </c:if>
-
-        <c:if test="${param.msg == 'error'}">
-            <div class="alerta-error">Hubo un error al crear la suscripción.</div>
-        </c:if>
             
         <div class="contenido-entrenadores">
             <%

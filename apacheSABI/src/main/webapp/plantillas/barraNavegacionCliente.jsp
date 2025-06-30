@@ -16,7 +16,7 @@
             <span>Entrenadores</span>
         </a>
         <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listar">
-            <span>Subcripciones</span>
+            <span>Suscripciones</span>
         </a>
     </nav>
     <div class="derecha">
