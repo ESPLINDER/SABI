@@ -73,7 +73,7 @@ public class ValidarUsuarioController extends HttpServlet {
                 if (usu.getRolUsuario().equals("entrenador")) {
                     request.getRequestDispatcher("vistas/Entrenador/index.jsp").forward(request, response);
                 } else {
-                    request.getRequestDispatcher("vistas/Cliente/index.jsp").forward(request, response);
+                    request.getRequestDispatcher("vistas/Cliente/cliente.jsp").forward(request, response);
                 }
             } else {
                 request.setAttribute("error", "Usuario o contraseña incorrectos");
