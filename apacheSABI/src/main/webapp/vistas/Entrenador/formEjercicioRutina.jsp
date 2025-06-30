@@ -23,7 +23,7 @@
                     String selectValue = (ejercicio != null) ? ejercicio.getNomEjercicio() : "Selecciona un ejercicio";
                     int selectValueId = (ejercicio != null) ? ejercicio.getIdEjercicio() : 0;
                     String valueSerie = "";
-                    String intensidadValue = "Elije la intensidad para realizar esta serie";
+                    String intensidadValue = "baja";
                     String repeticionesValue = "";
                     String pesoValue = "";
                     String descansoValue = "";
@@ -63,11 +63,10 @@
                         <label for="Intensidad">Intensidad</label>
                         <select name="intensidad" class="form-control" id="Intensidad" required>
                             <option value="<%=intensidadValue%>"><%=intensidadValue%></option>
-                            <option value="Baja">Baja</option>
-                            <option value="Media">Media</option>
-                            <option value="Moderada">Moderada</option>
-                            <option value="Alta">Alta</option>
-                            <option value="Extrema">Extrema</option>
+                            <option value="baja">Baja</option>
+                            <option value="intermedia">Intermedia</option>
+                            <option value="alta">Alta</option>
+                            <option value="maxima">Extrema</option>
                         </select>
                     </div>
                     <div class="form-group">

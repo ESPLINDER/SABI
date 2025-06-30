@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
+import java.sql.Statement;
 
 /**
  * @author William
@@ -18,41 +18,32 @@ public class RutinaDao {
     int idRutina = 0;
     
     public int GuardarAutor(Rutina rutina) {
-        String sql = "INSERT INTO rutina (nomRutina, semanasRutina, descRutina, nivelRutina, creacionRutina, autorRutina) VALUES (?, ?, ?, ?, ?, ?)";
-        try {
-            conn = cn.Conexion();
-            ps = conn.prepareStatement(sql);
-            
-            ps.setString(1, rutina.getNomRutina());
-            ps.setInt(2, rutina.getSemanasRutina());
-            ps.setString(3, rutina.getDescRutina());
-            ps.setString(4, rutina.getNivelRutina());
-            ps.setDate(5, java.sql.Date.valueOf(rutina.getCreacionRutina()));
-            ps.setInt(6, rutina.getAutRutina());
-            
-            ps.executeUpdate();
-            idRutina = IdRutina(rutina);
-            
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al agregar usuario: " + e.getMessage());
+    String sql = "INSERT INTO rutina (nomRutina, semanasRutina, descRutina, nivelRutina, creacionRutina, autorRutina) VALUES (?, ?, ?, ?, ?, ?)";
+    try {
+        conn = cn.Conexion();
+        // Le decimos al PreparedStatement que queremos las claves generadas (como el id autoincremental)
+        ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+        ps.setString(1, rutina.getNomRutina());
+        ps.setInt(2, rutina.getSemanasRutina());
+        ps.setString(3, rutina.getDescRutina());
+        ps.setString(4, rutina.getNivelRutina());
+        ps.setDate(5, java.sql.Date.valueOf(rutina.getCreacionRutina()));
+        ps.setInt(6, rutina.getAutRutina());
+
+        int filas = ps.executeUpdate();
+
+        // Recuperamos la clave generada si el insert fue exitoso
+        if (filas > 0) {
+            rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                idRutina = rs.getInt(1); // La primera columna de las claves generadas
+            }
         }
-        return idRutina;
+
+    } catch (ClassNotFoundException | SQLException e) {
+        System.out.println("Error al agregar rutina: " + e.getMessage());
     }
-     public int IdRutina (Rutina rutina){
-        String sql = "SELECT idRutina FROM rutina where nomRutina = ?";
-        
-        try {
-            conn = cn.Conexion();
-            ps = conn.prepareStatement(sql);
-            
-            ps.setString(1, rutina.getNomRutina());
-            idRutina = rs.getInt("idRutina");
-            
-            ps.executeUpdate();
-            
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al agregar usuario: " + e.getMessage());
-        }
-        return idRutina;
-     }
+    return idRutina;
+}
 }
