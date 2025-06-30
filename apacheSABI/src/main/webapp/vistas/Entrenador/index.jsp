@@ -1,7 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    String contextPath = request.getContextPath();
-%>
+<%String contextPath = request.getContextPath();%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,21 +15,7 @@
 </head>
 <body class="pattern-bg">
    <!-- Header -->
-   <header class="dashboard-header">
-       <div class="header-content">
-           <div class="logo">
-               <img src="recursos/logoF.png" alt="SABI Logo" class="logo-img">
-               <span class="logo-text">SABI</span>
-           </div>
-           <div class="header-right">
-               <div class="trainer-info">
-                   <span class="trainer-name">Entrenador Juan Pérez</span> 
-                   <div class="trainer-avatar">JP</div>
-               </div>
-               <button class="logout-btn">Cerrar Sesión</button>
-           </div>
-       </div>
-   </header>
+   <%@ include file="/plantillas/dashEntrenador.jsp" %>
 
 
    <!-- Sidebar Navigation -->

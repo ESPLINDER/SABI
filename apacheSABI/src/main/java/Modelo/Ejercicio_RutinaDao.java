@@ -65,7 +65,31 @@ public class Ejercicio_RutinaDao {
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al generar lista de usuarios");
+        }        return lista;
+    }
+    
+    public void Guardar (Ejercicio_Rutina eje_rut){
+        String sql = "INSERT INTO ejercicio_rutina (fkIdEjercicio, fkIdRutina, semana, dia, ordenEjercicio, serie, repeticiones, peso, intensidad, descanso) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            
+            ps.setInt(1, eje_rut.getFkIdEjercicio());
+            ps.setInt(2, eje_rut.getFkIdRutina());
+            ps.setInt(3, eje_rut.getSemana());
+            ps.setInt(4, eje_rut.getDia());
+            ps.setInt(5, eje_rut.getOrdenEjercicio());
+            ps.setInt(6, eje_rut.getSerie());
+            ps.setInt(7, eje_rut.getRepeticiones());
+            ps.setInt(8, eje_rut.getPeso());
+            ps.setString(9, eje_rut.getIntensidad());
+            ps.setInt(10, eje_rut.getDescanso());
+            
+            ps.executeUpdate();
+            System.out.println("ejercicio rutina agregado correctamente");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al agregar ejercicio rutina: " + eje_rut.toString());
         }
-        return lista;
     }
 }

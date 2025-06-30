@@ -1,8 +1,10 @@
 package Controlador;
 
 import Modelo.Ejercicio_Rutina;
+import Modelo.Ejercicio_RutinaDao;
 import Modelo.Rutina;
 import Modelo.RutinaDao;
+import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -24,8 +26,7 @@ public class RutinaController extends HttpServlet {
 
     RutinaDao rutina_dao = new RutinaDao();
     Rutina rutina = new Rutina();
-    Rutina tablaRutina = new Rutina();
-    int idRutina;
+    Ejercicio_RutinaDao eje_rut_dao = new Ejercicio_RutinaDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,17 +53,23 @@ public class RutinaController extends HttpServlet {
         HttpSession session = request.getSession();
         boolean alMenosUno = (boolean) session.getAttribute("alMenosUno");
         if (alMenosUno) {
+            Usuario usuario = (Usuario) session.getAttribute("logger");
             String SemanasRutina = request.getParameter("semanasRutina");
-            String descRutina = request.getParameter("descRutina");
-            String nivelRutina = request.getParameter("nivelRutina");
-            rutina.setCreacionRutina(LocalDate.now());
-            //dfghfhgfhgfhgfhgfhgfhgfghfhgfhgfhgfhgfghfhgtfghjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj //
-            String Dia = request.getParameter("dia");
-            String OrdenEjercicio = request.getParameter("ordenEjercicio");
+            if (SemanasRutina != null) {
+                int semanasRutina = Integer.parseInt(SemanasRutina);
+                rutina.setSemanasRutina(semanasRutina);
+            }
+            rutina.setAutRutina(usuario.getIdUsuario());
+            rutina.setDescRutina(request.getParameter("descRutina"));
+            rutina.setNivelRutina(request.getParameter("nivelRutina"));
+            rutina.setNomRutina(request.getParameter("nomRutina"));
+            rutina.setIdRutina(rutina_dao.GuardarAutor(rutina));
+            
+            
             List<Ejercicio_Rutina> ejerciciosRutina = (List<Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
             for (Modelo.Ejercicio_Rutina ejer : ejerciciosRutina) {
                 if (ejer.getIntensidad() != null) {
-                    rutina_dao.GuardarAutor(rutina);
+                    eje_rut_dao.Guardar(ejer);
                 }
             }
             request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp");
