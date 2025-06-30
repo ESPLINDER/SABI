@@ -1,0 +1,44 @@
+30-Jun-2025 07:39:51.059 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+30-Jun-2025 07:39:51.059 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+30-Jun-2025 07:39:51.060 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@7cf63b9a')
+30-Jun-2025 07:39:56.134 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [Ha sucedido una excepción al procesar la página JSP [/plantillas/dashEntrenador.jsp] en línea [25]
+
+22:     </nav>
+23:     <div class="derecha">
+24:         <img src="<%= contextPath%>/recursos/cliente.jpg" alt="user" class="user">
+25:         <span><%= cliente.getNomUsuario() %> <%= cliente.getApeUsuario() %> | <%= cliente.getRolUsuario() %></span>
+26:     </div>
+27: </header>
+
+
+Stacktrace:] con causa raíz
+	java.lang.NullPointerException: Cannot invoke "Modelo.Usuario.getNomUsuario()" because "cliente" is null
+		at org.apache.jsp.vistas.Entrenador.index_jsp._jspService(index_jsp.java:188)
+		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:66)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:436)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at Controlador.FiltroSesion.doFilter(FiltroSesion.java:56)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)

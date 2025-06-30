@@ -182,8 +182,9 @@ body {
 
 /* Main Content */
 .main-content {
-   margin-left: 260px;
-   margin-top: 70px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 30px;
    padding: 2rem;
    min-height: calc(100vh - 70px);
    margin-bottom: 200px; /* Space for footer */
