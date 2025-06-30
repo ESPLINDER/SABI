@@ -43,7 +43,6 @@ public class EjercicioDao {
     
     public Ejercicio listarId(int id){
         String sql = "SELECT idEjercicio, nomEjercicio, descEjercicio, tipEjercicio, urlVideo FROM ejercicio where idEjercicio = ?";
-        System.out.println("supuesto id que llega al dao: "+id);
         Ejercicio ejercicio = new Ejercicio();
         try {
             conn = cn.Conexion();

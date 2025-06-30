@@ -111,7 +111,7 @@
                         </div>
 
                         <div class="modal-body">
-                            <form id="edicionUsuario" action="<%=contextPath%>/RutinaController?accion=Create">
+                            <form id="edicionUsuario" action="<%=contextPath%>/RutinaController">
                                 <input type="hidden" name="semanasRutina" value="<%=max.getSemanas()%>">
                                 <div class="form-group">
                                     <label for="NomRutina">Asignale un nombre a tu rutina</label>
@@ -125,9 +125,9 @@
                                     <label for="nomUsuario">De que nivel es tu rutina?</label>
                                     <select name="nivelRutina" class="form-control" id="rolUsuario" required>
                                         <option value=""></option>
-                                        <option value="Basica">Basica</option>
-                                        <option value="Intermedia">Intermedia</option>
-                                        <option value="Avanzada">Avanzada</option>
+                                        <option value="basico">Basica</option>
+                                        <option value="intermedio">Intermedia</option>
+                                        <option value="avanzado">Avanzada</option>
                                     </select>
                                 </div>
                             </form>
@@ -135,7 +135,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-success" form="edicionUsuario">Guardar cambios</button>
+                            <button type="submit" name="accion" value="Create" class="btn btn-success" form="edicionUsuario">Guardar cambios</button>
                         </div>
 
                     </div>

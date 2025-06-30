@@ -7,17 +7,14 @@
         <img src="<%= contextPath%>/recursos/logoLargo.png" alt="Logo" class="logo">
     </div>
     <nav>
-        <a href="<%= request.getContextPath()%>/vistas/Cliente/cliente.jsp">
-            <span>Progreso</span>
-        </a>
-        <a href="<%= contextPath%>/vistas/Entrenador/formRutina.jsp">
+        <a href="<%= contextPath%>/vistas/Entrenador/rutinas.jsp">
             <span>Rutinas</span>
         </a>
-        <a href="<%= request.getContextPath()%>/EntrenadorController">
-            <span>Entrenadores</span>
+        <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listar">
+            <span>Clientes</span>
         </a>
         <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listar">
-            <span>Subcripciones</span>
+            <span>Suscripciones</span>
         </a>
     </nav>
     <div class="derecha">
