@@ -31,7 +31,9 @@ public class SuscripcionController extends HttpServlet {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
 
-        if (menu.equals("suscripciones")) {
+        System.out.println("llega al metodo");
+        if (menu.equals("Suscripciones")) {
+            System.out.println("ejucuta ejecuta el if");
             switch (accion) {
                 case "listar":
                     Usuario cliente = (Usuario) request.getSession().getAttribute("logger");

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Modelo.Suscripcion" %>
+<%@ page import="Modelo.Usuario" %>
 <%
     List<Suscripcion> listSuscripciones = (List<Suscripcion>) request.getAttribute("suscripciones");
 %>
@@ -15,7 +16,7 @@
         <link rel="stylesheet" href="<%= contextPath%>/estilos/barranavegacion.css">
     </head>
     <body>
-        <%@ include file="/plantillas/barraNavegacion.jsp" %>
+        <%@ include file="/plantillas/barraNavegacionCliente.jsp" %>
 
         <%-- alertas  --%>
         <c:if test="${param.msg == 'creada'}">

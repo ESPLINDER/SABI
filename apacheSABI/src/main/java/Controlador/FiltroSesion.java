@@ -40,6 +40,9 @@ public class FiltroSesion implements Filter {
             if (path.contains("/vistas/Entrenador/") && !usuario.getRolUsuario().equals("entrenador")) {
                 res.sendRedirect(req.getContextPath() + "/accesoDenegado.jsp");
                 return;
+            } else if (path.contains("/vistas/Cliente/") && !usuario.getRolUsuario().equals("cliente")){
+                res.sendRedirect(req.getContextPath() + "/accesoDenegado.jsp");
+                return;
             }
 
             // Cabeceras para evitar caché

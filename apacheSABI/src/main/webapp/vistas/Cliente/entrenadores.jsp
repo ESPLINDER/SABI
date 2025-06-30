@@ -3,7 +3,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Modelo.Usuario" %>
 <%
-    Usuario cliente = (Usuario) session.getAttribute("logger");
     List<Usuario> entrenadores = (List<Usuario>) request.getAttribute("entrenadores");
 %>
 <!DOCTYPE html>
@@ -15,7 +14,7 @@
         <link rel="stylesheet" href="<%= contextPath%>/estilos/barranavegacion.css">
     </head>
     <body>
-        <%@ include file="/plantillas/barraNavegacion.jsp" %>
+        <%@ include file="/plantillas/barraNavegacionCliente.jsp" %>
 
         <div class="contenido-entrenadores">
             <%

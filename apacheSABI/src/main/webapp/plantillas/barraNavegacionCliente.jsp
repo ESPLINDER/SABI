@@ -1,3 +1,6 @@
+<%
+    Modelo.Usuario cliente = (Modelo.Usuario) session.getAttribute("logger");
+%>
 <header class="superior">
     <div class="izquierda">
         <img src="<%= contextPath%>/recursos/logoLargo.png" alt="Logo" class="logo">
@@ -12,12 +15,12 @@
         <a href="<%= request.getContextPath()%>/EntrenadorController">
             <span>Entrenadores</span>
         </a>
-        <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listar&idCliente=1">
+        <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listar">
             <span>Subcripciones</span>
         </a>
     </nav>
     <div class="derecha">
         <img src="<%= contextPath%>/recursos/cliente.jpg" alt="user" class="user">
-        <span>Juan Garzon</span>
+        <span><%= cliente.getNomUsuario() %> <%= cliente.getApeUsuario() %> | <%= cliente.getRolUsuario() %></span>
     </div>
 </header>
