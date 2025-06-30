@@ -6,7 +6,6 @@ import Modelo.Rutina;
 import Modelo.RutinaDao;
 import Modelo.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,16 +30,19 @@ public class RutinaController extends HttpServlet {
     RutinaDao rutina_dao = new RutinaDao();
     Rutina rutina = new Rutina();
     Ejercicio_RutinaDao eje_rut_dao = new Ejercicio_RutinaDao();
+    Usuario usuario = new Usuario();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
+        System.out.println("accion: " + accion);
         switch (accion) {
             case "Create":
                 this.Create(request, response, accion);
                 break;
             case "Read":
+                this.Read(request, response, accion);
                 break;
             case "Update":
                 break;
@@ -52,7 +54,7 @@ public class RutinaController extends HttpServlet {
     protected void Create(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
         HttpSession session = request.getSession();
         List<Modelo.Ejercicio_Rutina> ejerciciosRutina = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
-        
+
         boolean alMenosUno = (boolean) session.getAttribute("alMenosUno");
         if (alMenosUno) {
             Usuario usuario = (Usuario) session.getAttribute("logger");
@@ -70,7 +72,7 @@ public class RutinaController extends HttpServlet {
             rutina.setNomRutina(request.getParameter("nomRutina"));
             rutina.setCreacionRutina(LocalDate.now());
             int idRutina = rutina_dao.GuardarAutor(rutina);
-            
+
             System.out.println("lista antes de filtrar");
             for (Ejercicio_Rutina eje : ejerciciosRutina) {
                 System.out.println(eje.toString());
@@ -140,6 +142,30 @@ public class RutinaController extends HttpServlet {
             }
             request.getRequestDispatcher("/vistas/Entrenador/index.jsp").forward(request, response);
         }
+    }
+
+    protected void Read(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        usuario = (Usuario) session.getAttribute("logger");
+        List listaRutinas;
+        String tipoFiltro = request.getParameter("tipoFiltro");
+        String filtro = request.getParameter("filtro");
+        System.out.println("tipo filtro: "+tipoFiltro);
+        System.out.println("filtro: "+filtro);
+        String alerta = "";
+        if (tipoFiltro != null && filtro != null) {
+            listaRutinas = rutina_dao.listarFiltro(usuario.getIdUsuario(), tipoFiltro, filtro);
+            if (listaRutinas == null || listaRutinas.isEmpty()) {
+                alerta = "No se encontraron rutinas con el filtro: "+filtro;
+                System.out.println(alerta);
+            }
+        } else {
+            listaRutinas = rutina_dao.listar(usuario.getIdUsuario());
+        }
+        System.out.println("lista de rutinas: " + listaRutinas);
+        request.setAttribute("alerta", alerta);
+        request.setAttribute("listaRutinas", listaRutinas);
+        request.getRequestDispatcher("/vistas/Entrenador/rutinas.jsp").forward(request, response);
     }
 
     @Override

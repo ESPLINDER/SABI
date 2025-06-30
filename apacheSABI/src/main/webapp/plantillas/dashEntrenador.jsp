@@ -1,5 +1,5 @@
 <%
-    Modelo.Usuario cliente = (Modelo.Usuario) session.getAttribute("logger");
+    Modelo.Usuario entrenador = (Modelo.Usuario) session.getAttribute("logger");
 %>
 <link rel="stylesheet" href="<%= contextPath%>/estilos/barranavegacion.css">
 <header class="superior">
@@ -7,7 +7,7 @@
         <img src="<%= contextPath%>/recursos/logoLargo.png" alt="Logo" class="logo">
     </div>
     <nav>
-        <a href="<%= contextPath%>/vistas/Entrenador/rutinas.jsp">
+        <a href="<%= contextPath%>/RutinaController?accion=Read">
             <span>Rutinas</span>
         </a>
         <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listar">
@@ -19,6 +19,6 @@
     </nav>
     <div class="derecha">
         <img src="<%= contextPath%>/recursos/cliente.jpg" alt="user" class="user">
-        <span><%= cliente.getNomUsuario() %> <%= cliente.getApeUsuario() %> | <%= cliente.getRolUsuario() %></span>
+        <span><%= entrenador.getNomUsuario() %> <%= entrenador.getApeUsuario() %> | <%= entrenador.getRolUsuario() %></span>
     </div>
 </header>

@@ -122,7 +122,7 @@
                                     <input name="descRutina" type="text" class="form-control" id="DescRutina" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nomUsuario">De que nivel es tu rutina?</label>
+                                    <label for="nomUsuario">Que nivel de dificultad es tu rutina?</label>
                                     <select name="nivelRutina" class="form-control" id="rolUsuario" required>
                                         <option value=""></option>
                                         <option value="basico">Basica</option>
