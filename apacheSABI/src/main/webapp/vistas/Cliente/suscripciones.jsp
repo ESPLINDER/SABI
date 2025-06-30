@@ -4,7 +4,7 @@
 <%@ page import="Modelo.Suscripcion" %>
 <%@ page import="Modelo.Usuario" %>
 <%
-    List<Suscripcion> listSuscripciones = (List<Suscripcion>) request.getAttribute("suscripciones");
+    List<Suscripcion> listSuscripciones = (List<Suscripcion>) request.getAttribute("listSuscripciones");
 %>
 <!DOCTYPE html>
 <html>
@@ -18,12 +18,13 @@
         <%@ include file="/plantillas/barraNavegacionCliente.jsp" %>
             
         <div class="contenido-entrenadores">
+            
             <%
                 if (listSuscripciones != null && !listSuscripciones.isEmpty()) {
                     for (Suscripcion suscripcion : listSuscripciones) {
             %>
             <div class="contenido-entrenador">
-                <h1>Suscripcion con tu entrenador </h1>
+                <h1>Suscripcion con tu entrenador <%= suscripcion.getEntrenador().getNomUsuario() %> <%= suscripcion.getEntrenador().getApeUsuario() %></h1>
                 <h2>Valor de la suscripcion</h2>
                 <p><%= suscripcion.getValorSuscripcion()%></p>
                 <h2>Esta es tu fecha de inicio de la suscripcion</h2>
@@ -39,6 +40,7 @@
             %>
             <div class="contenido-entrenador">
                 <h1>¡Oh no!</h1>
+                <p>el id del cliente es <%= cliente.getIdUsuario() %></p>
                 <p>Aun no tienes ninguna Suscripcion</p>
                 <p>Puedes ir a solicitar un entrenador para tener una suscripcion</p>
                 <a href="<%= request.getContextPath()%>/EntrenadorController">Ver Entrenadores</a>
