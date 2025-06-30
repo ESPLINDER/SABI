@@ -60,64 +60,63 @@
                 </div>
                 <div class="col-md-4 ms-auto">
                     <button class="nueva btn">
-                        <a href="<%= contextPath%>/vistas/Entrenador/formRutina">+ Crear nueva rutina</a>
+                        <a style="color: white;" href="<%=contextPath%>/vistas/Entrenador/formRutina.jsp">+ Crear nueva rutina</a>
                     </button>
                 </div>
             </div>
 
 
             <% List<Modelo.Rutina> listaRutinas = (List<Modelo.Rutina>) request.getAttribute("listaRutinas");
-                String alerta = (String) request.getAttribute("alerta");
-                if (alerta == null || alerta.equals("")) {
-                    System.out.println(alerta);
-                    if (listaRutinas != null && !listaRutinas.isEmpty()) {
-                        for (Modelo.Rutina rutina : listaRutinas) {%>
-            <div class="rutinas">
-                <div class="rutina mt-4 row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 d-flex">
-                        <div class="my-auto mx-auto">
-                            <h3><%=rutina.getNomRutina()%></h3>
-                        </div>
-                    </div>
-                    <div class="col-md-3 text-end">
-                        Fecha de creacion: <%=rutina.getCreacionRutina()%> </br>
-                        Nivel de dificultad: <%=rutina.getNivelRutina()%> </br>
-                        Duracion: <%=rutina.getSemanasRutina()%> Semana/s </br>
-                        Asignada: <%=rutina.getTotalClientes()%> Clientes </br>
-                    </div>
+            String alerta = (String) request.getAttribute("alerta");
+            if (alerta == null || alerta.equals("")) {
+                System.out.println(alerta);
+                if (listaRutinas != null && !listaRutinas.isEmpty()) {
+                    for (Modelo.Rutina rutina : listaRutinas) {%>
+                        <div class="rutinas">
+                            <div class="rutina mt-4 row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6 d-flex">
+                                    <div class="my-auto mx-auto">
+                                        <h3><%=rutina.getNomRutina()%></h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    Fecha de creacion: <%=rutina.getCreacionRutina()%> </br>
+                                    Nivel de dificultad: <%=rutina.getNivelRutina()%> </br>
+                                    Duracion: <%=rutina.getSemanasRutina()%> Semana/s </br>
+                                    Asignada: <%=rutina.getTotalClientes()%> Clientes </br>
+                                </div>
 
-                    <div class="col-md-7">
-                        <div class="content-card p-3">
-                            <div class="card-header text-center">
-                                <h2>Descripcion</h2>
+                                <div class="col-md-7">
+                                    <div class="content-card p-3">
+                                        <div class="card-header text-center">
+                                            <h2>Descripcion</h2>
+                                        </div>
+                                        <div class="client-list">
+                                            <%=rutina.getDescRutina()%> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row my-auto mx-auto pt-4">
+                                        <button class="editar btn col-md-4 mx-auto">Editar rutina</button>
+                                    </div>
+                                    <div class="row my-auto mx-auto pt-1">
+                                        <button class="asignar btn btn-success col-md-4 mx-auto" data-bs-toggle="modal" data-bs-target="#clientes">Asignar rutina</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="client-list">
-                                <%=rutina.getDescRutina()%> 
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="row my-auto mx-auto pt-4">
-                            <button class="editar btn col-md-4 mx-auto">Editar rutina</button>
-                        </div>
-                        <div class="row my-auto mx-auto pt-1">
-                            <button class="asignar btn btn-success col-md-4 mx-auto" data-bs-toggle="modal" data-bs-target="#clientes">Asignar rutina</button>
-                        </div>
-
+                    <%}
+                } else {%>
+                    <div><h1>Primero crea una rutina</h1></div>
+                <%}
+            } else {%>
+                <div class="contenedor-alerta">
+                    <div class="tarjeta-alerta">
+                        <%= alerta%>
                     </div>
                 </div>
-            </div>
-            <%}
-            } else {%>
-            <div><h1>Primero crea una rutina</h1></div>
-            <%}
-            } else {%>
-            <div class="contenedor-alerta">
-                <div class="tarjeta-alerta">
-                    <%= alerta%>
-                </div>
-            </div>
             <%}%>
         </div>
     </body>

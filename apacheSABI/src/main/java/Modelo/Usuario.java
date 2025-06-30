@@ -15,12 +15,13 @@ public class Usuario {
     private float xpAños;              // Años de experiencia
     private String biografia;          // Biografía del usuario
     private float promCalificacion;    // Promedio de calificación
-    private String estadoUsuario;      // Estado del usuario (activo, inactivo)
+    private String estadoUsuario;  
+    private int fkIdRutina;    // Estado del usuario (activo, inactivo)
 
     // Constructor vacío
     public Usuario() {}
 
-    public Usuario(int idUsuario, String nomUsuario, String apeUsuario, String emaUsuario, String passUsuario, String tipDocumento, int numDocumento, String ciudadUsuario, String rolUsuario, String especialidad, float xpAños, String biografia, float promCalificacion, String estadoUsuario) {
+    public Usuario(int idUsuario, String nomUsuario, String apeUsuario, String emaUsuario, String passUsuario, String tipDocumento, int numDocumento, String ciudadUsuario, String rolUsuario, String especialidad, float xpAños, String biografia, float promCalificacion, String estadoUsuario, int fkIdRutina) {
         this.idUsuario = idUsuario;
         this.nomUsuario = nomUsuario;
         this.apeUsuario = apeUsuario;
@@ -35,123 +36,131 @@ public class Usuario {
         this.biografia = biografia;
         this.promCalificacion = promCalificacion;
         this.estadoUsuario = estadoUsuario;
+        this.fkIdRutina = fkIdRutina;
     }
 
-    // Getters y Setters
     public int getIdUsuario() {
         return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getNomUsuario() {
         return nomUsuario;
     }
 
-    public void setNomUsuario(String nomUsuario) {
-        this.nomUsuario = nomUsuario;
-    }
-
     public String getApeUsuario() {
         return apeUsuario;
-    }
-
-    public void setApeUsuario(String apeUsuario) {
-        this.apeUsuario = apeUsuario;
     }
 
     public String getEmaUsuario() {
         return emaUsuario;
     }
 
-    public void setEmaUsuario(String emaUsuario) {
-        this.emaUsuario = emaUsuario;
-    }
-
     public String getPassUsuario() {
         return passUsuario;
-    }
-
-    public void setPassUsuario(String passUsuario) {
-        this.passUsuario = passUsuario;
     }
 
     public String getTipDocumento() {
         return tipDocumento;
     }
 
-    public void setTipDocumento(String tipDocumento) {
-        this.tipDocumento = tipDocumento;
-    }
-
     public int getNumDocumento() {
         return numDocumento;
-    }
-
-    public void setNumDocumento(int numDocumento) {
-        this.numDocumento = numDocumento;
     }
 
     public String getCiudadUsuario() {
         return ciudadUsuario;
     }
 
-    public void setCiudadUsuario(String ciudadUsuario) {
-        this.ciudadUsuario = ciudadUsuario;
-    }
-
     public String getRolUsuario() {
         return rolUsuario;
-    }
-
-    public void setRolUsuario(String rolUsuario) {
-        this.rolUsuario = rolUsuario;
     }
 
     public String getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
-
     public float getXpAños() {
         return xpAños;
-    }
-
-    public void setXpAños(float xpAños) {
-        this.xpAños = xpAños;
     }
 
     public String getBiografia() {
         return biografia;
     }
 
-    public void setBiografia(String biografia) {
-        this.biografia = biografia;
-    }
-
     public float getPromCalificacion() {
         return promCalificacion;
-    }
-
-    public void setPromCalificacion(float promCalificacion) {
-        this.promCalificacion = promCalificacion;
     }
 
     public String getEstadoUsuario() {
         return estadoUsuario;
     }
 
+    public int getFkIdRutina() {
+        return fkIdRutina;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public void setNomUsuario(String nomUsuario) {
+        this.nomUsuario = nomUsuario;
+    }
+
+    public void setApeUsuario(String apeUsuario) {
+        this.apeUsuario = apeUsuario;
+    }
+
+    public void setEmaUsuario(String emaUsuario) {
+        this.emaUsuario = emaUsuario;
+    }
+
+    public void setPassUsuario(String passUsuario) {
+        this.passUsuario = passUsuario;
+    }
+
+    public void setTipDocumento(String tipDocumento) {
+        this.tipDocumento = tipDocumento;
+    }
+
+    public void setNumDocumento(int numDocumento) {
+        this.numDocumento = numDocumento;
+    }
+
+    public void setCiudadUsuario(String ciudadUsuario) {
+        this.ciudadUsuario = ciudadUsuario;
+    }
+
+    public void setRolUsuario(String rolUsuario) {
+        this.rolUsuario = rolUsuario;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public void setXpAños(float xpAños) {
+        this.xpAños = xpAños;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
+    }
+
+    public void setPromCalificacion(float promCalificacion) {
+        this.promCalificacion = promCalificacion;
+    }
+
     public void setEstadoUsuario(String estadoUsuario) {
         this.estadoUsuario = estadoUsuario;
     }
 
-   @Override
-public String toString() {
-    return "Usuario{" + "idUsuario=" + idUsuario + ", emaUsuario='" + emaUsuario + "', passUsuario='" + passUsuario + "', tipDocumento=" + tipDocumento + ", numDocumento=" + numDocumento + ", nomUsuario='" + nomUsuario + "', apeUsuario='" + apeUsuario + "', ciudadUsuario='" + ciudadUsuario + "', rolUsuario=" + rolUsuario + ", especialidad='" + especialidad + "', xpAños=" + xpAños + ", biografia='" + biografia + "', promCalificacion=" + promCalificacion + ", estadoUsuario=" + estadoUsuario + '}';
-  }
+    public void setFkIdRutina(int fkIdRutina) {
+        this.fkIdRutina = fkIdRutina;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nomUsuario=" + nomUsuario + ", apeUsuario=" + apeUsuario + ", emaUsuario=" + emaUsuario + ", passUsuario=" + passUsuario + ", tipDocumento=" + tipDocumento + ", numDocumento=" + numDocumento + ", ciudadUsuario=" + ciudadUsuario + ", rolUsuario=" + rolUsuario + ", especialidad=" + especialidad + ", xpA\u00f1os=" + xpAños + ", biografia=" + biografia + ", promCalificacion=" + promCalificacion + ", estadoUsuario=" + estadoUsuario + ", fkIdRutina=" + fkIdRutina + '}';
+    }
 }

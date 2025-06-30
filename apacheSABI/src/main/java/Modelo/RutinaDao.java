@@ -22,7 +22,7 @@ public class RutinaDao {
     int idRutina = 0;
 
     public List<Rutina> listarFiltro(int autor, String tipoFiltro, String filtro) {
-        String sql = "SELECT * FROM rutina where autorRutina = ? and "+tipoFiltro+" = ?";
+        String sql = "SELECT * FROM rutina where autorRutina = ? and " + tipoFiltro + " = ?";
         List<Rutina> lista = new ArrayList<>();
         try {
             conn = cn.Conexion();
@@ -31,10 +31,10 @@ public class RutinaDao {
             try {
                 ps.setInt(2, Integer.parseInt(filtro));
             } catch (NumberFormatException e) {
-            ps.setString(2, filtro);
+                ps.setString(2, filtro);
             }
             System.out.println(ps);
-            
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 Rutina rutina = new Rutina();
@@ -61,7 +61,9 @@ public class RutinaDao {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, autor);
+            System.out.println(ps);
             rs = ps.executeQuery();
+            System.out.println(rs);
             while (rs.next()) {
                 Rutina rutina = new Rutina();
                 rutina.setIdRutina(rs.getInt("idRutina"));
@@ -71,7 +73,8 @@ public class RutinaDao {
                 rutina.setNivelRutina(rs.getString("nivelRutina"));
                 rutina.setCreacionRutina(rs.getDate("creacionRutina").toLocalDate());
                 rutina.setAutRutina(rs.getInt("autorRutina"));
-                rutina.setTotalClientes(totalClientes(autor));
+                rutina.setTotalClientes(totalClientes(rs.getInt("idRutina")));
+                System.out.println(rutina.getNomRutina());
                 lista.add(rutina);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -82,21 +85,18 @@ public class RutinaDao {
 
     public int totalClientes(int idRutina) {
         int total = 0;
-        String sql = "SELECT COUNT(*) FROM rutina WHERE idRutina = ? AND clienteAsignado IS NOT NULL";
-
-        try {
-            conn = cn.Conexion();
-            ps = conn.prepareStatement(sql);
+        String sql = "SELECT COUNT(*) FROM usuario WHERE fkIdRutina = ?";
+        try (
+                Connection conn = cn.Conexion(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, idRutina);
-            rs = ps.executeQuery();
-
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 total = rs.getInt(1);
             }
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al contar clientes asignados a la rutina: " + e.getMessage());
+            System.out.println("Error al contar clientes asignados a la rutina " + idRutina + ": " + e.getMessage());
+            // No lanzamos la excepción, simplemente dejamos total en 0
         }
-
         return total;
     }
 
