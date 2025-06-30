@@ -7,7 +7,7 @@
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+/*------------------------ entrenadores------------------------------*/
 .contenido-entrenadores {
     max-width: auto;
     display: flex;
@@ -33,6 +33,7 @@
     border: 2px solid #000000;
 }
 
+/*---------------------------- estadisticas -----------------------------*/
 .contenido-estadisticas {
     max-width: 2000px;
     margin: 50px auto;
@@ -49,7 +50,6 @@
     gap: 20px;
     width: 100%;
 }
-
 
 .contenido-estadisticas h1 {
     text-align: center;
@@ -84,7 +84,53 @@
     font-size: 24px;
     color: #0064e9;
 }
+/*--------------------------- suscripciones ----------------------------------- */
+.contenido-suscripciones {
+    max-width: auto;
+    display: flex;
+    margin: 50px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px;
+}
 
+.encabezado-suscripcion {
+    text-align: center;
+    width: auto;
+    padding: 8px 20px;
+    border-radius: 10px 10px 0 0;
+    font-size: 14px;
+    color: #000000;
+    background-color: #0064e9;
+
+}
+
+.contenido-suscripcion {
+    max-width: 1000px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.datos-suscripcion {
+    text-align: center;
+    padding: 20px;
+}
+
+.fechas-suscripcion {
+    display: flex;
+    justify-content: center;
+}
+
+.fecha {
+    padding: 10px;
+    font-size: 14px;
+}
+
+
+ /*---------------------------- botones -----------------------------*/
 .boton-accion {
     margin-top: 20px;
     padding: 12px 20px;
@@ -97,6 +143,17 @@
 }
 .boton-accion:hover {
     background-color: #73d9ff;
+}
+
+.boton-accion-inactivo {
+    margin-top: 20px;
+    padding: 12px 20px;
+    text-decoration: none;
+    background-color: #8e8e8e;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .boton-diagnostico {

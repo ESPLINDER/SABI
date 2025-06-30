@@ -16,12 +16,13 @@ public class Suscripcion {
     String estadoSuscripcion;
     int renovaciones;
     float valorSuscripcion;
+    String estadoPagoSuscripcion;
     Usuario entrenador;
 
     public Suscripcion() {
     }
 
-    public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDate inicioSuscripcion, LocalDate finSuscripcion, String estadoSuscripcion, int renovaciones, float valorSuscripcion) {
+    public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDate inicioSuscripcion, LocalDate finSuscripcion, String estadoSuscripcion, int renovaciones, float valorSuscripcion, String estadoPagoSuscripcion) {
         this.idSuscripcion = idSuscripcion;
         this.fkIdEntrenador = fkIdEntrenador;
         this.fkIdCliente = fkIdCliente;
@@ -30,6 +31,7 @@ public class Suscripcion {
         this.estadoSuscripcion = estadoSuscripcion;
         this.renovaciones = renovaciones;
         this.valorSuscripcion = valorSuscripcion;
+        this.estadoPagoSuscripcion = estadoPagoSuscripcion;
     }
 
     public Usuario getEntrenador() {
@@ -39,6 +41,7 @@ public class Suscripcion {
     public void setEntrenador(Usuario entrenador) {
         this.entrenador = entrenador;
     }
+
 
     public int getIdSuscripcion() {
         return idSuscripcion;
@@ -64,13 +67,18 @@ public class Suscripcion {
         return estadoSuscripcion;
     }
 
-    public int getRenociones() {
+    public int getRenovaciones() {
         return renovaciones;
     }
 
     public float getValorSuscripcion() {
         return valorSuscripcion;
     }
+    
+    public String getEstadoPagoSuscripcion() {
+        return estadoPagoSuscripcion;
+    }
+
 
     public void setIdSuscripcion(int idSuscripcion) {
         this.idSuscripcion = idSuscripcion;
@@ -103,9 +111,13 @@ public class Suscripcion {
     public void setValorSuscripcion(float valorSuscripcion) {
         this.valorSuscripcion = valorSuscripcion;
     }
+    
+    public void setEstadoPagoSuscripcion(String estadoPagoSuscripcion) {
+        this.estadoPagoSuscripcion = estadoPagoSuscripcion;
+    }
 
     @Override
     public String toString() {
-        return "Suscripcion{" + "idSuscripcion=" + idSuscripcion + ", fkIdEntrenador=" + fkIdEntrenador + ", fkIdCliente=" + fkIdCliente + ", inicioSuscripcion=" + inicioSuscripcion + ", finSuscripcion=" + finSuscripcion + ", estadoSuscripcion=" + estadoSuscripcion + ", renovaciones=" + renovaciones + ", valorSuscripcion=" + valorSuscripcion + '}';
+        return "Suscripcion{" + "idSuscripcion=" + idSuscripcion + ", fkIdEntrenador=" + fkIdEntrenador + ", fkIdCliente=" + fkIdCliente + ", inicioSuscripcion=" + inicioSuscripcion + ", finSuscripcion=" + finSuscripcion + ", estadoSuscripcion=" + estadoSuscripcion + ", renovaciones=" + renovaciones + ", valorSuscripcion=" + valorSuscripcion + ", estadoPagoSuscripcion=" + estadoPagoSuscripcion +'}';
     }
 }

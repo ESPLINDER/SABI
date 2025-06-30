@@ -25,7 +25,7 @@ public class SuscripcionDao {
     List<Suscripcion> lista = new ArrayList<>();
     String sql = "SELECT s.idSuscripcion, s.fkIdEntrenador, s.fkIdCliente, "
                + "s.inicioSuscripcion, s.finSuscripcion, s.estadoSuscripcion, "
-               + "s.renovaciones, s.valorSuscripcion, "
+               + "s.renovaciones, s.valorSuscripcion, s.estadoPagoSuscripcion, "
                + "u.nomUsuario, u.apeUsuario "
                + "FROM suscripcion s "
                + "JOIN usuario u ON s.fkIdEntrenador = u.idUsuario "
@@ -49,12 +49,14 @@ public class SuscripcionDao {
             suscripcion.setEstadoSuscripcion(rs.getString("estadoSuscripcion"));
             suscripcion.setRenovaciones(rs.getInt("renovaciones"));
             suscripcion.setValorSuscripcion(rs.getFloat("valorSuscripcion"));
+            suscripcion.setEstadoPagoSuscripcion(rs.getString("estadoPagoSuscripcion"));
 
             entrenador.setNomUsuario(rs.getString("nomUsuario"));
             entrenador.setApeUsuario(rs.getString("apeUsuario"));
 
             suscripcion.setEntrenador(entrenador);
             lista.add(suscripcion);
+            System.out.println(suscripcion);
         }
     } catch (ClassNotFoundException | SQLException e) {
         System.out.println("Error al listar: " + e.getMessage());
