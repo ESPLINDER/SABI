@@ -51,7 +51,9 @@
         <%} else {%>
         <div id="contenedorTabla" class="col-md-8 mx-auto text-center">
             <h1 class="mb-4 mt-5">Crea tu rutina</h1>
+            <% if(session.getAttribute("alMenosUno")){%>
             <button class="mb-5 btn btn-success mx-auto" type="button" data-bs-toggle="modal" data-bs-target="#guardarRutina">Guardar Rutina</button>
+            <%}%>
             <%for (int i = 1; i <= max.getSemanas(); i++) {%>
             <div class="semana text-center mb-5">
                 <h2 class="mb-3">Semana <%=i%></h2>
