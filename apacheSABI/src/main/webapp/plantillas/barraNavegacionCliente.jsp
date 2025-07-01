@@ -1,6 +1,7 @@
 <%
     Modelo.Usuario cliente = (Modelo.Usuario) session.getAttribute("logger");
 %>
+<link rel="stylesheet" href="<%= contextPath%>/estilos/barranavegacion.css">
 <header class="superior">
     <div class="izquierda">
         <img src="<%= contextPath%>/recursos/logoLargo.png" alt="Logo" class="logo">

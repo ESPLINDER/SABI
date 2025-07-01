@@ -2,7 +2,9 @@
 .main-footer {
    background: rgba(13, 71, 161, 0.98); /* Footer en azul oscuro */
    color: white;
-   padding: 60px 50px 30px;
+   flex-wrap: wrap;
+   width: 100%;
+   position: fixed;
 }
 
 
