@@ -18,7 +18,8 @@
     </head>
 
     <body>
-        <%@ include file="/plantillas/dashEntrenador.jsp" %>
+
+        <%@ include file="/plantillas/barraNavegacionCliente.jsp" %>
 
         <%Maximos max = (Maximos) session.getAttribute("max");
             List<Modelo.Ejercicio_Rutina> ejercicios = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");

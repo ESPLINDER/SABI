@@ -13,7 +13,7 @@
         <title>Formula tu ejercicio</title>
     </head>
     <body>
-        <%@ include file="/plantillas/dashEntrenador.jsp" %>
+        <%@ include file="/plantillas/barraNavegacionCliente.jsp" %>
         
         <div class="col-md-8 mx-auto mt-5">
             <h1>Estructura el ejercicio</h1>

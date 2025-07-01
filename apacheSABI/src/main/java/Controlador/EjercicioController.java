@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.EjercicioDao;
 import Modelo.Ejercicio_Rutina;
+import Modelo.Usuario;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -42,6 +43,8 @@ public class EjercicioController extends HttpServlet {
 
     protected void EnviarEjercicios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        Usuario user = (Usuario) session.getAttribute("logger");
+        String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador" : "Cliente";
         
         String IdEjercicio = request.getParameter("idEjercicio");
         String FkIdEjercicio = request.getParameter("fkIdEjercicio");
@@ -83,7 +86,7 @@ public class EjercicioController extends HttpServlet {
         session.setAttribute("ubicacionEjercicio", ubicacionEjercicio);
         List listaEjercicios = ejercicio_dao.listar();
         request.setAttribute("lista_ejercicios", listaEjercicios);
-        request.getRequestDispatcher("/vistas/Entrenador/formEjercicioRutina.jsp").forward(request, response);
+        request.getRequestDispatcher("/vistas/"+carpeta+"/formEjercicioRutina.jsp").forward(request, response);
     }
 
     @Override

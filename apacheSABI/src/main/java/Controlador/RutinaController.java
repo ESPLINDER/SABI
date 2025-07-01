@@ -54,14 +54,14 @@ public class RutinaController extends HttpServlet {
 
     protected void Create(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        Usuario user = (Usuario) session.getAttribute("logger");
+        String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador" : "Cliente";
         List<Modelo.Ejercicio_Rutina> ejerciciosRutina = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
 
         boolean alMenosUno = (boolean) session.getAttribute("alMenosUno");
         if (alMenosUno) {
             Usuario usuario = (Usuario) session.getAttribute("logger");
             int semanaMaxima = 0;
-            
-            int idRutina = (int) session.getAttribute("idRutina");
 
             for (Ejercicio_Rutina eje : ejerciciosRutina) {
                 if (eje.getSemana() > semanaMaxima) {
@@ -74,7 +74,12 @@ public class RutinaController extends HttpServlet {
             rutina.setNivelRutina(request.getParameter("nivelRutina"));
             rutina.setNomRutina(request.getParameter("nomRutina"));
             rutina.setCreacionRutina(LocalDate.now());
-            if (idRutina != 0) {
+
+            Object idRutinaObj = session.getAttribute("idRutina");
+            int idRutina = 0;
+
+            if (idRutinaObj != null) {
+                idRutina = (int) idRutinaObj;
                 rutina.setIdRutina(idRutina);
                 rutina_dao.Update(rutina);
             } else {
@@ -149,23 +154,25 @@ public class RutinaController extends HttpServlet {
                 eje_rut_dao.Delete(idRutina);
                 eje_rut_dao.Guardar(ejer, idRutina);
             }
-            request.getRequestDispatcher("/vistas/Entrenador/rutinas.jsp").forward(request, response);
+            request.getRequestDispatcher("RutinaController?accion=Read").forward(request, response);
         }
     }
 
     protected void Read(HttpServletRequest request, HttpServletResponse response, Object ejercicios) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        Usuario user = (Usuario) session.getAttribute("logger");
+        String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador" : "Cliente";
         usuario = (Usuario) session.getAttribute("logger");
         List listaRutinas;
         String tipoFiltro = request.getParameter("tipoFiltro");
         String filtro = request.getParameter("filtro");
-        System.out.println("tipo filtro: "+tipoFiltro);
-        System.out.println("filtro: "+filtro);
+        System.out.println("tipo filtro: " + tipoFiltro);
+        System.out.println("filtro: " + filtro);
         String alerta = "";
         if (tipoFiltro != null && filtro != null) {
             listaRutinas = rutina_dao.listarFiltro(usuario.getIdUsuario(), tipoFiltro, filtro);
             if (listaRutinas == null || listaRutinas.isEmpty()) {
-                alerta = "No se encontraron rutinas con el filtro: "+filtro;
+                alerta = "No se encontraron rutinas con el filtro: " + filtro;
                 System.out.println(alerta);
             }
         } else {
@@ -174,20 +181,21 @@ public class RutinaController extends HttpServlet {
         System.out.println("lista de rutinas: " + listaRutinas);
         request.setAttribute("alerta", alerta);
         request.setAttribute("listaRutinas", listaRutinas);
-        request.getRequestDispatcher("/vistas/Entrenador/rutinas.jsp").forward(request, response);
+        request.getRequestDispatcher("/vistas/" + carpeta + "/rutinas.jsp").forward(request, response);
     }
 
     protected void Delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
-        int idRutina = Integer.parseInt(request.getParameter("idRutina"));
-        eje_rut_dao.Delete(idRutina);
-        rutina_dao.Delete(idRutina);
-        
-        request.getRequestDispatcher("RutinaController?accion=Read").forward(request, response);
-        }catch(ServletException | IOException | NumberFormatException e){
+        try {
+            int idRutina = Integer.parseInt(request.getParameter("idRutina"));
+            eje_rut_dao.Delete(idRutina);
+            rutina_dao.Delete(idRutina);
+
+            request.getRequestDispatcher("RutinaController?accion=Read").forward(request, response);
+        } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error al eliminar");
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

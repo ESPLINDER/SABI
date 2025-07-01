@@ -9,7 +9,7 @@
         <a href="<%= request.getContextPath()%>/vistas/Cliente/cliente.jsp">
             <span>Progreso</span>
         </a>
-        <a href="<%= contextPath%>/vistas/Cliente/rutinas.jsp">
+        <a href="<%= contextPath%>/RutinaController?accion=Read">
             <span>Rutinas</span>
         </a>
         <a href="<%= request.getContextPath()%>/EntrenadorController">
