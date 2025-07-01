@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Suscripciones</title>
+        <title>Suscripciones cliente</title>
         <link rel="stylesheet" href="<%= contextPath%>/estilos/indexCliente.css">
         <link rel="stylesheet" href="<%= contextPath%>/estilos/barranavegacion.css">
     </head>
@@ -79,7 +79,6 @@
             %>
             <div class="contenido-entrenador">
                 <h1>¡Oh no!</h1>
-                <p>el id del cliente es <%= cliente.getIdUsuario()%></p>
                 <p>Aun no tienes ninguna Suscripcion</p>
                 <p>Puedes ir a solicitar un entrenador para tener una suscripcion</p>
                 <a href="<%= request.getContextPath()%>/EntrenadorController">Ver Entrenadores</a>
@@ -88,5 +87,8 @@
                 }
             %>
         </div>
+        
+        <%@ include file="/plantillas/footer.jsp" %>
+        
     </body>
 </html>

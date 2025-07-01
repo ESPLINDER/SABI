@@ -20,6 +20,9 @@
             <p>tambien podras crear ejercicios para agregar a tu rutina, elegir la cantidad de semanas y mucho más.</p>
             <a class="boton-accion" href="RutinaController">Crear Mi rutina</a>
         </div>
+        
+        <%@ include file="/plantillas/footer.jsp" %>
+        
     </body>
 
     </html>

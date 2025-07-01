@@ -51,5 +51,7 @@
                 <a class="boton-diagnostico" href="DiagnosticoController">Actualizar Estadísticas</a>
             </div>
         </div>
+            
+        <%@ include file="/plantillas/footer.jsp" %>
     </body>
 </html>

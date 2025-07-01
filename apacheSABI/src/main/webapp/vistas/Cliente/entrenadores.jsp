@@ -23,7 +23,7 @@
             %>
             <div class="contenido-entrenador">
                 <h1><%= entrenador.getNomUsuario() + " " + entrenador.getApeUsuario()%></h1>
-                <img src="<%= request.getContextPath()%>/recursos/entrenador.jpg" alt="">
+                <img src="<%= request.getContextPath()%>/recursos/fotoPerfil.jpg" alt="">
                 <p><%= entrenador.getEspecialidad()%></p>
                 <p><%= entrenador.getBiografia()%></p>
                 <a class="boton-accion" href="<%= request.getContextPath() %>/SuscripcionController?menu=Suscripciones&accion=Agregar&idCliente=<%= cliente.getIdUsuario() %>&idEntrenador=<%= entrenador.getIdUsuario() %>">
@@ -43,5 +43,8 @@
                 }
             %>
         </div>
+        
+        <%@ include file="/plantillas/footer.jsp" %>
+        
     </body>
 </html>

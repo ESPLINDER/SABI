@@ -15,14 +15,14 @@ public class Suscripcion {
     LocalDate finSuscripcion;
     String estadoSuscripcion;
     int renovaciones;
-    float valorSuscripcion;
+    int valorSuscripcion;
     String estadoPagoSuscripcion;
     Usuario entrenador;
 
     public Suscripcion() {
     }
 
-    public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDate inicioSuscripcion, LocalDate finSuscripcion, String estadoSuscripcion, int renovaciones, float valorSuscripcion, String estadoPagoSuscripcion) {
+    public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDate inicioSuscripcion, LocalDate finSuscripcion, String estadoSuscripcion, int renovaciones, int valorSuscripcion, String estadoPagoSuscripcion) {
         this.idSuscripcion = idSuscripcion;
         this.fkIdEntrenador = fkIdEntrenador;
         this.fkIdCliente = fkIdCliente;
@@ -108,7 +108,7 @@ public class Suscripcion {
         this.renovaciones = renovaciones;
     }
 
-    public void setValorSuscripcion(float valorSuscripcion) {
+    public void setValorSuscripcion(int valorSuscripcion) {
         this.valorSuscripcion = valorSuscripcion;
     }
     
