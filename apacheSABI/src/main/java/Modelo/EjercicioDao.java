@@ -48,6 +48,7 @@ public class EjercicioDao {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
+            System.out.println("lista id ejercicio: "+ps);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -56,6 +57,7 @@ public class EjercicioDao {
                 ejercicio.setDescEjercicio(rs.getString("descEjercicio"));
                 ejercicio.setTipEjercicio(rs.getString("tipEjercicio"));
                 ejercicio.setUrlVideo(rs.getString("urlVideo"));
+                System.out.println(ejercicio.toString());//
             }
         } catch (Exception e) {
             System.out.println("Error al seleccionar el usuario: " + e.getMessage());

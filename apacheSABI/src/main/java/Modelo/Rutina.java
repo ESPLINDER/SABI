@@ -15,7 +15,6 @@ public class Rutina {
     int autRutina;
     int autorCliente;
     String nomRutina;
-    int clienteAsignado;
     
     //para la creacion base de la rutina
     int numDias;
@@ -33,7 +32,6 @@ public class Rutina {
         this.autRutina = autRutina;
         this.autorCliente = autorCliente;
         this.nomRutina = nomRutina;
-        this.clienteAsignado = clienteAsignado;
         this.numDias = numDias;
         this.totalClientes = totalClientes;
     }
@@ -68,10 +66,6 @@ public class Rutina {
 
     public String getNomRutina() {
         return nomRutina;
-    }
-
-    public int getClienteAsignado() {
-        return clienteAsignado;
     }
 
     public int getNumDias() {
@@ -114,15 +108,16 @@ public class Rutina {
         this.nomRutina = nomRutina;
     }
 
-    public void setClienteAsignado(int clienteAsignado) {
-        this.clienteAsignado = clienteAsignado;
-    }
-
     public void setNumDias(int numDias) {
         this.numDias = numDias;
     }
 
     public void setTotalClientes(int totalClientes) {
         this.totalClientes = totalClientes;
+    }
+
+    @Override
+    public String toString() {
+        return "Rutina{" + "idRutina=" + idRutina + ", semanasRutina=" + semanasRutina + ", descRutina=" + descRutina + ", nivelRutina=" + nivelRutina + ", creacionRutina=" + creacionRutina + ", autRutina=" + autRutina + ", autorCliente=" + autorCliente + ", nomRutina=" + nomRutina + ", numDias=" + numDias + ", totalClientes=" + totalClientes + '}';
     }
 }
