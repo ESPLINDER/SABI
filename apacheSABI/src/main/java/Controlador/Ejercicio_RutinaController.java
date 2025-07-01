@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Maximos;
 import Modelo.EjercicioDao;
 import Modelo.Ejercicio_Rutina;
+import Modelo.Ejercicio_RutinaDao;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,6 +22,7 @@ import java.util.List;
 public class Ejercicio_RutinaController extends HttpServlet {
 
     Ejercicio_Rutina ubi_eje_rut = new Ejercicio_Rutina();
+    Ejercicio_RutinaDao eje_rut_dao = new Ejercicio_RutinaDao();
     EjercicioDao ejercicio_dao = new EjercicioDao();
     Maximos max = new Maximos();
 
@@ -38,16 +40,13 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 this.Create(request, response);
                 break;
             case "Read":
+                this.Read(request, response);
                 break;
             case "Update":
                 this.Update(request, response);
                 break;
             case "Delete":
                 this.Delete(request, response);
-                break;
-            case "numSeries":
-                break;
-            default:
                 break;
         }
     }
@@ -124,6 +123,30 @@ public class Ejercicio_RutinaController extends HttpServlet {
         }
     }
 
+    protected void Read(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String IdRutina = request.getParameter("idRutina");
+        int idRutina = Integer.parseInt(IdRutina);
+        List<Ejercicio_Rutina> ejerciciosRutina = eje_rut_dao.listarRutina(idRutina);
+        Maximos max = new Maximos();
+        for (Ejercicio_Rutina er : ejerciciosRutina) {
+            if (er.getSemana() > max.getSemanas()) {
+                max.setSemanas(er.getSemana());
+            }
+            if (er.getDia() > max.getDias()) {
+                max.setDias(er.getDia());
+            }
+            if (er.getOrdenEjercicio() > max.getEjercicios()) {
+                max.setEjercicios(er.getOrdenEjercicio());
+            }
+        }
+
+        HttpSession session = request.getSession();
+        session.setAttribute("idRutina", idRutina);
+        session.setAttribute("ejerciciosRutina", ejerciciosRutina);
+        session.setAttribute("max", max);
+        request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+    }
+
     protected void Update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
@@ -197,7 +220,7 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 if (ejer.getSemana() == semana && ejer.getDia() == dia && ejer.getOrdenEjercicio() > ordenAEliminar) {
                     ejer.setOrdenEjercicio(ejer.getOrdenEjercicio() - 1); // Baja un lugar
                     if (ejer.getIntensidad() == null) {
-                        ejer.setNomEjercicio("Ejercicio "+ejer.getOrdenEjercicio());
+                        ejer.setNomEjercicio("Ejercicio " + ejer.getOrdenEjercicio());
                     }
                 }
             }

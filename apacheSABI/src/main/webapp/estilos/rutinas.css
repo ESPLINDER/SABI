@@ -77,3 +77,14 @@ button.asignar:hover{
   text-align: center;
   font-weight: bold;
 }
+
+button.eliminar {
+    background-color: #ff0000;
+    border: solid 2px #6e0000;
+    color: #000000
+}
+button.eliminar:hover {
+    background-color: #6e0000;
+    border: solid 1px #000000;
+    color: #ffffff
+}

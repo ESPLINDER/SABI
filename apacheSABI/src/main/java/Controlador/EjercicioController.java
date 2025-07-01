@@ -50,9 +50,11 @@ public class EjercicioController extends HttpServlet {
         String OrdenEjercicio = request.getParameter("ordenEjercicio");
         if (IdEjercicio != null) {
             int idEjercicio = Integer.parseInt(IdEjercicio);
+            System.out.println("int del idEJercicio: "+idEjercicio);//
             request.setAttribute("ejercicio", ejercicio_dao.listarId(idEjercicio));
         } else if (FkIdEjercicio != null){
             int fkIdEjercicio = Integer.parseInt(FkIdEjercicio);
+            System.out.println("int del FKidEJercicio: "+fkIdEjercicio);//
             if (fkIdEjercicio > 0) {
                 request.setAttribute("ejercicio", ejercicio_dao.listarId(fkIdEjercicio));
             }

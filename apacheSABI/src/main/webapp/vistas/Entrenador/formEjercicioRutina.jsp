@@ -20,22 +20,28 @@
                 <%
                     Ejercicio_Rutina eje_rut_edicion = (Ejercicio_Rutina) session.getAttribute("eje_rut_edicion");
                     Ejercicio ejercicio = (Ejercicio) request.getAttribute("ejercicio");
-                    String selectValue = (ejercicio != null) ? ejercicio.getNomEjercicio() : "Selecciona un ejercicio";
-                    int selectValueId = (ejercicio != null) ? ejercicio.getIdEjercicio() : 0;
+                    String selectValue = "Selecciona un ejercicio";
+                    int selectValueId = 1;
+                    System.out.println("select valor " + selectValue);
+                    System.out.println("select valor id: " + selectValueId);
                     String valueSerie = "";
                     String intensidadValue = "baja";
                     String repeticionesValue = "";
                     String pesoValue = "";
                     String descansoValue = "";
-                    
-                    if (eje_rut_edicion != null) {
+
+                    if (ejercicio != null) {
+                        selectValue = ejercicio.getNomEjercicio();
+                        selectValueId = ejercicio.getIdEjercicio();
+                    } else if (eje_rut_edicion != null) {
                         selectValue = eje_rut_edicion.getNomEjercicio();
                         selectValueId = eje_rut_edicion.getFkIdEjercicio();
-                        valueSerie = "value="+"'"+eje_rut_edicion.getSerie()+"'";
+
+                        valueSerie = "value=" + "'" + eje_rut_edicion.getSerie() + "'";
                         intensidadValue = eje_rut_edicion.getIntensidad();
-                        repeticionesValue = "value="+"'"+eje_rut_edicion.getRepeticiones()+"'";
-                        pesoValue = "value="+"'"+eje_rut_edicion.getPeso()+"'";
-                        descansoValue = "value="+"'"+eje_rut_edicion.getDescanso()+"'";
+                        repeticionesValue = "value=" + "'" + eje_rut_edicion.getRepeticiones() + "'";
+                        pesoValue = "value=" + "'" + eje_rut_edicion.getPeso() + "'";
+                        descansoValue = "value=" + "'" + eje_rut_edicion.getDescanso() + "'";
                     }
                     List<Modelo.Ejercicio> lista_ejercicios = (List<Modelo.Ejercicio>) request.getAttribute("lista_ejercicios");
                     if (lista_ejercicios == null) {

@@ -12,31 +12,68 @@ import java.util.List;
  * @author William
  */
 public class Ejercicio_RutinaDao {
-
+    
+    EjercicioDao ejercicio_dao = new EjercicioDao();
+    
     Conexion cn = new Conexion();
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
     int r; //Valor que se retorna al agregar un nuevo registro
 
-    /*public List<Ejercicio_Rutina> Crear() {
-        String sql = "INSERT INTO usuarios(idUsuario, nomUsuario, apeUsuario, emaUsuario, passUsuario, rolUsuario) VALUES (?, ?, ?, ?, ?, ?)";
+    public void Delete(int idRutina){
+        String sql = "DELETE FROM ejercicio_rutina WHERE fkIdRutina = ?";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
-
-            ps.setInt(1, usuario.getIdUsuario());
-            ps.setString(2, usuario.getNomUsuario());
-            ps.setString(3, usuario.getApeUsuario());
-            ps.setString(4, usuario.getEmaUsuario());
-            ps.setString(5, usuario.getPassUsuario());
-            ps.setString(6, usuario.getRolUsuario());
+            ps.setInt(1, idRutina);
+            System.out.println("eliminar Dao: "+sql);
             r = ps.executeUpdate();
+            
+            if (r > 0) {
+                System.out.println("EjeRut eliminado correctamente");
+            } else {
+                System.out.println("No se encontró la rutina con ID: " + idRutina);
+            }
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al agregar usuario: " + e.getMessage());
+            System.out.println("Error al eliminar usuario: " + e.getMessage());
         }
-        return ejercicios;
-    }*/
+    }
+    
+    public List<Ejercicio_Rutina> listarRutina(int idRutina) {
+        String sql = "SELECT * FROM ejercicio_rutina where fkIdRutina = ?";
+        List<Ejercicio_Rutina> lista = new ArrayList<>();
+        try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, idRutina);
+            System.out.println(ps);
+            rs = ps.executeQuery();
+            System.out.println(rs);
+            while (rs.next()) {
+                Ejercicio_Rutina eje_rut = new Ejercicio_Rutina();
+                eje_rut.setIdEjercicio_Rutina(rs.getInt("idEjercicio_Rutina"));
+                eje_rut.setFkIdEjercicio(rs.getInt("fkIdEjercicio"));
+                eje_rut.setFkIdRutina(rs.getInt("fkIdRutina"));
+                eje_rut.setSemana(rs.getInt("semana"));
+                eje_rut.setDia(rs.getInt("dia"));
+                eje_rut.setOrdenEjercicio(rs.getInt("ordenEjercicio"));
+                eje_rut.setSerie(rs.getInt("serie"));
+                eje_rut.setRepeticiones(rs.getInt("repeticiones"));
+                eje_rut.setPeso(rs.getInt("peso_tiempo"));
+                eje_rut.setIntensidad(rs.getString("intensidad"));
+                eje_rut.setDescanso(rs.getInt("descanso"));
+                
+                String nomEjercicio = ejercicio_dao.nombreId(eje_rut.getFkIdEjercicio());
+                eje_rut.setNomEjercicio(nomEjercicio);
+                eje_rut.setEstilo("000000");
+                lista.add(eje_rut);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al generar lista de ejercicios rutina: " + e.getMessage());
+        }
+        return lista;
+    }
     
     public List<Ejercicio_Rutina> listar() {
         String sql = "SELECT *, nomEjercicio FROM ejercicio_rutina INNER JOIN"
