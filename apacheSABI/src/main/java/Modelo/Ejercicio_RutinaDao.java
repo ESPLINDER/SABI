@@ -122,6 +122,7 @@ public class Ejercicio_RutinaDao {
             ps.setInt(8, eje_rut.getPeso());
             ps.setString(9, eje_rut.getIntensidad());
             ps.setInt(10, eje_rut.getDescanso());
+            System.out.println("guardar ejercicio rutina: "+ps);
             
             ps.executeUpdate();
             System.out.println("ejercicio rutina agregado correctamente");

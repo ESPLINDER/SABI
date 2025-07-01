@@ -18,6 +18,9 @@
         </a>
     </nav>
     <div class="derecha">
+        <a href="<%= request.getContextPath()%>/CerrarSesion">
+            <span>Cerrar Sesion</span>
+        </a>
         <img src="<%= contextPath%>/recursos/entrenador.jpg" alt="user" class="user">
         <span><%= entrenador.getNomUsuario() %> <%= entrenador.getApeUsuario() %> | <%= entrenador.getRolUsuario() %></span>
     </div>

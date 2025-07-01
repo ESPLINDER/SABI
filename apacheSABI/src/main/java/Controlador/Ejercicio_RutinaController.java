@@ -4,6 +4,7 @@ import Modelo.Maximos;
 import Modelo.EjercicioDao;
 import Modelo.Ejercicio_Rutina;
 import Modelo.Ejercicio_RutinaDao;
+import Modelo.Usuario;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -52,6 +53,9 @@ public class Ejercicio_RutinaController extends HttpServlet {
     }
 
     protected void Create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Usuario user = (Usuario) session.getAttribute("logger");
+        String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador" : "Cliente";
         try {
             String NumSemanas = request.getParameter("numSemanas");
             String NumDias = request.getParameter("numDias");
@@ -63,34 +67,34 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 if (numSemanas > 12) {
                     String alertaSemanas = "Demasiadas semanas, por favor ingresar maximo 12";
                     request.setAttribute("alertaSemanas", alertaSemanas);
-                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
                     return;
                 } else if (numSemanas < 1) {
                     String alertaSemanas = "Valor de semanas invalido";
                     request.setAttribute("alertaSemanas", alertaSemanas);
-                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
                     return;
                 }
                 if (numDias > 7) {
                     String alertaDias = "Demasiados dias, la semana no puede tener mas de 7 dias";
                     request.setAttribute("alertaDias", alertaDias);
-                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
                     return;
                 } else if (numDias < 1) {
                     String alertaDias = "Valor de dias invalido";
                     request.setAttribute("alertaDias", alertaDias);
-                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
                     return;
                 }
                 if (numEjercicios > 30) {
                     String alertaEjercicios = "Demasiados ejercicios, por favor ingresar maximo 100";
                     request.setAttribute("alertaEjercicios", alertaEjercicios);
-                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
                     return;
                 } else if (numEjercicios < 1) {
                     String alertaEjercicios = "Valor de ejercicios invalido";
                     request.setAttribute("alertaEjercicios", alertaEjercicios);
-                    request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
                     return;
                 }
 
@@ -112,11 +116,10 @@ public class Ejercicio_RutinaController extends HttpServlet {
                         }
                     }
                 }
-
-                HttpSession session = request.getSession();
+                
                 session.setAttribute("max", max);
                 session.setAttribute("ejerciciosRutina", ejercicios);
-                request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+                request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
             }
         } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error en el registro");
@@ -124,6 +127,10 @@ public class Ejercicio_RutinaController extends HttpServlet {
     }
 
     protected void Read(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Usuario user = (Usuario) session.getAttribute("logger");
+        String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador" : "Cliente";
+        
         String IdRutina = request.getParameter("idRutina");
         int idRutina = Integer.parseInt(IdRutina);
         List<Ejercicio_Rutina> ejerciciosRutina = eje_rut_dao.listarRutina(idRutina);
@@ -140,16 +147,17 @@ public class Ejercicio_RutinaController extends HttpServlet {
             }
         }
 
-        HttpSession session = request.getSession();
         session.setAttribute("idRutina", idRutina);
         session.setAttribute("ejerciciosRutina", ejerciciosRutina);
         session.setAttribute("max", max);
-        request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+        request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
     }
 
     protected void Update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session = request.getSession();
+        Usuario user = (Usuario) session.getAttribute("logger");
+        String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador" : "Cliente";
+        
         ubi_eje_rut = (Ejercicio_Rutina) session.getAttribute("ubicacionEjercicio");
         String FkIdEjercicio = request.getParameter("fkIdEjercicio");
         String Series = request.getParameter("series");
@@ -188,11 +196,13 @@ public class Ejercicio_RutinaController extends HttpServlet {
         boolean alMenosUno = true;
         session.setAttribute("alMenosUno", alMenosUno);
         session.setAttribute("ejerciciosRutina", ejerciciosRutina);
-        request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+        request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
     }
 
     protected void Delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        Usuario user = (Usuario) session.getAttribute("logger");
+        String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador" : "Cliente";
 
         String Semana = request.getParameter("semana");
         String Dia = request.getParameter("dia");
@@ -227,7 +237,7 @@ public class Ejercicio_RutinaController extends HttpServlet {
 
             session.setAttribute("ejerciciosRutina", ejerciciosRutina);
         }
-        request.getRequestDispatcher("/vistas/Entrenador/formRutina.jsp").forward(request, response);
+        request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);
     }
 
     @Override
