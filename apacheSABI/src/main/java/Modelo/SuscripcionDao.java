@@ -185,6 +185,20 @@ public class SuscripcionDao {
         return r;
     }
     
+    public boolean actualizarEstadoPago(int idSuscripcion) {
+    String sql = "UPDATE suscripcion SET estadoPagoSuscripcion = 'activo' WHERE idSuscripcion = ?";
+    try {
+        conn = cn.Conexion();
+        ps = conn.prepareStatement(sql);
+        ps.setInt(1, idSuscripcion);
+        int filasActualizadas = ps.executeUpdate();
+        return filasActualizadas > 0;
+    } catch (Exception e) {
+        System.out.println("Error al actualizar estadoPagoSuscripcion: " + e.getMessage());
+        return false;
+    }
+}
+    
     public int Eliminar(int idSuscripcion) {
         String sql = "DELETE FROM suscripcion WHERE idSuscripcion = ?";
         try {

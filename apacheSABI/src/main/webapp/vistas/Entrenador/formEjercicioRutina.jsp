@@ -14,13 +14,12 @@
     </head>
     <body>
         <%@ include file="/plantillas/dashEntrenador.jsp" %>
-        
+
         <div class="col-md-8 mx-auto mt-5">
             <h1>Estructura el ejercicio</h1>
             <form id="formEjercicioRutina" action="Ejercicio_RutinaController">
                 <input type="hidden" name="accion" value="Update">
-                <%
-                    Ejercicio_Rutina eje_rut_edicion = (Ejercicio_Rutina) session.getAttribute("eje_rut_edicion");
+                <%                    Ejercicio_Rutina eje_rut_edicion = (Ejercicio_Rutina) session.getAttribute("eje_rut_edicion");
                     Ejercicio ejercicio = (Ejercicio) request.getAttribute("ejercicio");
                     String selectValue = "Selecciona un ejercicio";
                     int selectValueId = 1;
@@ -90,7 +89,7 @@
                         <input name="descanso" <%=descansoValue%> type="number" class="form-control" id="Descanso" placeholder="Ej: 60" required min="0">
                     </div>
                 </div>
-                <div>
+                <div class="mt-3">
                     <iframe width="560" height="315" 
                             src="<%= ejercicio.getUrlVideo()%>"
                             title="YouTube video player" 
@@ -100,6 +99,15 @@
                             allowfullscreen>
                     </iframe>
                 </div>
+                <div class="mt-3">
+                    <h6>Descripcion</h6>
+                    <p><%=ejercicio.getDescEjercicio() %></p>
+                </div>
+                <div class="mt-3">
+                    <h6>Tipo de ejercicio</h6>
+                    <p><%=ejercicio.getTipEjercicio() %></p>
+                </div>
+
                 <div class="card-title mb-0 text-center">
                     <button type="submit" class="btn btn-success me-2 mt-2">
                         Guardar ejercicio

@@ -38,10 +38,10 @@ public class FiltroSesion implements Filter {
             Modelo.Usuario usuario = (Modelo.Usuario) sesion.getAttribute("logger");
 
             if (path.contains("/vistas/Entrenador/") && !usuario.getRolUsuario().equals("entrenador")) {
-                res.sendRedirect(req.getContextPath() + "/accesoDenegado.jsp");
+                res.sendRedirect(req.getContextPath() + "/vistas/Cliente/cliente.jsp");
                 return;
             } else if (path.contains("/vistas/Cliente/") && !usuario.getRolUsuario().equals("cliente")){
-                res.sendRedirect(req.getContextPath() + "/accesoDenegado.jsp");
+                res.sendRedirect(req.getContextPath() + "/vistas/Entrenador/index.jsp");
                 return;
             }
 

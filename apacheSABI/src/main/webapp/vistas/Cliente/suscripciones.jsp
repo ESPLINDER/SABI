@@ -58,7 +58,8 @@
                     <p><%= suscripcion.getValorSuscripcion()%></p>
                     <br>
                     <p>Ya se te asigno un precio a tu rutina, ya puedes pagarla.</p>
-                    <a class="boton-accion" href="">Pagar Suscripcion</a>
+                    <a class="boton-accion" href="SuscripcionController?menu=Suscripciones&accion=PagarSuscripcion&idSuscripcion=<%= suscripcion.getIdSuscripcion() %>">Pagar Suscripcion</a>
+
                 </div>
                 <%
                 } else {

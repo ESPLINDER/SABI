@@ -138,7 +138,7 @@
 .botones {
     text-align: center;
     padding: 20px;
-    
+    gap: 10px;
     display: flex;
     justify-content: center;
 }

@@ -63,19 +63,37 @@ public class SuscripcionController extends HttpServlet {
                 case "Editar":
                     int idSuscripcionEditar = Integer.parseInt(request.getParameter("idSuscripcion"));
                     Suscripcion suscripcionEditar = suscripcionDao.obtenerPorId(idSuscripcionEditar); // necesitas este método en el DAO
-                    
+
                     Usuario entrenadorSesion = (Usuario) request.getSession().getAttribute("logger");
                     int idEntrenadorEditar = entrenadorSesion.getIdUsuario();
 
                     List<Suscripcion> suscripcionesEntrenador = suscripcionDao.listarSuscripcionesEntrenador(idEntrenadorEditar);
                     request.setAttribute("listSuscripcionesEntrenador", suscripcionesEntrenador);
-                    
+
                     request.setAttribute("suscripcionEditar", suscripcionEditar); // aquí está el objeto individual
 
                     request.getRequestDispatcher("SuscripcionController?menu=Suscripciones&accion=listarEntrenador").forward(request, response);
                     break;
                 case "Actualizar":
                     this.actualizarSuscripcion(request, response);
+                    break;
+                case "PagarSuscripcion":
+                    int idPagar = Integer.parseInt(request.getParameter("idSuscripcion"));
+                    boolean pagoActualizado = suscripcionDao.actualizarEstadoPago(idPagar);
+
+                    if (pagoActualizado) {
+                        System.out.println("Pago actualizado correctamente");
+                    } else {
+                        System.out.println("No se pudo actualizar el estado de pago");
+                    }
+
+                    // Luego recarga la lista como normalmente lo haces
+                    Usuario entrenadorPago = (Usuario) request.getSession().getAttribute("logger");
+                    int idEntrenadorPago = entrenadorPago.getIdUsuario();
+
+                    List<Suscripcion> listaActualizada = suscripcionDao.listarSuscripcionesEntrenador(idEntrenadorPago);
+                    request.setAttribute("listSuscripcionesEntrenador", listaActualizada);
+                    request.getRequestDispatcher("SuscripcionController?menu=Suscripciones&accion=listar").forward(request, response);
                     break;
                 case "Eliminar":
                     this.desactivarSuscripcion(request, response);
@@ -126,11 +144,11 @@ public class SuscripcionController extends HttpServlet {
 
     protected void desactivarSuscripcion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
-        doc = Integer.parseInt(request.getParameter("idSuscripcion"));
-        suscripcionDao.Eliminar(doc);
-        request.getRequestDispatcher("SuscripcionController?menu=Suscripciones&accion=listarEntrenador").forward(request, response);
-        }catch(ServletException | IOException | NumberFormatException e){
+        try {
+            doc = Integer.parseInt(request.getParameter("idSuscripcion"));
+            suscripcionDao.Eliminar(doc);
+            request.getRequestDispatcher("SuscripcionController?menu=Suscripciones&accion=listarEntrenador").forward(request, response);
+        } catch (ServletException | IOException | NumberFormatException e) {
             System.out.println("Error al eliminar");
         }
     }
