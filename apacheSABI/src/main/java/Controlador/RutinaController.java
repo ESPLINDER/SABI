@@ -58,8 +58,8 @@ public class RutinaController extends HttpServlet {
         String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador" : "Cliente";
         List<Modelo.Ejercicio_Rutina> ejerciciosRutina = (List<Modelo.Ejercicio_Rutina>) session.getAttribute("ejerciciosRutina");
 
-        boolean alMenosUno = (boolean) session.getAttribute("alMenosUno");
-        if (alMenosUno) {
+        String alMenosUno = (String) session.getAttribute("alMenosUno");
+        if (alMenosUno.equals("si")) {
             Usuario usuario = (Usuario) session.getAttribute("logger");
             int semanaMaxima = 0;
 
