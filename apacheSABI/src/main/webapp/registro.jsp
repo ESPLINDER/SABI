@@ -4,84 +4,6 @@
 
 <%
     String contextPath = request.getContextPath();
-    String errorMessage = null;
-
-    // Procesar el formulario si se envía por POST
-    if ("POST".equals(request.getMethod())) {
-        try {
-            // Obtener y validar datos del formulario
-            String nombre = request.getParameter("nombre");
-            String apellido = request.getParameter("apellido");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String confirmPassword = request.getParameter("confirmPassword");
-            String tipoDocumento = request.getParameter("tipoDocumento");
-            String numeroDocumento = request.getParameter("numeroDocumento");
-            String departamento = request.getParameter("departamento");
-            String ciudad = request.getParameter("ciudad");
-            String rol = request.getParameter("rol");
-
-            // Validaciones básicas
-            if (nombre == null || nombre.trim().isEmpty()
-                    || apellido == null || apellido.trim().isEmpty()
-                    || email == null || email.trim().isEmpty()
-                    || password == null || password.isEmpty()
-                    || numeroDocumento == null || numeroDocumento.trim().isEmpty()
-                    || departamento == null || departamento.trim().isEmpty()
-                    || ciudad == null || ciudad.trim().isEmpty()) {
-                errorMessage = "Todos los campos obligatorios deben ser completados";
-            } else if (!password.equals(confirmPassword)) {
-                errorMessage = "Las contraseñas no coinciden";
-            } else if (password.length() < 8) {
-                errorMessage = "La contraseña debe tener al menos 8 caracteres";
-            } else {
-                // Crear instancia del DAO
-                UsuarioDao usuarioDao = new UsuarioDao();
-
-                // Verificar duplicados
-                if (usuarioDao.existeEmail(email.trim())) {
-                    errorMessage = "El correo electrónico ya está registrado";
-                } else if (usuarioDao.existeDocumento(Integer.parseInt(numeroDocumento.trim()))) {
-                    errorMessage = "El número de documento ya está registrado";
-                } else {
-                    // Crear nuevo usuario
-                    Usuario nuevoUsuario = new Usuario();
-                    nuevoUsuario.setNomUsuario(nombre.trim());
-                    nuevoUsuario.setApeUsuario(apellido.trim());
-                    nuevoUsuario.setEmaUsuario(email.trim());
-                    nuevoUsuario.setPassUsuario(password); // Sin hash por ahora
-                    nuevoUsuario.setTipDocumento(tipoDocumento);
-                    nuevoUsuario.setNumDocumento(Integer.parseInt(numeroDocumento.trim()));
-                    nuevoUsuario.setCiudadUsuario(ciudad);
-                    nuevoUsuario.setRolUsuario(rol != null ? rol : "cliente");
-                    nuevoUsuario.setEspecialidad("");
-                    nuevoUsuario.setXpAños(0.0f);
-                    nuevoUsuario.setBiografia("");
-                    nuevoUsuario.setPromCalificacion(0);
-                    nuevoUsuario.setEstadoUsuario("activo");
-
-                    // Agregar usuario a la base de datos
-                    if (usuarioDao.Agregar(nuevoUsuario) > 0) {
-                        if ("entrenador".equalsIgnoreCase(rol)) {
-                            response.sendRedirect(request.getContextPath() + "/vistas/Entrenador/index.jsp");
-                        } else {
-                            response.sendRedirect(request.getContextPath() + "/vistas/Cliente/cliente.jsp");
-                        }
-                    }
-                }
-            }
-        } catch (NumberFormatException e) {
-            errorMessage = "El número de documento debe ser válido";
-        } catch (Exception e) {
-            errorMessage = "Error inesperado: " + e.getMessage();
-            e.printStackTrace(); // En producción, loguear el error completo
-        }
-    }
-
-    // Mostrar mensajes de error en la vista
-    if (errorMessage != null) {
-        request.setAttribute("error", errorMessage);
-    }
 %>
 
 <!DOCTYPE html>
@@ -267,7 +189,7 @@
                     </div>
                     <% }%>
 
-                    <form class="register-form" id="registerForm" method="POST" action="${pageContext.request.contextPath}/usuario" onsubmit="return showRoleModal()">
+                    <form class="register-form" id="registerForm" method="POST" action="UsuarioController" onsubmit="return showRoleModal()">
                         <input type="hidden" id="selectedRole" name="rol" value="">
 
                         <div class="form-row">
@@ -296,8 +218,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Fecha de nacimiento *</label>
-                                <input type="date" name="fechaNacimiento" required
-                                       value="${param.fechaNacimiento != null ? param.fechaNacimiento : ''}">
+                                <input type="date" name="fechaNacimiento" required value="${param.fechaNacimiento != null ? param.fechaNacimiento : ''}">
                             </div>
                         </div>
 

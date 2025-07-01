@@ -49,9 +49,12 @@ public class UsuarioDao {
     }
     
     // Método para agregar un nuevo usuario
-    public int Agregar(Usuario usuario) {
-        String sql = "INSERT INTO usuarios (nombre, apellido, email, password, tipo_documento, numero_documento, ciudad, rol, especialidad, xp_años, biografia, prom_calificacion, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public int Agregar(Usuario usuario) throws ClassNotFoundException {
+        String sql = "INSERT INTO usuario (nomUsuario, apeUsuario, emaUsuario, passUsuario, tipDocumento, numDocumento, ciudadUsuario, rolUsuario, especialidad, xpAños, biografia, promCalificacion, estadoUsuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
+            conn = cn.Conexion();
+            ps = conn.prepareStatement(sql);
+            
             ps.setString(1, usuario.getNomUsuario());
             ps.setString(2, usuario.getApeUsuario());
             ps.setString(3, usuario.getEmaUsuario());
@@ -65,7 +68,7 @@ public class UsuarioDao {
             ps.setString(11, usuario.getBiografia());
             ps.setFloat(12, usuario.getPromCalificacion());
             ps.setString(13, usuario.getEstadoUsuario());
-
+            
             return ps.executeUpdate(); // Retorna el número de filas afectadas
         } catch (SQLException e) {
             e.printStackTrace();
