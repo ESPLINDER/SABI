@@ -193,7 +193,7 @@ public class Ejercicio_RutinaController extends HttpServlet {
                 ejer.setEstilo("#000000");
             }
         }
-        boolean alMenosUno = true;
+        String alMenosUno = "si";
         session.setAttribute("alMenosUno", alMenosUno);
         session.setAttribute("ejerciciosRutina", ejerciciosRutina);
         request.getRequestDispatcher("/vistas/"+carpeta+"/formRutina.jsp").forward(request, response);

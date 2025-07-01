@@ -1,3 +1,66 @@
 01-Jul-2025 00:12:46.362 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
 01-Jul-2025 00:12:46.362 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
 01-Jul-2025 00:12:46.363 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@1f536481')
+01-Jul-2025 00:39:59.807 SEVERE [http-nio-8080-exec-24] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/apacheSABI] lanzó la excepción [No se puede compilar la clase para JSP: 
+
+Ha tenido lugar un error en la línea: [54] en el archivo jsp: [/vistas/Entrenador/formRutina.jsp]
+Type mismatch: cannot convert from Object to boolean
+51:         <%} else {%>
+52:         <div id="contenedorTabla" class="col-md-8 mx-auto text-center">
+53:             <h1 class="mb-4 mt-5">Crea tu rutina</h1>
+54:             <% if(session.getAttribute("alMenosUno")){%>
+55:             <button class="mb-5 btn btn-success mx-auto" type="button" data-bs-toggle="modal" data-bs-target="#guardarRutina">Guardar Rutina</button>
+56:             <%}%>
+57:             <%for (int i = 1; i <= max.getSemanas(); i++) {%>
+
+
+Stacktrace:] con causa raíz
+	org.apache.jasper.JasperException: No se puede compilar la clase para JSP: 
+
+Ha tenido lugar un error en la línea: [54] en el archivo jsp: [/vistas/Entrenador/formRutina.jsp]
+Type mismatch: cannot convert from Object to boolean
+51:         <%} else {%>
+52:         <div id="contenedorTabla" class="col-md-8 mx-auto text-center">
+53:             <h1 class="mb-4 mt-5">Crea tu rutina</h1>
+54:             <% if(session.getAttribute("alMenosUno")){%>
+55:             <button class="mb-5 btn btn-success mx-auto" type="button" data-bs-toggle="modal" data-bs-target="#guardarRutina">Guardar Rutina</button>
+56:             <%}%>
+57:             <%for (int i = 1; i <= max.getSemanas(); i++) {%>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:531)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:374)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:346)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:332)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:591)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:376)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:337)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:288)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:130)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at Controlador.FiltroSesion.doFilter(FiltroSesion.java:53)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:109)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:79)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:666)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:59)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+01-Jul-2025 00:41:33.751 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+01-Jul-2025 00:41:33.751 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
