@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -57,19 +59,22 @@ public class UsuarioController extends HttpServlet {
         nuevoUsuario.setTipDocumento(tipoDocumento);
         nuevoUsuario.setNumDocumento(Integer.parseInt(numeroDocumento.trim()));
         nuevoUsuario.setCiudadUsuario(ciudad);
-        nuevoUsuario.setRolUsuario(rol != null ? rol : "cliente"); // Asignar rol por defecto si es nulo
-        nuevoUsuario.setEspecialidad(""); // Puedes ajustar esto según tu lógica
-        nuevoUsuario.setXpAños(0.0f); // Inicialmente 0.0
-        nuevoUsuario.setBiografia(""); // Puedes ajustar esto según tu lógica
-        nuevoUsuario.setPromCalificacion(0); // Inicialmente 0
-        nuevoUsuario.setEstadoUsuario("activo"); // Por defecto, el usuario está activo
-
-        // Intentar crear el usuario en la base de datos
-        if (usuarioDao.Agregar(nuevoUsuario) > 0) {
-            response.sendRedirect("registroExitoso.jsp");
-        } else {
-            request.setAttribute("error", "Error al registrar el usuario. Inténtalo de nuevo.");
-            request.getRequestDispatcher("registro.jsp").forward(request, response);
+        nuevoUsuario.setRolUsuario(rol != null ? rol : "cliente"); 
+        nuevoUsuario.setEspecialidad(""); 
+        nuevoUsuario.setXpAños(0.0f); 
+        nuevoUsuario.setBiografia("");
+        nuevoUsuario.setPromCalificacion(0);
+        nuevoUsuario.setEstadoUsuario("activo");
+        try {
+            // Intentar crear el usuario en la base de datos
+            if (usuarioDao.Agregar(nuevoUsuario) > 0) {
+                response.sendRedirect("index.jsp");
+            } else {
+                request.setAttribute("error", "Error al registrar el usuario. Inténtalo de nuevo.");
+                request.getRequestDispatcher("registro.jsp").forward(request, response);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
