@@ -41,7 +41,7 @@ public class RutinaDao {
     }
     
     public void Update(Rutina rutina){
-        String sql = "UPDATE INTO rutina (nomRutina, semanasRutina, descRutina, nivelRutina, creacionRutina, autorRutina) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "UPDATE rutina SET nomRutina = ?, semanasRutina = ?, descRutina = ?, nivelRutina = ? WHERE idRutina = ?;";
         try {
             conn = cn.Conexion();
             ps = conn.prepareStatement(sql);
@@ -52,6 +52,7 @@ public class RutinaDao {
             ps.setString(4, rutina.getNivelRutina());
             
             ps.setInt(5, rutina.getIdRutina());
+            System.out.println("update rutina: "+ps);
 
             int filas = ps.executeUpdate();
 

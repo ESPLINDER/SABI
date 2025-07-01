@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author William
  */
 
-@WebServlet("/UsuarioController")
+@WebServlet(name = "UsuarioController", urlPatterns = {"/UsuarioController"})
 public class UsuarioController extends HttpServlet {
     private final UsuarioDao usuarioDao = new UsuarioDao();
 

@@ -16,6 +16,9 @@
         <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listarEntrenador&idEntrenador=<%= entrenador.getIdUsuario() %>">
             <span>Suscripciones</span>
         </a>
+            <a href="<%= request.getContextPath()%>/SuscripcionController.jsp">
+            <span>clientes</span>
+        </a>
     </nav>
     <div class="derecha">
         <a href="<%= request.getContextPath()%>/CerrarSesion">

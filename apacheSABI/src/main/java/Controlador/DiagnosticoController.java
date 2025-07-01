@@ -33,6 +33,10 @@ public class DiagnosticoController extends HttpServlet {
             case "verDiagnostico":
                 verDiagnostico(request, response);
                 break;
+            case "error":
+                String errar = request.getParameter("errar");
+                System.out.println(errar);
+                break;
             default:
                 response.sendRedirect("index.jsp");
                 break;

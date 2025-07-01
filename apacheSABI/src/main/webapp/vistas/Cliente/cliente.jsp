@@ -18,7 +18,7 @@
             <h1>¡Hola <%= cliente.getNomUsuario() %> <%= cliente.getApeUsuario() %>!</h1>
             <p>Aún no tienes un diagnóstico inicial.</p>
             <p>¿Te gustaría realizarlo ahora para que puedas diseñar tu rutina personalizada?</p>
-            <a class="boton-accion" href="DiagnosticoController">Realizar Diagnostico</a>
+            <a class="boton-accion" href="<%= contextPath%>/DiagnosticoController?accion=error">Realizar Diagnostico</a>
         </div>
 
         <div class="contenido-estadisticas">
