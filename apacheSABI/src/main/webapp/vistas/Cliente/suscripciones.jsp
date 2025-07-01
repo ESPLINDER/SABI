@@ -45,7 +45,7 @@
                 %>
                 <div class="datos-suscripcion">
                     <h2>Valor de la suscripcion</h2>
-                    <p>Aun esta por definirce.</p>
+                    <p>Aun esta por definirse.</p>
                     <br>
                     <p>Cuando tu entrenador defina un precio a tu suscripcion se te habilitara el pago</p>
                     <a class="boton-accion-inactivo" href="">Pagar Suscripcion</a>

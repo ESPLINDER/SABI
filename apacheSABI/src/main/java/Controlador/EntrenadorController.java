@@ -42,7 +42,7 @@ public class EntrenadorController extends HttpServlet {
         List<Usuario> listaEntrenadores = usuarioDao.listarEntrenadores();
         
         request.setAttribute("entrenadores", listaEntrenadores);
-        request.getRequestDispatcher("vistas/Cliente/suscripciones.jsp").forward(request, response);
+        request.getRequestDispatcher("vistas/Cliente/entrenadores.jsp").forward(request, response);
     }
 
     @Override
