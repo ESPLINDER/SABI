@@ -12,76 +12,55 @@ import Modelo.Usuario;
 import Modelo.UsuarioDao;
 import jakarta.servlet.annotation.WebServlet;
 
-/**
- *
- * @author William
- */
-
 @WebServlet("/ValidarUsuarioController")
 public class ValidarUsuarioController extends HttpServlet {
 
     UsuarioDao u_dao = new UsuarioDao();
-    Usuario usu = new Usuario();
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        String accion = request.getParameter("accion");
-        switch (accion) {
-            case "Ingresar":
-                System.out.println("ahora si llega");
-                break;
-            case "Read":
-                break;
-            case "Update":
-                break;
-            case "Delete":
-                break;
-            case "Estructurar":
-                break;
-        }
-    }
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        System.out.println("encontro el controlador");
-        String accion = request.getParameter("accion"); //name del boton ingresar/registrar
-        System.out.println("accion: "+accion);
-        if (accion.equalsIgnoreCase("Ingresar")){
-            System.out.println("valido la accion");
-            //al hacer click en el boton con value ingresar
-            String user = request.getParameter("emaUsuario"); //name del formulario campo usuario
-            String pass = request.getParameter("passUsuario"); // campo contrasena
+
+        String accion = request.getParameter("accion");
+        if (accion == null) {
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
+        }
+
+        if (accion.equalsIgnoreCase("Ingresar")) {
+            String user = request.getParameter("emaUsuario");
+            String pass = request.getParameter("passUsuario");
+
+            Usuario usu = null;
             try {
-                System.out.println(user);
-                System.out.println(pass);
                 usu = u_dao.ValidarUsuario(user, pass);
-                System.out.println(usu.toString());
             } catch (ClassNotFoundException ex) {
-                System.out.println("error en validacion");
                 Logger.getLogger(ValidarUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error de validación");
+                return;
             }
-            if (usu.getEmaUsuario() != null && usu.getPassUsuario() != null) {
-                
+
+            if (usu != null && usu.getEmaUsuario() != null && usu.getPassUsuario() != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("logger", usu);
-                
-                request.setAttribute("logger", usu); //vamos a la pagina donde se autentica el usuario
-                if (usu.getRolUsuario().equals("entrenador")) {
-                    request.getRequestDispatcher("vistas/Entrenador/index.jsp").forward(request, response);
+
+                if ("entrenador".equalsIgnoreCase(usu.getRolUsuario())) {
+                    response.sendRedirect(request.getContextPath() + "/vistas/Entrenador/index.jsp");
                 } else {
-                    request.getRequestDispatcher("vistas/Cliente/cliente.jsp").forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/vistas/Cliente/cliente.jsp");
                 }
             } else {
                 request.setAttribute("error", "Usuario o contraseña incorrectos");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("error", "Ingrese Usuario y Contraseña");
-            request.getRequestDispatcher("../../index.jsp");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 }

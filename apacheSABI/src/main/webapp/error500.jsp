@@ -1,5 +1,5 @@
-<%@page import="Modelo.Usuario"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="Modelo.Usuario" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,9 +40,23 @@
 <body>
     <h1>500</h1>
     <p>¡Oops! Algo salió mal en el servidor.</p>
-    <%Usuario user = (Usuario) session.getAttribute("logger"); 
-        String carpeta = (user.getRolUsuario().equals("entrenador")) ? "Entrenador/index.jsp" : "Cliente/cliente.jsp";%>
-        
-    <a href="${pageContext.request.contextPath}/vistas/<%=carpeta%>">Volver al inicio</a>
+
+    <%
+        Usuario user = (Usuario) session.getAttribute("logger");
+        String carpeta;
+        if (user != null) {
+            if ("entrenador".equalsIgnoreCase(user.getRolUsuario())) {
+                carpeta = "Entrenador/index.jsp";
+            } else {
+                carpeta = "Cliente/cliente.jsp";
+            }
+        } else {
+            // Si no hay usuario logueado, manda a home general o login
+            carpeta = "index.jsp";
+        }
+        String contextPath = request.getContextPath();
+    %>
+
+    <a href="<%= contextPath %>/vistas/<%= carpeta %>">Volver al inicio</a>
 </body>
 </html>
