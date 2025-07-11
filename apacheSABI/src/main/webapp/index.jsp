@@ -77,9 +77,5 @@
                    <p>Con SABI, cada usuario puede encontrar el programa perfecto que se adapte a sus necesidades específicas, ya sea para principiantes o atletas avanzados. Nuestro enfoque personalizado garantiza resultados efectivos y duraderos.</p>
                </div>
            </div>
-       </div>
-       
-       <%@ include file="/plantillas/footer.jsp" %>
-       
    </section>
 </body>
