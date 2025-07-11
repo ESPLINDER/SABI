@@ -1,10 +1,12 @@
 /* Footer */
 .main-footer {
-   background: rgba(13, 71, 161, 0.98); /* Footer en azul oscuro */
+   background: rgba(176, 81, 29, 0.98); /* Footer en azul oscuro */
    color: white;
    flex-wrap: wrap;
    width: 100%;
    position: fixed;
+   bottom: 0;
+   left: 0;
 }
 
 

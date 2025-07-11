@@ -4,7 +4,6 @@
 
 <%
     String contextPath = request.getContextPath();
-    Usuario cliente = (Usuario) session.getAttribute("cliente");
     Diagnostico diagnostico = (Diagnostico) request.getAttribute("diagnostico");
 %>
 

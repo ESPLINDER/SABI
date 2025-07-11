@@ -95,14 +95,22 @@
 }
 
 .encabezado-suscripcion {
-    text-align: center;
-    width: auto;
-    padding: 8px 20px;
+    padding: 20px;
     border-radius: 10px 10px 0 0;
-    font-size: 14px;
-    color: #000000;
+    color: #ffffff;
     background-color: #0064e9;
 
+}
+.encabezado-suscripcion h1 {
+    font-size: 28px;
+    margin: 0;
+    display: inline-block;
+}
+
+.encabezado-suscripcion i {
+    font-size: 24px;
+    color: #ffffff;
+    margin-right: 14px;
 }
 
 .contenido-suscripcion {
@@ -118,6 +126,10 @@
     text-align: center;
     padding: 20px;
 }
+.datos-suscripcion h2 {
+    font-size: 18px;
+    color: #000000;
+}
 
 .fechas-suscripcion {
     display: flex;
@@ -125,8 +137,13 @@
 }
 
 .fecha {
-    padding: 10px;
-    font-size: 14px;
+    padding: 18px;
+    font-size: 16px;
+}
+
+.fecha h2 {
+    font-size: 16px;
+    color: #717171;
 }
 
 
@@ -217,7 +234,6 @@
     border-color: #0a58ca;
 }
 
-/* Hacer los botones de acción más atractivos */
 .boton-accion {
     display: inline-block;
     padding: 10px 20px;
@@ -234,4 +250,25 @@
     background-color: #0b5ed7;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/*---------------------- reportes ------------------------*/
+.reporte {
+    background: #0064e9;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 200px;
+    align-items: center;
+}
+
+.reporte h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.reporte p {
+    font-size: 14px;
+    margin: 5px 0 0;
+    color: #ffffff;
 }

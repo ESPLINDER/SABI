@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="<%= contextPath%>/estilos/barranavegacion.css">
     </head>
     <body>
-        <%@ include file="/plantillas/barraNavegacionCliente.jsp" %>
+        <%@ include file="<%= contextPath%>/plantillas/barraNavegacionCliente.jsp" %>
 
         <div class="contenido-suscripciones">
 
@@ -89,7 +89,7 @@
             %>
         </div>
         
-        <%@ include file="/plantillas/footer.jsp" %>
+        <%@ include file="<%= contextPath%>/plantillas/footer.jsp" %>
         
     </body>
 </html>

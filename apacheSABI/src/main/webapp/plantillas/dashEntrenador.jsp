@@ -13,11 +13,8 @@
         <a href="<%= contextPath%>/RutinaController?accion=Read">
             <span>Rutinas</span>
         </a>
-        <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listarEntrenador&idEntrenador=<%= entrenador.getIdUsuario() %>">
+        <a href="<%= request.getContextPath()%>/SuscripcionController?menu=Suscripciones&accion=listarEntrenador">
             <span>Suscripciones</span>
-        </a>
-            <a href="<%= request.getContextPath()%>/SuscripcionController.jsp">
-            <span>clientes</span>
         </a>
     </nav>
     <div class="derecha">

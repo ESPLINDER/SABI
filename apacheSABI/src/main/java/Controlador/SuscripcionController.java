@@ -58,6 +58,10 @@ public class SuscripcionController extends HttpServlet {
 
                     List<Suscripcion> listaSuscripcionesEntrenador = suscripcionDao.listarSuscripcionesEntrenador(idEntrenador);
                     request.setAttribute("listSuscripcionesEntrenador", listaSuscripcionesEntrenador);
+                    
+                    int reporteClientes = suscripcionDao.reporteSuscripciones(idEntrenador);
+                    request.setAttribute("reporte", reporteClientes);
+                    
                     request.getRequestDispatcher("vistas/Entrenador/suscripciones.jsp").forward(request, response);
                     break;
                 case "Editar":
@@ -147,9 +151,11 @@ public class SuscripcionController extends HttpServlet {
         try {
             doc = Integer.parseInt(request.getParameter("idSuscripcion"));
             suscripcionDao.Eliminar(doc);
+            
             request.getRequestDispatcher("SuscripcionController?menu=Suscripciones&accion=listarEntrenador").forward(request, response);
-        } catch (ServletException | IOException | NumberFormatException e) {
-            System.out.println("Error al eliminar");
+            
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Error al eliminar suscripcion");
         }
     }
 

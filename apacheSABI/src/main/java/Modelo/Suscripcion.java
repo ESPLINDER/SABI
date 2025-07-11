@@ -18,11 +18,12 @@ public class Suscripcion {
     int valorSuscripcion;
     String estadoPagoSuscripcion;
     Usuario entrenador;
+    int reporte;
 
     public Suscripcion() {
     }
 
-    public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDate inicioSuscripcion, LocalDate finSuscripcion, String estadoSuscripcion, int renovaciones, int valorSuscripcion, String estadoPagoSuscripcion) {
+    public Suscripcion(int idSuscripcion, int fkIdEntrenador, int fkIdCliente, LocalDate inicioSuscripcion, LocalDate finSuscripcion, String estadoSuscripcion, int renovaciones, int valorSuscripcion, String estadoPagoSuscripcion, int reporte) {
         this.idSuscripcion = idSuscripcion;
         this.fkIdEntrenador = fkIdEntrenador;
         this.fkIdCliente = fkIdCliente;
@@ -32,6 +33,7 @@ public class Suscripcion {
         this.renovaciones = renovaciones;
         this.valorSuscripcion = valorSuscripcion;
         this.estadoPagoSuscripcion = estadoPagoSuscripcion;
+        this.reporte = reporte;
     }
 
     public Usuario getEntrenador() {
@@ -79,7 +81,11 @@ public class Suscripcion {
         return estadoPagoSuscripcion;
     }
 
-
+    public int getReporte() {
+        return reporte;
+    }
+    
+ 
     public void setIdSuscripcion(int idSuscripcion) {
         this.idSuscripcion = idSuscripcion;
     }
@@ -116,8 +122,13 @@ public class Suscripcion {
         this.estadoPagoSuscripcion = estadoPagoSuscripcion;
     }
 
+    public void setReporte(int reporte) {
+        this.reporte = reporte;
+    }
+    
+
     @Override
     public String toString() {
-        return "Suscripcion{" + "idSuscripcion=" + idSuscripcion + ", fkIdEntrenador=" + fkIdEntrenador + ", fkIdCliente=" + fkIdCliente + ", inicioSuscripcion=" + inicioSuscripcion + ", finSuscripcion=" + finSuscripcion + ", estadoSuscripcion=" + estadoSuscripcion + ", renovaciones=" + renovaciones + ", valorSuscripcion=" + valorSuscripcion + ", estadoPagoSuscripcion=" + estadoPagoSuscripcion +'}';
+        return "Suscripcion{" + "idSuscripcion=" + idSuscripcion + ", fkIdEntrenador=" + fkIdEntrenador + ", fkIdCliente=" + fkIdCliente + ", inicioSuscripcion=" + inicioSuscripcion + ", finSuscripcion=" + finSuscripcion + ", estadoSuscripcion=" + estadoSuscripcion + ", renovaciones=" + renovaciones + ", valorSuscripcion=" + valorSuscripcion + ", estadoPagoSuscripcion=" + estadoPagoSuscripcion + ",reporte" + reporte +'}';
     }
 }
