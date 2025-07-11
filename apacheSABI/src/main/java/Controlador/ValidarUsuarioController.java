@@ -42,12 +42,16 @@ public class ValidarUsuarioController extends HttpServlet {
 
             if (usu != null && usu.getEmaUsuario() != null && usu.getPassUsuario() != null) {
                 HttpSession session = request.getSession();
-                session.setAttribute("logger", usu);
+
+                // ✅ Aquí está la clave: guardar como 'cliente' y 'usuarioId'
+                session.setAttribute("cliente", usu);
+                session.setAttribute("usuarioId", usu.getIdUsuario());
 
                 if ("entrenador".equalsIgnoreCase(usu.getRolUsuario())) {
                     response.sendRedirect(request.getContextPath() + "/vistas/Entrenador/index.jsp");
                 } else {
-                    response.sendRedirect(request.getContextPath() + "/vistas/Cliente/cliente.jsp");
+                    // ✅ Redirige a ClienteController, NO directo al JSP
+                    response.sendRedirect(request.getContextPath() + "/ClienteController");
                 }
             } else {
                 request.setAttribute("error", "Usuario o contraseña incorrectos");

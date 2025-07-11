@@ -70,33 +70,36 @@
     </form>
 
     <script>
-        const peso = document.getElementById('peso');
-        const estatura = document.getElementById('estatura');
-        const imcCliente = document.getElementById('imcCliente');
+    const peso = document.getElementById('peso');
+    const estatura = document.getElementById('estatura');
+    const imcCliente = document.getElementById('imcCliente');
+    const freq = document.getElementById('frecuenciaDiagnostico');
+    const prox = document.getElementById('proxDiagnostico');
 
-        function calcularIMC() {
-            const p = parseFloat(peso.value);
-            const e = parseFloat(estatura.value) / 100;
-            if (p && e) {
-                const imc = (p / (e * e)).toFixed(2);
-                imcCliente.value = imc;
-            }
+    function calcularIMC() {
+        const p = parseFloat(peso.value);
+        const e = parseFloat(estatura.value) / 100;
+        if (p && e) {
+            const imc = (p / (e * e)).toFixed(2);
+            imcCliente.value = imc;
         }
+    }
 
-        peso.addEventListener('input', calcularIMC);
-        estatura.addEventListener('input', calcularIMC);
+    peso.addEventListener('input', calcularIMC);
+    estatura.addEventListener('input', calcularIMC);
 
-        const freq = document.getElementById('frecuenciaDiagnostico');
-        const prox = document.getElementById('proxDiagnostico');
+    freq.addEventListener('change', () => {
+        const f = parseInt(freq.value);
+        if (f) {
+            const hoy = new Date();
+            hoy.setDate(hoy.getDate() + f);
+            prox.value = hoy.toISOString().split('T')[0];
+        }
+    });
 
-        freq.addEventListener('change', () => {
-            const f = parseInt(freq.value);
-            if (f) {
-                const hoy = new Date();
-                hoy.setDate(hoy.getDate() + f);
-                prox.value = hoy.toISOString().split('T')[0];
-            }
-        });
-    </script>
+    window.addEventListener('DOMContentLoaded', () => {
+        freq.dispatchEvent(new Event('change'));
+    });
+</script>
 </body>
 </html>

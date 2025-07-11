@@ -107,6 +107,7 @@ public Integer crearDiagnosticoYRetornarId(Diagnostico diagnostico) {
         return diagnosticos;
     }
     
+    
     // Obtener el último diagnóstico de un cliente
     public Diagnostico obtenerUltimoDiagnosticoCliente(int idCliente) {
         String sql = "SELECT * FROM diagnostico WHERE fkIdCliente = ? ORDER BY fechaDiagnostico DESC LIMIT 1";
@@ -298,6 +299,7 @@ public Integer crearDiagnosticoYRetornarId(Diagnostico diagnostico) {
         
         return diagnostico; 
     }
+    
     
     // Cerrar conexión
     public void cerrarConexion() {

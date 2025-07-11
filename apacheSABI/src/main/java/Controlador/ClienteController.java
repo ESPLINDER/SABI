@@ -25,7 +25,6 @@ public class ClienteController extends HttpServlet {
         Usuario cliente = (Usuario) session.getAttribute("cliente");
 
         if (cliente == null) {
-            // Si no hay sesión, redirige a login (opcional)
             response.sendRedirect("login.jsp");
             return;
         }
@@ -33,9 +32,10 @@ public class ClienteController extends HttpServlet {
         Diagnostico diagnostico = diagnosticoDao.obtenerUltimoDiagnosticoCliente(cliente.getIdUsuario());
         diagnosticoDao.cerrarConexion();
 
+        request.setAttribute("cliente", cliente);
         request.setAttribute("diagnostico", diagnostico);
 
-        request.getRequestDispatcher("cliente.jsp").forward(request, response);
+        request.getRequestDispatcher("vistas/Cliente/cliente.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
