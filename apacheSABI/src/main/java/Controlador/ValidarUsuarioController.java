@@ -44,8 +44,7 @@ public class ValidarUsuarioController extends HttpServlet {
                 HttpSession session = request.getSession();
 
                 // ✅ Aquí está la clave: guardar como 'cliente' y 'usuarioId'
-                session.setAttribute("cliente", usu);
-                session.setAttribute("usuarioId", usu.getIdUsuario());
+                session.setAttribute("logger", usu);
 
                 if ("entrenador".equalsIgnoreCase(usu.getRolUsuario())) {
                     response.sendRedirect(request.getContextPath() + "/vistas/Entrenador/index.jsp");

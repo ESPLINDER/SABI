@@ -41,6 +41,8 @@ public class UsuarioDao {
                 usuario.setBiografia(rs.getString("biografia"));
                 usuario.setPromCalificacion(rs.getFloat("promCalificacion"));
                 usuario.setEstadoUsuario(rs.getString("estadoUsuario"));
+                
+                System.out.println(usuario);
             }
         } catch (SQLException e) {
             System.out.println("Correo o contraseña invalidos");
